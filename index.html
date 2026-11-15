@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nico 高中數位學習網｜各科教材與測驗總覽</title>
+<style>
+  :root {
+    --bg: #f4f6fb;
+    --card: #ffffff;
+    --ink: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --primary: #1e3a8a;
+    --primary-light: #eff6ff;
+    --accent: #2563eb;
+    --shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+    --shadow-hover: 0 12px 28px rgba(37, 99, 235, 0.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.65;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #2563eb 100%);
+    color: #ffffff;
+    padding: 48px 20px 40px;
+    text-align: center;
+    border-bottom: 4px solid #60a5fa;
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #dbeafe;
+    border-radius: 999px;
+    padding: 4px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 14px;
+  }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    margin-bottom: 10px;
+  }
+  header p {
+    color: #cbd5e1;
+    font-size: 1rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* ── FILTER TABS ── */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 1080px;
+    margin: 28px auto 8px;
+    padding: 0 20px;
+  }
+  .tab-btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.18s ease;
+  }
+  .tab-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .tab-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  }
+
+  /* ── MAIN CONTENT ── */
+  main {
+    max-width: 1080px;
+    width: 100%;
+    margin: 20px auto 48px;
+    padding: 0 20px;
+    flex: 1;
+  }
+  .section-group {
+    margin-bottom: 36px;
+  }
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 16px;
+    padding-left: 12px;
+    border-left: 5px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .section-title span {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ── SUBJECT GRID & CARDS ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--theme, var(--accent));
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--theme, var(--accent));
+  }
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .subject-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--theme-bg, var(--primary-light));
+    color: var(--theme, var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+  .slug-tag {
+    font-family: Consolas, Monaco, monospace;
+    font-size: 0.78rem;
+    background: #f1f5f9;
+    color: #475569;
+    padding: 3px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .card h3 {
+    font-size: 1.22rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .card p {
+    font-size: 0.92rem;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--theme, var(--accent));
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 24px 20px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    background: #ffffff;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 36px 16px 30px; }
+    header h1 { font-size: 1.6rem; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="badge">Nico High School Learning Portal</span>
+  <h1>高中各科數位教材與複習總覽</h1>
+  <p>點選下方科目卡片，進入各科專屬教材導覽、互動闖關、考前複習測驗與學習進度摘要</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="filterGroup('all', this)">全部科目 (10)</button>
+  <button class="tab-btn" onclick="filterGroup('core', this)">語文與數學 (3)</button>
+  <button class="tab-btn" onclick="filterGroup('social', this)">社會領域 (3)</button>
+  <button class="tab-btn" onclick="filterGroup('science', this)">自然科學領域 (4)</button>
+</div>
+
+<main>
+  <!-- 語文與數學領域 -->
+  <section class="section-group" data-group="core">
+    <div class="section-title">
+      語文與數學領域
+      <span>國文 · 英文 · 數學</span>
+    </div>
+    <div class="grid">
+      <a class="card" href="./chinese/" style="--theme:#991b1b; --theme-bg:#fef2f2;">
+        <div>
+          <div class="card-top">
+            <div class="subject-icon">📜</div>
+            <span class="slug-tag">/chinese/</span>
+          </div>
+          <h3>高中國文</h3>
+          <p>核心古文與課文精讀、互動冒險學堂 RPG、考前複習測驗與國寫專題整理。</p>
+        </div>
+        <div class="card-footer">
+          <span>進入國文科專頁</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <a class="card" href="./english/" style="--theme:#1d4ed8; --theme-bg:#eff6ff;">
+        <div>
+          <div class="card-top">
+            <div class="subject-icon">🔤</div>
+            <span class="slug-tag">/english/</span>
+          </div>
+          <h3>高中英文</h3>
+          <p>學習進度與成果摘要、各冊單字考前複習測驗、Reading Highlight 互動閱讀與文法工具。</p>
+        </div>
+        <div class="card-footer">
+          <span>進入英文科專頁</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <a class="card" href="./math/" style="--theme:#0369a1; --theme-bg:#f0f9ff;">
+        <div>
+          <div class="card-top">
+            <div class="subject-icon">📐</div>
+            <span class="slug-tag">/math/</span>
+          </div>
+          <h3>高中數學</h3>
+          <p>定理公式推導、各單元觀念解析、解題模型與段考考前互動複習測驗。</p>
+        </div>
+        <div class="card-footer">
+          <span>進入數學科專頁</span>
+          <span>→</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 社會領域 -->
+  <section class="section-group" data-group="social">
+    <div class="section-title">
+      社會領域
+      <span>公民與社會 · 歷史 · 地理</span>
+    </div>
+    <div class="grid">
+      <a class="card" href="./civics/" style="--theme:#0f766e; --theme-bg:#f0fdfa;">
+        <div>
+          <div class="card-top">
+            <div class="subject-icon">⚖️</div>
+            <span class="slug-tag">/civics/</span>
+          </div>
+          <h3>公民與社會</h3>
+          <p>單元完整筆記與簡要黑板板書、流程圖填空講義、條列背誦卷及互動闖關測驗系統。</p>
+        </div>
+        <div class="card-footer">
+          <span>進入公民科專頁</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <a class="card" href="./history/" style="--theme:#b45309; --theme-bg:#fffbeb;">
+        <div>
+          <div class="card-top">
+            <div class="subject-icon">🏛️</div>
+            <span class="slug-tag">/history/</span>
+          </div>
+          <h3>高中歷史</h3>
+          <p>時代編年分期、重要制度流變、跨地域專題與歷屆大考考點解析。</p>
+        </div>
+        <div class="card-footer">
+          <span>進入歷史科專頁</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <a class="card" href="./geography/" style="--theme:#15803d; --theme-bg:#f0fdf4;">
+        <div>
+          <div class="card-top">
+            <div class="subject-icon">🌍</div>
+            <span class="slug-tag">/geography/</span>
+          </div>
+          <h3>高中地理</h3>
+          <p>地形與氣候系統概念、區域地理特性、圖表 GIS 判讀與考前複習測驗。</p>
+        </div>
+        <div class="card-footer">
+          <span>進入地理科專頁</span>
+          <span>→</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 自然科學領域 -->
+  <section class="section-group" data-group="science">
+    <div class="section-title">
+      自然科學領域
+      <span>物理 · 化學 · 生物 · 地球科學</span>
+    </div>
+    <div class="grid">
+      <a class="card" href="./physics/" style="--theme:#4338ca; --theme-bg:#eef2ff;">
+        <div>
+          <div class="card-top">
+            <div class="subject-icon">⚡</div>
+            <span class="slug-tag">/physics/</span>
+          </div>
+          <h3>高中物理</h3>
+          <p>核心定律與公式推導、物理模型建立、實驗探究專題與解題演練。</p>
+        </div>
+        <div class="card-footer">
+          <span>進入物理科專頁</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <a class="card" href="./chemistry/" style="--theme:#7e22ce; --theme-bg:#faf5ff;">
+        <div>
+          <div class="card-top">
+            <div class="subject-icon">🧪</div>
+            <span class="slug-tag">/chemistry/</span>
+          </div>
+          <h3>高中化學</h3>
+          <p>化學反應與平衡、物質結構、實驗圖表分析與各章節考前互動複習測驗。</p>
+        </div>
+        <div class="card-footer">
+          <span>進入化學科專頁</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <a class="card" href="./biology/" style="--theme:#047857; --theme-bg:#ecfdf5;">
+        <div>
+          <div class="card-top">
+            <div class="subject-icon">🧬</div>
+            <span class="slug-tag">/biology/</span>
+          </div>
+          <h3>高中生物</h3>
+          <p>細胞與生理機制、遺傳演化、實驗探究設計與跨單元流程圖統整。</p>
+        </div>
+        <div class="card-footer">
+          <span>進入生物科專頁</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <a class="card" href="./earth/" style="--theme:#0284c7; --theme-bg:#f0f9ff;">
+        <div>
+          <div class="card-top">
+            <div class="subject-icon">🎈</div>
+            <span class="slug-tag">/earth/</span>
+          </div>
+          <h3>地球科學</h3>
+          <p>大氣與海洋循環、板塊構造、天文星象、探空見習生 RPG 任務與段考複習測驗。</p>
+        </div>
+        <div class="card-footer">
+          <span>進入地科專頁</span>
+          <span>→</span>
+        </div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Nico 高中數位學習網 · Hosted on GitHub Pages
+</footer>
+
+<script>
+function filterGroup(group, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.section-group').forEach(sec => {
+    if (group === 'all' || sec.dataset.group === group) {
+      sec.style.display = '';
+    } else {
+      sec.style.display = 'none';
+    }
+  });
+}
+</script>
+
+</body>
+</html>
