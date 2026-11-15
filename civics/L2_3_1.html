@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L2_3_1｜3.1 行政法目的與原則（含行政裁量）— 公民與社會筆記</title>
+<style>
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --board-bg: #1e352f;
+  --board-border: #8c6239;
+  --board-text: #f5f7f0;
+  --chalk-yellow: #ffe066;
+  --chalk-pink: #ff99ac;
+  --chalk-blue: #8ce99a;
+  --primary: #1a3d6e;
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --teal: #0f766e;
+  --teal-light: #f0fdfa;
+  --amber: #b45309;
+  --amber-light: #fffbeb;
+  --danger: #b91c1c;
+  --danger-light: #fef2f2;
+  --ink: #1e293b;
+  --ink-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.7;
+  padding-bottom: 60px;
+}
+
+/* Top Navigation Bar */
+.top-nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+}
+
+.brand-badge {
+  background: var(--chalk-yellow);
+  color: #1a2a3a;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 900;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.88rem;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: all 0.15s;
+}
+
+.nav-link:hover, .nav-link.active {
+  background: #fff;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.btn-quiz-mode {
+  background: #eab308;
+  color: #1e293b;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-quiz-mode:hover { background: #facc15; }
+.btn-quiz-mode.active { background: #ef4444; color: #fff; }
+
+/* Container */
+.container {
+  max-width: 1040px;
+  margin: 28px auto;
+  padding: 0 18px;
+}
+
+/* Hero Header */
+.hero {
+  background: linear-gradient(135deg, #1a3d6e 0%, #0f5257 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+
+.hero-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.tag {
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-size: 1.75rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.hero p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Quick Jump TOC */
+.toc-bar {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow);
+}
+
+.toc-label {
+  font-weight: 800;
+  font-size: 0.88rem;
+  color: var(--primary);
+  margin-right: 4px;
+}
+
+.toc-chip {
+  text-decoration: none;
+  font-size: 0.85rem;
+  color: var(--ink);
+  background: var(--bg);
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  transition: all 0.15s;
+}
+
+.toc-chip:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+/* Section Card */
+.section-card {
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  padding: 28px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge-board {
+  background: #1e352f;
+  color: var(--chalk-yellow);
+  font-size: 0.76rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  border: 1px solid var(--board-border);
+}
+
+.badge-book {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.76rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  border: 1px solid #bfdbfe;
+}
+
+/* Chalkboard Replica Box */
+.chalkboard {
+  background: var(--board-bg);
+  color: var(--board-text);
+  border: 6px solid var(--board-border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin: 16px 0 22px;
+  box-shadow: inset 0 0 24px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.12);
+  font-family: "Noto Sans TC", sans-serif;
+  position: relative;
+}
+
+.chalkboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed rgba(255,255,255,0.25);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.75);
+}
+
+.chalk-yellow { color: var(--chalk-yellow); font-weight: 800; }
+.chalk-pink { color: var(--chalk-pink); font-weight: 800; }
+.chalk-blue { color: var(--chalk-blue); font-weight: 800; }
+.chalk-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--chalk-yellow);
+  border-radius: 50%;
+  font-size: 0.8rem;
+  color: var(--chalk-yellow);
+  font-weight: 800;
+  margin-right: 4px;
+}
+
+/* Pyramid Diagram inside Chalkboard */
+.pyramid-layout {
+  display: grid;
+  grid-template-columns: 1fr 260px 1fr;
+  gap: 16px;
+  align-items: center;
+  margin: 18px 0;
+}
+
+@media (max-width: 768px) {
+  .pyramid-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pyramid-side {
+  background: rgba(255,255,255,0.06);
+  border: 1px dashed rgba(255,255,255,0.3);
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 0.92rem;
+}
+
+.pyramid-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.pyr-level {
+  text-align: center;
+  font-weight: 800;
+  padding: 8px 0;
+  border: 2px solid var(--chalk-yellow);
+  color: #fff;
+  background: rgba(255, 224, 102, 0.12);
+  border-radius: 6px;
+}
+
+.pyr-1 { width: 42%; }
+.pyr-2 { width: 62%; }
+.pyr-3 { width: 80%; }
+.pyr-4 { width: 100%; background: rgba(140, 233, 154, 0.18); border-color: var(--chalk-blue); }
+
+/* Number Line Diagram for Discretion */
+.number-line-box {
+  margin: 18px auto 8px;
+  max-width: 560px;
+  text-align: center;
+  padding: 16px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+}
+
+.nl-arch {
+  color: var(--chalk-yellow);
+  font-weight: 800;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.nl-bar {
+  position: relative;
+  height: 4px;
+  background: #fff;
+  margin: 18px 20px;
+}
+
+.nl-bar::after {
+  content: "▶";
+  position: absolute;
+  right: -10px;
+  top: -11px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.nl-tick-left, .nl-tick-right {
+  position: absolute;
+  top: -10px;
+  width: 3px;
+  height: 24px;
+  background: var(--chalk-yellow);
+}
+
+.nl-tick-left { left: 20%; }
+.nl-tick-right { right: 20%; }
+
+.nl-range-highlight {
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  top: -3px;
+  height: 10px;
+  background: rgba(255, 224, 102, 0.45);
+  border-radius: 4px;
+}
+
+.nl-labels {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 14%;
+  font-weight: 800;
+  color: var(--chalk-yellow);
+  font-size: 1.05rem;
+}
+
+.nl-bottom-bracket {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 2px dashed var(--chalk-pink);
+  color: var(--chalk-pink);
+  font-weight: 800;
+}
+
+/* Comparison Grid & Cards */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+  margin: 14px 0;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 14px 0;
+}
+
+.info-card {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--primary);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.info-card.warn { border-left-color: var(--danger); background: var(--danger-light); }
+.info-card.ok { border-left-color: var(--teal); background: var(--teal-light); }
+.info-card.amber { border-left-color: var(--amber); background: var(--amber-light); }
+
+.info-card h4 {
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-card.warn h4 { color: var(--danger); }
+.info-card.ok h4 { color: var(--teal); }
+.info-card.amber h4 { color: var(--amber); }
+
+.info-card ul {
+  padding-left: 18px;
+  font-size: 0.94rem;
+}
+
+.info-card li { margin-bottom: 6px; }
+
+/* Tables */
+.table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 11px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #f1f5f9;
+  color: var(--primary);
+  font-weight: 800;
+}
+
+tr:nth-child(even) td { background: #fafcff; }
+
+/* Key Term Blank Mode (Quiz Mode) */
+.key-term {
+  background: #fef08a;
+  color: #854d0e;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 800;
+  transition: all 0.2s;
+}
+
+body.quiz-mode .key-term {
+  background: #334155;
+  color: transparent;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 2px dashed #94a3b8;
+}
+
+body.quiz-mode .key-term.revealed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Sub-headings */
+h3.sub-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 22px 0 10px;
+  padding-left: 10px;
+  border-left: 4px solid var(--accent);
+}
+
+/* Callout Box */
+.callout {
+  background: var(--accent-light);
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 14px 0;
+  font-size: 0.93rem;
+}
+
+.callout-title {
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Source Box */
+.source-list {
+  list-style: none;
+  padding: 0;
+}
+
+.source-list li {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.92rem;
+}
+
+.source-list li:last-child { border-bottom: none; }
+
+.src-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.src-primary { background: #1e352f; color: var(--chalk-yellow); }
+.src-secondary { background: #e0e7ff; color: #1e40af; }
+
+@media print {
+  .top-nav, .toc-bar, .btn-quiz-mode { display: none !important; }
+  body { background: #fff; padding: 0; }
+  .section-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top Navigation -->
+<header class="top-nav">
+  <div class="brand">
+    <span class="brand-badge">高中公民 第二冊</span>
+    <span>Ch.3 生活中的行政法（依法行政與行政救濟）</span>
+  </div>
+  <div class="nav-actions">
+    <a href="L2_3_1.html" class="nav-link active">📘 3.1 行政法目的與原則</a>
+    <a href="L2_3_2.html" class="nav-link">📗 3.2 行政程序</a>
+    <button class="btn-quiz-mode" id="quizBtn" onclick="toggleQuizMode()">🎯 開啟遮罩自測模式</button>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="hero-meta">
+      <span class="tag">📌 老師板書重點為主</span>
+      <span class="tag">📚 整合乙版課本＋學習寶典＋圖解法律</span>
+      <span class="tag">⭐ 學測與分科測驗五星必考</span>
+    </div>
+    <h1>3.1 行政法目的與原則（含行政裁量）</h1>
+    <p>從老師課堂黑板筆記出發，掌握「行政法意義與類型（干預 vs. 給付）」、「依法行政金字塔（法律優位 vs. 法律保留）」及「行政裁量六大一般原理原則」。點擊右上角「遮罩自測模式」可隱藏關鍵字進行考前背誦驗收！</p>
+  </section>
+
+  <!-- Quick Jump TOC -->
+  <nav class="toc-bar">
+    <span class="toc-label">⚡ 快速跳轉：</span>
+    <a href="#sec-1" class="toc-chip">一、行政法意義與類型</a>
+    <a href="#sec-2" class="toc-chip">二、依法行政原則與金字塔</a>
+    <a href="#sec-3" class="toc-chip">三、行政裁量：裁量權限</a>
+    <a href="#sec-4" class="toc-chip">四、裁量適當：六大原則詳解</a>
+    <a href="#sec-5" class="toc-chip">五、圖解法律：年金改革與信賴保護</a>
+    <a href="#sec-sources" class="toc-chip">📂 資料來源清單</a>
+  </nav>
+
+  <!-- ==================== SECTION 1: 行政法意義與類型 ==================== -->
+  <section class="section-card" id="sec-1">
+    <div class="section-header">
+      <h2 class="section-title">壹、3-1 行政法：意義與類型</h2>
+      <div>
+        <span class="badge-board">板書來源：S__23142403_0.jpg</span>
+        <span class="badge-book">課本 p.45–47 / 寶典 p.54–57</span>
+      </div>
+    </div>
+
+    <!-- Teacher Chalkboard Replica -->
+    <div class="chalkboard">
+      <div class="chalkboard-header">
+        <span>👩‍🏫 老師黑板筆記原貌重現（左板 & 中板上半）</span>
+        <span>檔案：_收件匣/S__23142403_0.jpg</span>
+      </div>
+      <div class="grid-2" style="margin:0;">
+        <div>
+          <p class="chalk-yellow" style="font-size:1.1rem; margin-bottom:6px;">3-1 行政法</p>
+          <p><strong>一、意義：</strong>規範<span class="chalk-yellow">行政主體</span>和<span class="chalk-yellow">人民</span>的權利義務關係</p>
+          <p style="margin-top:10px;"><strong>二、類型：</strong></p>
+          <p style="margin-left:12px;"><strong>(一) <span class="chalk-pink">干預行政</span>：</strong><span class="chalk-circle">行</span> 禁止 or 限制人民、課予義務 or 負擔</p>
+        </div>
+        <div>
+          <p style="margin-left:12px; margin-top:28px;"><strong>(二) <span class="chalk-blue">給付行政</span>：</strong><span class="chalk-circle">行</span> 照顧人民、提供服務、補貼、福利</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">1. 行政法的意義與三大特性（板書＋課本整合）</h3>
+    <ul>
+      <li><strong>核心定義（老師板書）</strong>：規範<span class="key-term">行政主體</span>（國家、地方自治團體等行政機關）和<span class="key-term">人民</span>之間權利義務關係的公法規範。</li>
+      <li><strong>沒有單一法典（集合概念）</strong>：行政法不像《民法》、《刑法》本身是一部獨立完整的法典，而是規範國家行政權之<strong>組織、作用、程序及救濟方式</strong>的眾多法律規範總稱（例如：《道路交通管理處罰條例》、《食品安全衛生管理法》、《稅捐稽徵法》等）。</li>
+      <li><strong>憲法精神的具體化</strong>：現代民主國家依據《憲法》第 23 條規定，為衡平個人權利與公共利益，透過行政法有限制地介入人民食、衣、住、行各層面，故行政法被稱為「<strong>具體化的憲法</strong>」。</li>
+    </ul>
+
+    <h3 class="sub-title">2. 國家介入人民生活的兩大類型：干預行政 vs. 給付行政</h3>
+    <div class="grid-2">
+      <div class="info-card warn">
+        <h4>(一) 干預行政（干涉行政） <span>老師板書重點</span></h4>
+        <ul>
+          <li><strong>板書關鍵字</strong>：行政機關<strong>禁止或限制人民</strong>、<strong>課予義務或負擔</strong>。</li>
+          <li><strong>目的與性質</strong>：基於實現公共利益、維持社會秩序，以國家公權力採取強制措施限縮人民的自由或財產。</li>
+          <li><strong>法制要求</strong>：因直接侵害或限制人民基本權，其目的、依據及手段皆須嚴格遵守法律保留與比例原則等行政法原則。</li>
+          <li><strong>生活與考題實例</strong>：
+            <ul>
+              <li>每年 5 月開徵<strong>個人綜合所得稅</strong>（限制財產自由）</li>
+              <li>騎車違規被警察<strong>開罰單</strong>並令上道安講習（《道交條例》）</li>
+              <li>早餐店冰奶茶大腸桿菌超標遭衛生局<strong>開罰</strong>（《食安法》）</li>
+              <li>疫情期間強制確診者或接觸者<strong>居家隔離／集中檢疫</strong>（限制行動自由）</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="info-card ok">
+        <h4>(二) 給付行政 <span>老師板書重點</span></h4>
+        <ul>
+          <li><strong>板書關鍵字</strong>：行政機關<strong>照顧人民</strong>、<strong>提供服務、補貼、福利</strong>。</li>
+          <li><strong>目的與性質</strong>：基於保障基本人權、維持人性尊嚴的生活，提供社會福利；或提供誘因（鼓勵措施）引導人民或民間機構協助達成政策目標。</li>
+          <li><strong>法制要求</strong>：基本上不會直接侵害人民基本權利，但仍有賴相關行政法將實施內容與細節規範清楚，政府才有依據落實政策。</li>
+          <li><strong>生活與考題實例</strong>：
+            <ul>
+              <li>發放<strong>育嬰津貼</strong>、<strong>租金補助</strong>、<strong>振興經濟五倍券</strong>（金錢給付）</li>
+              <li>提供公費流感疫苗、<strong>COVID-19 公費疫苗施打</strong>（公共服務）</li>
+              <li>提供<strong>汽機車舊換新補助</strong>（提供誘因以達成改善空氣品質之政策目標）</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 2: 依法行政原則與金字塔 ==================== -->
+  <section class="section-card" id="sec-2">
+    <div class="section-header">
+      <h2 class="section-title">貳、行政法核心原則：☆ 依法行政</h2>
+      <div>
+        <span class="badge-board">板書來源：S__23142403_0.jpg</span>
+        <span class="badge-book">課本 p.47–48 / 寶典 p.56–57</span>
+      </div>
+    </div>
+
+    <!-- Teacher Chalkboard Replica: Pyramid & Rule of Law -->
+    <div class="chalkboard">
+      <div class="chalkboard-header">
+        <span>👩‍🏫 老師黑板筆記原貌重現（中板下半 & 右板上半）</span>
+        <span>檔案：_收件匣/S__23142403_0.jpg</span>
+      </div>
+
+      <p style="font-size:1.08rem; margin-bottom:10px;">
+        <strong>三、原則： <span class="chalk-yellow">☆ 依法行政</span> ➔ 目的：<span class="chalk-pink">防止濫權</span></strong>
+      </p>
+
+      <div class="pyramid-layout">
+        <!-- Left of Pyramid: 法律優位 -->
+        <div class="pyramid-side">
+          <div class="chalk-pink" style="font-size:1rem; margin-bottom:6px;">(一) 法律優位（消極）</div>
+          <p><strong>行政行為不得牴觸法律 or 上位法</strong></p>
+          <p style="margin-top:8px; font-size:0.85rem; opacity:0.85;">▲ 對應金字塔左側箭頭（由下往上打 ✕）：命令不得牴觸憲法與法律；行政行為不得牴觸命令、法律與憲法。</p>
+        </div>
+
+        <!-- Center Pyramid -->
+        <div class="pyramid-box">
+          <div class="pyr-level pyr-1">憲（憲法）</div>
+          <div style="font-size:0.8rem; color:var(--chalk-yellow);">▲ 不得牴觸(✕) ｜ 依據/授權 ▼</div>
+          <div class="pyr-level pyr-2">法 律</div>
+          <div style="font-size:0.8rem; color:var(--chalk-yellow);">▲ 不得牴觸(✕) ｜ 依據/授權 ▼</div>
+          <div class="pyr-level pyr-3">命 令</div>
+          <div style="font-size:0.8rem; color:var(--chalk-yellow);">▲ 不得牴觸(✕) ｜ 依據/授權 ▼</div>
+          <div class="pyr-level pyr-4">行 政 行 為</div>
+        </div>
+
+        <!-- Right of Pyramid: 法律保留 -->
+        <div class="pyramid-side">
+          <div class="chalk-blue" style="font-size:1rem; margin-bottom:6px;">(二) 法律保留（積極）</div>
+          <p><strong>行政行為要有法律依據 or 明確授權</strong></p>
+          <p style="margin-top:8px; font-size:0.85rem; opacity:0.85;">▼ 對應金字塔右側箭頭：由「法律」提供依據或明確授權，才能訂定「命令」及作成「行政行為」。</p>
+        </div>
+      </div>
+
+      <!-- Bottom of Pyramid: 3 types of Administrative Acts -->
+      <div style="border-top:1px dashed rgba(255,255,255,0.25); padding-top:12px; margin-top:10px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; font-size:0.93rem;">
+        <div>
+          <span class="chalk-yellow">＊行政行為常見型態（金字塔底層）：</span>
+          <span style="margin-left:10px;">① <strong>行政契約</strong></span>
+          <span style="margin-left:10px;">② <strong>事實行為</strong></span>
+        </div>
+        <div>
+          ③ <strong class="chalk-yellow">＊行政處分</strong>：行政機關行使<span class="chalk-pink">公權力</span>、<span class="chalk-pink">單方</span>、對外產生<span class="chalk-pink">法律效果</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">1. 「法律優位原則」與「法律保留原則」深度對照表</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:18%;">比較面向</th>
+            <th style="width:41%;">法律優位原則（課本稱：法律優越原則）</th>
+            <th style="width:41%;">法律保留原則</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>別稱與性質</strong></td>
+            <td><span class="key-term">消極的依法行政</span></td>
+            <td><span class="key-term">積極的依法行政</span></td>
+          </tr>
+          <tr>
+            <td><strong>老師板書定義</strong></td>
+            <td>行政行為<strong>不得牴觸法律 or 上位法</strong></td>
+            <td>行政行為<strong>要有法律依據 or 明確授權</strong></td>
+          </tr>
+          <tr>
+            <td><strong>核心口訣</strong></td>
+            <td>「<strong>不違背既有法律即可</strong>」（不檢核是否有具體法律授權，只看有無牴觸上位階規範）</td>
+            <td>「<span class="key-term">有法律才有限制</span>」（沒有法律明文依據或明確授權，行政機關不能動手限制人民權利）</td>
+          </tr>
+          <tr>
+            <td><strong>層級化要求</strong></td>
+            <td>所有行政行為（含給付與干預）一律適用，下位階規範違反上位階規範即屬無效或違法。</td>
+            <td>隨限制個人權利的輕重而有不同層級要求：對人民負面衝擊愈大（如剝奪生命、限制人身自由、重大財產侵害），愈須由立法院制定的「法律」明文規範。</td>
+          </tr>
+          <tr>
+            <td><strong>課本與大考實例</strong></td>
+            <td>
+              • 某高中校規罰學生在體育課勞動服務（違反上位階《教育基本法》第 8 條保障學習權與身體自主權）
+            </td>
+            <td>
+              • <strong>112 分科第 28 題</strong>：市政府為迫使社宅居民搬遷，<strong>未經法律授權即切斷自來水</strong> ➔ 屬干預行政，違反法律保留原則。<br>
+              • <strong>113 學測第 24 題</strong>：疫情期間立法院迅速通過《紓困特別條例》授權指揮官實施限制措施 ➔ 符合法律保留原則。<br>
+              • <strong>113 分科第 19 題</strong>：主管機關依行政命令廢止協會開設進修課程資格，須<strong>經法律明確授權</strong>始屬合法。
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">2. 板書補充解析：什麼是「行政處分」？（對照行政契約、事實行為）</h3>
+    <div class="callout">
+      <div class="callout-title">⚖️ 《行政程序法》第 92 條 — 行政處分之法定定義（3.3 行政救濟的核心前提！）</div>
+      <p>老師在黑板特別標註：<strong>「＊行政處分：行政機關行使<span class="key-term">公權力</span>、<span class="key-term">單方</span>、對外產生<span class="key-term">法律效果</span>」</strong>（針對公法上具體事件）。</p>
+      <ul style="margin-top:8px; padding-left:20px;">
+        <li><strong>行政處分實例</strong>：核發建築執照、下令拆除違建、開立交通罰單、退學處分、核定都市更新事業計畫（如課本章首永春都更案）。➔ <em>人民不服「行政處分」，才可提起「訴願」與「撤銷訴訟／課予義務訴訟」！</em></li>
+        <li><strong>行政契約</strong>：行政機關與人民以「雙方合意」簽訂之公法契約（非單方行為），如健保署與特約診所簽約、公費生行政契約。</li>
+        <li><strong>事實行為</strong>：行政機關不以發生法律效果為目的，僅產生「事實上結果」的行為，如清潔隊清掃道路、警察執行巡邏、宣導防疫觀念。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 3: 行政裁量 — 裁量權限 ==================== -->
+  <section class="section-card" id="sec-3">
+    <div class="section-header">
+      <h2 class="section-title">參、3-1 行政裁量（一）：裁量權限</h2>
+      <div>
+        <span class="badge-board">板書來源：S__23142403_0.jpg 右下</span>
+        <span class="badge-book">課本 p.49 / 寶典 p.58</span>
+      </div>
+    </div>
+
+    <!-- Chalkboard Replica: Number Line -->
+    <div class="chalkboard">
+      <div class="chalkboard-header">
+        <span>👩‍🏫 老師黑板筆記原貌重現（右板下半：裁量權限數線圖）</span>
+        <span>檔案：_收件匣/S__23142403_0.jpg</span>
+      </div>
+      <p class="chalk-yellow" style="font-size:1.1rem;">3-1 行政裁量</p>
+      <p style="margin-top:6px;"><strong>一、裁量權限</strong></p>
+
+      <div class="number-line-box">
+        <div class="nl-arch">╭───────── ？？？ （個案自由判斷空間） ─────────╮</div>
+        <div class="nl-bar">
+          <div class="nl-tick-left"></div>
+          <div class="nl-range-highlight"></div>
+          <div class="nl-tick-right"></div>
+        </div>
+        <div class="nl-labels">
+          <span>1200</span>
+          <span>6000</span>
+        </div>
+        <div class="nl-bottom-bracket">
+          ▲ ────────────────── <span class="chalk-yellow">不得逾越</span> ────────────────── ▲
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">行政裁量的意義與界限</h3>
+    <ul>
+      <li><strong>什麼是「行政裁量」？</strong>：在依法行政原則的前提下，法律或命令給予行政機關或公務員在執行職務時，能<strong>因應個案的各種具體情況（如違規情節輕重、初犯或累犯），在一定範圍內擁有自由判斷、自行決定的空間</strong>。</li>
+      <li><strong>一、裁量權限 — <span class="key-term">不得逾越</span>（老師板書數線圖解析）</strong>：
+        <ul>
+          <li>假設法律規定某交通違規處新臺幣 <strong>1,200 元以上、6,000 元以下</strong>罰鍰，警察可依違規情節在 1,200～6,000 元之間決定罰多少錢（圖中 <code>???</code> 的範圍）。</li>
+          <li>但裁量<strong>絕對不得超出法定上下限</strong>（例如開罰 600 元或 10,000 元），否則即構成「<strong>裁量逾越</strong>」而違法！</li>
+        </ul>
+      </li>
+      <li><strong>二、裁量適當 — ☆ 防止濫權（不得濫用）</strong>：即使在 1,200～6,000 元的法定範圍內，公務員也不能憑個人好惡或恣意決定，必須遵守以下<strong>六大行政法一般原理原則</strong>。</li>
+    </ul>
+  </section>
+
+  <!-- ==================== SECTION 4: 裁量適當 — 六大一般原理原則 ==================== -->
+  <section class="section-card" id="sec-4">
+    <div class="section-header">
+      <h2 class="section-title">肆、3-1 行政裁量（二）：裁量適當（六大原則）</h2>
+      <div>
+        <span class="badge-board">板書來源：S__23142404_0.jpg & S__23142405_0.jpg</span>
+        <span class="badge-book">課本 p.49–54 / 寶典 p.58–59</span>
+      </div>
+    </div>
+
+    <!-- Chalkboard Replica: Part 1 (平等原則 & 比例原則) -->
+    <div class="chalkboard">
+      <div class="chalkboard-header">
+        <span>👩‍🏫 老師黑板筆記原貌重現（裁量適當：平等原則、比例原則）</span>
+        <span>檔案：_收件匣/S__23142404_0.jpg</span>
+      </div>
+      <p style="font-size:1.05rem;"><strong>二、裁量適當 ── <span class="chalk-yellow">☆ 防止濫權</span></strong></p>
+
+      <div class="grid-2" style="margin-top:12px;">
+        <div style="background:rgba(255,255,255,0.05); padding:14px; border-radius:8px;">
+          <p class="chalk-yellow" style="font-size:1.05rem;">(一) 平等原則：<span class="chalk-pink">禁止不合理的差別待遇</span></p>
+          <ol style="padding-left:20px; margin-top:8px;">
+            <li><strong>行政自我拘束</strong>：<span class="chalk-blue">依慣例</span></li>
+            <li style="margin-top:6px;"><strong>禁止恣意</strong>：做不同處置，需有<span class="chalk-yellow">適當且充分理由</span></li>
+          </ol>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.05); padding:14px; border-radius:8px;">
+          <p class="chalk-yellow" style="font-size:1.05rem;">(二) 比例原則：<span class="chalk-pink">禁過當</span></p>
+          <ol style="padding-left:20px; margin-top:8px;">
+            <li><strong>適當性</strong>：手段 ➔ 目的 ✔</li>
+            <li style="margin-top:6px;"><strong>必要性</strong>：手段 Ⓐ、Ⓑ <span class="chalk-yellow">侵害最小</span> ➔ 目的 ✔</li>
+            <li style="margin-top:6px;"><strong>衡量性</strong>：<span class="chalk-blue">利益 ＞ 損害</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chalkboard Replica: Part 2 (信賴保護、禁止不當聯結、誠實信用、明確性) -->
+    <div class="chalkboard">
+      <div class="chalkboard-header">
+        <span>👩‍🏫 老師黑板筆記原貌重現（信賴保護原則 ＋ 三大補充原則）</span>
+        <span>檔案：_收件匣/S__23142405_0.jpg（左板 & 中板）</span>
+      </div>
+
+      <div class="grid-2" style="margin:0;">
+        <div style="background:rgba(255,255,255,0.05); padding:14px; border-radius:8px;">
+          <p class="chalk-yellow" style="font-size:1.05rem;">(三) 信賴保護原則：<span class="chalk-pink">禁任意變更、人民既得利益保護</span></p>
+          <ol style="padding-left:20px; margin-top:8px;">
+            <li><strong>信賴基礎</strong>：<span class="chalk-circle">公</span> 信任、<span class="chalk-circle">行</span> 已對外作成具效力之行為</li>
+            <li style="margin-top:6px;"><strong>信賴表現</strong>：<span class="chalk-circle">人</span> 基於信賴已有實際行動</li>
+            <li style="margin-top:6px;"><strong>信賴值得保護</strong>：<span class="chalk-circle">人</span> 未用非法手段取得利益</li>
+          </ol>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.05); padding:14px; border-radius:8px;">
+          <p><span class="chalk-circle">補</span> <strong class="chalk-yellow">禁止不當聯結原則：</strong></p>
+          <p style="margin-left:28px;">手段 <strong>◄── 合理關聯 ──►</strong> 目的</p>
+          <p style="margin-left:28px; font-size:0.9rem;">＊不得附加與目的無關的條件 or 將無關因素列入考量</p>
+
+          <p style="margin-top:10px;"><span class="chalk-circle">補</span> <strong class="chalk-yellow">誠實信用原則：</strong><span class="chalk-pink">禁任意變更、欺騙、隱瞞</span></p>
+          <p style="margin-left:28px; font-size:0.9rem;"><span class="chalk-circle">行</span> 要信守諾言，不得故意侵害 <span class="chalk-circle">人</span> 權益</p>
+
+          <p style="margin-top:10px;"><span class="chalk-circle">補</span> <strong class="chalk-yellow">明確性原則：</strong></p>
+          <p style="margin-left:28px; font-size:0.9rem;">內容清楚明白且可能</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">六大行政裁量原則 — 板書重點與課本實例完整精讀</h3>
+
+    <!-- 1. 平等原則 -->
+    <div class="info-card" style="margin-bottom:16px;">
+      <h4>1. 平等原則 — 禁止不合理的差別待遇 <span>板書核心 (一)</span></h4>
+      <ul>
+        <li><strong>老師板書兩大內涵</strong>：
+          <ol>
+            <li><span class="key-term">行政自我拘束原則</span>（<strong>依慣例</strong>）：行政機關作成裁量決定時，對於相同或同類事件，應受過去合法的「行政慣例（先例）」拘束，無正當理由不得對特定人做出異於慣例的處置。</li>
+            <li><span class="key-term">禁止恣意原則</span>：若要對人民做出不同處置（差別待遇），必須具備<strong>適當且充分的實質正當理由</strong>，符合「<strong>等者等之，不等者不等之</strong>」。</li>
+          </ol>
+        </li>
+        <li><strong>重要界限 — 人民不得主張「<span class="key-term">不法之平等</span>（違法之平等）」</strong>：當人民因違規受罰時，不能主張「別人也違規卻沒被警察抓」而拒絕受罰。</li>
+        <li><strong>課本與考題實例</strong>：
+          <ul>
+            <li><strong>合乎平等原則</strong>：學測依《特殊教育法》提供身心障礙考生延長應試時間（具備合理正當理由之積極平權／實質平等）。</li>
+            <li><strong>違反平等原則</strong>：大法官《釋字第 666 號》宣告原《社會秩序維護法》性交易「<strong>罰娼不罰嫖</strong>」違憲（學習寶典 p.72 第 5 題）。</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 2. 比例原則 -->
+    <div class="info-card warn" style="margin-bottom:16px;">
+      <h4>2. 比例原則 — 禁過當（不可以大砲打小鳥） <span>板書核心 (二)｜大考最高頻</span></h4>
+      <ul>
+        <li><strong>核心精神</strong>：探討「<strong>目的</strong>」與「<strong>手段</strong>」間的關係，即使國家為追求公共利益，對人民造成的不利益也不可過度。必須依序通過三階段檢核（任一階段不通過即違背比例原則）：
+          <ol style="margin-top:6px;">
+            <li><span class="key-term">適當性原則</span>（合目的性）：<strong>手段 ➔ 目的 ✔</strong>（採取的行政手段必須有助於行政目的之達成）。</li>
+            <li><span class="key-term">必要性原則</span>（最小侵害原則）：<strong>手段 Ⓐ、Ⓑ 侵害最小 ➔ 目的 ✔</strong>（在所有能達成目的的有效手段中，必須選擇對人民權利侵害最小者）。</li>
+            <li><span class="key-term">衡量性原則</span>（狹義比例原則／過度禁止原則）：<strong>利益 ＞ 損害</strong>（手段所造成的個人損害，不得與欲達成目的之公共利益顯失均衡）。</li>
+          </ol>
+        </li>
+        <li><strong>課本經典圖解：違規停車導致交通阻塞之處置（課本 p.50 圖 3-1-5）</strong>：
+          <ul>
+            <li><strong>方案 1「將汽車輪胎上鎖」</strong>：車子仍停在原地，完全無法排解交通阻塞 ➔ ❌ 違反<strong>適當性</strong>。</li>
+            <li><strong>方案 2「拖吊車輛並吊扣駕照」</strong>：能排解阻塞，但「吊扣駕照」對人民生計與行動影響深遠，並非最小侵害手段 ➔ ❌ 違反<strong>必要性</strong>。</li>
+            <li><strong>方案 3「拖吊車輛並處以罰鍰」</strong>：能排解阻塞（適當性✔）、侵害較吊扣駕照小（必要性✔）、增進交通順暢公益大於車主移置費損（衡量性✔） ➔ ⭕ <strong>符合比例原則</strong>。</li>
+          </ul>
+        </li>
+        <li><strong>其他常考實例</strong>：
+          <ul>
+            <li><strong>釋字第 604 號</strong>：交通違規（如違規停車或極短時間連續變換車道）能否連續舉發？須視是否已給予行為人改正機會，若瞬間密集開罰則有違比例原則。</li>
+            <li><strong>學習寶典實戰題（p.71 第 3、4 題）</strong>：① 地方政府規定公務員連「下班後及休假日」也全面禁酒（違反<strong>必要性</strong>）；② 警方已將逃逸騎士壓制在地無法逃脫，仍以警棍重擊腿部致嚴重挫傷（違反<strong>必要性</strong>）。</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 3. 信賴保護原則 -->
+    <div class="info-card ok" style="margin-bottom:16px;">
+      <h4>3. 信賴保護原則 — 禁任意變更、人民既得利益保護 <span>板書核心 (三)</span></h4>
+      <ul>
+        <li><strong>核心精神</strong>：維護法安定性，當人民因信賴國家公權力行為（法規或行政處分）而有具體規畫時，事後不應任意撤銷或變更；若因公益必要而變更，應設<strong>過渡期間（緩衝措施）</strong>或給予<strong>合理補償</strong>（《行政程序法》第 8、117、120、126 條）。</li>
+        <li><strong>老師板書必背 — 主張信賴保護的「三大要件」</strong>（課本 p.53 小辭典）：
+          <ol style="margin-top:6px;">
+            <li><span class="key-term">信賴基礎</span>：<strong>(公) 信任、(行) 已對外作成具效力之行為</strong>（國家機關先有令人民信賴之法規或行政處分存在）。</li>
+            <li><span class="key-term">信賴表現</span>：<strong>(人) 基於信賴已有實際行動</strong>（當事人因信賴該國家行為，而展開具體投資、規畫或處置行為）。</li>
+            <li><span class="key-term">信賴值得保護</span>：<strong>(人) 未用非法手段取得利益</strong>（排除《行政程序法》第 119 條所列消極不值得保護情形：如以詐欺、脅迫、賄賂方法，或對重要事項提供不正確資料、明知違法等）。</li>
+          </ol>
+        </li>
+        <li><strong>課本正反實例對照（課本 p.53）</strong>：
+          <ul>
+            <li>⭕ <strong>值得保護（違反信賴保護）</strong>：業者合法向地方政府申請並獲准設立加油站（信賴基礎），已投入資金動工興建（信賴表現），地方政府卻因居民抗議而無故撤銷建築執照。</li>
+            <li>❌ <strong>信賴不值得保護</strong>：民眾偽造不實財力資料向政府申請低收入戶資格並領取津貼，事後被查獲撤銷資格並追繳 ➔ 因使用欺瞞非法手段，<strong>不得主張信賴保護原則</strong>！</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 4, 5, 6 補充三大原則 -->
+    <div class="grid-3">
+      <div class="info-card amber">
+        <h4>4. 禁止不當聯結原則 <span>板書補充</span></h4>
+        <ul>
+          <li><strong>板書圖解</strong>：<code>手段 ◄─合理關聯─► 目的</code></li>
+          <li><strong>核心內涵</strong>：行政機關採取的手段與目的間須有<strong>實質合理的聯結關係</strong>，<strong>不得附加與目的無關的條件，或將無關因素列入考量</strong>。</li>
+          <li><strong>課本實例（p.54）</strong>：市長要求建商必須捐贈一定金額給「回饋地方建設基金」，否則不發給建築使用執照（捐款與否和建築物是否安全合法毫無關聯，違反不當聯結禁止原則）。</li>
+        </ul>
+      </div>
+
+      <div class="info-card amber">
+        <h4>5. 誠實信用原則 <span>板書補充</span></h4>
+        <ul>
+          <li><strong>板書口訣</strong>：<strong>禁任意變更、欺騙、隱瞞</strong>；行政機關要信守諾言，不得故意侵害人民權益。</li>
+          <li><strong>核心內涵</strong>：原為《民法》帝王條款，亦明定於《行政程序法》第 8 條。行政機關不得出爾反爾、隱匿實情或設局陷害。</li>
+          <li><strong>課本與題庫實例</strong>：① 警方使用<strong>未經度量衡檢定合格之區間測速照相儀器</strong>開罰（課本 p.52）；② 警員明知車主酒醉仍引導其開車駛離違停處，隨即抓酒駕開罰（設局陷害，寶典 p.71）。</li>
+        </ul>
+      </div>
+
+      <div class="info-card amber">
+        <h4>6. 明確性原則 <span>板書補充</span></h4>
+        <ul>
+          <li><strong>板書口訣</strong>：<strong>內容清楚明白且可能</strong>。</li>
+          <li><strong>核心內涵</strong>：行政行為之內容、法源依據、構成要件、目的及救濟方式均應具體明確（《行政程序法》第 5 條），使人民能<strong>預見行為後果</strong>並有所遵循。</li>
+          <li><strong>課本與題庫實例</strong>：① 警察開立交通罰單須載明違規事實、法源依據、處分機關與救濟程序（課本 p.51 圖 3-1-6）；② 校規若僅寫「素行不良，記大過一支」則概念模糊，違反明確性原則（寶典 p.68）。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 5: 圖解法律專題 ==================== -->
+  <section class="section-card" id="sec-5">
+    <div class="section-header">
+      <h2 class="section-title">伍、圖解法律專題：從軍公教年金改革看信賴保護原則</h2>
+      <div>
+        <span class="badge-book">圖解法律 C3 p.20–23</span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">📖 專題背景：軍公教 18% 優惠存款與 2018 年金改革釋憲案</div>
+      <p>早期市場利率高（1981 年約 14.5%），政府為鼓勵人才投入軍公教，設置退休金 18% 優惠存款利率。但隨市場利率降至 1% 以下、人口高齡化與少子化，政府補貼利差負擔沉重（2011 年突破 801 億元），退撫基金面臨破產危機。立法院於 2018 年通過年改法案取消 18% 優存並調降所得替代率，引發是否違反「信賴保護原則」、「法律不溯及既往原則」與「比例原則」之釋憲爭議。</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="info-card">
+        <h4>⚖️ 司法院大法官釋字第 781、782、783 號解釋結論</h4>
+        <ul>
+          <li><strong>解釋結果</strong>：軍公教年金改革<strong>大部分合憲</strong>。</li>
+          <li><strong>合憲理由</strong>：
+            <ol>
+              <li>退休人員之信賴固然值得保護，但為避免退撫基金破產、維護世代正義與基金存續，屬於<strong>高於個人信賴利益之重要公共利益</strong>。</li>
+              <li>法規已設有<strong>分年逐步調降之過渡期間</strong>與<strong>最低保障金額（樓地板）</strong>，適度減緩對退休人員生活與財務規畫之衝擊，手段未逾必要程度，<strong>不違反信賴保護原則與比例原則</strong>。</li>
+            </ol>
+          </li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h4>🔑 年改案涉及的憲法基本權利（多選常考！）</h4>
+        <ul>
+          <li>✅ <strong>財產權、生存權、服公職權</strong>：調降退休所得替代率及最低保障金額。</li>
+          <li>✅ <strong>工作權、平等權</strong>：原規定退休後轉任私立學校支領高薪即停發月退俸（這部分被大法官宣告違反<strong>平等權</strong>而違憲！）。</li>
+          <li>❌ <strong>注意陷阱（圖解法律 p.23 試題）</strong>：年改案<strong>不涉及</strong>「生命權」與「人身自由權」。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 6: 資料來源清單 ==================== -->
+  <section class="section-card" id="sec-sources">
+    <div class="section-header">
+      <h2 class="section-title">📂 本筆記資料來源清單（Sources）</h2>
+    </div>
+    <ul class="source-list">
+      <li>
+        <span class="src-badge src-primary">主來源｜老師板書</span>
+        <div>
+          <strong>_收件匣 / S__23142403_0.jpg</strong><br>
+          涵蓋：<code>3-1 行政法</code>（一、意義；二、類型：干預行政 vs. 給付行政；三、原則：依法行政目的、法位階金字塔圖、行政契約／事實行為／行政處分定義、法律優位 vs. 法律保留）及 <code>3-1 行政裁量</code>（一、裁量權限 1200～6000 數線圖：不得逾越）。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-primary">主來源｜老師板書</span>
+        <div>
+          <strong>_收件匣 / S__23142404_0.jpg</strong><br>
+          涵蓋：<code>二、裁量適當（☆防止濫權）</code> 之 (一) 平等原則（禁止不合理的差別待遇：1. 行政自我拘束—依慣例、2. 禁止恣意—需有適當且充分理由）與 (二) 比例原則（禁過當：1. 適當性、2. 必要性—侵害最小、3. 衡量性—利益＞損害）。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-primary">主來源｜老師板書</span>
+        <div>
+          <strong>_收件匣 / S__23142405_0.jpg（左板與中板）</strong><br>
+          涵蓋：(三) 信賴保護原則（禁任意變更、人民既得利益保護與三大要件：1. 信賴基礎、2. 信賴表現、3. 信賴值得保護）及三大補充原則（禁止不當聯結原則、誠實信用原則、明確性原則）。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-secondary">輔助來源｜教科書</span>
+        <div>
+          <strong>90_原始資源與教材庫 / 教科書與講義 / 第二冊 / 課本 / 公民(2)課本_03_CH3.pdf</strong><br>
+          《普通型高級中等學校 公民與社會（2）保障人權》（113 學年度乙版）第 3 章第一節〈行政，無所不在〉（p.45–54）。提供生活實例、違規停車比例原則三階段檢核圖（圖 3-1-5）、罰單明確性圖解（圖 3-1-6）及度量衡法第 20 條區間測速案例。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-secondary">輔助來源｜講義題本</span>
+        <div>
+          <strong>90_原始資源與教材庫 / 教科書與講義 / 第二冊 / 學習寶典 / 04-113高中公民(2)乙版-學習寶典(學用)-CH3-1206.pdf</strong><br>
+          第 3 章〈依法行政與行政救濟〉第一節重點秘笈（p.52–59）與實戰演練、歷屆學測分科考題（p.71–77）。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-secondary">輔助來源｜圖解專題</span>
+        <div>
+          <strong>90_原始資源與教材庫 / 教科書與講義 / 第二冊 / 圖解法律 / 04-113高中公民乙版(2)-圖解法律-成書內頁-C3-1120.pdf</strong><br>
+          第 3 章專題一〈從年金改革看信賴保護原則〉（p.20–23），含《行政程序法》第 8、117、120、126 條條文對照與釋字第 781–783 號解釋解析。
+        </div>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<script>
+function toggleQuizMode() {
+  const body = document.body;
+  const btn = document.getElementById('quizBtn');
+  body.classList.toggle('quiz-mode');
+  const isQuiz = body.classList.contains('quiz-mode');
+  if (isQuiz) {
+    btn.classList.add('active');
+    btn.textContent = '👁️ 結束自測（顯示全部答案）';
+    document.querySelectorAll('.key-term').forEach(el => el.classList.remove('revealed'));
+  } else {
+    btn.classList.remove('active');
+    btn.textContent = '🎯 開啟遮罩自測模式';
+  }
+}
+
+document.addEventListener('click', function(e) {
+  if (document.body.classList.contains('quiz-mode') && e.target.classList.contains('key-term')) {
+    e.target.classList.toggle('revealed');
+  }
+});
+</script>
+
+</body>
+</html>

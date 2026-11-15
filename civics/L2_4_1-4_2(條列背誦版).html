@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2 CH4｜4-1 & 4-2 條列式考前背誦筆記</title>
+<style>
+  :root {
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --primary: #1a3d6e;
+    --accent: #2563eb;
+    --teal: #0f766e;
+    --amber: #b45309;
+    --danger: #b91c1c;
+    --ink: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    font-size: 15.5px;
+    padding-bottom: 48px;
+  }
+  .toolbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--primary); color: #fff;
+    padding: 10px 20px; display: flex; flex-wrap: wrap;
+    justify-content: space-between; align-items: center; gap: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .toolbar-left { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+  .badge-top {
+    background: #ffe066; color: #1e293b; font-size: 0.78rem;
+    padding: 2px 8px; border-radius: 999px; font-weight: 900;
+  }
+  .toolbar-btns { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .btn {
+    border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.12);
+    color: #fff; padding: 5px 12px; border-radius: 7px; font-size: 0.88rem;
+    font-weight: 700; cursor: pointer; text-decoration: none;
+  }
+  .btn:hover { background: rgba(255,255,255,0.24); }
+  .btn-mask { background: #eab308; color: #1e293b; border-color: #eab308; }
+  .btn-mask.active { background: #ef4444; color: #fff; border-color: #ef4444; }
+
+  .container { max-width: 920px; margin: 24px auto; padding: 0 16px; }
+
+  .toc {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 12px 16px; margin-bottom: 20px;
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  }
+  .toc strong { color: var(--primary); font-size: 0.9rem; margin-right: 4px; }
+  .toc a {
+    text-decoration: none; color: var(--ink); background: #f1f5f9;
+    padding: 4px 12px; border-radius: 999px; font-size: 0.86rem; font-weight: 600;
+  }
+  .toc a:hover { background: var(--primary); color: #fff; }
+
+  .part {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 24px 28px; margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(15,23,42,0.05);
+  }
+  .part-title {
+    font-size: 1.3rem; font-weight: 900; color: var(--primary);
+    border-bottom: 3px solid var(--primary); padding-bottom: 8px; margin-bottom: 16px;
+    display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;
+  }
+  .part-title small { font-size: 0.82rem; color: var(--muted); font-weight: 600; }
+
+  h3 {
+    font-size: 1.08rem; font-weight: 800; color: #0f172a;
+    background: #f1f5f9; border-left: 5px solid var(--primary);
+    padding: 6px 12px; border-radius: 0 6px 6px 0;
+    margin: 18px 0 10px;
+  }
+  h3:first-of-type { margin-top: 6px; }
+
+  ol.lv1, ul.lv1 { padding-left: 22px; margin-bottom: 8px; }
+  ol.lv1 > li, ul.lv1 > li { margin-bottom: 8px; }
+  ul.lv2, ol.lv2 { padding-left: 22px; margin-top: 4px; }
+  ul.lv2 > li, ol.lv2 > li { margin-bottom: 4px; }
+
+  /* Key term for recitation */
+  .k {
+    background: #fef08a; color: #713f12;
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 800; border-bottom: 2px solid #eab308;
+    transition: all 0.15s;
+  }
+  body.mask .k {
+    background: #334155; color: transparent;
+    border-bottom: 2px dashed #64748b;
+    cursor: pointer; user-select: none;
+  }
+  body.mask .k.show {
+    background: #dcfce7; color: #166534;
+    border-bottom: 2px solid #22c55e;
+  }
+  /* Print-blank mode: empty underline for handwritten practice */
+  body.blank-print .k {
+    background: transparent !important;
+    color: transparent !important;
+    border-bottom: 1.5px solid #1e293b !important;
+    border-radius: 0;
+    padding: 0 8px;
+  }
+
+  .tag-pill {
+    display: inline-block; font-size: 0.78rem; font-weight: 800;
+    padding: 1px 8px; border-radius: 4px; margin-right: 4px;
+    vertical-align: 1px;
+  }
+  .t-blue { background: #dbeafe; color: #1e40af; }
+  .t-green { background: #ccfbf1; color: #115e59; }
+  .t-amber { background: #fef3c7; color: #92400e; }
+  .t-red { background: #fee2e2; color: #991b1b; }
+
+  .tip {
+    background: #fffbeb; border: 1px solid #fde68a; border-left: 5px solid var(--amber);
+    padding: 10px 14px; border-radius: 8px; margin-top: 10px; font-size: 0.93rem;
+  }
+  .trap {
+    background: #fef2f2; border: 1px solid #fecaca; border-left: 5px solid var(--danger);
+    padding: 10px 14px; border-radius: 8px; margin-top: 10px; font-size: 0.93rem;
+  }
+  .formula {
+    background: #eff6ff; border: 1px solid #bfdbfe; border-left: 5px solid var(--accent);
+    padding: 10px 14px; border-radius: 8px; margin: 8px 0; font-weight: 700;
+  }
+
+  @media print {
+    @page { size: A4 portrait; margin: 12mm 14mm; }
+    body { background: #fff; font-size: 10.5pt; line-height: 1.55; padding: 0; }
+    .toolbar, .toc { display: none !important; }
+    .container { max-width: 100%; margin: 0; padding: 0; }
+    .part { box-shadow: none; border: 1px solid #bbb; padding: 14px 18px; margin-bottom: 14px; break-inside: avoid; }
+    h3 { background: #eee; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .k { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<header class="toolbar">
+  <div class="toolbar-left">
+    <span class="badge-top">條列背誦版</span>
+    <span>B2 CH4｜4-1 刑罰與刑法謙抑 ＆ 4-2 罪刑法定主義</span>
+  </div>
+  <div class="toolbar-btns">
+    <button class="btn btn-mask" id="maskBtn" onclick="toggleMask()">🎯 開啟遮罩背誦（點擊單字看答案）</button>
+    <button class="btn" onclick="printBlank()">🖨 列印手寫填空卷</button>
+    <button class="btn" onclick="window.print()">🖨 列印完整背誦版</button>
+    <a class="btn" href="L2_4_1-4_2(流程圖填空講義).html">📐 流程圖講義</a>
+    <a class="btn" href="L2_4_1.html">📘 4.1 完整版</a>
+    <a class="btn" href="L2_4_2.html">📗 4.2 完整版</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <nav class="toc">
+    <strong>⚡ 快速跳轉：</strong>
+    <a href="#p1">壹、4-1 刑罰正當性與目的</a>
+    <a href="#p2">貳、4-1 刑法謙抑（除罪化／入罪化）</a>
+    <a href="#p3">參、4-2 罪刑法定主義與四大內涵</a>
+    <a href="#p4">肆、4-2 延伸：犯罪成立三要件</a>
+    <a href="#p5">伍、考前 10 句秒殺口訣</a>
+  </nav>
+
+  <!-- ==================== 壹、4-1 刑罰正當性與目的 ==================== -->
+  <section class="part" id="p1">
+    <div class="part-title">
+      <span>壹、4-1 刑罰應具正當性 ＆ 刑罰的目的</span>
+      <small>對應板書：S__23756804｜課本 p.73, 75｜學習寶典 p.80, 82–84</small>
+    </div>
+
+    <h3>一、刑罰應具正當性（板書 Why → When → How）</h3>
+    <ol class="lv1">
+      <li><span class="tag-pill t-red">Why</span><strong>為何需要正當性</strong>：刑罰是最嚴厲的法律制裁，會<span class="k">剝奪重要人權</span>（生命、自由、財產），且留下前科，<span class="k">影響深遠</span>。</li>
+      <li><span class="tag-pill t-amber">When</span><strong>何時才動用刑罰</strong>：僅用來制裁<span class="k">嚴重侵害「法益」</span>（法律所保護的利益）的行為。</li>
+      <li><span class="tag-pill t-blue">How</span><strong>如何行使刑罰</strong>：由<span class="k">國家獨占刑罰權</span>，並遵守正當法律程序，目的是<span class="k">防止私刑</span>（禁止人民以暴制暴）。</li>
+    </ol>
+
+    <h3>二、三大「法益」分類與必考罪名（秒殺配對）</h3>
+    <ul class="lv1">
+      <li><strong>① <span class="k">國家法益</span></strong>（公法益／政府運作與國體安全）：
+        <span class="k">公務員受賄罪（貪汙）</span>、內亂外患罪、妨害公務罪、偽證罪、誣告罪。</li>
+      <li><strong>② <span class="k">社會法益</span></strong>（公共安全／交易信用／善良風俗）：
+        <span class="k">公共危險罪</span>（如<span class="k">酒駕、飆車、放火</span>，危及不特定用路人）、<span class="k">偽造貨幣罪</span>、偽造文書罪、賭博罪。</li>
+      <li><strong>③ <span class="k">個人法益</span></strong>（特定自然人之生命、身體、自由、名譽、隱私、財產）：
+        殺人罪、傷害罪、竊盜罪、公然侮辱／誹謗罪、<span class="k">妨害祕密罪</span>（如<span class="k">偷在車底裝 GPS</span>，侵害個人隱私權）。</li>
+    </ul>
+
+    <h3>三、刑罰的目的（三大理論）</h3>
+    <ol class="lv1">
+      <li><strong>(一) <span class="k">應報理論</span></strong>（回顧過去／針對已發生之犯罪）：
+        <ul class="lv2">
+          <li>板書核心：犯罪者承擔與其罪行<span class="k">罪責相當</span>之處罰（罰當其罪、平復被害人與家屬心理）。</li>
+          <li>考點提醒：源自「以牙還牙」，但現代應報理論<strong>非無上限報復</strong>，仍須符合<span class="k">比例原則</span>。</li>
+        </ul>
+      </li>
+      <li><strong>(二) 預防理論</strong>（展望未來／防止未來再發生犯罪）：
+        <ul class="lv2">
+          <li><strong>1. <span class="k">一般預防</span></strong>：嚇阻<span class="k">社會大眾</span>勿犯罪（對象＝<strong>一般人／潛在犯罪者</strong>；如：公開審判、提高罰則殺雞儆猴、宣導喝酒不開車，追求「<span class="k">刑期無刑</span>」）。</li>
+          <li><strong>2. <span class="k">特別預防</span></strong>：教育矯治<span class="k">個別罪犯本人</span>，預防其再犯（對象＝<strong>該名犯罪人自己</strong>；如：監獄教化、假釋、緩刑、搭配<span class="k">保安處分</span>）。</li>
+        </ul>
+      </li>
+      <li><strong>(三) <span class="k">綜合理論</span></strong>（我國現行採行）：結合「<span class="k">應報 ＋ 預防</span>」（兼顧罪責相當、威嚇大眾與矯治犯人）。</li>
+    </ol>
+
+    <div class="trap">
+      ⚠️ <strong>段考必考陷阱</strong>：題目若寫「將辱罵師長的甲生判刑，以<strong>避免其他學生</strong>仿效再犯」➔ 對象是「其他人（社會大眾）」，屬於<span class="k">一般預防</span>，不是特別預防！
+    </div>
+
+    <h3>四、刑罰種類（主刑 vs. 從刑）＆ 保安處分（6 大配對）</h3>
+    <ul class="lv1">
+      <li><strong>主刑（5 種，可單獨科處）</strong>：<span class="k">死刑</span>（生命刑）、<span class="k">無期徒刑</span>、<span class="k">有期徒刑</span>（原則 2 月～15 年，數罪併罰最長 30 年）、<span class="k">拘役</span>（1 日～60 日未滿，加重最長 120 日）、<span class="k">罰金</span>（財產刑，區分行政罰的「罰鍰」）。</li>
+      <li><strong>從刑（1 種，附加於主刑）</strong>：<span class="k">褫奪公權</span> ➔ 剝奪「擔任公務員」與「公職候選人」資格；⚠️ <strong>不剝奪<span class="k">選舉罷免投票權</span></strong>！</li>
+      <li><strong><span class="k">保安處分</span></strong>（體現<span class="k">特別預防</span>，屬<strong>刑罰以外</strong>之矯治安全措施，可與刑罰並行）：
+        <ul class="lv2">
+          <li>① 未滿 18 歲少年犯 ➔ <span class="k">感化教育</span></li>
+          <li>② 精神障礙或心智缺陷者 ➔ <span class="k">監護處分</span></li>
+          <li>③ 酗酒（酒癮）、施用毒品成癮者 ➔ <span class="k">禁戒處分</span></li>
+          <li>④ 性侵害犯罪行為人 ➔ <span class="k">強制治療</span></li>
+          <li>⑤ 假釋中、緩刑期間或受保護處分者 ➔ <span class="k">保護管束</span></li>
+          <li>⑥ 受有期徒刑以上宣告之外國人 ➔ <span class="k">驅逐出境</span></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ==================== 貳、4-1 刑法謙抑 ==================== -->
+  <section class="part" id="p2">
+    <div class="part-title">
+      <span>貳、4-1 刑法謙抑性（最後手段）＆ 除罪化 vs. 入罪化</span>
+      <small>對應板書：S__23756804 右板、S__23756805｜課本 p.74｜素養題本 p.42</small>
+    </div>
+
+    <h3>一、刑法謙抑性＝最後手段性</h3>
+    <ul class="lv1">
+      <li><strong>板書字義</strong>：「<strong>謙</strong>」＝<span class="k">謙讓</span>，「<strong>抑</strong>」＝<span class="k">抑制</span> ➔ 刑法是防制違法行為的「<span class="k">最後手段</span>」（Ultima Ratio）。</li>
+      <li><strong>發動順序</strong>：先用 <strong>民事賠償</strong>（損害賠償）或 <strong>行政處罰</strong>（罰鍰、吊扣執照）處理；唯有民法與行政法<strong>皆無法有效保護法益</strong>時，國家才動用刑罰，且須符合<span class="k">比例原則</span>（最小且必要）。</li>
+      <li><strong>犯罪範圍會隨時代動態調整</strong>：
+        <ul class="lv2">
+          <li>犯罪定義：<span class="k">法律規定應受刑罰處罰的行為</span>。</li>
+          <li>調整原因：反映「<span class="k">立法者的取捨</span>（立法院修法）」與「<span class="k">憲法解釋的演進</span>（大法官釋憲／憲法法庭判決）」。</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>二、除罪化 vs. 入罪化（板書對照表）</h3>
+    <ul class="lv1">
+      <li><span class="tag-pill t-green">除罪化</span><strong>意義：<span class="k">犯罪 ➔ 非犯罪</span></strong>（刪除刑罰規定，改由民事賠償或行政罰處理，體現刑法謙抑性）。
+        <ul class="lv2">
+          <li><strong>必考代表：2020 年《<span class="k">釋字第 791 號</span>》通姦除罪化</strong>：
+            <br>① 宣告原《刑法》第 239 條通姦罪違憲 ➔ 限制人民<span class="k">性自主權</span>、干預<span class="k">隱私權</span>，且無助維持婚姻圓滿，違反<span class="k">比例原則</span>與<span class="k">刑法謙抑性</span>。
+            <br>② 宣告原《刑事訴訟法》第 239 條但書（對配偶撤告效力不及於相姦人）違憲 ➔ 造成女性受判刑人數遠高於男性，違反<span class="k">平等原則（性別平等）</span>。
+          </li>
+          <li><strong>板書黃字必考警語</strong>：「<span class="k">通姦除罪化 ≠ 通姦合法化</span>」！僅免除刑事坐牢，通姦仍違反《民法》婚姻忠誠義務，受害配偶仍可請求<span class="k">民事侵權行為損害賠償（精神慰撫金）</span>及裁判離婚。</li>
+          <li>其他例子：《票據法》廢除空頭支票刑責（回歸民事債務）。</li>
+        </ul>
+      </li>
+      <li><span class="tag-pill t-red">入罪化</span><strong>意義：<span class="k">非犯罪 ➔ 犯罪</span></strong>（隨社會變遷或科技發展，增訂刑罰以保護重要或新興法益）。
+        <ul class="lv2">
+          <li>① 2021 年制定《<span class="k">跟蹤騷擾防制法</span>》（8 大跟騷樣態、與性或性別有關、反覆持續違反意願使人心生畏怖）。</li>
+          <li>② 2003 年《刑法》增訂<span class="k">妨害電腦使用罪</span>（無故入侵電腦、駭客行為）。</li>
+          <li>③ 2007 年《<span class="k">動物保護法</span>》增訂故意虐殺動物致死傷之刑責。</li>
+          <li>④ 2021 年《刑法》修法「<span class="k">N 號房條款</span>」（未經同意攝錄、散布性影像入罪及加重刑責）。</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ==================== 參、4-2 罪刑法定主義 ==================== -->
+  <section class="part" id="p3">
+    <div class="part-title">
+      <span>參、4-2 罪刑法定主義：意義與四大衍生內涵</span>
+      <small>對應板書：S__23756806、S__23756807｜課本 p.76–78｜學習寶典 p.84–85</small>
+    </div>
+
+    <h3>一、意義與三大目的（☆ 刑法最高原則）</h3>
+    <div class="formula">
+      📜 《刑法》第 1 條（＆《公政公約》第 15 條）：「行為之處罰，以 <span class="k">行為時</span> 之 <span class="k">法律有明文規定</span> 者為限。」
+    </div>
+    <ul class="lv1">
+      <li><strong>憲政意義</strong>：落實<span class="k">法律保留原則</span>（<strong>國會保留／絕對法律保留</strong>），犯罪與刑罰只能由立法院三讀通過的成文「法律」明定，行政機關不得以行政命令創設罪刑。</li>
+      <li><strong>三大目的</strong>：① 防止國家<span class="k">恣意處罰</span>（保障人權）｜② 立法與司法<span class="k">權力分立與制衡</span>｜③ 使人民對行為後果具<span class="k">可預見性</span>（預防犯罪）。</li>
+    </ul>
+
+    <h3>二、罪刑法定主義之「四大內涵」（板書 (一)～(四) 必背！）</h3>
+    <ol class="lv1">
+      <li><strong>(一) <span class="k">罪刑明確性原則</span></strong>（板書 3 要素：① 定義：<span class="k">犯罪要件</span>明確、② <span class="k">刑罰種類</span>明確、③ <span class="k">刑度範圍</span>明確）：
+        <ul class="lv2">
+          <li><strong>犯罪要件明確</strong>：如《刑法》第 10 條明定「重傷」定義 ➔ 推倒同學膝蓋破皮流血，不成立重傷罪（僅普通傷害罪）。</li>
+          <li><strong>刑度範圍明確</strong>：<span class="k">禁止絕對不定期刑</span>（不可判「關到悔改為止」）；我國採「<span class="k">相對不定期刑</span>」（法條明定刑度上下限，由法官依個案量刑）。</li>
+        </ul>
+      </li>
+      <li><strong>(二) <span class="k">習慣法禁止原則</span></strong>（禁用不成文法）：
+        <ul class="lv2">
+          <li>板書核心：不以<span class="k">風俗習慣（不成文規定）</span>作為定罪或處罰依據（例：不可依村規罰偷飲料者請戲班演戲 3 天、或罰洗門風辦桌）。</li>
+          <li><strong>跨科對照</strong>：《刑法》絕對禁止習慣法；但《<span class="k">民法</span>》第 1 條規定「法律所未規定者，<strong>依習慣</strong>；無習慣者，依法理」，故民法<strong>可適用習慣法</strong>！</li>
+        </ul>
+      </li>
+      <li><strong>(三) <span class="k">禁止類推適用原則</span></strong>：
+        <ul class="lv2">
+          <li>板書核心：刑法未規定的事項，<span class="k">不援引相似法條入罪</span>（不利於行為人時絕對禁止，以免法官創設新罪名）。</li>
+          <li><strong>必考實例</strong>：① 騎車撞死路邊的「狗」逃逸 ➔ <strong>不可類推適用</strong>《刑法》185-4 條「致<strong>人</strong>死傷」之肇事逃逸罪；② 印製玩具鈔或冥紙 ➔ <strong>不可類推適用</strong>偽造貨幣罪。</li>
+          <li><strong>跨科對照</strong>：《刑法》禁止不利類推適用；但《<span class="k">民法</span>》為填補法律漏洞解決私權糾紛，<strong>允許類推適用</strong>！</li>
+        </ul>
+      </li>
+      <li><strong>(四) <span class="k">禁止溯及既往原則</span></strong>（《刑法》第 2 條：<span class="k">從舊從輕原則</span>，僅適用<strong>審理中尚未判決確定</strong>案件）：
+        <ul class="lv2">
+          <li><strong>【原則：<span class="k">從舊原則</span>】</strong>新法入罪化或加重刑罰（<strong>不利</strong>行為人）➔ 適用<strong>行為時之舊法</strong>（不溯及既往）。
+            <br>‧ 板書時間軸 1：<code>2002.12 入侵電腦</code> ➔ <code>2003.6 增訂妨害電腦使用罪</code> ➔ <code>2003.12 法院審理</code> ➔ <span class="k">從舊（判無罪／不罰）</span>。
+            <br>‧ 課本實例：1995 年甲女對乙男強制性交（舊法僅限女性被害人），1999 年修法納入男性 ➔ 依從舊原則不成立該罪。
+          </li>
+          <li><strong>【例外：<span class="k">從輕原則</span>】</strong>新法除罪化或減輕刑度（<strong>有利</strong>行為人）➔ 例外溯及<strong>適用新法</strong>。
+            <br>‧ 板書時間軸 2：<code>2020.4 通姦</code> ➔ <code>2020.5 通姦除罪化</code> ➔ <code>2020.12 法院審理</code> ➔ <span class="k">例外適用新法：從輕（免罰）</span>。
+            <br>‧ 課本實例：2010 年違反食安法（舊法 5 年以下），2013 年修法改 2 年以下，2014 年審理 ➔ 依從輕原則處 2 年以下。
+          </li>
+        </ul>
+      </li>
+    </ol>
+
+    <div class="tip">
+      💡 <strong>1 秒區分「禁止溯及既往」vs.「禁止類推適用」</strong>：<br>
+      ‧ 題目有「<strong>行為在先、修法在後</strong>」的時間先後順序 ➔ 秒選 <span class="k">禁止溯及既往（從舊從輕原則）</span>。<br>
+      ‧ 題目沒有修法時間差，只是把「<strong>狗當成人、玩具鈔當真鈔</strong>」比附援引 ➔ 秒選 <span class="k">禁止類推適用</span>。
+    </div>
+  </section>
+
+  <!-- ==================== 肆、犯罪成立三要件 ==================== -->
+  <section class="part" id="p4">
+    <div class="part-title">
+      <span>肆、4-2 課本同節延伸：犯罪成立三要件（三階層檢驗）</span>
+      <small>課本 p.79–81｜學習寶典 p.86–88, 104–106</small>
+    </div>
+
+    <div class="formula">
+      ⚖️ 檢驗順序（必須 0 ➔ 1 ➔ 2 ➔ 3 全部通過才成立犯罪！任一階不通過＝不罰）：<br>
+      【前提】受意思支配之「行為」 ➔ ① <span class="k">構成要件該當性</span> ➔ ② <span class="k">違法性</span> ➔ ③ <span class="k">有責性（責任能力）</span>
+    </div>
+
+    <ol class="lv1">
+      <li><strong>【前提】必須是刑法上受意思支配的「<span class="k">行為</span>」</strong>：
+        若為<strong>睡眠夢遊、無意識反射動作、遭他人強暴推擠無法抗拒而撞傷人</strong> ➔ 根本不是刑法上的行為，連第 1 階都不進入，直接不罰！</li>
+      <li><strong>【第 1 階】<span class="k">構成要件該當性</span></strong>（客觀行為結果符合法條 ＋ 主觀上有犯意）：
+        <ul class="lv2">
+          <li><strong><span class="k">故意</span>（原則）</strong>：刑法原則上只罰故意犯！含直接故意（明知並有意）與間接／未必故意（預見發生且不違背本意）。</li>
+          <li><strong><span class="k">過失</span>（例外）</strong>：應注意、能注意而未注意；<strong>僅在法條有<span class="k">特別明文規定處罰過失犯</span>時才罰</strong>（例：有過失致死、過失傷害；⚠️ 刑法<strong>沒有</strong>過失毀損罪、過失竊盜罪！）。</li>
+        </ul>
+      </li>
+      <li><strong>【第 2 階】<span class="k">違法性</span></strong>（沒有「<span class="k">阻卻違法事由</span>」，才具違法性）：
+        <ul class="lv2">
+          <li>★ <strong>四大阻卻違法事由（合法行為＝不罰）</strong>：
+            <br>① <span class="k">依法令之行為</span>：法警執行死刑、警察持搜索票破門（⚠️ 警察<strong>未經法律授權偷裝 GPS</strong> ➔ 不符合依法令之行為，仍具違法性！）。
+            <br>② <span class="k">業務上正當行為</span>：外科醫師替病患開刀、牙醫拔牙。
+            <br>③ <span class="k">正當防衛</span>：針對「<strong>現在不法之侵害</strong>」，為防衛權利而對<strong>加害人</strong>反擊（如打傷正在闖空門的小偷）。
+            <br>④ <span class="k">緊急避難</span>：為避免生命、身體、自由、財產之「<strong>緊急危難</strong>」，不得已侵害<strong>無辜第三人</strong>法益（如打破路邊他人車窗救受困嬰兒）。
+          </li>
+          <li>⚠️ 若<strong>防衛過當</strong>或<strong>避難過當</strong>（逾越必要程度）➔ 仍具違法性而<strong>要罰</strong>，但<span class="k">得減輕或免除其刑</span>。</li>
+        </ul>
+      </li>
+      <li><strong>【第 3 階】<span class="k">有責性</span>（罪責／責任能力）</strong>：
+        <ul class="lv2">
+          <li><strong>① <span class="k">無責任能力</span>（<span class="k">不罰</span>）</strong>：<span class="k">未滿 14 歲</span>之人；行為時因精神障礙或心智缺陷致<strong>完全不能辨識</strong>違法者。</li>
+          <li><strong>② <span class="k">限制責任能力</span>（<span class="k">得減輕其刑</span>）</strong>：<span class="k">14 歲以上未滿 18 歲</span>、<span class="k">滿 80 歲以上</span>、自幼<span class="k">瘖啞人</span>、精障致辨識能力<strong>顯著減低</strong>者。</li>
+          <li><strong>③ <span class="k">完全責任能力</span>（負完全刑責）</strong>：<span class="k">18 歲以上未滿 80 歲</span>之精神正常成年人。</li>
+          <li>⚠️ <strong>必考例外 — <span class="k">原因自由行為</span>（《刑法》第 19 條第 3 項）</strong>：故意或過失<strong>自行招致</strong>精神障礙（如<strong>自己喝酒喝醉後酒駕或打人、自行吸毒產生幻覺犯案</strong>），<span class="k">不得主張減輕或免除刑責</span>（仍負完全刑責）！</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ==================== 伍、考前 10 句秒殺口訣 ==================== -->
+  <section class="part" id="p5">
+    <div class="part-title">
+      <span>伍、考前 60 秒極速背誦：10 句必考秒殺金句</span>
+      <small>段考與學測最常出題的判斷點</small>
+    </div>
+    <ol class="lv1">
+      <li>受賄妨害公務是<span class="k">國家法益</span>；酒駕飆車放火偽鈔是<span class="k">社會法益</span>；偷裝 GPS 殺人竊盜是<span class="k">個人法益</span>。</li>
+      <li>判刑為嚇阻「<strong>社會大眾／其他人</strong>」是<span class="k">一般預防</span>；矯治「<strong>罪犯本人</strong>」配保安處分是<span class="k">特別預防</span>。</li>
+      <li>從刑「<span class="k">褫奪公權</span>」只奪公務員與候選人資格，<strong>受刑人依然有<span class="k">投票權</span></strong>。</li>
+      <li>少年<span class="k">感化教育</span>、精障<span class="k">監護</span>、毒酒癮<span class="k">禁戒</span>、性侵<span class="k">強制治療</span>、假釋緩刑<span class="k">保護管束</span>、外國人<span class="k">驅逐出境</span>，通通屬於<span class="k">保安處分</span>（非刑罰）。</li>
+      <li>刑法謙抑＝<span class="k">最後手段性</span>（民事與行政手段無效才動用刑法）。</li>
+      <li>《釋字 791》通姦除罪化（違背性自主、隱私權與比例原則；撤告但書違平等權），但<strong><span class="k">通姦除罪化 ≠ 通姦合法化</span></strong>（仍負民法侵權賠償）。</li>
+      <li>《刑法》第 1 條<span class="k">罪刑法定主義</span>落實<span class="k">法律保留原則</span>，衍生四大內涵：<span class="k">罪刑明確性、習慣法禁止、禁止類推適用、禁止溯及既往</span>。</li>
+      <li>《刑法》<strong>禁止</strong>習慣法與不利類推適用；《<span class="k">民法</span>》<strong>可以</strong>適用習慣法與類推適用。</li>
+      <li>有「行為在先、修法在後」選<span class="k">禁止溯及既往（從舊從輕）</span>；無時間差把「撞狗當撞人」選<span class="k">禁止類推適用</span>。</li>
+      <li>反擊小偷是<span class="k">正當防衛</span>、破他人車窗救嬰是<span class="k">緊急避難</span>；未滿 14 歲<span class="k">不罰</span>、14～18 歲與滿 80 歲<span class="k">得減輕</span>；自己喝醉酒駕屬<span class="k">原因自由行為</span>不減免！</li>
+    </ol>
+  </section>
+
+</main>
+
+<script>
+function toggleMask() {
+  document.body.classList.remove('blank-print');
+  const isMask = document.body.classList.toggle('mask');
+  const btn = document.getElementById('maskBtn');
+  if (isMask) {
+    btn.classList.add('active');
+    btn.textContent = '👁 顯示全部答案';
+    document.querySelectorAll('.k').forEach(el => el.classList.remove('show'));
+  } else {
+    btn.classList.remove('active');
+    btn.textContent = '🎯 開啟遮罩背誦（點擊單字看答案）';
+  }
+}
+
+document.addEventListener('click', function(e) {
+  if (document.body.classList.contains('mask') && e.target.classList.contains('k')) {
+    e.target.classList.toggle('show');
+  }
+});
+
+function printBlank() {
+  document.body.classList.remove('mask');
+  document.body.classList.add('blank-print');
+  window.print();
+  setTimeout(() => document.body.classList.remove('blank-print'), 500);
+}
+</script>
+</body>
+</html>

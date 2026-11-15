@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高中英文｜教材與學習進度導覽</title>
+<style>
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --header-bg: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  --primary: #1d4ed8;
+  --primary-light: #eff6ff;
+  --ink: #1e293b;
+  --ink-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  background: var(--header-bg);
+  border-bottom: 5px solid #60a5fa;
+  color: #ffffff;
+  padding: 40px 20px;
+  text-align: center;
+}
+.back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+  transition: background 0.15s ease;
+}
+.back-home:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+header .badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  color: #dbeafe;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+header h1 {
+  font-size: 1.9rem;
+  letter-spacing: 0.03em;
+  margin-bottom: 8px;
+}
+header p {
+  color: #dbeafe;
+  font-size: 1rem;
+}
+main {
+  max-width: 900px;
+  width: 100%;
+  margin: 36px auto;
+  padding: 0 20px;
+  flex: 1;
+}
+.section-title {
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: 16px;
+  padding-left: 12px;
+  border-left: 5px solid var(--primary);
+  font-weight: 700;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-bottom: 32px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.14);
+  border-color: var(--primary);
+}
+.tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  width: fit-content;
+  background: var(--primary-light);
+  color: var(--primary);
+}
+.card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.card p {
+  font-size: 0.93rem;
+  color: var(--ink-muted);
+  margin-bottom: 18px;
+}
+.card .go {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+</style>
+</head>
+<body>
+<header>
+  <div><a class="back-home" href="../index.html">← 返回各科總首頁</a></div>
+  <span class="badge">高中英文知識庫</span>
+  <h1>高中英文｜學習進度與教材導覽</h1>
+  <p>請選擇下方項目開始檢視學習進度摘要與英文教材</p>
+</header>
+<main>
+  <div class="section-title">學習進度與成果紀錄</div>
+  <div class="grid">
+    <a class="card" href="./Nico英文學習進度摘要.html">
+      <div>
+        <span class="tag">進度與檢討摘要</span>
+        <h2>Nico × Joe 英文：學習進度與成果摘要</h2>
+        <p>涵蓋主題式翻譯 1-1～7-2 常見錯誤統計、文法書與龍騰課本進度、一字多義抽考成果與近期作業提醒。</p>
+      </div>
+      <span class="go">開啟學習進度摘要 →</span>
+    </a>
+  </div>
+</main>
+<footer>
+  高中英文知識庫 · GitHub Pages 線上導覽
+</footer>
+</body>
+</html>

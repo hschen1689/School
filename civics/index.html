@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公民與社會筆記｜第二冊 行政法・刑法 教材導覽</title>
+<style>
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --board-bg: #1e352f;
+  --board-border: #8c6239;
+  --board-text: #f5f7f0;
+  --chalk-yellow: #ffe066;
+  --chalk-blue: #8ce99a;
+  --primary: #1a3d6e;
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --teal: #0f766e;
+  --teal-light: #f0fdfa;
+  --ink: #1e293b;
+  --ink-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  background: var(--board-bg);
+  border-bottom: 6px solid var(--board-border);
+  color: var(--board-text);
+  padding: 40px 20px;
+  text-align: center;
+}
+header .badge {
+  display: inline-block;
+  background: rgba(255, 224, 102, 0.16);
+  color: var(--chalk-yellow);
+  border: 1px solid rgba(255, 224, 102, 0.45);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+header h1 {
+  font-size: 1.9rem;
+  letter-spacing: 0.03em;
+  margin-bottom: 8px;
+}
+header p {
+  color: #cbd5e1;
+  font-size: 1rem;
+}
+main {
+  max-width: 900px;
+  width: 100%;
+  margin: 36px auto;
+  padding: 0 20px;
+  flex: 1;
+}
+.unit-section {
+  margin-bottom: 32px;
+}
+.unit-title {
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: 14px;
+  padding-left: 12px;
+  border-left: 5px solid var(--primary);
+  font-weight: 700;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+  border-color: var(--accent);
+}
+.tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  width: fit-content;
+}
+.tag.full {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+.tag.brief {
+  background: var(--teal-light);
+  color: var(--teal);
+}
+.tag.print {
+  background: #fef3c7;
+  color: #b45309;
+}
+.card h2 {
+  font-size: 1.18rem;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.card p {
+  font-size: 0.93rem;
+  color: var(--ink-muted);
+  margin-bottom: 18px;
+}
+.card .go {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.chapter-title {
+  font-size: 1.45rem;
+  color: var(--board-bg);
+  margin: 8px 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 2px dashed var(--board-border);
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+.back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+  transition: background 0.15s ease;
+}
+.back-home:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+</style>
+</head>
+<body>
+<header>
+  <div><a class="back-home" href="../index.html">← 返回各科總首頁</a></div>
+  <span class="badge">公民與社會筆記</span>
+  <h1>第二冊｜行政法・刑法 教材導覽</h1>
+  <p>請選擇下方單元與版本（完整筆記版／考前衝刺簡要版）直接開始閱讀</p>
+</header>
+<main>
+  <h2 class="chapter-title">第三課｜行政法</h2>
+
+  <section class="unit-section">
+    <div class="unit-title">3.1 行政法目的與原則（含行政裁量）</div>
+    <div class="grid">
+      <a class="card" href="./L2_3_1.html">
+        <div>
+          <span class="tag full">完整筆記版</span>
+          <h2>L2_3_1｜3.1 行政法目的與原則</h2>
+          <p>包含完整觀念解析、依法行政、比例原則、信賴保護與行政裁量詳解及互動測驗。</p>
+        </div>
+        <span class="go">開啟完整版教材 →</span>
+      </a>
+      <a class="card" href="./L2_3_1(簡要版).html">
+        <div>
+          <span class="tag brief">考前衝刺簡要版</span>
+          <h2>L2_3_1｜3.1 行政法目的與原則（簡要版）</h2>
+          <p>SVG 黑板板書精華整理，快速複習核心考點與原則比較。</p>
+        </div>
+        <span class="go">開啟簡要版教材 →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="unit-section">
+    <div class="unit-title">3.2 行政程序（正當行政程序的精神）</div>
+    <div class="grid">
+      <a class="card" href="./L2_3_2.html">
+        <div>
+          <span class="tag full">完整筆記版</span>
+          <h2>L2_3_2｜3.2 行政程序</h2>
+          <p>包含正當行政程序精神、公開透明、公正程序、民主參與完整說明與例題解析。</p>
+        </div>
+        <span class="go">開啟完整版教材 →</span>
+      </a>
+      <a class="card" href="./L2_3_2(簡要版).html">
+        <div>
+          <span class="tag brief">考前衝刺簡要版</span>
+          <h2>L2_3_2｜3.2 行政程序（簡要版）</h2>
+          <p>SVG 黑板板書精華整理，快速掌握正當行政程序三大核心要素。</p>
+        </div>
+        <span class="go">開啟簡要版教材 →</span>
+      </a>
+    </div>
+  </section>
+  <h2 class="chapter-title">第四課｜刑法</h2>
+
+  <section class="unit-section">
+    <div class="unit-title">4.1 刑罰與刑法謙抑</div>
+    <div class="grid">
+      <a class="card" href="./L2_4_1.html">
+        <div>
+          <span class="tag full">完整筆記版</span>
+          <h2>L2_4_1｜4.1 刑罰與刑法謙抑</h2>
+          <p>刑罰正當性、應報／預防／綜合理論、刑法謙抑（最後手段性）、除罪化 vs. 入罪化（通姦除罪化、跟蹤騷擾）與互動測驗。</p>
+        </div>
+        <span class="go">開啟完整版教材 →</span>
+      </a>
+      <a class="card" href="./L2_4_1(簡要版).html">
+        <div>
+          <span class="tag brief">考前衝刺簡要版</span>
+          <h2>L2_4_1｜4.1 刑罰與刑法謙抑（簡要版）</h2>
+          <p>SVG 黑板板書精華整理，快速掌握刑罰目的三理論與除罪化／入罪化對照。</p>
+        </div>
+        <span class="go">開啟簡要版教材 →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="unit-section">
+    <div class="unit-title">4.2 罪刑法定主義（含犯罪成立要件）</div>
+    <div class="grid">
+      <a class="card" href="./L2_4_2.html">
+        <div>
+          <span class="tag full">完整筆記版</span>
+          <h2>L2_4_2｜4.2 罪刑法定主義</h2>
+          <p>罪刑明確性、習慣法禁止、禁止類推適用、禁止溯及既往（從舊從輕），以及犯罪成立三要件與例題解析。</p>
+        </div>
+        <span class="go">開啟完整版教材 →</span>
+      </a>
+      <a class="card" href="./L2_4_2(簡要版).html">
+        <div>
+          <span class="tag brief">考前衝刺簡要版</span>
+          <h2>L2_4_2｜4.2 罪刑法定主義（簡要版）</h2>
+          <p>SVG 黑板板書精華整理，四大子原則與「從舊從輕」雙時間軸一次看懂。</p>
+        </div>
+        <span class="go">開啟簡要版教材 →</span>
+      </a>
+    </div>
+  </section>
+  <section class="unit-section">
+    <div class="unit-title">4.1 ＆ 4.2 統整背誦與填空講義（可列印／遮罩自測）</div>
+    <div class="grid">
+      <a class="card" href="./L2_4_1-4_2(流程圖填空講義).html">
+        <div>
+          <span class="tag print">A4 列印填空版</span>
+          <h2>L2_4_1–4_2｜流程圖填空講義</h2>
+          <p>仿老師講義流程圖格式：4-1 刑罰正當性／目的／謙抑、4-2 罪刑法定四大內涵與從舊從輕時間軸、犯罪成立三階層，共 25 個填空框，可一鍵顯示答案。</p>
+        </div>
+        <span class="go">開啟填空講義 →</span>
+      </a>
+      <a class="card" href="./L2_4_1-4_2(條列背誦版).html">
+        <div>
+          <span class="tag print">條列背誦＋填空卷</span>
+          <h2>L2_4_1–4_2｜條列式考前背誦筆記</h2>
+          <p>將 4-1、4-2 與犯罪成立三要件濃縮為「壹→一→(一)→①」層級條列與考前 10 句秒殺口訣，支援點擊遮罩背誦與列印手寫填空卷。</p>
+        </div>
+        <span class="go">開啟條列背誦版 →</span>
+      </a>
+    </div>
+  </section>
+</main>
+<footer>
+  公民與社會筆記 · GitHub Pages 線上教材
+</footer>
+</body>
+</html>

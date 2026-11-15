@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>考前衝刺｜4.1 刑罰與刑法謙抑（SVG板書簡要版）</title>
+<style>
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --pri: #1a3d6e;
+  --board: #1b362e;
+  --board-frame: #8c6239;
+  --chalk: #ffe066;
+  --pink: #ff99ac;
+  --green: #8ce99a;
+  --cyan: #74c0fc;
+  --red: #b91c1c;
+  --redbg: #fef2f2;
+  --ok: #0f766e;
+  --okbg: #f0fdfa;
+  --amber: #b45309;
+  --amberbg: #fffbeb;
+  --bd: #e2e8f0;
+  --ink: #1e293b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.7;
+  padding-bottom: 50px;
+}
+nav {
+  background: var(--pri);
+  color: #fff;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+nav a, nav button {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.86rem;
+  padding: 6px 13px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.12);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+nav a:hover { background: rgba(255,255,255,0.25); }
+nav a.on { background: #fff; color: var(--pri); font-weight: 800; }
+nav button { background: #eab308; color: #1e293b; border: none; font-weight: 800; }
+nav button.on { background: #ef4444; color: #fff; }
+
+.wrap { max-width: 980px; margin: 22px auto; padding: 0 16px; }
+
+.hero {
+  background: linear-gradient(135deg, #1a3d6e 0%, #0f5257 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 22px 26px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 14px rgba(15,23,42,0.1);
+}
+.hero h1 { font-size: 1.5rem; font-weight: 900; margin-bottom: 6px; }
+.hero p { font-size: 0.92rem; opacity: 0.92; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 14px rgba(15,23,42,0.05);
+}
+h2 {
+  font-size: 1.2rem;
+  color: var(--pri);
+  border-bottom: 2px solid var(--bd);
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+h2 small {
+  font-size: 0.75rem;
+  background: var(--board);
+  color: var(--chalk);
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+h3 {
+  font-size: 1.04rem;
+  color: var(--pri);
+  margin: 16px 0 8px;
+  padding-left: 10px;
+  border-left: 4px solid var(--pri);
+}
+
+/* SVG Board Container */
+.svg-board-wrap {
+  margin: 12px 0 18px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.14);
+  border: 6px solid var(--board-frame);
+  background: var(--board);
+}
+.svg-board-wrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 10px 0; }
+th, td { border: 1px solid var(--bd); padding: 9px 12px; text-align: left; vertical-align: top; }
+th { background: #f1f5f9; color: var(--pri); font-weight: 800; }
+tr:nth-child(even) td { background: #fafcff; }
+
+ul, ol { padding-left: 20px; font-size: 0.93rem; }
+li { margin: 5px 0; }
+
+.k {
+  background: #fef08a;
+  color: #854d0e;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 800;
+  transition: all 0.15s;
+}
+body.quiz .k {
+  background: #334155;
+  color: transparent;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 2px dashed #94a3b8;
+}
+body.quiz .k.show { background: #dcfce7; color: #166534; }
+
+.explain-box {
+  background: #f8fafc;
+  border: 1px solid var(--bd);
+  border-left: 5px solid var(--pri);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: 0.92rem;
+}
+.trap {
+  background: var(--redbg);
+  border-left: 5px solid var(--red);
+  border-radius: 8px;
+  padding: 11px 15px;
+  margin-top: 10px;
+  font-size: 0.91rem;
+}
+.trap b { color: var(--red); }
+.tip {
+  background: var(--okbg);
+  border-left: 5px solid var(--ok);
+  border-radius: 8px;
+  padding: 11px 15px;
+  margin-top: 10px;
+  font-size: 0.91rem;
+}
+.tip b { color: var(--ok); }
+
+.qa details {
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  padding: 9px 14px;
+  margin: 7px 0;
+  font-size: 0.92rem;
+  background: #fafcff;
+}
+.qa summary { cursor: pointer; font-weight: 700; }
+.qa details p { margin-top: 6px; color: var(--ok); font-weight: 700; }
+
+.src { font-size: 0.84rem; color: #64748b; }
+.src li { margin: 4px 0; }
+
+@media print {
+  nav { display: none; }
+  .card { box-shadow: none; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <strong>⚡ 考前衝刺（SVG板書＋細說加強）｜Ch4 刑事法與人權保障</strong>
+  <div style="display:flex;gap:6px;flex-wrap:wrap">
+    <a href="L2_4_1(簡要版).html" class="on">📘 4.1 衝刺簡要版</a>
+    <a href="L2_4_2(簡要版).html">📗 4.2 衝刺簡要版</a>
+    <a href="L2_4_1.html">📄 4.1 完整版</a>
+    <a href="L2_4_2.html">📄 4.2 完整版</a>
+    <button id="qb" onclick="tq()">🎯 遮罩自測</button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>4.1 刑罰與刑法謙抑＋除罪化與入罪化（SVG板書衝刺版）</h1>
+    <p>以 SVG 向量圖 1:1 完整還原老師黑板板書結構，並在每個板書節點下整合「三大法益」、「刑罰目的與保安處分」及「釋字 791 號通姦除罪化」必考重點！</p>
+  </div>
+
+  <!-- ==================== 壹、4-1 刑罰正當性、刑罰目的與刑法謙抑 ==================== -->
+  <div class="card">
+    <h2>壹、4-1 刑罰正當性、刑罰目的與刑法謙抑 <small>對應板書：S__23756804_0.jpg</small></h2>
+
+    <!-- SVG 板書 1：完整重現 S__23756804_0.jpg 左板、中板、右板 -->
+    <div class="svg-board-wrap">
+      <svg viewBox="0 0 1060 440" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif">
+        <defs>
+          <marker id="arrow-yellow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#ffe066"/>
+          </marker>
+        </defs>
+
+        <!-- Blackboard Background & Chalk Dividers -->
+        <rect width="1060" height="440" fill="#1b362e"/>
+        <line x1="330" y1="15" x2="330" y2="425" stroke="rgba(255,255,255,0.22)" stroke-width="2" stroke-dasharray="6,6"/>
+        <line x1="680" y1="15" x2="680" y2="425" stroke="rgba(255,255,255,0.22)" stroke-width="2" stroke-dasharray="6,6"/>
+
+        <!-- ===== LEFT PANEL: 4-1 刑罰與刑法謙抑 一、刑罰應具正當性 ===== -->
+        <text x="22" y="42" fill="#ffe066" font-size="22" font-weight="900">4-1 刑罰與刑法謙抑</text>
+
+        <text x="22" y="88" fill="#ffffff" font-size="19" font-weight="800">一、刑罰應具正當性</text>
+
+        <!-- (一) why -->
+        <text x="28" y="138" fill="#ff99ac" font-size="17" font-weight="800">(一) why：</text>
+        <text x="115" y="138" fill="#ffffff" font-size="17" font-weight="700">剝奪重要人權</text>
+        <text x="115" y="168" fill="#ffffff" font-size="17" font-weight="700">＆ 深遠影響</text>
+
+        <!-- (二) when -->
+        <text x="28" y="226" fill="#ffe066" font-size="17" font-weight="800">(二) when：</text>
+        <text x="122" y="226" fill="#ffffff" font-size="17" font-weight="700">制裁嚴重侵害</text>
+        <text x="122" y="256" fill="#8ce99a" font-size="18" font-weight="900">法益</text>
+        <line x1="122" y1="262" x2="160" y2="262" stroke="#ffe066" stroke-width="2.5"/>
+        <text x="164" y="256" fill="#ffffff" font-size="17" font-weight="700">的行為</text>
+
+        <!-- (三) How -->
+        <text x="28" y="318" fill="#8ce99a" font-size="17" font-weight="800">(三) How：</text>
+        <text x="118" y="318" fill="#ffffff" font-size="17" font-weight="700">國家獨占刑罰權</text>
+        <text x="118" y="348" fill="#ff99ac" font-size="17" font-weight="800">防止私刑</text>
+
+        <!-- ===== MIDDLE PANEL: 二、刑罰的目的 ===== -->
+        <text x="352" y="62" fill="#ffffff" font-size="20" font-weight="800">二、刑罰的目的</text>
+
+        <!-- (一) 應報 -->
+        <text x="358" y="116" fill="#ff99ac" font-size="18" font-weight="900">(一) 應報：</text>
+        <text x="448" y="116" fill="#ffffff" font-size="17">犯罪者承擔其應受</text>
+        <text x="430" y="150" fill="#ffe066" font-size="18" font-weight="900">（罪責相當）<tspan fill="#ffffff" font-weight="700">之處罰</tspan></text>
+
+        <!-- (二) 預防 -->
+        <text x="358" y="210" fill="#8ce99a" font-size="18" font-weight="900">(二) 預防</text>
+        <text x="374" y="248" fill="#ffffff" font-size="17" font-weight="700">1. <tspan fill="#ffe066" font-weight="900">一般</tspan>：嚇阻 <tspan fill="#8ce99a" font-weight="800">社會大眾</tspan> 勿犯罪</text>
+        <text x="374" y="290" fill="#ffffff" font-size="17" font-weight="700">2. <tspan fill="#ffe066" font-weight="900">特別</tspan>：矯治 <tspan fill="#ff99ac" font-weight="800">罪犯</tspan>，預防再犯</text>
+
+        <!-- (三) 綜合 -->
+        <text x="358" y="352" fill="#ffe066" font-size="18" font-weight="900">(三) 綜合：<tspan fill="#ffffff">應報 ＋ 預防</tspan></text>
+
+        <!-- ===== RIGHT PANEL: 三、刑法謙抑 ===== -->
+        <!-- Top annotations: 謙讓 & 抑制 -->
+        <text x="802" y="34" fill="#ffe066" font-size="15" font-weight="800">謙讓</text>
+        <text x="862" y="34" fill="#ffe066" font-size="15" font-weight="800">抑制</text>
+
+        <text x="702" y="76" fill="#ffffff" font-size="20" font-weight="800">三、刑法</text>
+        <!-- Circled 謙 and 抑 -->
+        <circle cx="808" cy="69" r="17" fill="none" stroke="#ffe066" stroke-width="2.2"/>
+        <text x="808" y="76" fill="#ffe066" font-size="19" font-weight="900" text-anchor="middle">謙</text>
+        <circle cx="848" cy="69" r="17" fill="none" stroke="#ffe066" stroke-width="2.2"/>
+        <text x="848" y="76" fill="#ffe066" font-size="19" font-weight="900" text-anchor="middle">抑</text>
+
+        <line x1="726" y1="112" x2="764" y2="112" stroke="#ffe066" stroke-width="2.5" marker-end="url(#arrow-yellow)"/>
+        <text x="774" y="119" fill="#ff99ac" font-size="20" font-weight="900">最後手段</text>
+
+        <text x="702" y="182" fill="#ffe066" font-size="18" font-weight="900">犯罪：<tspan fill="#ffffff" font-weight="700">法律規定應受刑罰處罰</tspan></text>
+        <text x="760" y="214" fill="#ffffff" font-size="18" font-weight="700">的行為</text>
+
+        <text x="702" y="275" fill="#8ce99a" font-size="20" font-weight="900">範圍會調整</text>
+        <line x1="715" y1="312" x2="755" y2="312" stroke="#ffe066" stroke-width="2.5" marker-end="url(#arrow-yellow)"/>
+        <text x="765" y="319" fill="#ffffff" font-size="18" font-weight="800">反映 <tspan fill="#ffe066" font-weight="900">立法者的取捨</tspan></text>
+        <text x="765" y="352" fill="#ffffff" font-size="18" font-weight="800">＆ <tspan fill="#ffe066" font-weight="900">憲法解釋的演進</tspan></text>
+      </svg>
+    </div>
+
+    <h3>🔍 板書重點速讀</h3>
+    <div class="explain-box">
+      <ul>
+        <li><strong>一、刑罰正當性</strong>：<strong>Why</strong>（剝奪生命/自由/財產等重要人權且影響深遠）｜<strong>When</strong>（僅制裁嚴重侵害<span class="k">法益</span>的行為）｜<strong>How</strong>（<span class="k">國家獨占刑罰權</span>，禁止人民私刑報復）。</li>
+        <li><strong>三大法益秒殺區分</strong>：
+          ① <span class="k">國家法益</span>（公務員受賄、內亂外患、妨害公務、偽證、誣告）｜
+          ② <span class="k">社會法益</span>（酒駕、飆車、放火等公共危險罪、偽造貨幣、賭博）｜
+          ③ <span class="k">個人法益</span>（偷裝 GPS 妨害祕密、殺人、傷害、竊盜、公然侮辱）。
+        </li>
+        <li><strong>二、刑罰的目的</strong>：
+          ① <span class="k">應報理論</span>＝依犯罪輕重給<strong>罪責相當</strong>之處罰（平復被害人心理，但仍須合乎比例原則，非無上限重罰）｜
+          ② <span class="k">一般預防</span>＝事前威嚇警戒<strong>社會大眾</strong>勿犯罪（刑期無刑）｜
+          ③ <span class="k">特別預防</span>＝教育矯治<strong>個別罪犯</strong>以防再犯（搭配<strong>保安處分</strong>）｜
+          ④ <span class="k">綜合理論</span>＝我國現行採行（應報＋預防兼顧）。
+        </li>
+        <li><strong>刑罰 vs. 保安處分</strong>：
+          <strong>主刑 5 種</strong>（死刑、無期徒刑、有期徒刑、拘役、罰金）＋ <strong>從刑 1 種</strong>（<span class="k">褫奪公權</span>：剝奪任公務員與候選人資格，<strong>不剝奪投票權</strong>）；
+          <strong><span class="k">保安處分</span></strong>（特別預防，刑罰以外之處分，可與刑罰並行）：未滿18歲➔<strong>感化教育</strong>、精神障礙➔<strong>監護處分</strong>、毒癮酒癮➔<strong>禁戒處分</strong>、性侵犯➔<strong>強制治療</strong>、假釋/緩刑➔<strong>保護管束</strong>、外國人➔<strong>驅逐出境</strong>。
+        </li>
+      </ul>
+    </div>
+    <div class="trap"><b>⚠️ 秒殺陷阱：</b>題目若寫「將辱罵師長的學生判刑，以<b>避免其他學生再犯</b>」，對象是「其他人（社會大眾）」，屬於<b>一般預防</b>，不是特別預防！</div>
+  </div>
+
+  <!-- ==================== 貳、除罪化 vs. 入罪化（S__23756805_0.jpg） ==================== -->
+  <div class="card">
+    <h2>貳、4-1 刑法謙抑的動態調整：除罪化 vs. 入罪化 <small>對應板書：S__23756805_0.jpg</small></h2>
+
+    <!-- SVG 板書 2：完整重現 S__23756805_0.jpg 表格 -->
+    <div class="svg-board-wrap">
+      <svg viewBox="0 0 920 310" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif">
+        <rect width="920" height="310" fill="#1b362e"/>
+
+        <!-- Table Grid Lines (Chalk style) -->
+        <line x1="40" y1="75" x2="880" y2="75" stroke="#ffffff" stroke-width="2.5"/>
+        <line x1="40" y1="165" x2="880" y2="165" stroke="#ffffff" stroke-width="2.5"/>
+        <line x1="190" y1="22" x2="190" y2="288" stroke="#ffffff" stroke-width="2.5"/>
+        <line x1="535" y1="22" x2="535" y2="288" stroke="#ffffff" stroke-width="2.5"/>
+
+        <!-- Column Headers -->
+        <text x="362" y="56" fill="#ffffff" font-size="23" font-weight="900" text-anchor="middle">除 罪 化</text>
+        <text x="708" y="56" fill="#ffffff" font-size="23" font-weight="900" text-anchor="middle">入 罪 化</text>
+
+        <!-- Row 1: 意義 -->
+        <text x="115" y="128" fill="#ffe066" font-size="21" font-weight="900" text-anchor="middle">意 義</text>
+        <text x="362" y="128" fill="#ffffff" font-size="22" font-weight="800" text-anchor="middle">犯罪 ➔ <tspan fill="#8ce99a">非犯罪</tspan></text>
+        <text x="708" y="128" fill="#ffffff" font-size="22" font-weight="800" text-anchor="middle">非犯罪 ➔ <tspan fill="#ff99ac">犯罪</tspan></text>
+
+        <!-- Row 2: 例子 -->
+        <text x="115" y="232" fill="#ffe066" font-size="21" font-weight="900" text-anchor="middle">例 子</text>
+        <text x="362" y="208" fill="#ffffff" font-size="21" font-weight="800" text-anchor="middle">通姦除罪化（2020）</text>
+        <text x="362" y="256" fill="#ffe066" font-size="23" font-weight="900" text-anchor="middle">≠ 通姦合法化</text>
+
+        <text x="708" y="232" fill="#ffffff" font-size="22" font-weight="800" text-anchor="middle">跟蹤騷擾</text>
+      </svg>
+    </div>
+
+    <h3>🔍 板書重點速讀</h3>
+    <div class="explain-box">
+      <ul>
+        <li><strong>刑法謙抑性（<span class="k">最後手段性</span>）</strong>：只有當民事賠償與行政處罰無法有效保護法益時，才動用刑罰。</li>
+        <li><strong><span class="k">除罪化</span>（犯罪 ➔ 非犯罪）</strong>：刪除刑罰規定，改以<strong>民事賠償</strong>或<strong>行政罰</strong>處理。<br>
+          ⭐ <strong>必考經典：2020 年大法官《釋字第 791 號》通姦除罪化</strong>：
+          <ul>
+            <li>宣告原《刑法》第 239 條通姦罪違憲 ➔ 理由：限制人民<strong><span class="k">性自主權</span></strong>、干預<strong><span class="k">隱私權</span></strong>，且無助維持婚姻圓滿，違反<strong><span class="k">比例原則</span></strong>與<strong>刑法謙抑性</strong>。</li>
+            <li>宣告原《刑事訴訟法》第 239 條但書（對配偶撤告效力不及於相姦人）違憲 ➔ 理由：造成女性受判刑人數遠高於男性，違反<strong><span class="k">平等權</span></strong>。</li>
+            <li><strong>板書黃字重點：<span class="k">通姦除罪化 ≠ 通姦合法化</span></strong>！受害配偶仍可依《民法》侵權行為請求<strong>精神損害賠償</strong>。</li>
+          </ul>
+        </li>
+        <li><strong><span class="k">入罪化</span>（非犯罪 ➔ 犯罪）</strong>：隨社會變遷，立法者增訂刑罰以保護重要法益（例：2021 年《<strong>跟蹤騷擾防制法</strong>》、2003 年《刑法》<strong>妨害電腦使用罪</strong>、2007 年《<strong>動物保護法</strong>》虐殺動物刑責、2021 年《刑法》<strong>N 號房條款</strong>）。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== 參、30秒自我檢測 ==================== -->
+  <div class="card qa">
+    <h2>✅ 考前 30 秒自我檢測（點擊展開答案）</h2>
+    <details><summary>1. 警察未經法律授權偷在貨車底盤裝設 GPS 追蹤器，被判處「妨害祕密罪」，該罪主要保護哪一種法益？</summary><p>個人法益（保護自然人個人的隱私權）。</p></details>
+    <details><summary>2. 「公務員收受賄賂」與「酒後駕車危及用路人安全」，分別侵害哪一種法益？</summary><p>公務員受賄侵害「國家法益」；酒後駕車（公共危險罪）侵害「社會法益」。</p></details>
+    <details><summary>3. 政府針對酒駕累犯除判處徒刑外，並令其進入處所接受「酒癮禁戒處分」，禁戒處分屬於刑罰還是保安處分？對應何種刑罰理論？</summary><p>屬於「保安處分」（刑罰以外之矯治安全措施，可與刑罰並行），對應「特別預防理論」（矯治特定罪犯、預防再犯）。</p></details>
+    <details><summary>4. 老師板書將「刑法謙抑」的「謙」與「抑」拆解為何種意義？代表刑法具有什麼特性？</summary><p>謙＝謙讓、抑＝抑制；代表刑法具有「最後手段性」（民事賠償與行政處罰不足以遏止時才動用刑罰）。</p></details>
+    <details><summary>5. 為什麼老師在黑板特別用黃色粉筆寫「通姦除罪化 ≠ 通姦合法化」？</summary><p>因為《釋字第 791 號》僅廢除通姦的「刑事責任（坐牢）」，通姦仍違反《民法》婚姻忠誠義務，受害配偶依然可以依民事侵權行為請求損害賠償（精神慰撫金）！</p></details>
+  </div>
+
+  <!-- ==================== 肆、資料來源 ==================== -->
+  <div class="card">
+    <h2>📂 資料來源清單</h2>
+    <ul class="src">
+      <li><b>主來源（老師黑板筆記照片，位於 <code>_收件匣/</code>）</b>：<code>S__23756804_0.jpg</code>（4-1 刑罰與刑法謙抑：一、刑罰應具正當性 why/when/How；二、刑罰的目的：應報、一般與特別預防、綜合；三、刑法謙抑：最後手段、犯罪範圍調整）、<code>S__23756805_0.jpg</code>（除罪化 vs. 入罪化對照表，通姦除罪化 ≠ 通姦合法化）。</li>
+      <li><b>輔助來源（課本與講義）</b>：《普通型高級中等學校 公民與社會（2）保障人權》（113 乙版）第 4 章第一節〈刑罰與刑法〉（p.73–75, 101）；《學習寶典》第 4 章（p.80, 82–84, 107–108）；《素養題本》主題 11〈我國通姦罪的釋憲案與廢止〉（p.42–44）。</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+function tq(){
+  const b = document.body, q = document.getElementById('qb');
+  b.classList.toggle('quiz');
+  const on = b.classList.contains('quiz');
+  q.classList.toggle('on', on);
+  q.textContent = on ? '👁️ 顯示答案' : '🎯 遮罩自測';
+  document.querySelectorAll('.k').forEach(e => e.classList.remove('show'));
+}
+document.addEventListener('click', e => {
+  if (document.body.classList.contains('quiz') && e.target.classList.contains('k')) {
+    e.target.classList.toggle('show');
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>考前衝刺｜4.2 罪刑法定主義（SVG板書簡要版）</title>
+<style>
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --pri: #1a3d6e;
+  --board: #1b362e;
+  --board-frame: #8c6239;
+  --chalk: #ffe066;
+  --pink: #ff99ac;
+  --green: #8ce99a;
+  --red: #b91c1c;
+  --redbg: #fef2f2;
+  --ok: #0f766e;
+  --okbg: #f0fdfa;
+  --bd: #e2e8f0;
+  --ink: #1e293b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.7;
+  padding-bottom: 50px;
+}
+nav {
+  background: var(--pri);
+  color: #fff;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+nav a, nav button {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.86rem;
+  padding: 6px 13px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.12);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+nav a:hover { background: rgba(255,255,255,0.25); }
+nav a.on { background: #fff; color: var(--pri); font-weight: 800; }
+nav button { background: #eab308; color: #1e293b; border: none; font-weight: 800; }
+nav button.on { background: #ef4444; color: #fff; }
+
+.wrap { max-width: 980px; margin: 22px auto; padding: 0 16px; }
+
+.hero {
+  background: linear-gradient(135deg, #0f5257 0%, #1a3d6e 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 22px 26px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 14px rgba(15,23,42,0.1);
+}
+.hero h1 { font-size: 1.5rem; font-weight: 900; margin-bottom: 6px; }
+.hero p { font-size: 0.92rem; opacity: 0.92; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 14px rgba(15,23,42,0.05);
+}
+h2 {
+  font-size: 1.2rem;
+  color: var(--pri);
+  border-bottom: 2px solid var(--bd);
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+h2 small {
+  font-size: 0.75rem;
+  background: var(--board);
+  color: var(--chalk);
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+h3 {
+  font-size: 1.04rem;
+  color: var(--pri);
+  margin: 16px 0 8px;
+  padding-left: 10px;
+  border-left: 4px solid var(--ok);
+}
+
+/* SVG Board Container */
+.svg-board-wrap {
+  margin: 12px 0 18px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.14);
+  border: 6px solid var(--board-frame);
+  background: var(--board);
+}
+.svg-board-wrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 10px 0; }
+th, td { border: 1px solid var(--bd); padding: 9px 12px; text-align: left; vertical-align: top; }
+th { background: #f1f5f9; color: var(--pri); font-weight: 800; }
+tr:nth-child(even) td { background: #fafcff; }
+
+ul, ol { padding-left: 20px; font-size: 0.93rem; }
+li { margin: 5px 0; }
+
+.k {
+  background: #fef08a;
+  color: #854d0e;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 800;
+  transition: all 0.15s;
+}
+body.quiz .k {
+  background: #334155;
+  color: transparent;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 2px dashed #94a3b8;
+}
+body.quiz .k.show { background: #dcfce7; color: #166534; }
+
+.explain-box {
+  background: #f8fafc;
+  border: 1px solid var(--bd);
+  border-left: 5px solid var(--pri);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: 0.92rem;
+}
+.trap {
+  background: var(--redbg);
+  border-left: 5px solid var(--red);
+  border-radius: 8px;
+  padding: 11px 15px;
+  margin-top: 10px;
+  font-size: 0.91rem;
+}
+.trap b { color: var(--red); }
+.tip {
+  background: var(--okbg);
+  border-left: 5px solid var(--ok);
+  border-radius: 8px;
+  padding: 11px 15px;
+  margin-top: 10px;
+  font-size: 0.91rem;
+}
+.tip b { color: var(--ok); }
+
+.qa details {
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  padding: 9px 14px;
+  margin: 7px 0;
+  font-size: 0.92rem;
+  background: #fafcff;
+}
+.qa summary { cursor: pointer; font-weight: 700; }
+.qa details p { margin-top: 6px; color: var(--ok); font-weight: 700; }
+
+.src { font-size: 0.84rem; color: #64748b; }
+.src li { margin: 4px 0; }
+
+@media print {
+  nav { display: none; }
+  .card { box-shadow: none; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <strong>⚡ 考前衝刺（SVG板書＋細說加強）｜Ch4 刑事法與人權保障</strong>
+  <div style="display:flex;gap:6px;flex-wrap:wrap">
+    <a href="L2_4_1(簡要版).html">📘 4.1 衝刺簡要版</a>
+    <a href="L2_4_2(簡要版).html" class="on">📗 4.2 衝刺簡要版</a>
+    <a href="L2_4_1.html">📄 4.1 完整版</a>
+    <a href="L2_4_2.html">📄 4.2 完整版</a>
+    <button id="qb" onclick="tq()">🎯 遮罩自測</button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>4.2 罪刑法定主義＋犯罪成立三要件（SVG板書衝刺版）</h1>
+    <p>以 SVG 向量黑板完整還原老師「4-2 罪刑法定主義」意義與四大內涵（罪刑明確性、習慣法禁止、禁止類推適用、禁止溯及既往雙時間軸），並加碼整理課本同節「犯罪成立三要件」視覺圖解！</p>
+  </div>
+
+  <!-- ==================== 壹、4-2 罪刑法定主義：意義與內涵 (一)(二) ==================== -->
+  <div class="card">
+    <h2>壹、4-2 罪刑法定主義：意義 ＆ (一) 罪刑明確性、(二) 習慣法禁止 <small>對應板書：S__23756806_0.jpg</small></h2>
+
+    <!-- SVG 板書 1：重現 S__23756806_0.jpg -->
+    <div class="svg-board-wrap">
+      <svg viewBox="0 0 1000 370" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif">
+        <rect width="1000" height="370" fill="#1b362e"/>
+        <line x1="480" y1="20" x2="480" y2="350" stroke="rgba(255,255,255,0.24)" stroke-width="2" stroke-dasharray="6,6"/>
+
+        <!-- ===== LEFT PANEL: 4-2 罪刑法定主義 一、意義 ===== -->
+        <text x="26" y="48" fill="#ffe066" font-size="24" font-weight="900">4-2 罪刑法定主義</text>
+
+        <text x="26" y="96" fill="#ffffff" font-size="20" font-weight="800">一、意義</text>
+
+        <text x="42" y="140" fill="#ffe066" font-size="20" font-weight="900">☆ 刑法最高原則</text>
+
+        <text x="42" y="190" fill="#8ce99a" font-size="18" font-weight="800">＃刑法第 1 條：</text>
+        <text x="42" y="226" fill="#ffffff" font-size="18" font-weight="700">「行為之處罰，以 <tspan fill="#ffe066" font-weight="900">行為時</tspan></text>
+        <text x="58" y="260" fill="#ffffff" font-size="18" font-weight="700">之 <tspan fill="#ffe066" font-weight="900">法律有明文規定者</tspan> 為限」</text>
+
+        <text x="42" y="318" fill="#ff99ac" font-size="20" font-weight="900">落實法律保留原則</text>
+
+        <!-- ===== RIGHT PANEL: 二、內涵 (一) 罪刑明確性 (二) 習慣法禁止 ===== -->
+        <text x="510" y="48" fill="#ffffff" font-size="20" font-weight="800">二、內涵</text>
+
+        <text x="520" y="92" fill="#ffe066" font-size="20" font-weight="900">(一) 罪刑明確性</text>
+        <text x="545" y="132" fill="#ffffff" font-size="18" font-weight="700">1. 定義：<tspan fill="#8ce99a" font-weight="800">犯罪要件</tspan></text>
+        <text x="545" y="168" fill="#ffffff" font-size="18" font-weight="700">2. 刑罰種類</text>
+        <text x="545" y="206" fill="#ffffff" font-size="18" font-weight="700">3. 刑度</text>
+        <rect x="615" y="182" width="60" height="32" rx="14" fill="none" stroke="#ffe066" stroke-width="2.2"/>
+        <text x="645" y="205" fill="#ffe066" font-size="18" font-weight="900" text-anchor="middle">範圍</text>
+
+        <text x="520" y="262" fill="#ffe066" font-size="20" font-weight="900">(二) 習慣法禁止</text>
+        <text x="545" y="302" fill="#ffffff" font-size="18" font-weight="700">不以 <tspan fill="#ff99ac" font-weight="800">風俗習慣（不成文規定）</tspan></text>
+        <text x="545" y="336" fill="#ffffff" font-size="18" font-weight="700">作為處罰依據</text>
+      </svg>
+    </div>
+
+    <h3>🔍 板書重點速讀</h3>
+    <div class="explain-box">
+      <ul>
+        <li><strong>一、意義（☆ 刑法最高原則）</strong>：《刑法》第 1 條＆《公政公約》第 15 條明定「行為之處罰，以<strong><span class="k">行為時之法律有明文規定者</span></strong>為限」。這是<strong><span class="k">法律保留原則</span></strong>（國會保留）在刑法上的最高體現，達成三大目的：① 防國家恣意處罰、② 立法與司法分權制衡、③ 使人民具<strong>可預見性</strong>以預防犯罪。</li>
+        <li><strong>(一) <span class="k">罪刑明確性</span></strong>：
+          ① <strong>犯罪要件明確</strong>（例：《刑法》第 10 條明定「重傷」定義，推倒同學膝蓋破皮流血不構成重傷罪）｜
+          ② <strong>刑罰種類明確</strong>｜
+          ③ <strong>刑度範圍明確</strong>（<strong><span class="k">禁止絕對不定期刑</span></strong>，我國採「<strong><span class="k">相對不定期刑</span></strong>」，訂有上下限供法官依個案量刑）。
+        </li>
+        <li><strong>(二) <span class="k">習慣法禁止</span></strong>：罪刑只能由成文法律明定，檢察官與法官<strong>不得依民間習俗（如偷飲料罰請戲班演戲 3 天、洗門風辦桌）起訴或判刑</strong>。（※ 對照：<strong>《民法》</strong>於法律無明文時<strong>可依習慣</strong>！）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== 貳、(三) 禁止類推適用 ＆ (四) 禁止溯及既往 ==================== -->
+  <div class="card">
+    <h2>貳、4-2 罪刑法定主義：(三) 禁止類推適用 ＆ (四) 禁止溯及既往 <small>對應板書：S__23756807_0.jpg</small></h2>
+
+    <!-- SVG 板書 2：重現 S__23756807_0.jpg 左板與右板雙時間軸 -->
+    <div class="svg-board-wrap">
+      <svg viewBox="0 0 1020 390" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif">
+        <defs>
+          <marker id="arrow-white" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#ffffff"/>
+          </marker>
+          <marker id="arrow-yellow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#ffe066"/>
+          </marker>
+        </defs>
+        <rect width="1020" height="390" fill="#1b362e"/>
+        <line x1="345" y1="20" x2="345" y2="370" stroke="rgba(255,255,255,0.24)" stroke-width="2" stroke-dasharray="6,6"/>
+
+        <!-- ===== LEFT PANEL: (三) 禁止類推適用 ===== -->
+        <text x="24" y="65" fill="#ffe066" font-size="21" font-weight="900">(三) 禁止類推適用</text>
+        <text x="28" y="120" fill="#ffffff" font-size="18" font-weight="700">刑法未規定的事項</text>
+        <text x="28" y="165" fill="#ff99ac" font-size="19" font-weight="900">不援引相似法條入罪</text>
+
+        <!-- Quick Case Box on Left Bottom -->
+        <rect x="24" y="210" width="298" height="145" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,224,102,0.4)" stroke-width="1.5"/>
+        <text x="40" y="240" fill="#ffe066" font-size="15" font-weight="800">💡 課本＋寶典必考案例：</text>
+        <text x="40" y="268" fill="#f5f7f0" font-size="14">• 騎車撞傷「狗」逃逸 ➔ 不可類推</text>
+        <text x="52" y="290" fill="#8ce99a" font-size="14">適用「致人死傷」之肇事逃逸罪</text>
+        <text x="40" y="318" fill="#f5f7f0" font-size="14">• 印玩具鈔/紙錢 ➔ 不可類推偽造貨幣</text>
+        <text x="40" y="342" fill="#ff99ac" font-size="13">（※ 對照：民法允許類推適用填補漏洞）</text>
+
+        <!-- ===== RIGHT PANEL: (四) 禁止溯及既往 (Two Timelines) ===== -->
+        <text x="375" y="48" fill="#ffe066" font-size="21" font-weight="900">(四) 禁止溯及既往</text>
+
+        <!-- Timeline 1: 2002.12 - 2003.6 - 2003.12 -->
+        <text x="415" y="102" fill="#8ce99a" font-size="17" font-weight="800" text-anchor="middle">2002.12</text>
+        <text x="575" y="102" fill="#8ce99a" font-size="17" font-weight="800" text-anchor="middle">2003.6</text>
+        <text x="745" y="102" fill="#8ce99a" font-size="17" font-weight="800" text-anchor="middle">2003.12</text>
+
+        <line x1="375" y1="118" x2="860" y2="118" stroke="#ffffff" stroke-width="2.5" marker-end="url(#arrow-white)"/>
+        <circle cx="415" cy="118" r="5" fill="#ffffff"/>
+        <circle cx="575" cy="118" r="5" fill="#ffffff"/>
+        <circle cx="745" cy="118" r="5" fill="#ffffff"/>
+
+        <text x="415" y="152" fill="#ffffff" font-size="17" font-weight="700" text-anchor="middle">入侵電腦</text>
+
+        <text x="575" y="148" fill="#ffffff" font-size="16" font-weight="700" text-anchor="middle">增訂</text>
+        <text x="575" y="172" fill="#ffffff" font-size="16" font-weight="700" text-anchor="middle">妨害電腦</text>
+        <text x="575" y="196" fill="#ffffff" font-size="16" font-weight="700" text-anchor="middle">使用罪</text>
+
+        <text x="745" y="152" fill="#ffffff" font-size="17" font-weight="700" text-anchor="middle">法院</text>
+        <text x="745" y="178" fill="#ffffff" font-size="17" font-weight="700" text-anchor="middle">審理</text>
+
+        <line x1="785" y1="162" x2="828" y2="162" stroke="#ffe066" stroke-width="2.5" marker-end="url(#arrow-yellow2)"/>
+        <text x="840" y="170" fill="#ffe066" font-size="24" font-weight="900">從 舊</text>
+
+        <!-- Timeline 2: 2020.4 - 2020.5 - 2020.12 -->
+        <text x="415" y="252" fill="#8ce99a" font-size="17" font-weight="800" text-anchor="middle">2020.4</text>
+        <text x="575" y="252" fill="#8ce99a" font-size="17" font-weight="800" text-anchor="middle">2020.5</text>
+        <text x="745" y="252" fill="#8ce99a" font-size="17" font-weight="800" text-anchor="middle">2020.12</text>
+
+        <line x1="375" y1="268" x2="860" y2="268" stroke="#ffffff" stroke-width="2.5" marker-end="url(#arrow-white)"/>
+        <circle cx="415" cy="268" r="5" fill="#ffffff"/>
+        <circle cx="575" cy="268" r="5" fill="#ffffff"/>
+        <circle cx="745" cy="268" r="5" fill="#ffffff"/>
+
+        <text x="415" y="305" fill="#ffffff" font-size="18" font-weight="700" text-anchor="middle">通 姦</text>
+
+        <text x="575" y="300" fill="#ffffff" font-size="17" font-weight="700" text-anchor="middle">通姦</text>
+        <text x="575" y="326" fill="#ffffff" font-size="17" font-weight="700" text-anchor="middle">除罪化</text>
+
+        <text x="745" y="302" fill="#ffffff" font-size="17" font-weight="700" text-anchor="middle">法院</text>
+        <text x="745" y="328" fill="#ffffff" font-size="17" font-weight="700" text-anchor="middle">審理</text>
+
+        <line x1="785" y1="312" x2="825" y2="312" stroke="#ffe066" stroke-width="2.5" marker-end="url(#arrow-yellow2)"/>
+        <text x="836" y="302" fill="#ffe066" font-size="19" font-weight="900">例外</text>
+        <text x="836" y="330" fill="#ffe066" font-size="19" font-weight="900">適用新法</text>
+        <text x="836" y="362" fill="#ffe066" font-size="23" font-weight="900">從 輕</text>
+      </svg>
+    </div>
+
+    <h3>🔍 板書重點速讀</h3>
+    <div class="explain-box">
+      <ul>
+        <li><strong>(三) <span class="k">禁止類推適用</span></strong>：對刑法未規定之事項，<strong>絕對禁止援引相似法條入罪</strong>（例：騎車撞死狗逃逸 ➔ 不能類推適用《刑法》185-4 條「致人死傷」之肇事逃逸罪；印玩具鈔或紙錢 ➔ 不能類推適用偽造貨幣罪）。⚠️ 對照：<strong>《民法》允許類推適用</strong>。</li>
+        <li><strong>(四) <span class="k">禁止溯及既往</span>（《刑法》第 2 條「<span class="k">從舊從輕原則</span>」）</strong>：
+          <ul>
+            <li><strong>原則＝<span class="k">從舊原則</span></strong>（新法入罪或加重刑罰，不利於行為人時，適用行為時之舊法）：如板書 <code>2002.12 入侵電腦 ➔ 2003.6 增訂妨害電腦使用罪 ➔ 審理判無罪</code>；或 1995 年甲女對乙男強制性交、1999 年修法納入男性被害人 ➔ 依從舊原則不成立該罪。</li>
+            <li><strong>例外＝<span class="k">從輕原則</span></strong>（新法除罪化或減輕刑度，有利於行為人時，例外適用新法）：如板書 <code>2020.4 通姦 ➔ 2020.5 通姦除罪化 ➔ 審理適用新法免罰</code>；或食安法修法將 5 年以下改為 2 年以下 ➔ 審理中適用新法處 2 年以下。</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="trap"><b>⚠️ 秒殺判斷：</b>只要題目出現「<b>行為在先、修法在後</b>」的時間差 ➔ 一律選「<b>禁止溯及既往（從舊從輕原則）</b>」；若無時間差，只是把「<b>狗當成人、玩具鈔當真鈔</b>」比附援引 ➔ 選「<b>禁止類推適用</b>」！</div>
+  </div>
+
+  <!-- ==================== 參、課本同節延伸：犯罪成立三要件 SVG 圖解 ==================== -->
+  <div class="card">
+    <h2>參、課本同節延伸（p.79–81）：犯罪成立三要件 SVG 視覺圖解 <small>該當性 ➔ 違法性 ➔ 有責性</small></h2>
+
+    <div class="svg-board-wrap">
+      <svg viewBox="0 0 960 270" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif">
+        <rect width="960" height="270" fill="#1b362e"/>
+        <text x="26" y="36" fill="#ffe066" font-size="19" font-weight="900">⚖️ 犯罪成立三階層檢驗流程（須依序 1 ➔ 2 ➔ 3 全部通過，才成立犯罪！）</text>
+
+        <!-- Step 1: 構成要件該當性 -->
+        <rect x="26" y="54" width="280" height="194" rx="10" fill="rgba(255,255,255,0.07)" stroke="#ffe066" stroke-width="2"/>
+        <text x="42" y="84" fill="#ffe066" font-size="17" font-weight="900">① 構成要件該當性</text>
+        <text x="42" y="114" fill="#ffffff" font-size="14" font-weight="700">• 客觀要件：行為符合法條描述</text>
+        <text x="42" y="140" fill="#ffffff" font-size="14" font-weight="700">• 主觀要件（犯意）：</text>
+        <text x="54" y="164" fill="#8ce99a" font-size="13.5">1. 故意（原則）：明知並有意</text>
+        <text x="68" y="184" fill="#8ce99a" font-size="13">或預見發生不違背本意</text>
+        <text x="54" y="208" fill="#ff99ac" font-size="13.5">2. 過失（例外）：應注意能注意</text>
+        <text x="68" y="228" fill="#ff99ac" font-size="13">未注意（有特別明文才罰！）</text>
+
+        <line x1="310" y1="150" x2="336" y2="150" stroke="#ffe066" stroke-width="2.5" marker-end="url(#arrow-yellow2)"/>
+
+        <!-- Step 2: 違法性 -->
+        <rect x="342" y="54" width="280" height="194" rx="10" fill="rgba(255,255,255,0.07)" stroke="#8ce99a" stroke-width="2"/>
+        <text x="358" y="84" fill="#8ce99a" font-size="17" font-weight="900">② 違法性（無阻卻違法）</text>
+        <text x="358" y="112" fill="#ffe066" font-size="14" font-weight="800">★ 四大阻卻違法事由（不罰）：</text>
+        <text x="358" y="138" fill="#ffffff" font-size="13.5">1. 依法令之行為（法警執行死刑）</text>
+        <text x="358" y="160" fill="#ffffff" font-size="13.5">2. 業務正當行為（醫師開刀拔牙）</text>
+        <text x="358" y="182" fill="#ffffff" font-size="13.5">3. 正當防衛（打傷現正闖空門小偷）</text>
+        <text x="358" y="204" fill="#ffffff" font-size="13.5">4. 緊急避難（破他人車窗救嬰兒）</text>
+        <text x="358" y="232" fill="#ff99ac" font-size="13">※ 防衛/避難過當：仍罰，得減免</text>
+
+        <line x1="626" y1="150" x2="652" y2="150" stroke="#ffe066" stroke-width="2.5" marker-end="url(#arrow-yellow2)"/>
+
+        <!-- Step 3: 有責性 -->
+        <rect x="658" y="54" width="276" height="194" rx="10" fill="rgba(255,255,255,0.07)" stroke="#ff99ac" stroke-width="2"/>
+        <text x="674" y="84" fill="#ff99ac" font-size="17" font-weight="900">③ 有責性（責任能力）</text>
+        <text x="674" y="112" fill="#ffffff" font-size="13.5">• <tspan fill="#8ce99a" font-weight="800">無責任能力（不罰）</tspan>：</text>
+        <text x="686" y="132" fill="#f5f7f0" font-size="13">未滿 14 歲、精障完全不能辨識</text>
+        <text x="674" y="156" fill="#ffffff" font-size="13.5">• <tspan fill="#ffe066" font-weight="800">限制責任能力（得減輕）</tspan>：</text>
+        <text x="686" y="176" fill="#f5f7f0" font-size="13">14～未滿18歲、滿80歲以上、</text>
+        <text x="686" y="194" fill="#f5f7f0" font-size="13">瘖啞人、精障辨識能力顯著減低</text>
+        <text x="674" y="218" fill="#ffffff" font-size="13.5">• <tspan fill="#ff99ac" font-weight="800">完全責任能力</tspan>：18～未滿80歲</text>
+        <text x="674" y="238" fill="#ffe066" font-size="12.5">⚠️ 自行喝醉/吸毒犯罪＝仍負全責！</text>
+      </svg>
+    </div>
+
+    <div class="tip">
+      <b>💡 犯罪成立三要件秒殺考點：</b><br>
+      • <b>夢遊、反射動作、被他人推擠撞傷人</b> ➔ 根本不是刑法上受意思支配的「行為」，連第 1 階都不進入，直接不罰！<br>
+      • <b>課本章首「警察未經法律授權偷裝 GPS」</b> ➔ 符合妨害祕密罪構成要件（第 1 階✔）、因未獲法律授權故<b>不符合「依法令之行為」</b>無阻卻違法（第 2 階✔）、成年警察具完全責任能力（第 3 階✔）➔ <b>成立妨害祕密罪</b>！<br>
+      • <b>《刑法》第 19 條第 3 項（原因自由行為）</b>：故意或過失自行招致精神障礙（如<b>自己喝酒喝醉後酒駕或傷人</b>），<b>不得主張無責任能力或限制責任能力減免刑責</b>！
+    </div>
+  </div>
+
+  <!-- ==================== 肆、30秒自我檢測 ==================== -->
+  <div class="card qa">
+    <h2>✅ 考前 30 秒自我檢測（點擊展開答案）</h2>
+    <details><summary>1. 小花推倒小珠導致膝蓋破皮流血，為何不成立《刑法》的「重傷罪」？這體現罪刑法定主義的哪一內涵？</summary><p>因為《刑法》第 10 條對「重傷」有明確立法定義（須毀損或嚴重減損視、聽、語、肢體機能或重大不治難治之傷害），體現「罪刑明確性原則」。</p></details>
+    <details><summary>2. 小明騎機車闖紅燈撞死路邊小狗並逃逸，法官為何不能依《刑法》第 185-4 條「致人死傷逃逸罪」判刑？</summary><p>因為「禁止類推適用原則」：法條明定「致人死傷」，不能將「致狗死傷」類推適用入罪。</p></details>
+    <details><summary>3. 老師板書時間軸：2002.12 入侵電腦 ➔ 2003.6 增訂妨害電腦使用罪 ➔ 2003.12 法院審理，法院應如何處理？依據為何？</summary><p>應判無罪（不處罰）；依據「禁止溯及既往原則（從舊原則）」，行為時法律無明文規定者不罰。</p></details>
+    <details><summary>4. 老師板書時間軸：2020.4 通姦 ➔ 2020.5 通姦除罪化 ➔ 2020.12 法院審理，法院應如何處理？依據為何？</summary><p>例外適用新法判免罰（無罪）；依據《刑法》第 2 條「從舊從輕原則」之例外「從輕原則」（行為後法律變更有利於行為人時，適用最有利於行為人之新法）。</p></details>
+    <details><summary>5. 「習慣法」與「類推適用」在《刑法》與《民法》中的適用有何不同？</summary><p>《刑法》受罪刑法定主義拘束，絕對禁止習慣法與不利行為人之類推適用；《民法》為解決私權糾紛，於法律無明文規定時，可援引習慣法作為補充法源，亦可類推適用類似法條。</p></details>
+    <details><summary>6. 為救受困高溫車內的嬰兒而打破路邊他人車窗，為何不構成毀損罪？若是一名 15 歲國中生故意偷竊，其刑事責任能力為何？</summary><p>破窗救嬰兒符合「緊急避難」（阻卻違法事由，不具違法性）；15 歲屬於「14 歲以上未滿 18 歲」之「限制責任能力人」（得減輕其刑，且依少事法優先適用保護處分）。</p></details>
+  </div>
+
+  <!-- ==================== 伍、資料來源 ==================== -->
+  <div class="card">
+    <h2>📂 資料來源清單</h2>
+    <ul class="src">
+      <li><b>主來源（老師黑板筆記照片，位於 <code>_收件匣/</code>）</b>：<code>S__23756806_0.jpg</code>（4-2 罪刑法定主義：一、意義 ☆刑法最高原則、刑法第 1 條、落實法律保留原則；二、內涵 (一) 罪刑明確性、(二) 習慣法禁止）、<code>S__23756807_0.jpg</code>（(三) 禁止類推適用、(四) 禁止溯及既往雙時間軸：從舊 vs. 例外適用新法從輕）。</li>
+      <li><b>輔助來源（課本與講義）</b>：《普通型高級中等學校 公民與社會（2）保障人權》（113 乙版）第 4 章第一節〈刑罰與刑法〉（p.76–82）；《學習寶典》第 4 章（p.84–88, 104–109）。</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+function tq(){
+  const b = document.body, q = document.getElementById('qb');
+  b.classList.toggle('quiz');
+  const on = b.classList.contains('quiz');
+  q.classList.toggle('on', on);
+  q.textContent = on ? '👁️ 顯示答案' : '🎯 遮罩自測';
+  document.querySelectorAll('.k').forEach(e => e.classList.remove('show'));
+}
+document.addEventListener('click', e => {
+  if (document.body.classList.contains('quiz') && e.target.classList.contains('k')) {
+    e.target.classList.toggle('show');
+  }
+});
+</script>
+</body>
+</html>

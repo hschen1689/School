@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L2_4_1｜4.1 刑罰與刑法謙抑（含除罪化與入罪化）— 公民與社會筆記</title>
+<style>
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --board-bg: #1e352f;
+  --board-border: #8c6239;
+  --board-text: #f5f7f0;
+  --chalk-yellow: #ffe066;
+  --chalk-pink: #ff99ac;
+  --chalk-blue: #8ce99a;
+  --primary: #1a3d6e;
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --teal: #0f766e;
+  --teal-light: #f0fdfa;
+  --amber: #b45309;
+  --amber-light: #fffbeb;
+  --danger: #b91c1c;
+  --danger-light: #fef2f2;
+  --ink: #1e293b;
+  --ink-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.7;
+  padding-bottom: 60px;
+}
+
+/* Top Navigation Bar */
+.top-nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+}
+
+.brand-badge {
+  background: var(--chalk-yellow);
+  color: #1a2a3a;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 900;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.88rem;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: all 0.15s;
+}
+
+.nav-link:hover, .nav-link.active {
+  background: #fff;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.btn-quiz-mode {
+  background: #eab308;
+  color: #1e293b;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-quiz-mode:hover { background: #facc15; }
+.btn-quiz-mode.active { background: #ef4444; color: #fff; }
+
+/* Container */
+.container {
+  max-width: 1040px;
+  margin: 28px auto;
+  padding: 0 18px;
+}
+
+/* Hero Header */
+.hero {
+  background: linear-gradient(135deg, #1a3d6e 0%, #0f5257 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+
+.hero-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.tag {
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-size: 1.75rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.hero p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Quick Jump TOC */
+.toc-bar {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow);
+}
+
+.toc-label {
+  font-weight: 800;
+  font-size: 0.88rem;
+  color: var(--primary);
+  margin-right: 4px;
+}
+
+.toc-chip {
+  text-decoration: none;
+  font-size: 0.85rem;
+  color: var(--ink);
+  background: var(--bg);
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  transition: all 0.15s;
+}
+
+.toc-chip:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+/* Section Card */
+.section-card {
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  padding: 28px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge-board {
+  background: #1e352f;
+  color: var(--chalk-yellow);
+  font-size: 0.76rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  border: 1px solid var(--board-border);
+}
+
+.badge-book {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.76rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  border: 1px solid #bfdbfe;
+}
+
+/* Chalkboard Replica Box */
+.chalkboard {
+  background: var(--board-bg);
+  color: var(--board-text);
+  border: 6px solid var(--board-border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin: 16px 0 22px;
+  box-shadow: inset 0 0 24px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.12);
+  font-family: "Noto Sans TC", sans-serif;
+  position: relative;
+}
+
+.chalkboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed rgba(255,255,255,0.25);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.75);
+}
+
+.chalk-yellow { color: var(--chalk-yellow); font-weight: 800; }
+.chalk-pink { color: var(--chalk-pink); font-weight: 800; }
+.chalk-blue { color: var(--chalk-blue); font-weight: 800; }
+.chalk-underline { border-bottom: 2px solid var(--chalk-yellow); padding-bottom: 1px; }
+.chalk-circle-word {
+  display: inline-block;
+  border: 2px solid var(--chalk-yellow);
+  border-radius: 50%;
+  padding: 1px 6px;
+  color: var(--chalk-yellow);
+  font-weight: 800;
+}
+
+/* Chalkboard Table */
+.chalk-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+.chalk-table th, .chalk-table td {
+  border: 2px solid rgba(255,255,255,0.65);
+  padding: 14px 18px;
+  background: transparent !important;
+  color: var(--board-text);
+  font-size: 1.02rem;
+}
+.chalk-table th {
+  color: var(--chalk-yellow);
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* Comparison Grid & Cards */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+  margin: 14px 0;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 14px 0;
+}
+
+.info-card {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--primary);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.info-card.warn { border-left-color: var(--danger); background: var(--danger-light); }
+.info-card.ok { border-left-color: var(--teal); background: var(--teal-light); }
+.info-card.amber { border-left-color: var(--amber); background: var(--amber-light); }
+
+.info-card h4 {
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-card.warn h4 { color: var(--danger); }
+.info-card.ok h4 { color: var(--teal); }
+.info-card.amber h4 { color: var(--amber); }
+
+.info-card ul, .info-card ol {
+  padding-left: 18px;
+  font-size: 0.94rem;
+}
+
+.info-card li { margin-bottom: 6px; }
+
+/* Tables */
+.table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 11px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #f1f5f9;
+  color: var(--primary);
+  font-weight: 800;
+}
+
+tr:nth-child(even) td { background: #fafcff; }
+
+/* Key Term Blank Mode (Quiz Mode) */
+.key-term {
+  background: #fef08a;
+  color: #854d0e;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 800;
+  transition: all 0.2s;
+}
+
+body.quiz-mode .key-term {
+  background: #334155;
+  color: transparent;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 2px dashed #94a3b8;
+}
+
+body.quiz-mode .key-term.revealed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Sub-headings */
+h3.sub-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 22px 0 10px;
+  padding-left: 10px;
+  border-left: 4px solid var(--accent);
+}
+
+/* Callout Box */
+.callout {
+  background: var(--accent-light);
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 14px 0;
+  font-size: 0.93rem;
+}
+
+.callout-title {
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Source List */
+.source-list {
+  list-style: none;
+  padding: 0;
+}
+
+.source-list li {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.92rem;
+}
+
+.source-list li:last-child { border-bottom: none; }
+
+.src-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.src-primary { background: #1e352f; color: var(--chalk-yellow); }
+.src-secondary { background: #e0e7ff; color: #1e40af; }
+
+@media print {
+  .top-nav, .toc-bar, .btn-quiz-mode { display: none !important; }
+  body { background: #fff; padding: 0; }
+  .section-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top Navigation -->
+<header class="top-nav">
+  <div class="brand">
+    <span class="brand-badge">高中公民 第二冊</span>
+    <span>Ch.4 刑事法與人權保障（第一節：刑罰與刑法）</span>
+  </div>
+  <div class="nav-actions">
+    <a href="L2_4_1.html" class="nav-link active">📘 4.1 刑罰與刑法謙抑</a>
+    <a href="L2_4_2.html" class="nav-link">📗 4.2 罪刑法定主義</a>
+    <a href="L2_4_1(簡要版).html" class="nav-link">⚡ 4.1 衝刺簡要版</a>
+    <a href="L2_4_2(簡要版).html" class="nav-link">⚡ 4.2 衝刺簡要版</a>
+    <button class="btn-quiz-mode" id="quizBtn" onclick="toggleQuizMode()">🎯 開啟遮罩自測模式</button>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="hero-meta">
+      <span class="tag">📌 老師板書重點為主</span>
+      <span class="tag">📚 整合乙版課本＋學習寶典＋素養題本</span>
+      <span class="tag">⭐ 學測與分科測驗核心必考</span>
+    </div>
+    <h1>4.1 刑罰與刑法謙抑（含除罪化與入罪化）</h1>
+    <p>從老師課堂黑板筆記出發，完整掌握「刑罰的正當性（Why / When / How 與三大法益）」、「刑罰的目的（應報、一般與特別預防、綜合理論與保安處分）」及「刑法謙抑性（最後手段性、除罪化 vs. 入罪化、釋字 791 號通姦除罪化）」。點擊右上角「遮罩自測模式」可隱藏關鍵字進行考前驗收！</p>
+  </section>
+
+  <!-- Quick Jump TOC -->
+  <nav class="toc-bar">
+    <span class="toc-label">⚡ 快速跳轉：</span>
+    <a href="#sec-1" class="toc-chip">一、刑罰應具正當性與三大法益</a>
+    <a href="#sec-2" class="toc-chip">二、刑罰的目的與保安處分</a>
+    <a href="#sec-3" class="toc-chip">三、刑法謙抑性（最後手段）</a>
+    <a href="#sec-4" class="toc-chip">四、除罪化 vs. 入罪化（釋字791）</a>
+    <a href="#sec-sources" class="toc-chip">📂 資料來源清單</a>
+  </nav>
+
+  <!-- ==================== SECTION 1: 刑罰應具正當性 & 三大法益 ==================== -->
+  <section class="section-card" id="sec-1">
+    <div class="section-header">
+      <h2 class="section-title">壹、4-1 刑罰與刑法謙抑（一）：刑罰應具正當性</h2>
+      <div>
+        <span class="badge-board">板書來源：S__23756804_0.jpg 左板</span>
+        <span class="badge-book">課本 p.73 / 寶典 p.80, 82</span>
+      </div>
+    </div>
+
+    <!-- Teacher Chalkboard Replica -->
+    <div class="chalkboard">
+      <div class="chalkboard-header">
+        <span>👩‍🏫 老師黑板筆記原貌重現（左板：刑罰應具正當性 Why / When / How）</span>
+        <span>檔案：_收件匣/S__23756804_0.jpg</span>
+      </div>
+      <p class="chalk-yellow" style="font-size:1.18rem; margin-bottom:10px;">4-1 刑罰與刑法謙抑</p>
+      <p style="font-size:1.05rem; margin-bottom:10px;"><strong>一、刑罰應具正當性</strong></p>
+      <div class="grid-3" style="margin:0;">
+        <div style="background:rgba(255,255,255,0.06); padding:14px; border-radius:8px; border:1px dashed rgba(255,255,255,0.25);">
+          <p class="chalk-pink" style="font-size:1.02rem; margin-bottom:6px;">(一) Why（為何需要正當性）</p>
+          <p><strong>剝奪重要人權 ＆ 深遠影響</strong></p>
+        </div>
+        <div style="background:rgba(255,255,255,0.06); padding:14px; border-radius:8px; border:1px dashed rgba(255,255,255,0.25);">
+          <p class="chalk-yellow" style="font-size:1.02rem; margin-bottom:6px;">(二) When（何時動用刑罰）</p>
+          <p><strong>制裁嚴重侵害<span class="chalk-underline">法益</span>的行為</strong></p>
+        </div>
+        <div style="background:rgba(255,255,255,0.06); padding:14px; border-radius:8px; border:1px dashed rgba(255,255,255,0.25);">
+          <p class="chalk-blue" style="font-size:1.02rem; margin-bottom:6px;">(三) How（如何行使刑罰）</p>
+          <p><strong>國家獨占刑罰權，防止私刑</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">1. 為什麼國家動用刑罰必須具備正當性？（板書 Why / When / How 拆解）</h3>
+    <ul>
+      <li><strong>古代 vs. 現代刑法的轉變（課本 p.73）</strong>：
+        <ul>
+          <li><strong>古代</strong>：統治者透過刑罰作為控制社會的工具，用來處罰違反社會主流價值觀、風俗民情或宗教倫理的行為。</li>
+          <li><strong>現代法治國家</strong>：透過社會規範釐清個人權利的界限；只有當個人行為<strong>嚴重侵害他人或社會法益</strong>，且強烈違背倫理道德時，國家才會將其明文規定為「犯罪」並動用刑罰制裁。</li>
+        </ul>
+      </li>
+      <li><strong>(一) Why — <span class="key-term">剝奪重要人權 ＆ 深遠影響</span></strong>：刑罰是所有法律中最嚴厲的制裁手段，會直接剝奪個人的<strong>財產（罰金、沒收）、自由（有期徒刑、無期徒刑、拘役）甚至生命（死刑）</strong>，且受刑人入監失去人身自由、出獄後要回歸社會也面臨標籤與適應難題，影響極為深遠。</li>
+      <li><strong>(二) When — <span class="key-term">制裁嚴重侵害法益的行為</span></strong>：並非一切不道德或違規行為都要動用刑罰，唯有「嚴重侵害法益」的行為，國家才動用刑罰加以制裁。</li>
+      <li><strong>(三) How — <span class="key-term">國家獨占刑罰權，防止私刑</span></strong>：現代法治國家禁止人民「私刑報復、以暴制暴」（課本 p.84），追訴與處罰犯罪的權力由國家獨占，並須嚴格遵守《刑法》與《刑事訴訟法》之正當法律程序。</li>
+    </ul>
+
+    <h3 class="sub-title">2. 什麼是「法益」？《刑法》保護的三大法益類型比較</h3>
+    <p style="margin-bottom:10px;">所謂「<span class="key-term">法益</span>」，就是<strong>法律所保護的利益</strong>（課本 p.73 小辭典、學習寶典 p.82）。依保護對象的不同，分為以下三大類（注意：有些犯罪會<strong>同時侵害多種法益</strong>）：</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:16%;">法益分類</th>
+            <th style="width:16%;">歸屬對象</th>
+            <th style="width:36%;">核心意義</th>
+            <th style="width:32%;">課本與學習寶典代表罪名／實例</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. <span class="key-term">國家法益</span></strong></td>
+            <td rowspan="2" style="vertical-align:middle; text-align:center; background:#f8fafc; font-weight:700;">不特定個人法益<br>（公眾／群體法益）</td>
+            <td>國家或政府所擁有而受法律保護的公法益（涉及國體安全、政府公權力運作之廉潔與公正性）。</td>
+            <td>• <strong>公務員受賄罪（貪汙）</strong><br>• 內亂罪、外患罪<br>• 妨害公務罪、偽證罪、誣告罪</td>
+          </tr>
+          <tr>
+            <td><strong>2. <span class="key-term">社會法益</span></strong></td>
+            <td>社會整體所擁有而受法律保護的公共生活利益（涉及公共安全、經濟交易公正性與善良風俗）。</td>
+            <td>• <strong>公共危險罪</strong>（如<strong>飆車競速、酒後駕車、放火</strong>，危害其他用路人與公眾安全）<br>• <strong>偽造貨幣罪</strong>、偽造文書罪、賭博罪、妨害風化罪</td>
+          </tr>
+          <tr>
+            <td><strong>3. <span class="key-term">個人法益</span></strong></td>
+            <td style="vertical-align:middle; text-align:center; font-weight:700;">特定個人法益</td>
+            <td>自然人個人所擁有而受法律保護的私人生活利益（生命、身體、自由、名譽、隱私、財產）。</td>
+            <td>• <strong>妨害祕密罪</strong>（如<strong>偷在他人車底安裝 GPS 定位追蹤器</strong>，侵害個人隱私權）<br>• 殺人罪、傷害罪、竊盜罪、妨害自由罪、公然侮辱／誹謗罪</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 2: 刑罰的目的 & 保安處分 ==================== -->
+  <section class="section-card" id="sec-2">
+    <div class="section-header">
+      <h2 class="section-title">貳、4-1 刑罰與刑法謙抑（二）：刑罰的目的與保安處分</h2>
+      <div>
+        <span class="badge-board">板書來源：S__23756804_0.jpg 中板</span>
+        <span class="badge-book">課本 p.75 / 寶典 p.80, 83–84</span>
+      </div>
+    </div>
+
+    <!-- Teacher Chalkboard Replica: Middle Board -->
+    <div class="chalkboard">
+      <div class="chalkboard-header">
+        <span>👩‍🏫 老師黑板筆記原貌重現（中板：二、刑罰的目的）</span>
+        <span>檔案：_收件匣/S__23756804_0.jpg</span>
+      </div>
+      <p class="chalk-yellow" style="font-size:1.12rem; margin-bottom:10px;">二、刑罰的目的</p>
+      <div style="padding-left:10px; line-height:1.95; font-size:1.02rem;">
+        <p><strong>(一) <span class="chalk-pink">應報</span>：</strong>犯罪者承擔其應受（<span class="chalk-yellow">罪責相當</span>）之處罰</p>
+        <p style="margin-top:8px;"><strong>(二) <span class="chalk-blue">預防</span>：</strong></p>
+        <p style="padding-left:28px;"><strong>1. <span class="chalk-yellow">一般</span>：</strong>嚇阻<span class="chalk-underline">社會大眾</span>勿犯罪</p>
+        <p style="padding-left:28px;"><strong>2. <span class="chalk-yellow">特別</span>：</strong>矯治<span class="chalk-underline">罪犯</span>，預防再犯</p>
+        <p style="margin-top:8px;"><strong>(三) <span class="chalk-yellow">綜合</span>：</strong><span class="chalk-pink">應報</span> ＋ <span class="chalk-blue">預防</span></p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">1. 刑罰目的三大理論深度比較（板書＋課本＋寶典）</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:18%;">理論類型</th>
+            <th style="width:15%;">關注時間點與對象</th>
+            <th style="width:40%;">老師板書與課本核心內涵</th>
+            <th style="width:27%;">典型制度／考題關鍵字</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>(一) <span class="key-term">應報理論</span></strong><br>（報復主義）</td>
+            <td><strong>回顧過去</strong><br>（針對已發生的犯罪惡害與犯罪人）</td>
+            <td>
+              • <strong>老師板書</strong>：犯罪者承擔其應受（<span class="key-term">罪責相當</span>）之處罰。<br>
+              • <strong>課本內涵</strong>：源自古巴比倫《漢摩拉比法典》「以眼還眼、以牙還牙」、「殺人償命」的應報思想。現代強調<strong>依犯罪情節輕重給予相應程度的處罰（罪刑相當原則／比例原則）</strong>，實現公平正義，並使<strong>被害人及家屬獲得心理上的平復與慰藉</strong>。
+            </td>
+            <td>• 關鍵字：「一命償一命」、「罪責相當」、「罰當其罪」、「平復被害人家屬情緒」。<br>• ⚠️ 現代應報理論<strong>不等於</strong>無限制殘酷報復，仍須符合比例原則（寶典 p.107 第 2 題）。</td>
+          </tr>
+          <tr>
+            <td><strong>(二)-1 <span class="key-term">一般預防理論</span></strong></td>
+            <td><strong>展望未來</strong><br>（針對<strong>社會一般大眾／潛在犯罪者</strong>）</td>
+            <td>
+              • <strong>老師板書</strong>：<strong>嚇阻社會大眾勿犯罪</strong>。<br>
+              • <strong>課本內涵</strong>：透過事先制定刑罰規範、公開審判與政策宣導，讓社會大眾知悉犯罪後的刑罰下場，心生警惕而不敢以身試法，最終期盼達到「<strong>刑期無刑</strong>」的理想。
+            </td>
+            <td>• 關鍵字：「殺雞儆猴」、「提高酒駕罰則以嚇阻民眾酒駕」、「政策宣導喝酒不開車」、「警戒一般人」。</td>
+          </tr>
+          <tr>
+            <td><strong>(二)-2 <span class="key-term">特別預防理論</span></strong><br>（教育理論）</td>
+            <td><strong>展望未來</strong><br>（針對<strong>個別特定犯罪行為人</strong>）</td>
+            <td>
+              • <strong>老師板書</strong>：<strong>矯治罪犯，預防再犯</strong>。<br>
+              • <strong>課本內涵</strong>：考量犯罪可能受家庭背景、成長過程或社會制度影響，故對<strong>犯罪行為人本身</strong>加以教育、感化、治療與矯治，協助其順利重返社會（更生），<strong>降低該犯罪人日後的再犯率</strong>。
+            </td>
+            <td>• 關鍵字：「監獄教化與技能訓練」、「假釋制度」、「緩起訴／緩刑」、「施以<strong>保安處分</strong>防止該犯人再犯」。<br>• ⚠️ 陷阱：判甲有罪以「避免<strong>其他學生</strong>再犯」是<strong>一般預防</strong>，避免「<strong>甲自己</strong>再犯」才是<strong>特別預防</strong>（寶典 p.108 第 5 題）！</td>
+          </tr>
+          <tr>
+            <td><strong>(三) <span class="key-term">綜合理論</span></strong><br>（我國現行採行）</td>
+            <td><strong>過去＋未來兼顧</strong><br>（犯罪人＋社會大眾）</td>
+            <td>
+              • <strong>老師板書</strong>：<strong>應報 ＋ 預防</strong>。<br>
+              • <strong>課本內涵</strong>：我國《刑法》結合應報理論與預防理論，一方面使犯罪者承擔與罪責相應的刑責（應報），同時警戒社會大眾（一般預防），並對犯罪者進行矯正與預防再犯（特別預防）。
+            </td>
+            <td>• 課本實例（p.75）：政府宣導酒駕刑責（一般預防）＋對酒駕肇事者判處相應徒刑（應報）＋視情形令入處所施以酒癮禁戒處分（特別預防）。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">2. 必考補充：刑罰的種類（主刑 vs. 從刑）與「保安處分」六大類型</h3>
+    <div class="grid-2">
+      <div class="info-card">
+        <h4>⚖️ 刑罰的法定種類：主刑 vs. 從刑（寶典 p.80）</h4>
+        <ul>
+          <li><strong><span class="key-term">主刑</span>（可單獨科處，共 5 種）</strong>：
+            <ol>
+              <li><strong>死刑</strong>（生命刑）</li>
+              <li><strong>無期徒刑</strong>（自由刑）</li>
+              <li><strong>有期徒刑</strong>（自由刑：原則 2 月以上 15 年以下，遇加減得減至 2 月未滿或加至 20 年，數罪併罰最長 30 年）</li>
+              <li><strong>拘役</strong>（短期自由刑：1 日以上 60 日未滿，遇加重得加至 120 日）</li>
+              <li><strong>罰金</strong>（財產刑：新臺幣 1,000 元以上；注意區分行政罰的「罰鍰」！）</li>
+            </ol>
+          </li>
+          <li><strong><span class="key-term">從刑</span>（須附加於主刑科處）</strong>：<strong><span class="key-term">褫奪公權</span></strong>（剝奪擔任公務員及公職候選人之資格；注意：<strong>並未剝奪選舉罷免投票權</strong>！）。</li>
+        </ul>
+      </div>
+
+      <div class="info-card ok">
+        <h4>🛡️ 特別預防的具體展現：保安處分（課本 p.75 小辭典）</h4>
+        <ul>
+          <li><strong>核心性質</strong>：<span class="key-term">保安處分</span>是<strong>刑罰以外之處分</strong>，針對犯罪者的「將來危險性」所設計的社會安全與教育矯治措施，<strong>得與刑罰併行處罰之</strong>（或對無責任能力／限制責任能力者單獨施以處分）。</li>
+          <li><strong>六大法定類型（必背配對！）</strong>：
+            <ol>
+              <li><strong>感化教育</strong>：針對<strong>未滿 18 歲</strong>之犯罪行為人。</li>
+              <li><strong>監護處分</strong>：針對因<strong>精神障礙或心智缺陷</strong>而不罰或減輕其刑者。</li>
+              <li><strong>禁戒處分</strong>：針對<strong>酗酒（酒癮）、施用毒品或麻醉藥品成癮</strong>之犯罪者。</li>
+              <li><strong>強制治療</strong>：針對<strong>性侵害</strong>等性犯罪行為人。</li>
+              <li><strong>保護管束</strong>：針對<strong>假釋中、緩刑期間</strong>之成人或受保護處分之未成年人。</li>
+              <li><strong>驅逐出境</strong>：針對受有期徒刑以上宣告之<strong>外國籍</strong>犯罪者（執行完畢或赦免後驅逐）。</li>
+            </ol>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 3: 刑法謙抑性 ==================== -->
+  <section class="section-card" id="sec-3">
+    <div class="section-header">
+      <h2 class="section-title">參、4-1 刑罰與刑法謙抑（三）：刑法謙抑性（最後手段性）</h2>
+      <div>
+        <span class="badge-board">板書來源：S__23756804_0.jpg 右板</span>
+        <span class="badge-book">課本 p.74 / 寶典 p.83</span>
+      </div>
+    </div>
+
+    <!-- Teacher Chalkboard Replica: Right Board -->
+    <div class="chalkboard">
+      <div class="chalkboard-header">
+        <span>👩‍🏫 老師黑板筆記原貌重現（右板：三、刑法謙抑）</span>
+        <span>檔案：_收件匣/S__23756804_0.jpg</span>
+      </div>
+      <div style="font-size:0.9rem; color:var(--chalk-yellow); margin-bottom:4px; padding-left:105px;">
+        謙讓 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 抑制
+      </div>
+      <p style="font-size:1.15rem; margin-bottom:8px;">
+        <strong>三、刑法 <span class="chalk-circle-word">謙</span> <span class="chalk-circle-word">抑</span></strong>
+      </p>
+      <p style="padding-left:24px; font-size:1.08rem; margin-bottom:16px;">
+        <strong>➔ <span class="chalk-pink">最後手段</span></strong>
+      </p>
+
+      <div style="background:rgba(255,255,255,0.06); padding:16px 20px; border-radius:10px; border-left:4px solid var(--chalk-yellow);">
+        <p style="font-size:1.05rem; margin-bottom:12px;">
+          <strong>犯罪：</strong><span class="chalk-yellow">法律規定應受刑罰處罰的行為</span>
+        </p>
+        <p style="font-size:1.05rem; margin-bottom:8px;">
+          <strong>範圍會調整</strong>
+        </p>
+        <p style="padding-left:20px; font-size:1.02rem; color:var(--chalk-blue);">
+          <strong>➔ 反映<span class="chalk-yellow">立法者的取捨</span> ＆ <span class="chalk-yellow">憲法解釋的演進</span></strong>
+        </p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">什麼是「刑法謙抑性（最後手段性）」？</h3>
+    <ul>
+      <li><strong>字義拆解（老師板書上方特別標註）</strong>：「<strong>謙</strong>」是<strong>謙讓</strong>（能由道德、家庭教育、民法賠償或行政處罰處理的，刑法就禮讓不介入）；「<strong>抑</strong>」是<strong>自我抑制</strong>（國家自我克制動用刑罰的衝動）。</li>
+      <li><strong>核心定義 — <span class="key-term">最後手段性</span>（Ultima Ratio）</strong>：
+        <ul>
+          <li>國家面對違法行為有三種層次的法律回應：<strong>民事賠償（如損害賠償）、行政處罰（如罰鍰、吊扣駕照）與刑事制裁（刑罰）</strong>。</li>
+          <li>由於刑罰最為嚴厲，除非民事與行政手段皆不足以有效保護法益、遏止不法行為時，國家才在不得已的情況下動用刑罰，並以<strong>最小且必要的刑罰</strong>加以制裁（呼應憲法第 23 條比例原則）。</li>
+        </ul>
+      </li>
+      <li><strong>為什麼「犯罪的範圍」會隨時代動態調整？（老師板書核心）</strong>：
+        <ul>
+          <li>什麼行為構成「犯罪」，取決於<strong>法律規定應受刑罰處罰的行為</strong>。</li>
+          <li>隨著社會價值變遷，犯罪的範圍並非一成不變，而是會透過「<strong>立法者的取捨</strong>（立法院修法增刪）」與「<strong>憲法解釋的演進</strong>（大法官解釋／憲法法庭判決宣告違憲）」，產生「<strong>除罪化</strong>」與「<strong>入罪化</strong>」的調整！</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ==================== SECTION 4: 除罪化 vs. 入罪化 ==================== -->
+  <section class="section-card" id="sec-4">
+    <div class="section-header">
+      <h2 class="section-title">肆、4-1 刑罰與刑法謙抑（四）：除罪化 vs. 入罪化</h2>
+      <div>
+        <span class="badge-board">板書來源：S__23756805_0.jpg</span>
+        <span class="badge-book">課本 p.74 / 寶典 p.83 / 素養題本 p.42</span>
+      </div>
+    </div>
+
+    <!-- Teacher Chalkboard Replica: Table -->
+    <div class="chalkboard">
+      <div class="chalkboard-header">
+        <span>👩‍🏫 老師黑板筆記原貌重現（除罪化 vs. 入罪化 對照表）</span>
+        <span>檔案：_收件匣/S__23756805_0.jpg</span>
+      </div>
+      <table class="chalk-table">
+        <thead>
+          <tr>
+            <th style="width:18%;"></th>
+            <th style="width:41%;">除 罪 化</th>
+            <th style="width:41%;">入 罪 化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:center; font-weight:800; color:var(--chalk-yellow);">意 義</td>
+            <td style="text-align:center; font-size:1.1rem; font-weight:800;">
+              犯罪 ➔ <span class="chalk-blue">非犯罪</span>
+            </td>
+            <td style="text-align:center; font-size:1.1rem; font-weight:800;">
+              非犯罪 ➔ <span class="chalk-pink">犯罪</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align:center; font-weight:800; color:var(--chalk-yellow);">例 子</td>
+            <td style="text-align:center;">
+              <p style="font-size:1.05rem; font-weight:800;">通姦除罪化（2020）</p>
+              <p class="chalk-yellow" style="font-size:1.12rem; margin-top:8px;">≠ 通姦合法化</p>
+            </td>
+            <td style="text-align:center; vertical-align:middle;">
+              <p style="font-size:1.08rem; font-weight:800;">跟蹤騷擾</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-title">1. 「除罪化」與「入罪化」完整比較</h3>
+    <div class="grid-2">
+      <div class="info-card ok">
+        <h4>📉 除罪化（犯罪 ➔ 非犯罪） <span>刑法謙抑性的展現</span></h4>
+        <ul>
+          <li><strong>核心定義</strong>：原本被《刑法》處罰的行為，經評估認為無需動用刑罰來遏止，而將相關刑事處罰規定刪除，改由較輕微的<strong>行政責任（罰鍰）</strong>或<strong>民事責任（侵權行為損害賠償）</strong>處理。</li>
+          <li><strong>老師板書黃字必考陷阱</strong>：<br>
+            <strong>「<span class="key-term">通姦除罪化 ≠ 通姦合法化</span>」</strong>！<br>
+            除罪化僅代表「國家不再動用刑罰（抓去坐牢）制裁」，但通姦行為依然違反《民法》婚姻忠誠義務，屬於<strong>民事不法（侵權行為）</strong>，受害配偶仍可向出軌配偶及相姦人請求<strong>民事損害賠償（精神慰撫金）</strong>及訴請裁判離婚！</li>
+          <li><strong>其他除罪化實例</strong>：《票據法》空頭支票刑責廢除（回歸民事債務處理）。</li>
+        </ul>
+      </div>
+
+      <div class="info-card warn">
+        <h4>📈 入罪化（非犯罪 ➔ 犯罪） <span>回應社會變遷保護新興法益</span></h4>
+        <ul>
+          <li><strong>核心定義</strong>：原本不構成犯罪的行為，因社會變遷或科技發展，大眾有共識認為嚴重侵害他人或社會法益，必須動用《刑法》保護，因此由立法機關<strong>新增刑事處罰規定</strong>。</li>
+          <li><strong>課本與板書四大入罪化實例</strong>：
+            <ol>
+              <li><strong>《跟蹤騷擾防制法》（2021 年公布）</strong>：明確定義 8 大跟騷樣態（須與性或性別有關、針對特定人反覆或持續、違反意願且使人心生畏怖），將跟蹤騷擾行為入罪化（課本 p.74 圖 4-1-2）。</li>
+              <li><strong>《刑法》妨害電腦使用罪章（2003 年增訂）</strong>：將無故入侵他人電腦、破壞電磁紀錄等駭客行為入罪化（課本 p.76）。</li>
+              <li><strong>《動物保護法》修法（2007 年）</strong>：將故意虐待或宰殺動物致死傷加入刑罰規範（課本 p.76 圖 4-1-3）。</li>
+              <li><strong>《刑法》「N 號房條款」（2021 年修法）</strong>：針對未經同意攝錄、散布性影像或強制性交結合攝錄行為入罪及加重刑責（課本 p.101）。</li>
+            </ol>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-title">2. 素養題本專題深究：司法院《釋字第 791 號》通姦除罪化釋憲案（2020 年 5 月）</h3>
+    <div class="callout">
+      <div class="callout-title">⚖️ 大法官《釋字第 791 號》兩大違憲宣告（素養題本 p.42–43 必考！）</div>
+      <p>大法官於 2020 年 5 月 29 日作成《釋字第 791 號》解釋，變更過去《釋字第 554 號》合憲見解，同時宣告以下兩條條文自公布日起立即失效：</p>
+      <ol style="margin-top:8px; padding-left:20px;">
+        <li><strong>原《刑法》第 239 條（通姦罪：處 1 年以下有期徒刑）違憲</strong>：
+          <ul>
+            <li><strong>侵害之基本權</strong>：限制人民受《憲法》第 22 條保障之「<strong><span class="key-term">性自主權</span></strong>」（與個人人格自由密切相關）及「<strong><span class="key-term">隱私權</span></strong>」。</li>
+            <li><strong>違反之原則</strong>：違反《憲法》第 23 條「<strong><span class="key-term">比例原則</span></strong>」與「<strong><span class="key-term">刑法謙抑性</span></strong>」。大法官指出：通姦雖違反婚姻忠誠義務並傷害配偶感情，但<strong>不致明顯損及公共利益</strong>；且通姦多發生於私密領域，國家動用刑罰長驅直入捉姦調查，不僅嚴重干預隱私，更往往加速婚姻破裂，無助於維持圓滿婚姻關係（手段無助於目的、損害大於公益）。</li>
+          </ul>
+        </li>
+        <li><strong>原《刑事訴訟法》第 239 條但書（「對配偶撤回告訴者，其效力不及於相姦人」）違憲</strong>：
+          <ul>
+            <li><strong>違反之原則</strong>：違反《憲法》第 7 條「<strong><span class="key-term">平等原則</span></strong>」。實務上常出現配偶原諒出軌丈夫（對配偶撤告）、卻只單獨告小三（相姦人），導致女性受判刑人數遠高於男性的實質性別不平等，且無正當理由對共同犯罪之通姦人與相姦人做差別待遇。</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 5: 資料來源清單 ==================== -->
+  <section class="section-card" id="sec-sources">
+    <div class="section-header">
+      <h2 class="section-title">📂 本筆記資料來源清單（Sources）</h2>
+    </div>
+    <ul class="source-list">
+      <li>
+        <span class="src-badge src-primary">主來源｜老師板書</span>
+        <div>
+          <strong>_收件匣 / S__23756804_0.jpg</strong><br>
+          涵蓋：<code>4-1 刑罰與刑法謙抑</code> 之「一、刑罰應具正當性（(一) why：剝奪重要人權 & 深遠影響；(二) when：制裁嚴重侵害法益的行為；(三) How：國家獨占刑罰權，防止私刑）」、「二、刑罰的目的（(一) 應報：罪責相當；(二) 預防：1. 一般預防、2. 特別預防；(三) 綜合：應報＋預防）」與「三、刑法謙抑（謙讓＋抑制 ➔ 最後手段；犯罪定義；範圍會調整 ➔ 反映立法者的取捨 & 憲法解釋的演進）」。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-primary">主來源｜老師板書</span>
+        <div>
+          <strong>_收件匣 / S__23756805_0.jpg</strong><br>
+          涵蓋：<code>除罪化 vs. 入罪化</code> 黑板對照表——除罪化（意義：犯罪 ➔ 非犯罪；例子：通姦除罪化 2020，黃字強調「≠ 通姦合法化」）與入罪化（意義：非犯罪 ➔ 犯罪；例子：跟蹤騷擾）。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-secondary">輔助來源｜教科書</span>
+        <div>
+          <strong>90_原始資源與教材庫 / 教科書與講義 / 第二冊 / 課本 / 公民(2)課本_04_CH4.pdf</strong><br>
+          《普通型高級中等學校 公民與社會（2）保障人權》（113 學年度乙版）第 4 章第一節〈刑罰與刑法〉（p.73–75, 101）。包含三大法益小辭典（p.73）、通姦除罪化與跟騷法圖解（圖 4-1-1、4-1-2）、保安處分六大類型小辭典（p.75）及思與辨〈N 號房條款〉（p.101）。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-secondary">輔助來源｜講義題本</span>
+        <div>
+          <strong>90_原始資源與教材庫 / 教科書與講義 / 第二冊 / 學習寶典 / 05-113高中公民(2)乙版-學習寶典(學用)-CH4-1206.pdf</strong><br>
+          第 4 章〈刑事法與人權保障〉國高中銜接（主刑與從刑，p.80）、第一節重點秘笈（三種法益比較、最後手段性、應報／預防／綜合理論與保安處分表格，p.82–84）及實戰演練題（p.107–108）。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-secondary">輔助來源｜素養題本</span>
+        <div>
+          <strong>90_原始資源與教材庫 / 教科書與講義 / 第二冊 / 素養題本 / 04-113高中公民(2)乙版-素養題本(學用)-C4-1126.pdf</strong><br>
+          主題 11〈我國通姦罪的釋憲案與廢止〉（p.42–44），詳列司法院大法官《釋字第 791 號》宣告《刑法》第 239 條及《刑事訴訟法》第 239 條但書違憲之理由與法理分析。
+        </div>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<script>
+function toggleQuizMode() {
+  const body = document.body;
+  const btn = document.getElementById('quizBtn');
+  body.classList.toggle('quiz-mode');
+  const isQuiz = body.classList.contains('quiz-mode');
+  if (isQuiz) {
+    btn.classList.add('active');
+    btn.textContent = '👁️ 結束自測（顯示全部答案）';
+    document.querySelectorAll('.key-term').forEach(el => el.classList.remove('revealed'));
+  } else {
+    btn.classList.remove('active');
+    btn.textContent = '🎯 開啟遮罩自測模式';
+  }
+}
+
+document.addEventListener('click', function(e) {
+  if (document.body.classList.contains('quiz-mode') && e.target.classList.contains('key-term')) {
+    e.target.classList.toggle('revealed');
+  }
+});
+</script>
+
+</body>
+</html>

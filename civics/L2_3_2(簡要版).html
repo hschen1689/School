@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>考前衝刺｜3.2 行政程序（SVG板書簡要版）</title>
+<style>
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --pri: #1a3d6e;
+  --board: #1b362e;
+  --board-frame: #8c6239;
+  --chalk: #ffe066;
+  --pink: #ff99ac;
+  --green: #8ce99a;
+  --red: #b91c1c;
+  --redbg: #fef2f2;
+  --ok: #0f766e;
+  --okbg: #f0fdfa;
+  --bd: #e2e8f0;
+  --ink: #1e293b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.7;
+  padding-bottom: 50px;
+}
+nav {
+  background: var(--pri);
+  color: #fff;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+nav a, nav button {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.86rem;
+  padding: 6px 13px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.12);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+nav a:hover { background: rgba(255,255,255,0.25); }
+nav a.on { background: #fff; color: var(--pri); font-weight: 800; }
+nav button { background: #eab308; color: #1e293b; border: none; font-weight: 800; }
+nav button.on { background: #ef4444; color: #fff; }
+
+.wrap { max-width: 980px; margin: 22px auto; padding: 0 16px; }
+
+.hero {
+  background: linear-gradient(135deg, #0f5257 0%, #1a3d6e 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 22px 26px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 14px rgba(15,23,42,0.1);
+}
+.hero h1 { font-size: 1.5rem; font-weight: 900; margin-bottom: 6px; }
+.hero p { font-size: 0.92rem; opacity: 0.92; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 14px rgba(15,23,42,0.05);
+}
+h2 {
+  font-size: 1.2rem;
+  color: var(--pri);
+  border-bottom: 2px solid var(--bd);
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+h2 small {
+  font-size: 0.75rem;
+  background: var(--board);
+  color: var(--chalk);
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+h3 {
+  font-size: 1.04rem;
+  color: var(--pri);
+  margin: 16px 0 8px;
+  padding-left: 10px;
+  border-left: 4px solid var(--ok);
+}
+
+/* SVG Board Container */
+.svg-board-wrap {
+  margin: 12px 0 18px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.14);
+  border: 6px solid var(--board-frame);
+  background: var(--board);
+}
+.svg-board-wrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 10px 0; }
+th, td { border: 1px solid var(--bd); padding: 9px 12px; text-align: left; vertical-align: top; }
+th { background: #f1f5f9; color: var(--pri); font-weight: 800; }
+tr:nth-child(even) td { background: #fafcff; }
+
+ul, ol { padding-left: 20px; font-size: 0.93rem; }
+li { margin: 5px 0; }
+
+.k {
+  background: #fef08a;
+  color: #854d0e;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 800;
+  transition: all 0.15s;
+}
+body.quiz .k {
+  background: #334155;
+  color: transparent;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 2px dashed #94a3b8;
+}
+body.quiz .k.show { background: #dcfce7; color: #166534; }
+
+.explain-box {
+  background: #f8fafc;
+  border: 1px solid var(--bd);
+  border-left: 5px solid var(--pri);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: 0.92rem;
+}
+.trap {
+  background: var(--redbg);
+  border-left: 5px solid var(--red);
+  border-radius: 8px;
+  padding: 11px 15px;
+  margin-top: 10px;
+  font-size: 0.91rem;
+}
+.trap b { color: var(--red); }
+.tip {
+  background: var(--okbg);
+  border-left: 5px solid var(--ok);
+  border-radius: 8px;
+  padding: 11px 15px;
+  margin-top: 10px;
+  font-size: 0.91rem;
+}
+.tip b { color: var(--ok); }
+
+.qa details {
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  padding: 9px 14px;
+  margin: 7px 0;
+  font-size: 0.92rem;
+  background: #fafcff;
+}
+.qa summary { cursor: pointer; font-weight: 700; }
+.qa details p { margin-top: 6px; color: var(--ok); font-weight: 700; }
+
+.src { font-size: 0.84rem; color: #64748b; }
+.src li { margin: 4px 0; }
+
+@media print {
+  nav { display: none; }
+  .card { box-shadow: none; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <strong>⚡ 考前衝刺（SVG板書＋細說加強）｜Ch3 生活中的行政法</strong>
+  <div style="display:flex;gap:6px;flex-wrap:wrap">
+    <a href="L2_3_1(簡要版).html">📘 3.1 衝刺簡要版</a>
+    <a href="L2_3_2(簡要版).html" class="on">📗 3.2 衝刺簡要版</a>
+    <a href="L2_3_1.html">📄 3.1 完整版</a>
+    <a href="L2_3_2.html">📄 3.2 完整版</a>
+    <button id="qb" onclick="tq()">🎯 遮罩自測</button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>3.2 行政程序（正當行政程序的精神｜SVG板書衝刺版）</h1>
+    <p>以 SVG 向量黑板完整還原老師「3-2 行政程序」板書：目的（實踐程序正義）與三大原則（公正 No 偏頗、公開 No 資訊不對稱、民主 表達與參與 ☆結果納入決策），搭配白話細說與秒殺對照表！</p>
+  </div>
+
+  <!-- ==================== 壹、3-2 行政程序：目的與 (一) 公正原則 ==================== -->
+  <div class="card">
+    <h2>壹、3-2 行政程序：目的 ＆ (一) 公正原則 <small>對應板書：S__23142405_0.jpg 右板</small></h2>
+
+    <!-- SVG 板書 1：重現 S__23142405_0.jpg 右板 -->
+    <div class="svg-board-wrap">
+      <svg viewBox="0 0 960 350" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif">
+        <defs>
+          <marker id="arrow-yellow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#ffe066"/>
+          </marker>
+        </defs>
+        <rect width="960" height="350" fill="#1b362e"/>
+        <line x1="510" y1="20" x2="510" y2="330" stroke="rgba(255,255,255,0.22)" stroke-width="2" stroke-dasharray="6,6"/>
+
+        <!-- Left Side: Exact Blackboard Layout -->
+        <text x="32" y="48" fill="#ffe066" font-size="24" font-weight="900">3-2 行政程序</text>
+
+        <text x="32" y="95" fill="#ffffff" font-size="19" font-weight="800">一、目的</text>
+        <text x="68" y="132" fill="#8ce99a" font-size="22" font-weight="900">實踐程序正義</text>
+
+        <text x="32" y="182" fill="#ffffff" font-size="19" font-weight="800">二、原則</text>
+        <text x="42" y="220" fill="#ffe066" font-size="21" font-weight="900">(一) 公正</text>
+        <line x1="145" y1="213" x2="195" y2="213" stroke="#ffe066" stroke-width="2.5" marker-end="url(#arrow-yellow)"/>
+        <text x="208" y="220" fill="#ff99ac" font-size="22" font-weight="900">No 偏頗</text>
+
+        <!-- 1, 2, 3 under (一) 公正 -->
+        <text x="56" y="262" fill="#ffffff" font-size="18" font-weight="700">1. <tspan fill="#ffe066" font-weight="900">有利</tspan>、<tspan fill="#ffe066" font-weight="900">不利</tspan> 併予注意</text>
+        <line x1="78" y1="268" x2="118" y2="268" stroke="#ffe066" stroke-width="2.5"/>
+        <line x1="136" y1="268" x2="176" y2="268" stroke="#ffe066" stroke-width="2.5"/>
+
+        <text x="56" y="298" fill="#ffffff" font-size="18" font-weight="700">2. <tspan fill="#ffe066" font-weight="900">利益迴避</tspan></text>
+        <line x1="78" y1="304" x2="158" y2="304" stroke="#ffe066" stroke-width="2.5"/>
+
+        <text x="56" y="332" fill="#ffffff" font-size="18" font-weight="700">3. 禁止程序外接觸</text>
+
+        <!-- Right Side: 課本補充與重點對應 -->
+        <rect x="535" y="28" width="398" height="296" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,224,102,0.4)" stroke-width="1.5"/>
+        <text x="555" y="60" fill="#ffe066" font-size="17" font-weight="900">➕ 課本與法條必考補充（公正原則）：</text>
+        <text x="555" y="94" fill="#8ce99a" font-size="15" font-weight="800">• 組織合法性要求（課本列為公正第 1 點）</text>
+        <text x="570" y="118" fill="#f5f7f0" font-size="14">① 學校性平會：女性委員 ≥ 1/2</text>
+        <text x="570" y="140" fill="#f5f7f0" font-size="14">② 採購評選委員會：專家學者 ≥ 1/3</text>
+        <text x="570" y="162" fill="#f5f7f0" font-size="14">③ 土地徵收審議小組：專家及民團 ≥ 1/2</text>
+
+        <text x="555" y="200" fill="#ff99ac" font-size="15" font-weight="800">• 利益迴避的 3 種啟動方式：</text>
+        <text x="570" y="224" fill="#f5f7f0" font-size="14">① 公務員主動（自行）迴避</text>
+        <text x="570" y="246" fill="#f5f7f0" font-size="14">② 上級長官依職權命令迴避</text>
+        <text x="570" y="268" fill="#f5f7f0" font-size="14">③ 當事人申請該公務員迴避</text>
+
+        <text x="555" y="304" fill="#ffe066" font-size="14" font-weight="700">• 若有程序外接觸 ➔ 須將往來以「書面公開」</text>
+      </svg>
+    </div>
+
+    <h3>🔍 板書重點速讀</h3>
+    <div class="explain-box">
+      <ul>
+        <li><strong>一、目的＝實踐<span class="k">程序正義</span></strong>：先有公正、公開、民主的程序，才能確保達成實質正義（例：警察酒測未錄影、未告知程序 ➔ 違反程序正義，罰單撤銷）。</li>
+        <li><strong>二、(一) 公正原則 ➔ <span class="k">No 偏頗</span></strong>：
+          ① <span class="k">有利、不利併予注意</span>（不可只挑不利證據）｜
+          ② <span class="k">利益迴避</span>（本人或親屬利害關係，可主動／上級命令／當事人申請迴避）｜
+          ③ <span class="k">禁止程序外接觸</span>（禁私下飲宴關說，有接觸須<strong>書面公開</strong>）｜
+          ➕ 課本補充：<span class="k">組織合法性</span>（性平會女性 ≥ 1/2、採購評選專家 ≥ 1/3）。
+        </li>
+      </ul>
+    </div>
+    <div class="trap"><b>⚠️ 秒殺區分：</b>承辦人與廠商是<b>親戚</b> ➔ 選「<b>利益迴避</b>」；承辦人與廠商<b>私下聚餐</b> ➔ 選「<b>禁止程序外接觸</b>」。</div>
+  </div>
+
+  <!-- ==================== 貳、(二) 公開原則 ＆ (三) 民主原則 ==================== -->
+  <div class="card">
+    <h2>貳、3-2 行政程序：(二) 公開原則 ＆ (三) 民主原則 <small>對應板書：S__23142406_0.jpg</small></h2>
+
+    <!-- SVG 板書 2：重現 S__23142406_0.jpg -->
+    <div class="svg-board-wrap">
+      <svg viewBox="0 0 960 360" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif">
+        <rect width="960" height="360" fill="#1b362e"/>
+        <line x1="480" y1="20" x2="480" y2="340" stroke="rgba(255,255,255,0.22)" stroke-width="2" stroke-dasharray="6,6"/>
+
+        <!-- Left Panel: (二) 公開 ➔ No 資訊不對稱 -->
+        <text x="28" y="52" fill="#ffe066" font-size="21" font-weight="900">(二) 公開</text>
+        <line x1="128" y1="45" x2="178" y2="45" stroke="#ffe066" stroke-width="2.5" marker-end="url(#arrow-yellow)"/>
+        <text x="190" y="52" fill="#ff99ac" font-size="21" font-weight="900">No 資訊不對稱</text>
+
+        <text x="48" y="110" fill="#ffffff" font-size="19" font-weight="800">1. <tspan fill="#8ce99a">公告周知</tspan></text>
+        <text x="76" y="136" fill="rgba(255,255,255,0.8)" font-size="14">（資訊以公開為原則、限制為例外，保障知的權利）</text>
+
+        <text x="48" y="180" fill="#ffffff" font-size="19" font-weight="800">2. <tspan fill="#8ce99a">個別通知</tspan></text>
+        <text x="76" y="206" fill="rgba(255,255,255,0.8)" font-size="14">（受告知權：事先告知、決定告知、救濟途徑教示）</text>
+
+        <text x="48" y="250" fill="#ffffff" font-size="19" font-weight="800">3. <tspan fill="#ffe066">文書送達</tspan></text>
+        <text x="76" y="276" fill="rgba(255,255,255,0.8)" font-size="14">（書面行政處分須經「合法送達」才正式生效！）</text>
+
+        <text x="48" y="320" fill="#ffffff" font-size="19" font-weight="800">4. <tspan fill="#ffe066">閱覽卷宗權</tspan></text>
+        <text x="200" y="320" fill="rgba(255,255,255,0.8)" font-size="14">（申請閱覽、抄寫、複印、攝影卷宗）</text>
+
+        <!-- Right Panel: (三) 民主 ➔ (人) 表達、參與 -->
+        <text x="510" y="52" fill="#ffe066" font-size="21" font-weight="900">(三) 民主</text>
+        <line x1="610" y1="45" x2="660" y2="45" stroke="#ffe066" stroke-width="2.5" marker-end="url(#arrow-yellow)"/>
+        <circle cx="685" cy="45" r="15" fill="none" stroke="#ffe066" stroke-width="2.2"/>
+        <text x="685" y="51" fill="#ffe066" font-size="16" font-weight="900" text-anchor="middle">人</text>
+        <text x="710" y="52" fill="#8ce99a" font-size="21" font-weight="900">表達、參與</text>
+
+        <text x="530" y="125" fill="#ffffff" font-size="20" font-weight="800">1. 陳述意見</text>
+        <text x="558" y="155" fill="rgba(255,255,255,0.85)" font-size="14">• 作成限制或剝奪人民權利之處分前，給予陳述機會</text>
+        <text x="558" y="178" fill="rgba(255,255,255,0.85)" font-size="14">• 屬於人民最基本的「消極參與」（單向表達）</text>
+
+        <text x="530" y="235" fill="#ffffff" font-size="20" font-weight="800">2. 聽證</text>
+        <rect x="550" y="252" width="230" height="40" rx="6" fill="rgba(255,224,102,0.15)" stroke="#ffe066" stroke-width="2"/>
+        <text x="565" y="279" fill="#ffe066" font-size="21" font-weight="900">☆ 結果納入決策</text>
+        <text x="558" y="318" fill="rgba(255,255,255,0.85)" font-size="14">• 更積極的「雙向辯駁」（可提證據、向機關人員發問）</text>
+        <text x="558" y="340" fill="#ff99ac" font-size="14" font-weight="700">• 聽證結果具拘束力，機關須說明採納或不採納之理由</text>
+      </svg>
+    </div>
+
+    <h3>🔍 板書重點速讀</h3>
+    <div class="explain-box">
+      <ul>
+        <li><strong>(二) 公開原則 ➔ <span class="k">No 資訊不對稱</span></strong>：
+          ① <span class="k">公告周知</span>（公開為原則，國家機密／個人隱私等 5 項為例外）｜
+          ② <span class="k">個別通知</span>（受告知權：事先告知、決定告知、救濟教示）｜
+          ③ <span class="k">文書送達</span>（書面處分經<strong>合法送達才正式生效</strong>）｜
+          ④ <span class="k">閱覽卷宗權</span>（當事人得申請閱覽／複印資料，如危樓屋主看鑑定報告、上網查違規照片）。
+        </li>
+        <li><strong>(三) 民主原則 ➔ 人民<span class="k">表達、參與</span></strong>：
+          ① <span class="k">陳述意見</span>（處分前單向表達＝<strong>消極參與</strong>，無拘束力）｜
+          ② <span class="k">聽證</span>（雙向提問辯駁＝<strong>積極參與</strong>，<strong><span class="k">☆ 結果納入決策</span></strong>，具拘束力）。
+        </li>
+      </ul>
+    </div>
+
+    <h3>🔥 必考表格：「陳述意見」vs.「公聽會」vs.「聽證會」一眼秒殺</h3>
+    <table>
+      <tr>
+        <th style="width:18%">比較項目</th>
+        <th style="width:26%">陳述意見</th>
+        <th style="width:28%">公聽會／一般說明會</th>
+        <th style="width:28%">聽證（聽證會）</th>
+      </tr>
+      <tr>
+        <td><b>互動方向</b></td>
+        <td>單向表達（多為書面陳述意見書）</td>
+        <td>廣泛聽取里民、專家正反建議</td>
+        <td><b>正式雙向辯駁</b>（陳述＋提證據＋發問）</td>
+      </tr>
+      <tr>
+        <td><b>積極程度</b></td>
+        <td>最基本的<b>消極參與</b></td>
+        <td>一般諮詢性質</td>
+        <td>最高強度的<b>積極參與</b></td>
+      </tr>
+      <tr>
+        <td><b>法律拘束力<br>（板書 ☆ 重點）</b></td>
+        <td>機關應考量，但不受拘束</td>
+        <td><b>僅供參考、無拘束力</b>；機關無答辯說明義務</td>
+        <td><b>☆ <span class="k">結果納入決策（具拘束力）</span></b>；機關須說明採納與否之理由</td>
+      </tr>
+    </table>
+    <div class="trap"><b>⚠️ 段考最愛考陷阱：</b>題目若寫「市政府為興建社會住宅舉辦里民會議蒐集正反意見」，這種會議只是<b>公聽會／說明會</b>（意見僅供參考，不會在會中投票表決，也不是聽證會）！</div>
+  </div>
+
+  <!-- ==================== 參、SVG 綜合實例圖解（性平會＋土地徵收） ==================== -->
+  <div class="card">
+    <h2>參、兩大綜合實例 SVG 視覺圖解（校園性平會 ＆ 土地徵收） <small>課本 p.62 ＋ 圖解法律 p.24–26</small></h2>
+
+    <div class="svg-board-wrap">
+      <svg viewBox="0 0 960 250" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif">
+        <rect width="960" height="250" fill="#1b362e"/>
+        <text x="28" y="38" fill="#ffe066" font-size="19" font-weight="900">🏫 圖解法律專題：校園性侵害、性騷擾及性霸凌事件法定正當程序（4 步驟與關鍵數字）</text>
+
+        <!-- Step 1 -->
+        <rect x="28" y="60" width="205" height="160" rx="10" fill="rgba(255,255,255,0.08)" stroke="#ffe066" stroke-width="2"/>
+        <text x="44" y="90" fill="#ffe066" font-size="16" font-weight="900">① 通報與申請</text>
+        <text x="44" y="120" fill="#ffffff" font-size="14">• 教職員獲知疑似事件</text>
+        <text x="44" y="146" fill="#ff99ac" font-size="16" font-weight="900">• 24 小時內通報</text>
+        <text x="56" y="168" fill="#f5f7f0" font-size="13">學校及縣市主管機關</text>
+        <text x="44" y="196" fill="#f5f7f0" font-size="13">• 被害人亦可申請調查</text>
+
+        <line x1="235" y1="140" x2="262" y2="140" stroke="#ffe066" stroke-width="2.5" marker-end="url(#arrow-yellow)"/>
+
+        <!-- Step 2 -->
+        <rect x="268" y="60" width="205" height="160" rx="10" fill="rgba(255,255,255,0.08)" stroke="#8ce99a" stroke-width="2"/>
+        <text x="284" y="90" fill="#8ce99a" font-size="16" font-weight="900">② 性平會決議受理</text>
+        <text x="284" y="120" fill="#ffe066" font-size="15" font-weight="900">• 女性委員 ≥ 1/2</text>
+        <text x="284" y="144" fill="#f5f7f0" font-size="13">（含教師/職工/家長/學生代表）</text>
+        <text x="284" y="172" fill="#ff99ac" font-size="15" font-weight="900">• 20 日內書面通知</text>
+        <text x="296" y="194" fill="#f5f7f0" font-size="13">當事人是否受理</text>
+
+        <line x1="475" y1="140" x2="502" y2="140" stroke="#ffe066" stroke-width="2.5" marker-end="url(#arrow-yellow)"/>
+
+        <!-- Step 3 -->
+        <rect x="508" y="60" width="205" height="160" rx="10" fill="rgba(255,255,255,0.08)" stroke="#ffe066" stroke-width="2"/>
+        <text x="524" y="90" fill="#ffe066" font-size="16" font-weight="900">③ 性別調查小組</text>
+        <text x="524" y="120" fill="#ffffff" font-size="14">• 組成 <tspan fill="#8ce99a" font-weight="800">3 或 5 人</tspan> 小組</text>
+        <text x="524" y="145" fill="#ffffff" font-size="14">• 給雙方陳述意見機會</text>
+        <text x="524" y="170" fill="#ffffff" font-size="14">• 保密當事人身分資料</text>
+        <text x="524" y="198" fill="#ff99ac" font-size="15" font-weight="900">• 2 個月內完成調查</text>
+
+        <line x1="715" y1="140" x2="742" y2="140" stroke="#ffe066" stroke-width="2.5" marker-end="url(#arrow-yellow)"/>
+
+        <!-- Step 4 -->
+        <rect x="748" y="60" width="188" height="160" rx="10" fill="rgba(255,255,255,0.08)" stroke="#ff99ac" stroke-width="2"/>
+        <text x="764" y="90" fill="#ff99ac" font-size="16" font-weight="900">④ 通知結果與申復</text>
+        <text x="764" y="120" fill="#ffffff" font-size="14">• 書面通知處理結果</text>
+        <text x="764" y="145" fill="#ffffff" font-size="14">• 告知救濟途徑</text>
+        <text x="764" y="174" fill="#ffe066" font-size="15" font-weight="900">• 不服：20 日內</text>
+        <text x="776" y="196" fill="#ffe066" font-size="14" font-weight="800">向學校提「申復」(1次)</text>
+      </svg>
+    </div>
+
+    <div class="tip">
+      <b>💡 土地徵收（課本 p.62 圖 3-2-4）如何同時體現三大原則？</b><br>
+      • <b>公正原則</b>：徵收審議小組專家及民團代表 <b>≥ 1/2</b>（組織合法）、相關公務員<b>利益迴避</b>、禁止與建商私下接觸。<br>
+      • <b>公開原則</b>：上網公開審議狀況（<b>公告周知</b>）、通過後公告並書面通知地主（<b>個別通知＋文書送達</b>）、利害關係人可申請<b>閱覽卷宗</b>。<br>
+      • <b>民主原則</b>：徵收計畫載明地主<b>陳述意見</b>情形、特定農業區重大建設徵收爭議應依法舉行<b>聽證</b>。
+    </div>
+  </div>
+
+  <!-- ==================== 肆、30秒自我檢測 ==================== -->
+  <div class="card qa">
+    <h2>✅ 考前 30 秒自我檢測（點擊展開答案）</h2>
+    <details><summary>1. 經濟部公務員審核中小企業補助案時，發現申請人是自己爸爸，依哪一原則應主動迴避？</summary><p>公正原則（No 偏頗 — 利益迴避）。</p></details>
+    <details><summary>2. 臺北市警察局提供民眾「線上查詢交通違規照片」，落實了公開原則中的哪兩項內涵？</summary><p>資訊以公開為原則（公告周知）＋ 閱覽卷宗權（學習寶典 p.72 第 8 題）。</p></details>
+    <details><summary>3. 書面行政處分作成後，必須完成什麼程序才會正式對外發生效力？</summary><p>合法的「文書送達」（公開原則）。</p></details>
+    <details><summary>4. 「陳述意見」與「聽證」在參與積極度及對行政機關的拘束力上有何差異？</summary><p>陳述意見是單向、消極參與，機關不受其意見拘束；聽證是雙向辯駁、積極參與，且「☆結果納入決策」，對主管機關具拘束力。</p></details>
+    <details><summary>5. 學校性平會的「女性委員」法定比例為何？當事人若不服性平調查處理結果，可在幾日內向學校提出什麼？</summary><p>女性委員應占總數 1/2 以上；不服處理結果可於 20 日內向學校提出「申復」（以 1 次為限）。</p></details>
+    <details><summary>6. 警察取締酒駕時未依規定全程連續錄影蒐證，也未告知酒測程序，法院撤銷罰單的理由為何？</summary><p>違反「正當行政程序（程序正義）」。</p></details>
+  </div>
+
+  <!-- ==================== 伍、資料來源 ==================== -->
+  <div class="card">
+    <h2>📂 資料來源清單</h2>
+    <ul class="src">
+      <li><b>主來源（老師黑板筆記照片，位於 <code>_收件匣/</code>）</b>：<code>S__23142405_0.jpg</code> 右板（3-2 行政程序：一、目的：實踐程序正義；二、原則：(一) 公正 ➔ No 偏頗）、<code>S__23142406_0.jpg</code>（(二) 公開 ➔ No 資訊不對稱；(三) 民主 ➔ 人民表達、參與，☆聽證結果納入決策）。</li>
+      <li><b>輔助來源（課本與講義）</b>：《普通型高級中等學校 公民與社會（2）保障人權》（113 乙版）第 3 章第二節〈正當行政程序的精神〉（p.55–62）；《學習寶典》第 3 章（p.53, 60–63, 68, 72–74）；《圖解法律》第 3 章〈從性別平等教育委員會看正當程序〉（p.24–27）。</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+function tq(){
+  const b = document.body, q = document.getElementById('qb');
+  b.classList.toggle('quiz');
+  const on = b.classList.contains('quiz');
+  q.classList.toggle('on', on);
+  q.textContent = on ? '👁️ 顯示答案' : '🎯 遮罩自測';
+  document.querySelectorAll('.k').forEach(e => e.classList.remove('show'));
+}
+document.addEventListener('click', e => {
+  if (document.body.classList.contains('quiz') && e.target.classList.contains('k')) {
+    e.target.classList.toggle('show');
+  }
+});
+</script>
+</body>
+</html>

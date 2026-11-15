@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>B2 CH4 刑事法與人權保障｜4-1 & 4-2 流程圖填空講義</title>
+<style>
+  @page { size: A4 landscape; margin: 0; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: #d9d9d9;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
+    font-size: 10pt; color: #1a1a1a; line-height: 1.45;
+  }
+  .toolbar {
+    position: sticky; top: 0; z-index: 9; background: #222; color: #fff;
+    padding: 8px 16px; display: flex; gap: 16px; align-items: center; font-size: 11pt;
+  }
+  .toolbar button { font-size: 11pt; padding: 4px 12px; cursor: pointer; }
+  .page {
+    width: 297mm; height: 210mm; margin: 10mm auto; background: #fff;
+    padding: 9mm 11mm 8mm; position: relative; overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,.25); page-break-after: always;
+    display: flex; flex-direction: column;
+  }
+  @media print {
+    body { background: #fff; }
+    .toolbar { display: none; }
+    .page { margin: 0; box-shadow: none; }
+  }
+  /* ---------- header ---------- */
+  .head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3mm; }
+  .head h1 { font-size: 15pt; margin: 0; font-weight: 800; letter-spacing: .5px; }
+  .head h1 small { font-size: 10pt; font-weight: 500; color: #555; margin-left: 8px; }
+  .head .who { font-size: 9.5pt; color: #333; }
+  .head .who span { display: inline-block; border-bottom: 1px solid #333; width: 22mm; margin: 0 6px 0 3px; }
+  /* ---------- rows ---------- */
+  .row { display: flex; align-items: stretch; gap: 2.5mm; border-top: 1px dashed #bbb; padding: 2.5mm 0; }
+  .row:first-of-type { border-top: none; }
+  .label {
+    width: 9mm; flex: none; writing-mode: vertical-rl; text-orientation: upright;
+    font-weight: 800; font-size: 11pt; letter-spacing: 2px; text-align: center;
+    border-right: 3px solid #222; padding-right: 1mm;
+  }
+  .col { display: flex; flex-direction: column; gap: 1.5mm; }
+  .center { justify-content: center; align-items: center; }
+  .arrow { flex: none; align-self: center; font-size: 17pt; line-height: 1; padding: 0 .5mm; }
+  .arrow.small { font-size: 13pt; }
+  /* ---------- boxes ---------- */
+  .box {
+    border: 1.6px solid #222; position: relative; min-height: 15mm;
+    padding: 4.5mm 2.5mm 1.5mm; display: flex; align-items: center; justify-content: center;
+    text-align: center; background: #fff;
+  }
+  .box .no { position: absolute; top: .8mm; left: 1.6mm; font-size: 8.5pt; font-weight: 600; }
+  .box .tag { position: absolute; top: .8mm; right: 1.8mm; font-size: 8pt; color: #666; }
+  .ans {
+    font-family: "DFKai-SB", "標楷體", "BiauKai", "Kaiti TC", "KaiTi", serif;
+    color: #1d4ed8; font-size: 13pt; visibility: hidden; line-height: 1.3;
+  }
+  .ans.sm { font-size: 11pt; }
+  body.show .ans { visibility: visible; }
+  .blank {
+    display: inline-block; border-bottom: 1.4px solid #222; min-width: 22mm;
+    text-align: center; padding: 0 2mm; margin: 0 1mm;
+  }
+  .printed { font-weight: 700; }          /* 印好的灰底框（非填空） */
+  .pbox {
+    border: 1.6px solid #222; padding: 2mm 2.5mm; text-align: center; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; min-height: 11mm; background: #f3f3f3;
+  }
+  .panel { border: 1.6px solid #222; padding: 2mm 3mm; font-size: 9pt; line-height: 1.5; }
+  .panel h4 { margin: 0 0 1mm; font-size: 10pt; text-align: center; }
+  .note { font-size: 9pt; line-height: 1.5; }
+  .note b, .star { font-weight: 800; }
+  .note ul { margin: .5mm 0 0; padding-left: 4.5mm; }
+  .note li { margin: 0; }
+  .hl { background: linear-gradient(transparent 55%, #fde68a 55%); font-weight: 700; }
+  .warn { border: 1.6px solid #222; border-left: 6px solid #222; padding: 1.5mm 3mm; font-size: 9pt; background: #fafafa; }
+  table.t { border-collapse: collapse; width: 100%; font-size: 8.8pt; }
+  table.t th, table.t td { border: 1px solid #444; padding: .8mm 1.5mm; text-align: left; vertical-align: top; }
+  table.t th { background: #eee; text-align: center; white-space: nowrap; }
+  .foot { margin-top: auto; font-size: 8pt; color: #777; text-align: right; }
+  /* timeline */
+  .tl { display: flex; align-items: center; gap: 1mm; }
+  .tl .pt { text-align: center; font-size: 9pt; min-width: 22mm; }
+  .tl .pt .d { font-weight: 800; font-size: 9.5pt; border-bottom: 2px solid #222; padding-bottom: .5mm; margin-bottom: .8mm; }
+  .tl .line { flex: 1; border-top: 2px solid #222; position: relative; min-width: 6mm; }
+  .tl .line::after { content: "▶"; position: absolute; right: -2.2mm; top: -2.6mm; font-size: 8pt; }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <strong>B2 CH4 流程圖填空講義</strong>
+  <button onclick="document.body.classList.toggle('show')">👁 顯示／隱藏答案</button>
+  <button onclick="window.print()">🖨 列印（A4 橫式）</button>
+  <span style="opacity:.75">先印空白版自己填，再開答案版對照（答案為藍色手寫體）</span>
+</div>
+
+<!-- =====================================================  PAGE 1 : 4-1  ===================================================== -->
+<section class="page">
+  <div class="head">
+    <h1>B2 CH4 刑事法與人權保障 ─ 4-1 刑罰與刑法謙抑 <small>（課本 p.73–75｜學習寶典 p.80–84）</small></h1>
+    <div class="who">班級<span></span>座號<span style="width:12mm"></span>姓名<span></span></div>
+  </div>
+
+  <!-- 一、刑罰應具正當性 -->
+  <div class="row" style="flex:0 0 auto">
+    <div class="label">刑罰正當性</div>
+
+    <div class="col" style="width:46mm">
+      <div class="box" style="min-height:17mm"><span class="no">1</span><span class="tag">Why</span>
+        <span class="ans">剝奪重要人權<br>＆影響深遠</span></div>
+      <div class="note">刑罰會剝奪<b>生命、自由、財產</b>，且留下前科，影響一生</div>
+    </div>
+    <div class="arrow">⟶</div>
+    <div class="col" style="width:46mm">
+      <div class="box" style="min-height:17mm"><span class="no">2</span><span class="tag">When</span>
+        <span class="ans">制裁嚴重侵害<br>「法益」的行為</span></div>
+      <div class="note">法益＝法律所保護的利益（見右表）</div>
+    </div>
+    <div class="arrow">⟶</div>
+    <div class="col" style="width:46mm">
+      <div class="box" style="min-height:17mm"><span class="no">3</span><span class="tag">How</span>
+        <span class="ans">國家獨占刑罰權</span></div>
+      <div class="note">＊目的：<b>防止私刑</b>（人民不得自行報復）</div>
+    </div>
+    <div class="arrow small">⟶</div>
+
+    <div class="panel" style="flex:1">
+      <h4>三大法益（秒殺區分）</h4>
+      <table class="t">
+        <tr><th>國家法益</th><td>公務員受賄、內亂外患、妨害公務、偽證、誣告</td></tr>
+        <tr><th>社會法益</th><td>酒駕、飆車、放火（公共危險罪）、偽造貨幣、賭博</td></tr>
+        <tr><th>個人法益</th><td>殺人、傷害、竊盜、公然侮辱、偷裝 GPS（妨害祕密）</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 二、刑罰的目的 -->
+  <div class="row" style="flex:0 0 auto">
+    <div class="label">刑罰目的</div>
+
+    <div class="col" style="width:44mm">
+      <div class="box" style="min-height:16mm"><span class="no">4</span><span class="tag">(一)</span>
+        <span class="ans">應報理論</span></div>
+      <div class="note">犯罪者承擔與其罪行<span class="hl">罪責相當</span>之處罰（以牙還牙，但仍受<b>比例原則</b>限制）</div>
+    </div>
+
+    <div class="col center" style="width:20mm">
+      <div class="pbox" style="width:18mm">預防<br>(二)</div>
+    </div>
+    <div class="col" style="justify-content:space-around; flex:none">
+      <div class="arrow" style="font-size:15pt">↗</div>
+      <div class="arrow" style="font-size:15pt">↘</div>
+    </div>
+
+    <div class="col" style="width:62mm">
+      <div style="display:flex; gap:2mm; align-items:center">
+        <div class="box" style="width:26mm; min-height:13mm"><span class="no">5</span><span class="ans sm">一般預防</span></div>
+        <div class="note">嚇阻<span class="hl">社會大眾</span>勿犯罪<br>（殺雞儆猴、刑期無刑）</div>
+      </div>
+      <div style="display:flex; gap:2mm; align-items:center">
+        <div class="box" style="width:26mm; min-height:13mm"><span class="no">6</span><span class="ans sm">特別預防</span></div>
+        <div class="note">矯治<span class="hl">犯罪者本人</span>，預防再犯<br>→ 搭配<b>保安處分</b></div>
+      </div>
+    </div>
+
+    <div class="arrow">⟶</div>
+    <div class="col" style="width:40mm">
+      <div class="box" style="min-height:16mm"><span class="no">7</span><span class="tag">(三)</span>
+        <span class="ans sm">綜合理論<br>應報＋預防</span></div>
+      <div class="note">＊我國現行採此說</div>
+    </div>
+
+    <div class="panel" style="flex:1">
+      <h4>刑罰 vs. 保安處分</h4>
+      <b>主刑 5 種</b>：死刑、無期徒刑、有期徒刑、拘役、罰金<br>
+      <b>從刑 1 種</b>：褫奪公權（不能當公務員／候選人，<u>仍可投票</u>）<br>
+      <b>保安處分</b>（特別預防，可與刑罰並行）：<br>
+      未滿18歲→感化教育｜精障→監護｜毒酒癮→禁戒｜性侵犯→強制治療｜假釋緩刑→保護管束｜外國人→驅逐出境
+    </div>
+  </div>
+
+  <!-- 三、刑法謙抑 -->
+  <div class="row" style="flex:1">
+    <div class="label">刑法謙抑</div>
+
+    <div class="col" style="width:62mm">
+      <div class="note" style="text-align:center"><b>謙</b>＝謙讓　<b>抑</b>＝抑制　→ 能不用就不用</div>
+      <div style="display:flex; align-items:flex-end; gap:1mm; height:30mm">
+        <div class="pbox" style="width:17mm; min-height:9mm; font-size:8.8pt">民事<br>賠償</div>
+        <div class="arrow small" style="align-self:flex-end; margin-bottom:2mm">↗</div>
+        <div class="pbox" style="width:17mm; min-height:9mm; margin-bottom:7mm; font-size:8.8pt">行政罰</div>
+        <div class="arrow small" style="align-self:flex-end; margin-bottom:9mm">↗</div>
+        <div class="box" style="width:25mm; min-height:14mm; margin-bottom:13mm; padding-top:4mm"><span class="no">8</span><span class="ans sm">最後手段</span></div>
+      </div>
+      <div class="note">＊民事、行政手段<b>無法有效保護法益</b>時，才動用刑罰</div>
+    </div>
+
+    <div class="arrow">⟶</div>
+
+    <div class="col" style="width:46mm; justify-content:center">
+      <div class="pbox" style="font-size:9.5pt">犯罪＝法律規定<br>應受刑罰處罰的行為</div>
+      <div class="note" style="text-align:center">↓ 範圍會調整 ↓<br>反映<b>立法者的取捨</b><br>＆<b>憲法解釋的演進</b></div>
+    </div>
+
+    <div class="col" style="justify-content:space-around; flex:none">
+      <div class="arrow" style="font-size:15pt">↗</div>
+      <div class="arrow" style="font-size:15pt">↘</div>
+    </div>
+
+    <div class="col" style="flex:1; justify-content:space-between">
+      <div style="display:flex; gap:2.5mm; align-items:center">
+        <div class="box" style="width:30mm; min-height:14mm"><span class="no">9</span><span class="ans sm">除罪化</span></div>
+        <div class="note" style="flex:1">
+          <b>犯罪 ➔ 非犯罪</b>　例：2020 <b>釋字第 791 號</b>通姦除罪化<br>
+          理由：限制<b>性自主權</b>、干預<b>隱私權</b>，違反比例原則；撤告但書違反<b>平等權</b><br>
+          <span class="hl">＊通姦除罪化 ≠ 通姦合法化</span>（仍可依民法請求精神賠償）
+        </div>
+      </div>
+      <div style="display:flex; gap:2.5mm; align-items:center">
+        <div class="box" style="width:30mm; min-height:14mm"><span class="no">10</span><span class="ans sm">入罪化</span></div>
+        <div class="note" style="flex:1">
+          <b>非犯罪 ➔ 犯罪</b>　例：2021《<b>跟蹤騷擾防制法</b>》、2003 妨害電腦使用罪、<br>
+          動保法虐殺動物刑責、2021 N 號房條款（性影像）
+        </div>
+      </div>
+      <div class="warn">⚠ 陷阱：「判刑以<b>避免其他學生</b>再犯」→ 對象是大眾＝<b>一般預防</b>，不是特別預防！</div>
+    </div>
+  </div>
+
+  <div class="foot">資料來源：老師板書 S__23756804、S__23756805｜課本《公民與社會（2）》乙版 Ch4-1</div>
+</section>
+
+<!-- =====================================================  PAGE 2 : 4-2 罪刑法定  ===================================================== -->
+<section class="page">
+  <div class="head">
+    <h1>B2 CH4 刑事法與人權保障 ─ 4-2 罪刑法定主義 <small>（課本 p.76–78｜學習寶典 p.84–88）</small></h1>
+    <div class="who">班級<span></span>座號<span style="width:12mm"></span>姓名<span></span></div>
+  </div>
+
+  <!-- 一、意義 -->
+  <div class="row" style="flex:0 0 auto">
+    <div class="label">意義</div>
+
+    <div class="col" style="width:92mm; justify-content:center">
+      <div class="pbox" style="background:#fff; font-weight:500; text-align:left; display:block; padding:2.5mm 3mm">
+        <b>☆ 刑法最高原則</b>　＃《刑法》第 1 條（＋《公政公約》第 15 條）<br>
+        「行為之處罰，以
+        <span class="blank" style="min-width:20mm"><span class="no" style="font-size:8pt;font-weight:600">11 </span><span class="ans sm">行為時</span></span>
+        之法律有
+        <span class="blank" style="min-width:24mm"><span style="font-size:8pt;font-weight:600">12 </span><span class="ans sm">明文規定</span></span>
+        者為限」
+      </div>
+    </div>
+    <div class="arrow">⟶</div>
+    <div class="col" style="width:46mm">
+      <div class="box" style="min-height:16mm"><span class="no">13</span>
+        <span class="ans sm">落實<br>法律保留原則</span></div>
+      <div class="note">＝國會保留：罪與刑只能由<b>立法院</b>以法律定之</div>
+    </div>
+    <div class="arrow">⟶</div>
+    <div class="panel" style="flex:1">
+      <h4>三大目的</h4>
+      ① 防止國家<b>恣意處罰</b>，保障人權<br>
+      ② <b>立法</b>（定罪刑）與<b>司法</b>（依法審判）分權制衡<br>
+      ③ 使人民對行為後果具<b>可預見性</b> → 預防犯罪
+    </div>
+  </div>
+
+  <!-- 二、內涵 -->
+  <div class="row" style="flex:0 0 auto">
+    <div class="label">內涵</div>
+
+    <div class="col" style="flex:1">
+      <div class="box" style="min-height:14mm"><span class="no">14</span><span class="tag">(一)</span><span class="ans sm">罪刑明確性</span></div>
+      <div class="note">
+        1. <b>犯罪要件</b>　2. <b>刑罰種類</b>　3. <b>刑度範圍</b><br>
+        例：刑法§10 明定「重傷」→ 膝蓋破皮流血 ≠ 重傷<br>
+        ＊禁止<b>絕對</b>不定期刑；我國採<span class="hl">相對不定期刑</span>（有上下限）
+      </div>
+    </div>
+    <div class="col" style="flex:1">
+      <div class="box" style="min-height:14mm"><span class="no">15</span><span class="tag">(二)</span><span class="ans sm">習慣法禁止</span></div>
+      <div class="note">
+        不以<b>風俗習慣（不成文規定）</b>作為處罰依據<br>
+        例：偷飲料罰請戲班演戲 3 天、洗門風辦桌 ✗<br>
+        ＊對照：<span class="hl">民法§1 無明文時可依習慣</span>
+      </div>
+    </div>
+    <div class="col" style="flex:1">
+      <div class="box" style="min-height:14mm"><span class="no">16</span><span class="tag">(三)</span><span class="ans sm">禁止類推適用</span></div>
+      <div class="note">
+        刑法未規定的事項，<b>不援引相似法條入罪</b><br>
+        例：撞死狗逃逸 ≠「致人死傷」逃逸罪（§185-4）<br>
+        　　印玩具鈔、紙錢 ≠ 偽造貨幣罪<br>
+        ＊對照：<span class="hl">民法允許類推適用</span>
+      </div>
+    </div>
+    <div class="col" style="flex:1">
+      <div class="box" style="min-height:14mm"><span class="no">17</span><span class="tag">(四)</span><span class="ans sm">禁止溯及既往</span></div>
+      <div class="note">
+        ＃《刑法》第 2 條：<b>從舊從輕原則</b><br>
+        原則：適用<b>行為時</b>舊法（新法不利不溯及）<br>
+        例外：新法<b>有利</b>行為人 → 適用新法<br>
+        ＊見下方時間軸
+      </div>
+    </div>
+  </div>
+
+  <!-- 時間軸 -->
+  <div class="row" style="flex:1">
+    <div class="label">時間軸</div>
+
+    <div class="col" style="flex:1; justify-content:space-around">
+      <div style="display:flex; align-items:center; gap:3mm">
+        <div class="tl" style="flex:1">
+          <div class="pt"><div class="d">2002.12</div>入侵電腦</div><div class="line"></div>
+          <div class="pt"><div class="d">2003.6</div>增訂<br>妨害電腦使用罪</div><div class="line"></div>
+          <div class="pt"><div class="d">2003.12</div>法院審理</div>
+        </div>
+        <div class="arrow">⟹</div>
+        <div class="box" style="width:34mm; min-height:15mm"><span class="no">18</span><span class="tag">原則</span><span class="ans sm">從舊<br>（不罰／無罪）</span></div>
+        <div class="note" style="width:52mm">新法<b>入罪或加重</b> → 對行為人不利 → 適用行為時舊法</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:3mm">
+        <div class="tl" style="flex:1">
+          <div class="pt"><div class="d">2020.4</div>通姦</div><div class="line"></div>
+          <div class="pt"><div class="d">2020.5</div>通姦除罪化<br>（釋字791）</div><div class="line"></div>
+          <div class="pt"><div class="d">2020.12</div>法院審理</div>
+        </div>
+        <div class="arrow">⟹</div>
+        <div class="box" style="width:34mm; min-height:15mm"><span class="no">19</span><span class="tag">例外</span><span class="ans sm">從輕<br>（適用新法）</span></div>
+        <div class="note" style="width:52mm">新法<b>除罪或減輕</b> → 對行為人有利 → 例外適用新法（例：食安法 5年→2年以下）</div>
+      </div>
+      <div class="warn">⚠ 秒殺判斷：題目有「<b>行為在先、修法在後</b>」的時間差 → 選<b>禁止溯及既往（從舊從輕）</b>；
+        沒有時間差、只是把「狗當人、玩具鈔當真鈔」比附援引 → 選<b>禁止類推適用</b>！</div>
+    </div>
+  </div>
+
+  <div class="foot">資料來源：老師板書 S__23756806、S__23756807｜課本《公民與社會（2）》乙版 Ch4-2</div>
+</section>
+
+<!-- =====================================================  PAGE 3 : 4-2 延伸 犯罪成立三要件  ===================================================== -->
+<section class="page">
+  <div class="head">
+    <h1>B2 CH4 4-2 延伸 ─ 犯罪成立三要件（三階層檢驗） <small>（課本 p.79–81）</small></h1>
+    <div class="who">班級<span></span>座號<span style="width:12mm"></span>姓名<span></span></div>
+  </div>
+
+  <div class="note" style="margin-bottom:2mm">＊須依序 <b>1 ➔ 2 ➔ 3</b> 全部通過才成立犯罪；任一階層不通過 → <b>不罰</b>。</div>
+
+  <div class="row" style="flex:0 0 auto; border-top:none; align-items:flex-start">
+    <div class="col" style="width:30mm">
+      <div class="pbox">刑法上的<br>「行為」</div>
+      <div class="note">受意思支配的舉動<br>＊夢遊、反射動作、被人推撞 → <b>非行為</b>，直接不罰</div>
+    </div>
+    <div class="arrow" style="margin-top:4mm">⟶</div>
+
+    <div class="col" style="flex:1">
+      <div class="box" style="min-height:15mm"><span class="no">20</span><span class="tag">第 1 階</span><span class="ans">構成要件該當性</span></div>
+      <div class="note">
+        <b>客觀</b>：行為符合法條描述<br>
+        <b>主觀（犯意）</b>：<br>
+        ‧故意（原則）：明知並有意，或預見其發生而不違背本意<br>
+        ‧
+        <span class="blank" style="min-width:14mm"><span style="font-size:8pt;font-weight:600">21 </span><span class="ans sm">過失</span></span>
+        （例外）：應注意、能注意而未注意 → <span class="hl">法律有特別規定才罰</span>
+      </div>
+    </div>
+    <div class="arrow" style="margin-top:4mm">⟶</div>
+
+    <div class="col" style="flex:1">
+      <div class="box" style="min-height:15mm"><span class="no">22</span><span class="tag">第 2 階</span><span class="ans">違法性</span></div>
+      <div class="note">
+        沒有 <span class="blank" style="min-width:26mm"><span style="font-size:8pt;font-weight:600">23 </span><span class="ans sm">阻卻違法事由</span></span> 才具違法性：<br>
+        ① 依法令之行為（法警執行死刑）<br>
+        ② 業務上正當行為（醫師開刀）<br>
+        ③ <b>正當防衛</b>（打傷正在闖空門的小偷）<br>
+        ④ <b>緊急避難</b>（打破車窗救受困嬰兒）<br>
+        ＊防衛／避難<b>過當</b> → 仍罰，但得減免
+      </div>
+    </div>
+    <div class="arrow" style="margin-top:4mm">⟶</div>
+
+    <div class="col" style="flex:1.15">
+      <div class="box" style="min-height:15mm"><span class="no">24</span><span class="tag">第 3 階</span><span class="ans">有責性（責任能力）</span></div>
+      <table class="t">
+        <tr><th>無責任能力<br>（不罰）</th><td>未滿 <span class="blank" style="min-width:9mm"><span style="font-size:7.5pt">25 </span><span class="ans sm">14</span></span> 歲；精障致完全不能辨識</td></tr>
+        <tr><th>限制責任能力<br>（得減輕）</th><td>14～未滿 18 歲、滿 80 歲以上、瘖啞人、精障致辨識能力顯著減低</td></tr>
+        <tr><th>完全責任能力</th><td>18～未滿 80 歲</td></tr>
+      </table>
+      <div class="note">＊<b>原因自由行為</b>（刑法§19Ⅲ）：自己喝醉／吸毒後犯罪 → <span class="hl">不得主張減免</span></div>
+    </div>
+    <div class="arrow" style="margin-top:4mm">⟶</div>
+    <div class="col" style="width:20mm">
+      <div class="pbox" style="min-height:15mm">成立<br>犯罪</div>
+    </div>
+  </div>
+
+  <!-- 不通過分支 -->
+  <div class="row" style="flex:0 0 auto; border-top:none; padding-top:0">
+    <div style="width:32mm"></div>
+    <div class="note" style="flex:1; text-align:center">↓ 不符合<br><b>不成立犯罪</b></div>
+    <div class="note" style="flex:1; text-align:center">↓ 有阻卻事由<br><b>不罰</b></div>
+    <div class="note" style="flex:1.15; text-align:center">↓ 無責任能力<br><b>不罰</b>（限制者得減輕）</div>
+    <div style="width:26mm"></div>
+  </div>
+
+  <!-- 案例演練 -->
+  <div class="row" style="flex:1">
+    <div class="label">案例演練</div>
+    <div class="col" style="flex:1.3">
+      <div class="panel" style="height:100%">
+        <h4>課本章首：警察未經法律授權，偷在貨車底盤裝 GPS</h4>
+        <table class="t">
+          <tr><th>第 1 階</th><td>符合「妨害祕密罪」構成要件，且出於故意 ✔</td></tr>
+          <tr><th>第 2 階</th><td>未獲法律授權 → <b>不屬於「依法令之行為」</b>，無阻卻違法事由 ✔</td></tr>
+          <tr><th>第 3 階</th><td>成年警察，具完全責任能力 ✔</td></tr>
+          <tr><th>結論</th><td><b>成立妨害祕密罪</b>（侵害<b>個人法益</b>：隱私權）</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="col" style="flex:1">
+      <div class="panel" style="height:100%">
+        <h4>自我檢測（寫在旁邊空白處）</h4>
+        <div class="note">
+          Q1 破他人車窗救高溫車內嬰兒，為何不成立毀損罪？<br>
+          <span class="ans sm">緊急避難 → 阻卻違法（第 2 階不通過）</span><br>
+          Q2 15 歲國中生故意偷竊，責任能力為何？<br>
+          <span class="ans sm">限制責任能力，得減輕（少事法優先保護處分）</span><br>
+          Q3 喝醉酒後開車撞人，可主張精神障礙減刑嗎？<br>
+          <span class="ans sm">不行，原因自由行為（§19Ⅲ）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">資料來源：課本《公民與社會（2）》乙版 Ch4 第一節 p.79–81｜學習寶典 Ch4</div>
+</section>
+
+</body>
+</html>

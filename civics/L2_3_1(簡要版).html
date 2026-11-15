@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>考前衝刺｜3.1 行政法目的與原則（SVG板書簡要版）</title>
+<style>
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --pri: #1a3d6e;
+  --board: #1b362e;
+  --board-frame: #8c6239;
+  --chalk: #ffe066;
+  --pink: #ff99ac;
+  --green: #8ce99a;
+  --cyan: #74c0fc;
+  --red: #b91c1c;
+  --redbg: #fef2f2;
+  --ok: #0f766e;
+  --okbg: #f0fdfa;
+  --amber: #b45309;
+  --amberbg: #fffbeb;
+  --bd: #e2e8f0;
+  --ink: #1e293b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.7;
+  padding-bottom: 50px;
+}
+nav {
+  background: var(--pri);
+  color: #fff;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+nav a, nav button {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.86rem;
+  padding: 6px 13px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.12);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+nav a:hover { background: rgba(255,255,255,0.25); }
+nav a.on { background: #fff; color: var(--pri); font-weight: 800; }
+nav button { background: #eab308; color: #1e293b; border: none; font-weight: 800; }
+nav button.on { background: #ef4444; color: #fff; }
+
+.wrap { max-width: 980px; margin: 22px auto; padding: 0 16px; }
+
+.hero {
+  background: linear-gradient(135deg, #1a3d6e 0%, #0f5257 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 22px 26px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 14px rgba(15,23,42,0.1);
+}
+.hero h1 { font-size: 1.5rem; font-weight: 900; margin-bottom: 6px; }
+.hero p { font-size: 0.92rem; opacity: 0.92; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 14px rgba(15,23,42,0.05);
+}
+h2 {
+  font-size: 1.2rem;
+  color: var(--pri);
+  border-bottom: 2px solid var(--bd);
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+h2 small {
+  font-size: 0.75rem;
+  background: var(--board);
+  color: var(--chalk);
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+h3 {
+  font-size: 1.04rem;
+  color: var(--pri);
+  margin: 16px 0 8px;
+  padding-left: 10px;
+  border-left: 4px solid var(--pri);
+}
+
+/* SVG Board Container */
+.svg-board-wrap {
+  margin: 12px 0 18px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.14);
+  border: 6px solid var(--board-frame);
+  background: var(--board);
+}
+.svg-board-wrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 10px 0; }
+th, td { border: 1px solid var(--bd); padding: 9px 12px; text-align: left; vertical-align: top; }
+th { background: #f1f5f9; color: var(--pri); font-weight: 800; }
+tr:nth-child(even) td { background: #fafcff; }
+
+ul, ol { padding-left: 20px; font-size: 0.93rem; }
+li { margin: 5px 0; }
+
+.k {
+  background: #fef08a;
+  color: #854d0e;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 800;
+  transition: all 0.15s;
+}
+body.quiz .k {
+  background: #334155;
+  color: transparent;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 2px dashed #94a3b8;
+}
+body.quiz .k.show { background: #dcfce7; color: #166534; }
+
+.explain-box {
+  background: #f8fafc;
+  border: 1px solid var(--bd);
+  border-left: 5px solid var(--pri);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: 0.92rem;
+}
+.trap {
+  background: var(--redbg);
+  border-left: 5px solid var(--red);
+  border-radius: 8px;
+  padding: 11px 15px;
+  margin-top: 10px;
+  font-size: 0.91rem;
+}
+.trap b { color: var(--red); }
+.tip {
+  background: var(--okbg);
+  border-left: 5px solid var(--ok);
+  border-radius: 8px;
+  padding: 11px 15px;
+  margin-top: 10px;
+  font-size: 0.91rem;
+}
+.tip b { color: var(--ok); }
+
+.qa details {
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  padding: 9px 14px;
+  margin: 7px 0;
+  font-size: 0.92rem;
+  background: #fafcff;
+}
+.qa summary { cursor: pointer; font-weight: 700; }
+.qa details p { margin-top: 6px; color: var(--ok); font-weight: 700; }
+
+.src { font-size: 0.84rem; color: #64748b; }
+.src li { margin: 4px 0; }
+
+@media print {
+  nav { display: none; }
+  .card { box-shadow: none; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <strong>⚡ 考前衝刺（SVG板書＋細說加強）｜Ch3 生活中的行政法</strong>
+  <div style="display:flex;gap:6px;flex-wrap:wrap">
+    <a href="L2_3_1(簡要版).html" class="on">📘 3.1 衝刺簡要版</a>
+    <a href="L2_3_2(簡要版).html">📗 3.2 衝刺簡要版</a>
+    <a href="L2_3_1.html">📄 3.1 完整版</a>
+    <a href="L2_3_2.html">📄 3.2 完整版</a>
+    <button id="qb" onclick="tq()">🎯 遮罩自測</button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>3.1 行政法目的與原則＋行政裁量（SVG板書衝刺版）</h1>
+    <p>以 SVG 向量圖完整還原老師黑板板書結構，並在每個板書節點下用「白話細說＋秒殺判斷＋易錯陷阱」幫你考前快速搶分！</p>
+  </div>
+
+  <!-- ==================== 壹、行政法意義、類型與依法行政 ==================== -->
+  <div class="card">
+    <h2>壹、3-1 行政法：意義、類型與依法行政金字塔 <small>對應板書：S__23142403_0.jpg</small></h2>
+
+    <!-- SVG 板書 1：完整重現 S__23142403_0.jpg 左板、中板、右板上 -->
+    <div class="svg-board-wrap">
+      <svg viewBox="0 0 1050 470" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif">
+        <defs>
+          <marker id="arrow-yellow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#ffe066"/>
+          </marker>
+          <marker id="arrow-pink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#ff99ac"/>
+          </marker>
+          <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#8ce99a"/>
+          </marker>
+        </defs>
+
+        <!-- Blackboard Background & Chalk Dividers -->
+        <rect width="1050" height="470" fill="#1b362e"/>
+        <line x1="300" y1="15" x2="300" y2="455" stroke="rgba(255,255,255,0.22)" stroke-width="2" stroke-dasharray="6,6"/>
+        <line x1="680" y1="15" x2="680" y2="455" stroke="rgba(255,255,255,0.22)" stroke-width="2" stroke-dasharray="6,6"/>
+
+        <!-- ===== LEFT PANEL: 3-1 行政法 一、意義 二、類型 ===== -->
+        <text x="24" y="42" fill="#ffe066" font-size="22" font-weight="900">3-1 行政法</text>
+
+        <text x="24" y="82" fill="#ffffff" font-size="18" font-weight="700">一、意義</text>
+        <text x="36" y="114" fill="#f5f7f0" font-size="16">規範 <tspan fill="#ffe066" font-weight="800">行政主體</tspan> 和 <tspan fill="#ffe066" font-weight="800">人民</tspan></text>
+        <line x1="72" y1="120" x2="140" y2="120" stroke="#ffe066" stroke-width="2"/>
+        <line x1="168" y1="120" x2="205" y2="120" stroke="#ffe066" stroke-width="2"/>
+        <text x="36" y="142" fill="#f5f7f0" font-size="16">的權利義務關係</text>
+
+        <text x="24" y="186" fill="#ffffff" font-size="18" font-weight="700">二、類型</text>
+        <text x="28" y="220" fill="#ff99ac" font-size="17" font-weight="800">(一) 干預行政</text>
+        <circle cx="44" cy="248" r="12" fill="none" stroke="#ffe066" stroke-width="2"/>
+        <text x="36" y="254" fill="#ffe066" font-size="14" font-weight="800">行</text>
+        <text x="64" y="254" fill="#ffffff" font-size="16">禁止 or 限制人民</text>
+        <text x="64" y="282" fill="#ffffff" font-size="16">課予義務 or 負擔</text>
+
+        <text x="28" y="330" fill="#8ce99a" font-size="17" font-weight="800">(二) 給付行政</text>
+        <circle cx="44" cy="358" r="12" fill="none" stroke="#ffe066" stroke-width="2"/>
+        <text x="36" y="364" fill="#ffe066" font-size="14" font-weight="800">行</text>
+        <text x="64" y="364" fill="#ffffff" font-size="16">照顧人民</text>
+        <text x="64" y="392" fill="#ffffff" font-size="16">提供服務、補貼、福利</text>
+
+        <!-- ===== MIDDLE PANEL: 三、原則 ☆依法行政 & 金字塔 ===== -->
+        <text x="320" y="42" fill="#ffffff" font-size="18" font-weight="700">三、原則</text>
+        <rect x="330" y="56" width="108" height="34" rx="4" fill="none" stroke="#ffe066" stroke-width="2"/>
+        <text x="338" y="79" fill="#ffe066" font-size="18" font-weight="900">☆ 依法行政</text>
+        <line x1="444" y1="73" x2="478" y2="73" stroke="#ffe066" stroke-width="2.5" marker-end="url(#arrow-yellow)"/>
+        <text x="486" y="79" fill="#ff99ac" font-size="18" font-weight="800">目的：防止濫權</text>
+
+        <!-- Pyramid -->
+        <!-- Triangle Outer -->
+        <polygon points="490,115 390,315 590,315" fill="rgba(255,224,102,0.08)" stroke="#ffffff" stroke-width="2.5"/>
+        <!-- Horizontal dividers -->
+        <line x1="465" y1="165" x2="515" y2="165" stroke="#ffffff" stroke-width="2"/>
+        <line x1="440" y1="215" x2="540" y2="215" stroke="#ffffff" stroke-width="2"/>
+        <line x1="415" y1="265" x2="565" y2="265" stroke="#ffffff" stroke-width="2"/>
+        <!-- Pyramid Text -->
+        <text x="490" y="152" fill="#ffe066" font-size="17" font-weight="900" text-anchor="middle">憲</text>
+        <text x="490" y="198" fill="#ffffff" font-size="17" font-weight="800" text-anchor="middle">法 律</text>
+        <text x="490" y="248" fill="#ffffff" font-size="17" font-weight="800" text-anchor="middle">命 令</text>
+        <text x="490" y="298" fill="#8ce99a" font-size="17" font-weight="900" text-anchor="middle">行政行為</text>
+
+        <!-- Left upward arrows with X (不得牴觸) -->
+        <path d="M 400,295 Q 355,265 425,240" fill="none" stroke="#ff99ac" stroke-width="2" marker-end="url(#arrow-pink)"/>
+        <text x="366" y="268" fill="#ff99ac" font-size="15" font-weight="900">✕</text>
+        <path d="M 422,240 Q 375,210 448,190" fill="none" stroke="#ff99ac" stroke-width="2" marker-end="url(#arrow-pink)"/>
+        <text x="388" y="216" fill="#ff99ac" font-size="15" font-weight="900">✕</text>
+        <path d="M 445,190 Q 405,160 468,142" fill="none" stroke="#ff99ac" stroke-width="2" marker-end="url(#arrow-pink)"/>
+        <text x="412" y="166" fill="#ff99ac" font-size="15" font-weight="900">✕</text>
+
+        <!-- Right downward arrows (依據 or 授權) -->
+        <path d="M 535,192 Q 595,210 558,242" fill="none" stroke="#8ce99a" stroke-width="2" marker-end="url(#arrow-green)"/>
+        <path d="M 540,192 Q 625,240 582,295" fill="none" stroke="#8ce99a" stroke-width="2" marker-end="url(#arrow-green)"/>
+        <text x="585" y="185" fill="#8ce99a" font-size="15" font-weight="800">依據 or</text>
+        <text x="585" y="208" fill="#8ce99a" font-size="15" font-weight="800">授權</text>
+
+        <!-- Bottom Left & Right annotations of 行政行為 -->
+        <line x1="415" y1="315" x2="380" y2="355" stroke="#ffffff" stroke-width="1.8" marker-end="url(#arrow-yellow)"/>
+        <text x="315" y="380" fill="#ffffff" font-size="16" font-weight="700">＊行政契約</text>
+        <text x="315" y="410" fill="#ffffff" font-size="16" font-weight="700">＊事實行為</text>
+
+        <line x1="560" y1="315" x2="580" y2="355" stroke="#ffffff" stroke-width="1.8" marker-end="url(#arrow-yellow)"/>
+        <text x="445" y="380" fill="#ffe066" font-size="16" font-weight="800">＊行政處分：</text>
+        <text x="445" y="408" fill="#ffffff" font-size="15">行政機關行使 <tspan fill="#ff99ac" font-weight="800">公權力</tspan></text>
+        <text x="445" y="434" fill="#ffffff" font-size="15"><tspan fill="#ff99ac" font-weight="800">單方</tspan>、對外產生 <tspan fill="#ff99ac" font-weight="800">法律效果</tspan></text>
+
+        <!-- ===== RIGHT PANEL: (一) 法律優位 (二) 法律保留 ===== -->
+        <text x="700" y="55" fill="#ff99ac" font-size="19" font-weight="900">(一) 法律優位（消極）</text>
+        <text x="708" y="95" fill="#ffffff" font-size="17">行政行為 <tspan fill="#ffe066" font-weight="800">不得牴觸</tspan> 法律 or 上位法</text>
+
+        <text x="700" y="165" fill="#8ce99a" font-size="19" font-weight="900">(二) 法律保留（積極）</text>
+        <text x="708" y="205" fill="#ffffff" font-size="17">行政行為要有 <tspan fill="#ffe066" font-weight="800">法律依據 or 明確授權</tspan></text>
+
+        <!-- Quick Summary Box on Right Bottom -->
+        <rect x="700" y="255" width="325" height="180" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,224,102,0.4)" stroke-width="1.5"/>
+        <text x="718" y="285" fill="#ffe066" font-size="16" font-weight="800">💡 板書金字塔秒懂對應：</text>
+        <text x="718" y="315" fill="#ff99ac" font-size="14">• 左側向上箭頭打 ✕ ＝ 法律優位</text>
+        <text x="730" y="337" fill="#f5f7f0" font-size="13">（下位階規範不可違背上位階法）</text>
+        <text x="718" y="368" fill="#8ce99a" font-size="14">• 右側向下箭頭 ＝ 法律保留</text>
+        <text x="730" y="390" fill="#f5f7f0" font-size="13">（須有「法律」依據或授權才能做）</text>
+        <text x="718" y="420" fill="#ffe066" font-size="13">• 底層「行政處分」＝ 3.3 救濟對象</text>
+      </svg>
+    </div>
+
+    <h3>🔍 板書重點速讀</h3>
+    <div class="explain-box">
+      <ul>
+        <li><strong>行政法特性</strong>：規範<span class="k">行政主體</span>與<span class="k">人民</span>關係；<strong>無單一法典</strong>（眾多法規集合），是<strong>具體化的憲法</strong>。</li>
+        <li><strong>干預 vs. 給付</strong>：限制權利／課義務＝<strong>干預行政</strong>（開罰單、課稅、隔離）；給福利／補貼誘因＝<strong>給付行政</strong>（育嬰津貼、公費疫苗、舊換新補助）。</li>
+        <li><span class="k">法律優位</span>（消極）：<strong>不牴觸上位法</strong>（例：校規罰體育課勞動服務 ➔ 牴觸《教育基本法》）。</li>
+        <li><span class="k">法律保留</span>（積極）：<strong>有法律才有限制</strong>，干預人民須有法律明文或明確授權（例：未經法律授權斷水迫遷 ➔ 違法）。</li>
+        <li><strong>行政處分三要素</strong>：<span class="k">公權力</span>＋<span class="k">單方</span>＋對外發生<span class="k">法律效果</span>（罰單、退學、拆違建），是 <strong>3.3 訴願與撤銷訴訟的前提</strong>。（※ 行政契約＝雙方合意；事實行為＝掃街／巡邏／宣導，皆非行政處分）。</li>
+      </ul>
+    </div>
+    <div class="trap"><b>⚠️ 秒殺判斷：</b>題目見「<b>牴觸／違反上位法</b>」選<b>法律優位</b>；見「<b>未經法律授權／無法律依據</b>就限制人民」選<b>法律保留</b>。</div>
+  </div>
+
+  <!-- ==================== 貳、行政裁量（一）：裁量權限 ==================== -->
+  <div class="card">
+    <h2>貳、3-1 行政裁量（一）：裁量權限 <small>對應板書：S__23142403_0.jpg 右下</small></h2>
+
+    <!-- SVG 板書 2：裁量權限 1200~6000 數線圖 -->
+    <div class="svg-board-wrap">
+      <svg viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif">
+        <rect width="900" height="220" fill="#1b362e"/>
+        <text x="30" y="42" fill="#ffe066" font-size="22" font-weight="900">3-1 行政裁量</text>
+        <text x="30" y="82" fill="#ffffff" font-size="19" font-weight="800">一、裁量權限</text>
+
+        <!-- Arch & ??? -->
+        <text x="460" y="55" fill="#ffe066" font-size="22" font-weight="900" text-anchor="middle">？？？</text>
+        <path d="M 240,95 Q 460,55 680,95" fill="none" stroke="#ffe066" stroke-width="2.5"/>
+
+        <!-- Number Line -->
+        <line x1="140" y1="115" x2="780" y2="115" stroke="#ffffff" stroke-width="3" marker-end="url(#arrow-yellow)"/>
+        <!-- Ticks -->
+        <line x1="240" y1="95" x2="240" y2="135" stroke="#ffe066" stroke-width="3"/>
+        <line x1="680" y1="95" x2="680" y2="135" stroke="#ffe066" stroke-width="3"/>
+
+        <!-- Numbers -->
+        <text x="240" y="160" fill="#ffe066" font-size="20" font-weight="800" text-anchor="middle">1200</text>
+        <text x="680" y="160" fill="#ffe066" font-size="20" font-weight="800" text-anchor="middle">6000</text>
+
+        <!-- Bottom Bracket (不得逾越) -->
+        <path d="M 210,135 L 210,192 L 725,192 L 725,135" fill="none" stroke="#ff99ac" stroke-width="2.5" marker-start="url(#arrow-pink)" marker-end="url(#arrow-pink)"/>
+        <rect x="380" y="172" width="160" height="34" fill="#1b362e"/>
+        <text x="460" y="196" fill="#ff99ac" font-size="21" font-weight="900" text-anchor="middle">不得逾越</text>
+      </svg>
+    </div>
+
+    <h3>🔍 板書重點速讀</h3>
+    <div class="explain-box">
+      <ul>
+        <li><strong>一、裁量權限（<span class="k">不得逾越</span>）</strong>：只能在法定上下限（如 1,200～6,000 元）內決定；罰超出範圍＝<strong>裁量逾越（違法）</strong>。</li>
+        <li><strong>二、裁量適當（☆ 防止濫權）</strong>：即使在法定範圍內，也須遵守下方<strong>六大原則</strong>，否則＝<strong>裁量濫用（違法）</strong>。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== 參、行政裁量（二）：平等原則與比例原則 ==================== -->
+  <div class="card">
+    <h2>參、3-1 行政裁量（二）：平等原則 ＆ 比例原則 <small>對應板書：S__23142404_0.jpg</small></h2>
+
+    <!-- SVG 板書 3：重現 S__23142404_0.jpg -->
+    <div class="svg-board-wrap">
+      <svg viewBox="0 0 980 340" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif">
+        <rect width="980" height="340" fill="#1b362e"/>
+        <line x1="485" y1="20" x2="485" y2="320" stroke="rgba(255,255,255,0.22)" stroke-width="2" stroke-dasharray="6,6"/>
+
+        <!-- Left Side: 二、裁量適當 ☆防止濫權 + (一) 平等原則 -->
+        <text x="26" y="46" fill="#ffffff" font-size="20" font-weight="800">二、裁量適當 ── <tspan fill="#ffe066">☆ 防止濫權</tspan></text>
+
+        <text x="26" y="95" fill="#ffe066" font-size="19" font-weight="900">(一) 平等原則：<tspan fill="#ff99ac">禁止不合理的差別待遇</tspan></text>
+
+        <text x="42" y="150" fill="#ffffff" font-size="17" font-weight="700">1. 行政自我拘束：<tspan fill="#8ce99a" font-weight="900">依慣例</tspan></text>
+        <text x="64" y="178" fill="rgba(255,255,255,0.8)" font-size="14">（相同案件應依過去行政先例處理，不得任意改變標準）</text>
+
+        <text x="42" y="230" fill="#ffffff" font-size="17" font-weight="700">2. 禁止恣意：做不同處置，</text>
+        <text x="155" y="262" fill="#ffe066" font-size="18" font-weight="900">需有適當且充分理由</text>
+        <text x="64" y="294" fill="rgba(255,255,255,0.8)" font-size="14">（等者等之，不等者不等之；且人民不得主張「違法之平等」）</text>
+
+        <!-- Right Side: (二) 比例原則：禁過當 -->
+        <text x="515" y="55" fill="#ffe066" font-size="20" font-weight="900">(二) 比例原則：<tspan fill="#ff99ac">禁過當</tspan></text>
+
+        <!-- 1. 適當性 -->
+        <text x="530" y="115" fill="#ffffff" font-size="18" font-weight="700">1. 適當性：手段</text>
+        <line x1="678" y1="109" x2="725" y2="109" stroke="#ffe066" stroke-width="2.5" marker-end="url(#arrow-yellow)"/>
+        <text x="735" y="115" fill="#8ce99a" font-size="18" font-weight="900">目的 ✔</text>
+        <text x="555" y="142" fill="rgba(255,255,255,0.8)" font-size="14">（手段必須真的有助於達成行政目的）</text>
+
+        <!-- 2. 必要性 -->
+        <text x="530" y="195" fill="#ffffff" font-size="18" font-weight="700">2. 必要性：手段</text>
+        <circle cx="688" cy="180" r="11" fill="none" stroke="#ffe066" stroke-width="2"/>
+        <text x="688" y="185" fill="#ffe066" font-size="13" font-weight="800" text-anchor="middle">A</text>
+        <circle cx="688" cy="206" r="11" fill="none" stroke="#8ce99a" stroke-width="2"/>
+        <text x="688" y="211" fill="#8ce99a" font-size="13" font-weight="800" text-anchor="middle">B</text>
+        <text x="710" y="195" fill="#ffe066" font-size="18" font-weight="900">侵害最小</text>
+        <line x1="792" y1="189" x2="835" y2="189" stroke="#ffe066" stroke-width="2.5" marker-end="url(#arrow-yellow)"/>
+        <text x="845" y="195" fill="#8ce99a" font-size="18" font-weight="900">目的 ✔</text>
+        <text x="555" y="232" fill="rgba(255,255,255,0.8)" font-size="14">（A、B 都能達成目的時，必選對人民侵害最小的手段）</text>
+
+        <!-- 3. 衡量性 -->
+        <text x="530" y="280" fill="#ffffff" font-size="18" font-weight="700">3. 衡量性：<tspan fill="#8ce99a" font-weight="900">利益 ＞ 損害</tspan></text>
+        <text x="555" y="308" fill="rgba(255,255,255,0.8)" font-size="14">（所達成的公共利益必須大於對人民造成的損害，不得顯失均衡）</text>
+      </svg>
+    </div>
+
+    <h3>🔍 板書重點速讀</h3>
+    <div class="explain-box">
+      <ul>
+        <li><strong>(一) 平等原則</strong>：① <span class="k">行政自我拘束</span>＝同類案件<strong>依慣例</strong>；② <span class="k">禁止恣意</span>＝差別待遇須有<strong>正當理由</strong>（身障生延長考時 ✔；罰娼不罰嫖 ✗）。⚠️ 人民<strong>不得主張「<span class="k">違法之平等</span>」</strong>（別人沒被抓不能免罰）。</li>
+        <li><strong>(二) 比例原則（禁過當，依序三步驟）</strong>：
+          ① <span class="k">適當性</span>（手段有助目的；例：違停鎖輪胎無法排解塞車 ✗）➔
+          ② <span class="k">必要性</span>（選<strong>侵害最小</strong>手段；例：違停吊扣駕照 ✗、嫌犯壓制後仍棍擊 ✗、公務員下班禁酒 ✗）➔
+          ③ <span class="k">衡量性</span>（公益 ＞ 私損；例：違停拖吊＋罰鍰 ✔）。
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== 肆、信賴保護與三大補充原則 ==================== -->
+  <div class="card">
+    <h2>肆、3-1 行政裁量（三）：信賴保護 ＆ 三大補充原則 <small>對應板書：S__23142405_0.jpg 左中</small></h2>
+
+    <!-- SVG 板書 4：重現 S__23142405_0.jpg 左板與中板 -->
+    <div class="svg-board-wrap">
+      <svg viewBox="0 0 980 390" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif">
+        <rect width="980" height="390" fill="#1b362e"/>
+        <line x1="485" y1="20" x2="485" y2="370" stroke="rgba(255,255,255,0.22)" stroke-width="2" stroke-dasharray="6,6"/>
+
+        <!-- Left Panel: (三) 信賴保護原則 -->
+        <text x="24" y="45" fill="#ffe066" font-size="19" font-weight="900">(三) 信賴保護原則：<tspan fill="#ff99ac">禁任意變更、人民既得利益保護</tspan></text>
+
+        <!-- 1. 信賴基礎 -->
+        <text x="36" y="95" fill="#ffffff" font-size="17" font-weight="800">1. 信賴基礎</text>
+        <circle cx="62" cy="126" r="11" fill="none" stroke="#ffe066" stroke-width="2"/>
+        <text x="62" y="131" fill="#ffe066" font-size="13" font-weight="800" text-anchor="middle">公</text>
+        <text x="80" y="131" fill="#f5f7f0" font-size="16">信任</text>
+        <circle cx="62" cy="158" r="11" fill="none" stroke="#ffe066" stroke-width="2"/>
+        <text x="62" y="163" fill="#ffe066" font-size="13" font-weight="800" text-anchor="middle">行</text>
+        <text x="80" y="163" fill="#8ce99a" font-size="16" font-weight="700">已對外作成具效力之行為（法規或處分）</text>
+
+        <!-- 2. 信賴表現 -->
+        <text x="36" y="210" fill="#ffffff" font-size="17" font-weight="800">2. 信賴表現</text>
+        <circle cx="62" cy="242" r="11" fill="none" stroke="#ffe066" stroke-width="2"/>
+        <text x="62" y="247" fill="#ffe066" font-size="13" font-weight="800" text-anchor="middle">人</text>
+        <text x="80" y="247" fill="#8ce99a" font-size="16" font-weight="700">基於信賴已有實際行動（投資、規畫）</text>
+
+        <!-- 3. 信賴值得保護 -->
+        <text x="36" y="295" fill="#ffffff" font-size="17" font-weight="800">3. 信賴值得保護</text>
+        <circle cx="62" cy="327" r="11" fill="none" stroke="#ffe066" stroke-width="2"/>
+        <text x="62" y="332" fill="#ffe066" font-size="13" font-weight="800" text-anchor="middle">人</text>
+        <text x="80" y="332" fill="#ff99ac" font-size="16" font-weight="700">未用非法手段取得利益（無詐欺/賄賂/偽造）</text>
+
+        <!-- Right Panel: 三大補充原則 -->
+        <!-- 補 1：禁止不當聯結原則 -->
+        <circle cx="520" cy="42" r="13" fill="none" stroke="#ffe066" stroke-width="2"/>
+        <text x="520" y="47" fill="#ffe066" font-size="14" font-weight="800" text-anchor="middle">補</text>
+        <text x="540" y="48" fill="#ffe066" font-size="18" font-weight="900">禁止不當聯結原則</text>
+
+        <text x="545" y="92" fill="#ffffff" font-size="18" font-weight="800">手段</text>
+        <line x1="598" y1="86" x2="722" y2="86" stroke="#8ce99a" stroke-width="2.5" marker-start="url(#arrow-green)" marker-end="url(#arrow-green)"/>
+        <text x="660" y="76" fill="#8ce99a" font-size="15" font-weight="800" text-anchor="middle">合理關聯</text>
+        <text x="735" y="92" fill="#ffffff" font-size="18" font-weight="800">目的</text>
+
+        <text x="535" y="128" fill="#f5f7f0" font-size="15">＊不得附加與目的無關的條件</text>
+        <text x="550" y="152" fill="#f5f7f0" font-size="15">or 將無關因素列入考量</text>
+
+        <!-- 補 2：誠實信用原則 -->
+        <circle cx="520" cy="202" r="13" fill="none" stroke="#ffe066" stroke-width="2"/>
+        <text x="520" y="207" fill="#ffe066" font-size="14" font-weight="800" text-anchor="middle">補</text>
+        <text x="540" y="208" fill="#ffe066" font-size="18" font-weight="900">誠實信用原則：</text>
+        <text x="675" y="208" fill="#ff99ac" font-size="17" font-weight="800">禁任意變更、欺騙、隱瞞</text>
+
+        <circle cx="552" cy="240" r="11" fill="none" stroke="#ffe066" stroke-width="2"/>
+        <text x="552" y="245" fill="#ffe066" font-size="13" font-weight="800" text-anchor="middle">行</text>
+        <text x="570" y="246" fill="#ffffff" font-size="16">要信守諾言，不得故意侵害</text>
+        <circle cx="780" cy="240" r="11" fill="none" stroke="#ffe066" stroke-width="2"/>
+        <text x="780" y="245" fill="#ffe066" font-size="13" font-weight="800" text-anchor="middle">人</text>
+        <text x="798" y="246" fill="#ffffff" font-size="16">權益</text>
+
+        <!-- 補 3：明確性原則 -->
+        <circle cx="520" cy="305" r="13" fill="none" stroke="#ffe066" stroke-width="2"/>
+        <text x="520" y="310" fill="#ffe066" font-size="14" font-weight="800" text-anchor="middle">補</text>
+        <text x="540" y="311" fill="#ffe066" font-size="18" font-weight="900">明確性原則</text>
+        <text x="550" y="345" fill="#8ce99a" font-size="17" font-weight="800">內容清楚明白且可能（人民可預見）</text>
+      </svg>
+    </div>
+
+    <h3>🔍 板書重點速讀</h3>
+    <div class="explain-box">
+      <ul>
+        <li><strong>(三) 信賴保護原則</strong>：三要件＝① <span class="k">信賴基礎</span>（政府有效行為）＋ ② <span class="k">信賴表現</span>（人民實際投資規畫）＋ ③ <span class="k">信賴值得保護</span>（無詐欺賄賂偽造）。<br>
+          <em>例：獲准蓋加油站後無故撤照 ✗ 違反；偽造資料領低收補助 ➔ 不得主張；年金改革設過渡期追求重大公益 ➔ 合憲。</em></li>
+        <li><strong>補 1｜<span class="k">禁止不當聯結</span></strong>：手段與目的須有合理關聯（例：不捐地方回饋金就不發建照 ✗）。</li>
+        <li><strong>補 2｜<span class="k">誠實信用原則</span></strong>：禁欺騙、隱瞞、設局（例：用未檢定合格測速器開罰 ✗、引導酒醉車主移車再抓酒駕 ✗）。</li>
+        <li><strong>補 3｜<span class="k">明確性原則</span></strong>：處分內容、法源、救濟須清楚可預見（例：罰單載明違規事實與法源 ✔；校規「素行不良記大過」✗）。</li>
+      </ul>
+    </div>
+
+    <div class="tip">
+      <b>💡 秒殺分辨「誠實信用」vs.「信賴保護」vs.「禁止不當聯結」：</b><br>
+      • 看到「<b>設局陷害、儀器未檢定、隱瞞欺騙</b>」➔ 選 <b>誠實信用原則</b><br>
+      • 看到「<b>先核准／先補助，人民已投資規畫後政府突然取消</b>」➔ 選 <b>信賴保護原則</b><br>
+      • 看到「<b>換駕照／發建照，卻要求先繳清無關罰單或強迫捐款</b>」➔ 選 <b>禁止不當聯結原則</b>
+    </div>
+  </div>
+
+  <!-- ==================== 伍、30秒自我檢測 ==================== -->
+  <div class="card qa">
+    <h2>✅ 考前 30 秒自我檢測（點擊展開答案）</h2>
+    <details><summary>1. 政府提供「汽機車舊換新補助」以減少空汙，屬於干預行政還是給付行政？</summary><p>給付行政（提供金錢誘因鼓勵人民配合政策，並未強制限制權利）。</p></details>
+    <details><summary>2. 市政府為迫使社宅居民搬遷，未經法律授權就切斷自來水，違反哪一原則？</summary><p>法律保留原則（積極的依法行政：干預人民權利須有法律明文依據或明確授權）。</p></details>
+    <details><summary>3. 違規停車擋路，若警察選擇「將汽車輪胎上鎖」而非拖吊，違反比例原則哪一子原則？</summary><p>適當性原則（把輪胎鎖在原地根本無法排解交通阻塞，手段無助於目的達成）。</p></details>
+    <details><summary>4. 民眾偽造財力證明申請低收入戶津貼，事後被政府撤銷資格，為何不能主張信賴保護原則？</summary><p>因為欠缺「信賴值得保護」要件（以詐欺、偽造等非法手段取得之利益不值得保護）。</p></details>
+    <details><summary>5. 市長要求建商捐款給地方基金才肯核發建築使用執照，違反哪一原則？</summary><p>禁止不當聯結原則（捐款與建築物是否安全合法之間沒有合理關聯）。</p></details>
+    <details><summary>6. 警察使用未經法定檢定合格的區間測速照相儀器開罰單，違反哪一原則？</summary><p>誠實信用原則（行政機關應誠實不欺騙，未檢定合格之儀器無法令民眾信服）。</p></details>
+  </div>
+
+  <!-- ==================== 陸、資料來源 ==================== -->
+  <div class="card">
+    <h2>📂 資料來源清單</h2>
+    <ul class="src">
+      <li><b>主來源（老師黑板筆記照片，位於 <code>_收件匣/</code>）</b>：<code>S__23142403_0.jpg</code>（行政法意義、類型、依法行政金字塔、裁量權限數線圖）、<code>S__23142404_0.jpg</code>（平等原則、比例原則）、<code>S__23142405_0.jpg</code> 左中板（信賴保護原則三要件、禁止不當聯結、誠實信用、明確性原則）。</li>
+      <li><b>輔助來源（課本與講義）</b>：《普通型高級中等學校 公民與社會（2）保障人權》（113 乙版）第 3 章第一節〈行政，無所不在〉（p.45–54）；《學習寶典》第 3 章（p.52–59）；《圖解法律》第 3 章〈從年金改革看信賴保護原則〉（p.20–23）。</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+function tq(){
+  const b = document.body, q = document.getElementById('qb');
+  b.classList.toggle('quiz');
+  const on = b.classList.contains('quiz');
+  q.classList.toggle('on', on);
+  q.textContent = on ? '👁️ 顯示答案' : '🎯 遮罩自測';
+  document.querySelectorAll('.k').forEach(e => e.classList.remove('show'));
+}
+document.addEventListener('click', e => {
+  if (document.body.classList.contains('quiz') && e.target.classList.contains('k')) {
+    e.target.classList.toggle('show');
+  }
+});
+</script>
+</body>
+</html>

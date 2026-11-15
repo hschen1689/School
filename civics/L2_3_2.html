@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L2_3_2｜3.2 行政程序（正當行政程序的精神）— 公民與社會筆記</title>
+<style>
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --board-bg: #1e352f;
+  --board-border: #8c6239;
+  --board-text: #f5f7f0;
+  --chalk-yellow: #ffe066;
+  --chalk-pink: #ff99ac;
+  --chalk-blue: #8ce99a;
+  --primary: #1a3d6e;
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --teal: #0f766e;
+  --teal-light: #f0fdfa;
+  --amber: #b45309;
+  --amber-light: #fffbeb;
+  --danger: #b91c1c;
+  --danger-light: #fef2f2;
+  --ink: #1e293b;
+  --ink-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.7;
+  padding-bottom: 60px;
+}
+
+/* Top Navigation Bar */
+.top-nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+}
+
+.brand-badge {
+  background: var(--chalk-yellow);
+  color: #1a2a3a;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 900;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.88rem;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: all 0.15s;
+}
+
+.nav-link:hover, .nav-link.active {
+  background: #fff;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.btn-quiz-mode {
+  background: #eab308;
+  color: #1e293b;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-quiz-mode:hover { background: #facc15; }
+.btn-quiz-mode.active { background: #ef4444; color: #fff; }
+
+/* Container */
+.container {
+  max-width: 1040px;
+  margin: 28px auto;
+  padding: 0 18px;
+}
+
+/* Hero Header */
+.hero {
+  background: linear-gradient(135deg, #0f5257 0%, #1a3d6e 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+
+.hero-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.tag {
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-size: 1.75rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.hero p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Quick Jump TOC */
+.toc-bar {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow);
+}
+
+.toc-label {
+  font-weight: 800;
+  font-size: 0.88rem;
+  color: var(--primary);
+  margin-right: 4px;
+}
+
+.toc-chip {
+  text-decoration: none;
+  font-size: 0.85rem;
+  color: var(--ink);
+  background: var(--bg);
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  transition: all 0.15s;
+}
+
+.toc-chip:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+/* Section Card */
+.section-card {
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  padding: 28px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge-board {
+  background: #1e352f;
+  color: var(--chalk-yellow);
+  font-size: 0.76rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  border: 1px solid var(--board-border);
+}
+
+.badge-book {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.76rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  border: 1px solid #bfdbfe;
+}
+
+/* Chalkboard Replica Box */
+.chalkboard {
+  background: var(--board-bg);
+  color: var(--board-text);
+  border: 6px solid var(--board-border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin: 16px 0 22px;
+  box-shadow: inset 0 0 24px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.12);
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.chalkboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed rgba(255,255,255,0.25);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.75);
+}
+
+.chalk-yellow { color: var(--chalk-yellow); font-weight: 800; }
+.chalk-pink { color: var(--chalk-pink); font-weight: 800; }
+.chalk-blue { color: var(--chalk-blue); font-weight: 800; }
+.chalk-underline { border-bottom: 2px solid var(--chalk-yellow); padding-bottom: 1px; }
+.chalk-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--chalk-yellow);
+  border-radius: 50%;
+  font-size: 0.8rem;
+  color: var(--chalk-yellow);
+  font-weight: 800;
+  margin-right: 4px;
+}
+
+/* Grid & Info Cards */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+  margin: 14px 0;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 14px 0;
+}
+
+.info-card {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--primary);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.info-card.warn { border-left-color: var(--danger); background: var(--danger-light); }
+.info-card.ok { border-left-color: var(--teal); background: var(--teal-light); }
+.info-card.amber { border-left-color: var(--amber); background: var(--amber-light); }
+
+.info-card h4 {
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-card.warn h4 { color: var(--danger); }
+.info-card.ok h4 { color: var(--teal); }
+.info-card.amber h4 { color: var(--amber); }
+
+.info-card ul, .info-card ol {
+  padding-left: 18px;
+  font-size: 0.94rem;
+}
+
+.info-card li { margin-bottom: 6px; }
+
+/* Tables */
+.table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 11px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #f1f5f9;
+  color: var(--primary);
+  font-weight: 800;
+}
+
+tr:nth-child(even) td { background: #fafcff; }
+
+/* Flow Steps */
+.flow-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+.flow-step {
+  background: #f8fafc;
+  border: 2px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 14px 16px;
+  position: relative;
+}
+
+.flow-step-num {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 2px 9px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
+.flow-step h5 {
+  font-size: 0.98rem;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.flow-step p {
+  font-size: 0.88rem;
+  color: var(--ink);
+}
+
+/* Key Term Blank Mode (Quiz Mode) */
+.key-term {
+  background: #fef08a;
+  color: #854d0e;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 800;
+  transition: all 0.2s;
+}
+
+body.quiz-mode .key-term {
+  background: #334155;
+  color: transparent;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 2px dashed #94a3b8;
+}
+
+body.quiz-mode .key-term.revealed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Sub-headings */
+h3.sub-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 22px 0 10px;
+  padding-left: 10px;
+  border-left: 4px solid var(--teal);
+}
+
+/* Callout Box */
+.callout {
+  background: var(--accent-light);
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 14px 0;
+  font-size: 0.93rem;
+}
+
+.callout-title {
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Source List */
+.source-list {
+  list-style: none;
+  padding: 0;
+}
+
+.source-list li {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.92rem;
+}
+
+.source-list li:last-child { border-bottom: none; }
+
+.src-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.src-primary { background: #1e352f; color: var(--chalk-yellow); }
+.src-secondary { background: #e0e7ff; color: #1e40af; }
+
+@media print {
+  .top-nav, .toc-bar, .btn-quiz-mode { display: none !important; }
+  body { background: #fff; padding: 0; }
+  .section-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top Navigation -->
+<header class="top-nav">
+  <div class="brand">
+    <span class="brand-badge">高中公民 第二冊</span>
+    <span>Ch.3 生活中的行政法（依法行政與行政救濟）</span>
+  </div>
+  <div class="nav-actions">
+    <a href="L2_3_1.html" class="nav-link">📘 3.1 行政法目的與原則</a>
+    <a href="L2_3_2.html" class="nav-link active">📗 3.2 行政程序</a>
+    <button class="btn-quiz-mode" id="quizBtn" onclick="toggleQuizMode()">🎯 開啟遮罩自測模式</button>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="hero-meta">
+      <span class="tag">📌 老師板書重點為主</span>
+      <span class="tag">📚 整合乙版課本＋學習寶典＋圖解法律</span>
+      <span class="tag">⭐ 程序正義與《行政程序法》三大原則</span>
+    </div>
+    <h1>3.2 行政程序（正當行政程序的精神）</h1>
+    <p>完整對照老師黑板筆記「3-2 行政程序」之目的與三大核心原則：「(一) 公正 ➔ No 偏頗」、「(二) 公開 ➔ No 資訊不對稱」、「(三) 民主 ➔ 人民表達、參與（☆ 聽證結果納入決策）」，並結合校園性平會、土地徵收與大考實戰案例。</p>
+  </section>
+
+  <!-- Quick Jump TOC -->
+  <nav class="toc-bar">
+    <span class="toc-label">⚡ 快速跳轉：</span>
+    <a href="#sec-overview" class="toc-chip">一、板書總覽與程序正義</a>
+    <a href="#sec-fair" class="toc-chip">二、(一) 公正原則：No 偏頗</a>
+    <a href="#sec-open" class="toc-chip">三、(二) 公開原則：No 資訊不對稱</a>
+    <a href="#sec-demo" class="toc-chip">四、(三) 民主原則：表達與參與</a>
+    <a href="#sec-cases" class="toc-chip">五、綜合案例：性平會與土地徵收</a>
+    <a href="#sec-sources" class="toc-chip">📂 資料來源清單</a>
+  </nav>
+
+  <!-- ==================== SECTION 1: 板書總覽與目的 ==================== -->
+  <section class="section-card" id="sec-overview">
+    <div class="section-header">
+      <h2 class="section-title">壹、3-2 行政程序：老師黑板筆記全景重現與核心目的</h2>
+      <div>
+        <span class="badge-board">板書來源：S__23142405_0.jpg & S__23142406_0.jpg</span>
+        <span class="badge-book">課本 p.55–56 / 寶典 p.53, 60</span>
+      </div>
+    </div>
+
+    <!-- Teacher Chalkboard Replica -->
+    <div class="chalkboard">
+      <div class="chalkboard-header">
+        <span>👩‍🏫 老師黑板筆記原貌重現（3-2 行政程序完整架構）</span>
+        <span>檔案：_收件匣/S__23142405_0.jpg（右板）＋ S__23142406_0.jpg</span>
+      </div>
+
+      <p class="chalk-yellow" style="font-size:1.15rem; margin-bottom:8px;">3-2 行政程序</p>
+      <p style="font-size:1.02rem; margin-bottom:16px;">
+        <strong>一、目的：<span class="chalk-pink">實踐程序正義</span></strong>
+      </p>
+
+      <p style="font-size:1.02rem; margin-bottom:10px;"><strong>二、原則：</strong></p>
+
+      <div class="grid-3" style="margin:0;">
+        <!-- (一) 公正 -->
+        <div style="background:rgba(255,255,255,0.06); padding:14px; border-radius:8px; border:1px dashed rgba(255,255,255,0.25);">
+          <p class="chalk-yellow" style="font-size:1.05rem;">(一) 公正 ➔ <span class="chalk-pink">No 偏頗</span></p>
+          <ol style="padding-left:20px; margin-top:8px;">
+            <li><span class="chalk-underline">有利</span>、<span class="chalk-underline">不利</span>併予注意</li>
+            <li style="margin-top:6px;"><span class="chalk-underline">利益迴避</span></li>
+            <li style="margin-top:6px;">禁止程序外接觸</li>
+          </ol>
+        </div>
+
+        <!-- (二) 公開 -->
+        <div style="background:rgba(255,255,255,0.06); padding:14px; border-radius:8px; border:1px dashed rgba(255,255,255,0.25);">
+          <p class="chalk-yellow" style="font-size:1.05rem;">(二) 公開 ➔ <span class="chalk-pink">No 資訊不對稱</span></p>
+          <ol style="padding-left:20px; margin-top:8px;">
+            <li>公告周知</li>
+            <li style="margin-top:6px;">個別通知</li>
+            <li style="margin-top:6px;">文書送達</li>
+            <li style="margin-top:6px;">閱覽卷宗權</li>
+          </ol>
+        </div>
+
+        <!-- (三) 民主 -->
+        <div style="background:rgba(255,255,255,0.06); padding:14px; border-radius:8px; border:1px dashed rgba(255,255,255,0.25);">
+          <p class="chalk-yellow" style="font-size:1.05rem;">(三) 民主 ➔ <span class="chalk-circle">人</span> <span class="chalk-blue">表達、參與</span></p>
+          <ol style="padding-left:20px; margin-top:8px;">
+            <li>陳述意見</li>
+            <li style="margin-top:6px;">聽證<br>
+              <span class="chalk-yellow">☆ 結果納入決策</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">為什麼「正當行政程序（程序正義）」是達成「實質正義」的關鍵？</h3>
+    <ul>
+      <li><strong>核心目的（老師板書）</strong>：<strong>實踐<span class="key-term">程序正義</span></strong>。</li>
+      <li><strong>程序正義與實質正義的關係（課本 p.55）</strong>：「實質正義」是現代社會的終極目標，但往往抽象且難以一蹴可幾，必須透過<strong>對話、調查、辯論及監督</strong>等法定步驟逐步落實，避免行政機關在資訊壟斷或主觀偏見下不當侵害人民權益。</li>
+      <li><strong>法源依據 —《行政程序法》第 1 條（課本 p.56 小辭典）</strong>：「為使行政行為遵循<span class="key-term">公正、公開與民主</span>之程序，確保依法行政之原則，以保障人民權益，提高行政效能，增進人民對行政之信賴，特制定本法。」</li>
+      <li><strong>實務案例（警察酒測未錄影遭撤銷罰單案，學習寶典 p.68）</strong>：員警取締酒駕時，未告知酒測權利與程序、未確認飲酒是否滿 15 分鐘及提供漱口水，且未開啟密錄器全程連續錄影蒐證，違反正當行政程序，法官因此判決<strong>撤銷 12 萬元罰鍰與吊銷駕照之原處分</strong>。</li>
+    </ul>
+  </section>
+
+  <!-- ==================== SECTION 2: (一) 公正原則 ==================== -->
+  <section class="section-card" id="sec-fair">
+    <div class="section-header">
+      <h2 class="section-title">貳、(一) 公正原則 ➔ No 偏頗</h2>
+      <div>
+        <span class="badge-board">板書來源：S__23142405_0.jpg 右板</span>
+        <span class="badge-book">課本 p.56–57 / 寶典 p.60</span>
+      </div>
+    </div>
+
+    <p style="margin-bottom:14px;">為避免行政機關受到主觀成見、人際壓力或私利影響而做出偏頗或恣意的決定，行政程序必須落實以下要求（<strong>老師板書 3 點 ＋ 課本補充 1 點</strong>）：</p>
+
+    <div class="grid-2">
+      <!-- 板書 1 -->
+      <div class="info-card">
+        <h4>1. 有利、不利併予注意 <span>老師板書第 1 點</span></h4>
+        <ul>
+          <li><strong>法條依據</strong>：《行政程序法》第 9 條、第 36 條。</li>
+          <li><strong>核心內涵</strong>：行政機關依職權調查證據、認定事實及作成決定時，不受當事人主張之拘束，對當事人<span class="key-term">有利及不利之情形，應一律注意</span>（不可預設立場、只挑對人民不利的證據開罰）。</li>
+        </ul>
+      </div>
+
+      <!-- 板書 2 -->
+      <div class="info-card warn">
+        <h4>2. 利益迴避（公務員應適時迴避） <span>老師板書第 2 點｜必考</span></h4>
+        <ul>
+          <li><strong>核心內涵</strong>：當公務員遇到與<strong>自身利益</strong>或<strong>一定親屬關係</strong>相關之事件，可能導致決策有偏頗之虞時，必須迴避承辦該業務。</li>
+          <li><strong>三種啟動迴避的方式（課本 p.56 & 寶典 p.60、74 第 16 題）</strong>：
+            <ol>
+              <li>公務員本人<strong>主動（自行）迴避</strong></li>
+              <li>上級長官依職權<strong>命令其迴避</strong>（公務員不得拒絕）</li>
+              <li>相關當事人（或競爭廠商）<strong>申請該公務員迴避</strong></li>
+            </ol>
+          </li>
+          <li><strong>易錯陷阱（111 分科第 38 題）</strong>：法定自行迴避事由限於本人、配偶、前配偶、四親等內血親或三親等內姻親等；單純「<strong>大學同學關係</strong>」並非《行政程序法》第 32 條法定當然自行迴避事由（但當事人若有具體事實足認其執行職務有偏頗之虞，仍得申請迴避）。</li>
+        </ul>
+      </div>
+
+      <!-- 板書 3 -->
+      <div class="info-card ok">
+        <h4>3. 禁止程序外接觸 <span>老師板書第 3 點</span></h4>
+        <ul>
+          <li><strong>核心內涵</strong>：公務員在行政程序中，除基於職務上之必要外，<strong>不得與當事人或代表其利益之人為<span class="key-term">行政程序外之接觸</span></strong>（例如：不得與投標廠商私下聚餐、打球、出遊，以斷絕關說或賄賂可能）。</li>
+          <li><strong>例外處理機制</strong>：若非因職務必要而發生程序外接觸時，公務員應將所有往來紀錄以<strong><span class="key-term">書面方式公開</span></strong>（對其他當事人公開）。</li>
+        </ul>
+      </div>
+
+      <!-- 課本補充 -->
+      <div class="info-card amber">
+        <h4>➕ 組織合法性要求 <span>課本 p.56 重要補充</span></h4>
+        <ul>
+          <li><strong>核心內涵</strong>：行政組織（特別是合議制委員會）必須<strong>依法定人數、資格與性別／專家比例組成</strong>，確保議決過程納入多元專業與不同立場，其作成之行政決定才屬合法。</li>
+          <li><strong>必背四大委員會法定組成比例</strong>：
+            <ul>
+              <li><strong>性別平等教育委員會（性平會）</strong>：女性委員須占總數 <span class="key-term">1/2 以上</span>。</li>
+              <li><strong>政府採購評選委員會</strong>（如營養午餐標案）：委員 5 人以上，專家學者不得低於 <span class="key-term">1/3</span>。</li>
+              <li><strong>行政院各部會所屬委員會</strong>：任一性別比例不得低於 <span class="key-term">1/3</span>。</li>
+              <li><strong>土地徵收審議小組</strong>：專家學者及民間團體代表不得低於 <span class="key-term">1/2</span>。</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 3: (二) 公開原則 ==================== -->
+  <section class="section-card" id="sec-open">
+    <div class="section-header">
+      <h2 class="section-title">參、(二) 公開原則 ➔ No 資訊不對稱</h2>
+      <div>
+        <span class="badge-board">板書來源：S__23142406_0.jpg 左側</span>
+        <span class="badge-book">課本 p.58–59 / 寶典 p.61, 63</span>
+      </div>
+    </div>
+
+    <p style="margin-bottom:14px;">由於行政機關掌握公權力與龐大資源，與人民地位不對等，雙方存在嚴重的「<strong>資訊不對稱</strong>」。為保障人民「知的權利」並讓行政行為令人民信服，老師板書歸納出公開原則的<strong>四大具體機制</strong>：</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:20%;">老師板書四大項目</th>
+            <th style="width:22%;">對應課本／法規概念</th>
+            <th style="width:58%;">具體內涵與實務案例</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. <span class="key-term">公告周知</span></strong></td>
+            <td>資訊以公開為原則、限制為例外（《政府資訊公開法》）</td>
+            <td>
+              • <strong>主動公開與申請公開</strong>：與人民權益密切相關之法規預告、政策、預算、土地徵收審議等，政府應主動公告於網站或政府公報；人民亦可主動申請政府資訊公開。<br>
+              • <strong>例外限制公開的 5 大項目（《政府資訊公開法》第 18 條，課本 p.58）</strong>：<br>
+              ① 國家機密；② 涉及司法公平性之事項；③ 侵害個人隱私、著作權或職業祕密（例如：疫情期間僅公布確診者居住區域，必要時才揭露足跡）；④ 妨害政府實施監督、取締、管理之資料；⑤ 影響考試、檢定、鑑定公平性之資料。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>2. <span class="key-term">個別通知</span></strong></td>
+            <td>當事人之「受告知權」（學習寶典 p.63）</td>
+            <td>
+              行政程序的當事人與利害關係人，對於與其利害相關之事實及決定有知悉的權利，包含三種告知：<br>
+              ① <strong>事先告知</strong>：作成決定前通知當事人，使其得以及時行使程序權利（如通知地主於指定日期前陳述意見）；<br>
+              ② <strong>決定告知</strong>：將作成之行政決定個別通知當事人（如寄發違建拆除通知單）；<br>
+              ③ <strong>救濟途徑教示</strong>：書面處分應記載不服處分之救濟方法、期間及受理機關。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>3. <span class="key-term">文書送達</span></strong></td>
+            <td>合法通知的送達（課本 p.58）</td>
+            <td>
+              • <strong>生效要件</strong>：行政機關作成書面行政處分後，必須善盡合法送達的義務，<strong>經合法送達後，行政處分才<span class="key-term">正式發生效力</span></strong>。<br>
+              • <strong>功能</strong>：確保人民知悉權利義務變動以進行規畫處置，並作為計算訴願／救濟法定期間（如送達次日起 30 日內）的起算點。
+            </td>
+          </tr>
+          <tr>
+            <td><strong>4. <span class="key-term">閱覽卷宗權</span></strong></td>
+            <td>《行政程序法》第 46 條（課本 p.59）</td>
+            <td>
+              • <strong>內涵</strong>：當事人或利害關係人若有主張或維護其法律上利益之必要，得向行政機關申請<strong>閱覽、抄寫、複印或攝影</strong>相關卷宗資料。<br>
+              • <strong>實例</strong>：① 屋主收到「危險建築限期拆除通知書」時，申請閱覽房屋結構鑑定報告（課本圖 3-2-2）；② 北市警局提供民眾線上查詢交通違規採證照片（寶典 p.72 第 8 題）。
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 4: (三) 民主原則 ==================== -->
+  <section class="section-card" id="sec-demo">
+    <div class="section-header">
+      <h2 class="section-title">肆、(三) 民主原則 ➔ 人民表達、參與</h2>
+      <div>
+        <span class="badge-board">板書來源：S__23142406_0.jpg 右側</span>
+        <span class="badge-book">課本 p.60–61 / 寶典 p.62</span>
+      </div>
+    </div>
+
+    <p style="margin-bottom:14px;">民主原則旨在賦予民眾參與討論及表達意見的權利，讓行政機關在決策前能全面考量對人民有利與不利的面向，兼顧程序正義與實質正義。老師板書將其分為<strong>「1. 陳述意見」</strong>與<strong>「2. 聽證（☆ 結果納入決策）」</strong>兩大層次：</p>
+
+    <div class="grid-2">
+      <div class="info-card">
+        <h4>1. 陳述意見（陳述意見權） <span>板書第 1 點｜消極參與</span></h4>
+        <ul>
+          <li><strong>法源依據</strong>：《行政程序法》第 39 條、第 102 條。</li>
+          <li><strong>核心內涵</strong>：行政機關作成<strong>限制或剝奪人民自由或權利之行政處分前</strong>，原則上應給予該處分相對人陳述意見之機會（當事人可填具「陳述意見書」並檢附有利證據）。</li>
+          <li><strong>參與性質</strong>：屬於人民參與行政程序最基本的<strong><span class="key-term">消極方式</span>（單向表達）</strong>。行政機關未必完全依循人民陳述之意見，但必須納入考量，並在處分作成後告知如何提起行政救濟。</li>
+        </ul>
+      </div>
+
+      <div class="info-card ok">
+        <h4>2. 聽證（聽證權）— ☆ 結果納入決策 <span>板書第 2 點｜積極參與</span></h4>
+        <ul>
+          <li><strong>法源依據</strong>：《行政程序法》第 54～66 條、第 108 條。</li>
+          <li><strong>核心內涵</strong>：人民得在公開舉行的聽證程序中陳述意見、提出有利證據，甚至針對機關指定人員或關係人進行<strong>提問與雙向辯駁</strong>，以釐清事實與法律爭點。</li>
+          <li><strong>參與性質（老師板書星號重點）</strong>：相較於單向的陳述意見，聽證是<strong>更積極的雙向論辯方式</strong>，且<strong><span class="key-term">☆ 結果納入決策</span></strong>——行政機關作成最終決定時，應斟酌全部聽證紀錄，說明採納或不採納之理由，<strong>聽證結果具有約束主管機關的效力</strong>！（註：經聽證作成之行政處分，後續救濟<strong>免經訴願程序</strong>，可直接提起行政訴訟）。</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-title">🔥 學測與段考必考比較：「陳述意見」vs.「公聽會（說明會）」vs.「聽證（會）」</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:18%;">比較項目</th>
+            <th style="width:26%;">陳述意見</th>
+            <th style="width:28%;">公聽會／一般政策說明會</th>
+            <th style="width:28%;">聽證（聽證會）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>互動模式</strong></td>
+            <td><strong>單向表達</strong>（多以書面「陳述意見書」或言詞向承辦機關陳述）</td>
+            <td><strong>廣泛蒐集意見</strong>（彙整利害關係人與專家、里民之正反意見）</td>
+            <td><strong>正式雙向辯駁</strong>（當事人陳述、提證據、當場發問詰問、聲明異議）</td>
+          </tr>
+          <tr>
+            <td><strong>積極程度</strong></td>
+            <td>最基本的<strong>消極參與</strong></td>
+            <td>一般諮詢參與</td>
+            <td>最高強度的<strong>積極參與</strong></td>
+          </tr>
+          <tr>
+            <td><strong>對機關之拘束力<br>（板書 ☆ 重點）</strong></td>
+            <td>機關須考量，但不受其意見拘束</td>
+            <td><strong>僅供參考，無拘束力</strong>；主管機關既不受意見約束，也無答辯說明之法定義務</td>
+            <td><strong><span class="key-term">☆ 結果納入決策（具拘束力）</span></strong>；主管機關須正式說明採納或不採納之理由</td>
+          </tr>
+          <tr>
+            <td><strong>課本／題庫例子</strong></td>
+            <td>收到違規或裁罰通知前，寄送「陳述意見書」檢附證據說明（課本 p.60 圖 3-2-3）</td>
+            <td>市政府為興建社會住宅舉辦里民會議蒐集正反意見（寶典 p.72 第 6 題）</td>
+            <td>特定農業區經行政院核定為重大建設須辦理土地徵收且有爭議時，依法舉行聽證（課本 p.62）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 5: 綜合案例（性平會與土地徵收） ==================== -->
+  <section class="section-card" id="sec-cases">
+    <div class="section-header">
+      <h2 class="section-title">伍、課本與圖解法律兩大綜合實例演練</h2>
+      <div>
+        <span class="badge-book">課本 p.62 圖 3-2-4 / 圖解法律 p.24–27</span>
+      </div>
+    </div>
+
+    <h3 class="sub-title">實例一：從「性別平等教育委員會（性平會）」看正當程序（圖解法律專題）</h3>
+    <div class="callout">
+      <div class="callout-title">🏫 《性別平等教育法》之組織與正當程序規定（圖解法律 p.24–26）</div>
+      <p>校園若發生<strong>性侵害、性騷擾或性霸凌</strong>事件（一方為校長、教師、職員、工友或學生，他方為學生），即使人證物證充分，也<strong>絕不可由校長或主任獨自私下處理</strong>，必須依《性平法》踐行嚴謹的正當行政程序：</p>
+    </div>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <span class="flow-step-num">STEP 1｜通報與申請</span>
+        <h5>24 小時內法定通報</h5>
+        <p>學校教職員工獲知疑似校園性平事件，須於 <span class="key-term">24 小時內</span>向學校及當地直轄市、縣（市）主管機關通報；被害人或檢舉人亦可申請調查。</p>
+      </div>
+      <div class="flow-step">
+        <span class="flow-step-num">STEP 2｜性平會受理</span>
+        <h5>女性過半 ＋ 20 日內通知</h5>
+        <p>各級學校性平會之<strong>女性委員應占總數 <span class="key-term">1/2 以上</span></strong>（學校得聘教師、職工、家長及<strong>學生代表</strong>）。性平會應於 <span class="key-term">20 日內</span>以書面通知是否受理。</p>
+      </div>
+      <div class="flow-step">
+        <span class="flow-step-num">STEP 3｜調查小組調查</span>
+        <h5>3 或 5 人小組 ＋ 2 個月完成</h5>
+        <p>組成 <strong>3 或 5 人</strong>之性別調查小組，訪談雙方並給予<strong>充分陳述意見及答辯機會</strong>（保密身分資料），應於受理 <span class="key-term">2 個月內</span>完成調查報告。</p>
+      </div>
+      <div class="flow-step">
+        <span class="flow-step-num">STEP 4｜通知結果與申復</span>
+        <h5>不服可於 20 日內申復</h5>
+        <p>學校將處理結果書面通知申請人及行為人，並告知救濟途徑。若不服處理結果，得於收到通知次日起 <span class="key-term">20 日內</span>向學校提出「<span class="key-term">申復</span>」（以 1 次為限）。</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">實例二：國家徵收私人土地需通過哪些正當程序？（課本 p.62 圖 3-2-4）</h3>
+    <div class="grid-3">
+      <div class="info-card">
+        <h4>⚖️ 公正原則的落實</h4>
+        <ul>
+          <li><strong>組織合法性</strong>：土地徵收審議小組成員應包含相關專家學者及民間團體代表，且<strong>不得低於成員總數的 1/2</strong>。</li>
+          <li><strong>利益迴避</strong>：若有公務員與該土地徵收案件有利害關係，應依法迴避。</li>
+          <li><strong>禁止程序外接觸</strong>：相關公務員與開發建商不得有程序外的不必要接觸。</li>
+        </ul>
+      </div>
+
+      <div class="info-card ok">
+        <h4>📢 公開原則的落實</h4>
+        <ul>
+          <li><strong>公告周知（資訊公開）</strong>：公開土地徵收的審議狀況及被徵收土地使用狀況等資訊，供民眾上網查詢。</li>
+          <li><strong>個別通知與文書送達</strong>：土地徵收案通過後，應<strong>公告並以書面通知</strong>土地所有權人。</li>
+          <li><strong>閱覽卷宗權</strong>：若土地相關利害關係人有權益受侵害之虞，可向機關申請閱覽相關卷宗。</li>
+        </ul>
+      </div>
+
+      <div class="info-card amber">
+        <h4>🗳️ 民主原則的落實</h4>
+        <ul>
+          <li><strong>陳述意見權</strong>：土地徵收計畫書中，應載明土地所有權人的意見陳述與回應處理情形。</li>
+          <li><strong>聽證權（☆結果納入決策）</strong>：特定農業區經行政院核定為重大建設須辦理徵收者，若有爭議應<strong>依法舉行聽證</strong>。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 6: 資料來源清單 ==================== -->
+  <section class="section-card" id="sec-sources">
+    <div class="section-header">
+      <h2 class="section-title">📂 本筆記資料來源清單（Sources）</h2>
+    </div>
+    <ul class="source-list">
+      <li>
+        <span class="src-badge src-primary">主來源｜老師板書</span>
+        <div>
+          <strong>_收件匣 / S__23142405_0.jpg（右板）</strong><br>
+          涵蓋：<code>3-2 行政程序</code> 之「一、目的：實踐程序正義」與「二、原則：(一) 公正 ➔ No 偏頗（1. 有利、不利併予注意；2. 利益迴避；3. 禁止程序外接觸）」。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-primary">主來源｜老師板書</span>
+        <div>
+          <strong>_收件匣 / S__23142406_0.jpg</strong><br>
+          涵蓋：<code>3-2 行政程序</code> 之「(二) 公開 ➔ No 資訊不對稱（1. 公告周知；2. 個別通知；3. 文書送達；4. 閱覽卷宗權）」與「(三) 民主 ➔ (人) 表達、參與（1. 陳述意見；2. 聽證 — ☆ 結果納入決策）」。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-secondary">輔助來源｜教科書</span>
+        <div>
+          <strong>90_原始資源與教材庫 / 教科書與講義 / 第二冊 / 課本 / 公民(2)課本_03_CH3.pdf</strong><br>
+          《普通型高級中等學校 公民與社會（2）保障人權》（113 學年度乙版）第 3 章第二節〈正當行政程序的精神〉（p.55–62）。包含校園午餐標案公正原則圖解（圖 3-2-1）、《政府資訊公開法》第 18 條限制公開 5 項目、危險建築通知之公開原則圖解（圖 3-2-2）、陳述意見書範例（圖 3-2-3）、公聽會與聽證比較（p.61 想素養）及私人土地徵收程序圖解（圖 3-2-4）。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-secondary">輔助來源｜講義題本</span>
+        <div>
+          <strong>90_原始資源與教材庫 / 教科書與講義 / 第二冊 / 學習寶典 / 04-113高中公民(2)乙版-學習寶典(學用)-CH3-1206.pdf</strong><br>
+          第 3 章第二節重點秘笈（p.53, 60–63，含「受告知權」三種類型補充）、警察酒測未錄影素養題組（p.68）及實戰演練、歷屆試題（p.72–77）。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-secondary">輔助來源｜圖解專題</span>
+        <div>
+          <strong>90_原始資源與教材庫 / 教科書與講義 / 第二冊 / 圖解法律 / 04-113高中公民乙版(2)-圖解法律-成書內頁-C3-1120.pdf</strong><br>
+          第 3 章專題二〈從性別平等教育委員會看正當程序〉（p.24–27），含各級性平會組成、校園性侵害／性騷擾／性霸凌事件四大處理流程與法定保密及救濟規定。
+        </div>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<script>
+function toggleQuizMode() {
+  const body = document.body;
+  const btn = document.getElementById('quizBtn');
+  body.classList.toggle('quiz-mode');
+  const isQuiz = body.classList.contains('quiz-mode');
+  if (isQuiz) {
+    btn.classList.add('active');
+    btn.textContent = '👁️ 結束自測（顯示全部答案）';
+    document.querySelectorAll('.key-term').forEach(el => el.classList.remove('revealed'));
+  } else {
+    btn.classList.remove('active');
+    btn.textContent = '🎯 開啟遮罩自測模式';
+  }
+}
+
+document.addEventListener('click', function(e) {
+  if (document.body.classList.contains('quiz-mode') && e.target.classList.contains('key-term')) {
+    e.target.classList.toggle('revealed');
+  }
+});
+</script>
+
+</body>
+</html>

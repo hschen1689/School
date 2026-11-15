@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L2_4_2｜4.2 罪刑法定主義（含犯罪成立三要件）— 公民與社會筆記</title>
+<style>
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --board-bg: #1e352f;
+  --board-border: #8c6239;
+  --board-text: #f5f7f0;
+  --chalk-yellow: #ffe066;
+  --chalk-pink: #ff99ac;
+  --chalk-blue: #8ce99a;
+  --primary: #1a3d6e;
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --teal: #0f766e;
+  --teal-light: #f0fdfa;
+  --amber: #b45309;
+  --amber-light: #fffbeb;
+  --danger: #b91c1c;
+  --danger-light: #fef2f2;
+  --ink: #1e293b;
+  --ink-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.7;
+  padding-bottom: 60px;
+}
+
+/* Top Navigation Bar */
+.top-nav {
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+}
+
+.brand-badge {
+  background: var(--chalk-yellow);
+  color: #1a2a3a;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 900;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.88rem;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: all 0.15s;
+}
+
+.nav-link:hover, .nav-link.active {
+  background: #fff;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.btn-quiz-mode {
+  background: #eab308;
+  color: #1e293b;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-quiz-mode:hover { background: #facc15; }
+.btn-quiz-mode.active { background: #ef4444; color: #fff; }
+
+/* Container */
+.container {
+  max-width: 1040px;
+  margin: 28px auto;
+  padding: 0 18px;
+}
+
+/* Hero Header */
+.hero {
+  background: linear-gradient(135deg, #0f5257 0%, #1a3d6e 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+
+.hero-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.tag {
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-size: 1.75rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.hero p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Quick Jump TOC */
+.toc-bar {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow);
+}
+
+.toc-label {
+  font-weight: 800;
+  font-size: 0.88rem;
+  color: var(--primary);
+  margin-right: 4px;
+}
+
+.toc-chip {
+  text-decoration: none;
+  font-size: 0.85rem;
+  color: var(--ink);
+  background: var(--bg);
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  transition: all 0.15s;
+}
+
+.toc-chip:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+/* Section Card */
+.section-card {
+  background: var(--card);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  padding: 28px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge-board {
+  background: #1e352f;
+  color: var(--chalk-yellow);
+  font-size: 0.76rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  border: 1px solid var(--board-border);
+}
+
+.badge-book {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.76rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  border: 1px solid #bfdbfe;
+}
+
+/* Chalkboard Replica Box */
+.chalkboard {
+  background: var(--board-bg);
+  color: var(--board-text);
+  border: 6px solid var(--board-border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin: 16px 0 22px;
+  box-shadow: inset 0 0 24px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.12);
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.chalkboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed rgba(255,255,255,0.25);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.75);
+}
+
+.chalk-yellow { color: var(--chalk-yellow); font-weight: 800; }
+.chalk-pink { color: var(--chalk-pink); font-weight: 800; }
+.chalk-blue { color: var(--chalk-blue); font-weight: 800; }
+.chalk-underline { border-bottom: 2px solid var(--chalk-yellow); padding-bottom: 1px; }
+.chalk-box-inline {
+  display: inline-block;
+  border: 2px solid var(--chalk-yellow);
+  border-radius: 6px;
+  padding: 1px 8px;
+  color: var(--chalk-yellow);
+  font-weight: 800;
+}
+
+/* Timeline inside Chalkboard */
+.board-timeline {
+  background: rgba(255,255,255,0.05);
+  border: 1px dashed rgba(255,255,255,0.28);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 12px 0;
+}
+
+.tl-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .tl-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tl-node {
+  text-align: center;
+  position: relative;
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 8px;
+  border-top: 3px solid #fff;
+}
+
+.tl-date {
+  color: var(--chalk-blue);
+  font-weight: 800;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.tl-event {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.tl-result {
+  background: rgba(255, 224, 102, 0.16);
+  border: 2px solid var(--chalk-yellow);
+  border-radius: 8px;
+  padding: 10px 16px;
+  color: var(--chalk-yellow);
+  font-weight: 900;
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+/* Grid & Info Cards */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+  margin: 14px 0;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 14px 0;
+}
+
+.info-card {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--primary);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.info-card.warn { border-left-color: var(--danger); background: var(--danger-light); }
+.info-card.ok { border-left-color: var(--teal); background: var(--teal-light); }
+.info-card.amber { border-left-color: var(--amber); background: var(--amber-light); }
+
+.info-card h4 {
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-card.warn h4 { color: var(--danger); }
+.info-card.ok h4 { color: var(--teal); }
+.info-card.amber h4 { color: var(--amber); }
+
+.info-card ul, .info-card ol {
+  padding-left: 18px;
+  font-size: 0.94rem;
+}
+
+.info-card li { margin-bottom: 6px; }
+
+/* Tables */
+.table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 11px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: #f1f5f9;
+  color: var(--primary);
+  font-weight: 800;
+}
+
+tr:nth-child(even) td { background: #fafcff; }
+
+/* Key Term Blank Mode (Quiz Mode) */
+.key-term {
+  background: #fef08a;
+  color: #854d0e;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 800;
+  transition: all 0.2s;
+}
+
+body.quiz-mode .key-term {
+  background: #334155;
+  color: transparent;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 2px dashed #94a3b8;
+}
+
+body.quiz-mode .key-term.revealed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Sub-headings */
+h3.sub-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 22px 0 10px;
+  padding-left: 10px;
+  border-left: 4px solid var(--teal);
+}
+
+/* Callout Box */
+.callout {
+  background: var(--accent-light);
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 14px 0;
+  font-size: 0.93rem;
+}
+
+.callout-title {
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Source List */
+.source-list {
+  list-style: none;
+  padding: 0;
+}
+
+.source-list li {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.92rem;
+}
+
+.source-list li:last-child { border-bottom: none; }
+
+.src-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.src-primary { background: #1e352f; color: var(--chalk-yellow); }
+.src-secondary { background: #e0e7ff; color: #1e40af; }
+
+@media print {
+  .top-nav, .toc-bar, .btn-quiz-mode { display: none !important; }
+  body { background: #fff; padding: 0; }
+  .section-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top Navigation -->
+<header class="top-nav">
+  <div class="brand">
+    <span class="brand-badge">高中公民 第二冊</span>
+    <span>Ch.4 刑事法與人權保障（第一節：刑罰與刑法）</span>
+  </div>
+  <div class="nav-actions">
+    <a href="L2_4_1.html" class="nav-link">📘 4.1 刑罰與刑法謙抑</a>
+    <a href="L2_4_2.html" class="nav-link active">📗 4.2 罪刑法定主義</a>
+    <a href="L2_4_1(簡要版).html" class="nav-link">⚡ 4.1 衝刺簡要版</a>
+    <a href="L2_4_2(簡要版).html" class="nav-link">⚡ 4.2 衝刺簡要版</a>
+    <button class="btn-quiz-mode" id="quizBtn" onclick="toggleQuizMode()">🎯 開啟遮罩自測模式</button>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="hero-meta">
+      <span class="tag">📌 老師板書重點為主</span>
+      <span class="tag">📚 整合乙版課本＋學習寶典＋素養題本</span>
+      <span class="tag">⭐ 刑法最高原則＆四大衍生內涵＋犯罪成立三要件</span>
+    </div>
+    <h1>4.2 罪刑法定主義（含課本延伸：犯罪成立三要件）</h1>
+    <p>完整對照老師黑板筆記「4-2 罪刑法定主義」之意義（☆ 刑法最高原則、刑法第 1 條、落實法律保留）與四大核心內涵：「(一) 罪刑明確性」、「(二) 習慣法禁止」、「(三) 禁止類推適用」、「(四) 禁止溯及既往（從舊從輕雙時間軸）」，並統整同節課本「犯罪成立三要件（該當性、違法性、有責性）」。</p>
+  </section>
+
+  <!-- Quick Jump TOC -->
+  <nav class="toc-bar">
+    <span class="toc-label">⚡ 快速跳轉：</span>
+    <a href="#sec-1" class="toc-chip">一、罪刑法定主義：意義與目的</a>
+    <a href="#sec-2" class="toc-chip">二、內涵 (一) 罪刑明確性 ＆ (二) 習慣法禁止</a>
+    <a href="#sec-3" class="toc-chip">三、內涵 (三) 禁止類推適用 ＆ (四) 禁止溯及既往</a>
+    <a href="#sec-4" class="toc-chip">四、跨法科比較（刑法 vs. 民法 vs. 行政法）</a>
+    <a href="#sec-5" class="toc-chip">五、課本同節延伸：犯罪成立三要件</a>
+    <a href="#sec-sources" class="toc-chip">📂 資料來源清單</a>
+  </nav>
+
+  <!-- ==================== SECTION 1: 罪刑法定主義之意義 ==================== -->
+  <section class="section-card" id="sec-1">
+    <div class="section-header">
+      <h2 class="section-title">壹、4-2 罪刑法定主義：意義與核心目的</h2>
+      <div>
+        <span class="badge-board">板書來源：S__23756806_0.jpg 左板</span>
+        <span class="badge-book">課本 p.76 / 寶典 p.84</span>
+      </div>
+    </div>
+
+    <!-- Teacher Chalkboard Replica -->
+    <div class="chalkboard">
+      <div class="chalkboard-header">
+        <span>👩‍🏫 老師黑板筆記原貌重現（S__23756806_0.jpg 左板：一、意義）</span>
+        <span>檔案：_收件匣/S__23756806_0.jpg</span>
+      </div>
+      <p class="chalk-yellow" style="font-size:1.18rem; margin-bottom:10px;">4-2 罪刑法定主義</p>
+      <p style="font-size:1.05rem; margin-bottom:8px;"><strong>一、意義</strong></p>
+      <div style="padding-left:16px; line-height:2.0; font-size:1.03rem;">
+        <p><span class="chalk-yellow">☆ 刑法最高原則</span></p>
+        <p><strong>＃《刑法》第 1 條：</strong><span class="chalk-blue">「行為之處罰，以行為時之法律有明文規定者為限」</span></p>
+        <p>➔ <span class="chalk-pink">落實法律保留原則</span></p>
+      </div>
+    </div>
+
+    <h3 class="sub-title">1. 什麼是「罪刑法定主義（罪刑法定原則）」？</h3>
+    <ul>
+      <li><strong>核心定義</strong>：「什麼行為構成犯罪」以及「對該犯罪應科處何種刑罰及刑度」，均必須<strong>事先由具備民意基礎之立法機關（立法院）制定的成文「法律」明文規定</strong>；反之，若行為時法律未明文規定為犯罪，無論該行為造成多嚴重的損害或社會譁然，皆不屬於犯罪，國家更不得動用刑罰處罰行為人（<strong>法無明文規定者不為罪、法無明文規定者不處罰</strong>）。</li>
+      <li><strong>法源依據（普世公認的《刑法》最高原則）</strong>：
+        <ul>
+          <li><strong>我國《刑法》第 1 條（老師板書必背條文）</strong>：「<strong>行為之處罰，以<span class="key-term">行為時之法律有明文規定者</span>為限。</strong>拘束人身自由之保安處分，亦同。」</li>
+          <li><strong>《公民與政治權利國際公約》（ICCPR）第 15 條</strong>：明定任何人之行為或不行為，於發生當時依內國法及國際法均不成罪者，不為罪。</li>
+        </ul>
+      </li>
+      <li><strong>老師板書關鍵連結 — 為何罪刑法定是「<span class="key-term">落實法律保留原則</span>」？</strong>：
+        <ul>
+          <li>回憶第 3 章「法律保留原則（積極的依法行政）」：隨限制個人基本權利的輕重，有不同規範層級要求。</li>
+          <li>由於犯罪與刑罰涉及剝奪人民生命、人身自由與財產等最核心基本權，因此<strong>只能由立法院三讀通過的「法律」明文規定（國會保留／絕對法律保留）</strong>，行政機關絕對不能以「行政命令」自己創設罪名或刑罰！</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3 class="sub-title">2. 為什麼「罪刑法定原則」是刑法最高原則？（課本 p.76 三大目的）</h3>
+    <div class="grid-3">
+      <div class="info-card">
+        <h4>① 保障人權（防國家濫權）</h4>
+        <p style="font-size:0.93rem;"><strong>防止國家恣意將人民定罪甚至處罰</strong>。國家必須受到事先制定的刑法條文拘束，不能看某人不順眼就臨時羅織罪名入人於罪。</p>
+      </div>
+      <div class="info-card ok">
+        <h4>② 權力分立與制衡</h4>
+        <p style="font-size:0.93rem;">由具民意基礎的<strong>立法權</strong>制定刑法，<strong>司法權</strong>依法獨立審判且不得超出刑法賦予的處罰權限，實現立法與司法的分權制衡。</p>
+      </div>
+      <div class="info-card amber">
+        <h4>③ 可預見性與預防犯罪</h4>
+        <p style="font-size:0.93rem;">事先明文公布何種行為是犯罪及處罰後果，使人民對自身行為具有<strong><span class="key-term">可預見性</span></strong>，知所行止，進而達到預防犯罪發生的效果。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 2: 內涵 (一) 罪刑明確性 & (二) 習慣法禁止 ==================== -->
+  <section class="section-card" id="sec-2">
+    <div class="section-header">
+      <h2 class="section-title">貳、罪刑法定主義之內涵（上）：(一) 罪刑明確性 ＆ (二) 習慣法禁止</h2>
+      <div>
+        <span class="badge-board">板書來源：S__23756806_0.jpg 右板</span>
+        <span class="badge-book">課本 p.77–78 / 寶典 p.85</span>
+      </div>
+    </div>
+
+    <!-- Teacher Chalkboard Replica -->
+    <div class="chalkboard">
+      <div class="chalkboard-header">
+        <span>👩‍🏫 老師黑板筆記原貌重現（S__23756806_0.jpg 右板：二、內涵 (一)(二)）</span>
+        <span>檔案：_收件匣/S__23756806_0.jpg</span>
+      </div>
+      <p class="chalk-yellow" style="font-size:1.12rem; margin-bottom:12px;">二、內涵</p>
+      <div class="grid-2" style="margin:0;">
+        <div style="background:rgba(255,255,255,0.06); padding:16px; border-radius:8px; border:1px dashed rgba(255,255,255,0.25);">
+          <p class="chalk-yellow" style="font-size:1.06rem; margin-bottom:8px;">(一) 罪刑明確性</p>
+          <ol style="padding-left:22px; line-height:1.95; font-size:1.02rem;">
+            <li><strong>定義：<span class="chalk-blue">犯罪要件</span></strong></li>
+            <li><strong>刑罰種類</strong></li>
+            <li><strong>刑度 <span class="chalk-box-inline">範圍</span></strong></li>
+          </ol>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.06); padding:16px; border-radius:8px; border:1px dashed rgba(255,255,255,0.25);">
+          <p class="chalk-yellow" style="font-size:1.06rem; margin-bottom:8px;">(二) 習慣法禁止</p>
+          <p style="font-size:1.02rem; line-height:1.85; padding-left:6px;">
+            不以<span class="chalk-pink">風俗習慣（不成文規定）</span><br>
+            作為處罰依據
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">1. (一) 罪刑明確性原則 — 老師板書三要素詳解</h3>
+    <div class="info-card" style="margin-bottom:16px;">
+      <h4>🔍 犯罪構成要件與法律效果（刑罰種類、刑度範圍）皆須明確</h4>
+      <ul>
+        <li><strong>板書要素 1｜定義明確（<span class="key-term">犯罪要件</span>明確）</strong>：
+          <ul>
+            <li>為避免對於犯罪構成要件產生歧異的法律解釋，刑法條文用語須具體清楚，有時更直接在法條中給予<strong>立法定義</strong>。</li>
+            <li><strong>課本案例（p.77 圖 4-1-4）</strong>：小花推倒小珠，造成小珠膝蓋破皮流血不已，小珠提告「重傷罪」是否成立？<br>
+              ➔ <strong>不成立重傷罪（僅成立普通傷害罪）</strong>！因為《刑法》第 10 條第 4 項對「<strong>重傷</strong>」有明確立法定義（指毀損或嚴重減損視能、味能、聽能、嗅能、語能、肢體機能，或其他於身體或健康有重大不治或難治之傷害），膝蓋破皮流血並不符合重傷之法定要件。</li>
+          </ul>
+        </li>
+        <li><strong>板書要素 2 & 3｜法律效果明確（刑罰種類 ＆ 刑度<span class="key-term">範圍</span>，禁止絕對不定期刑）</strong>：
+          <ul>
+            <li><strong><span class="key-term">禁止絕對不定期刑</span></strong>：刑罰必須明定刑罰種類與一定上限（不能只寫「殺人者關到他悔改為止」），人民才能預期處罰多久。</li>
+            <li><strong>我國《刑法》採「<span class="key-term">相對不定期刑</span>」</strong>：法條明定刑度的<strong>上限與下限（刑度範圍）</strong>（例如《刑法》第 271 條：「殺人者，處死刑、無期徒刑或 10 年以上有期徒刑」；第 210 條偽造私文書罪：「處 5 年以下有期徒刑」），在此法定刑度範圍內，容許法官依個案犯罪情節輕重宣告適合的刑度（量刑裁量）。</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <h3 class="sub-title">2. (二) 習慣法禁止原則（禁止以不成文習俗定罪處罰）</h3>
+    <div class="info-card warn">
+      <h4>🚫 罪刑只能經立法程序以「成文法」明定，禁用民間習俗定罪科刑</h4>
+      <ul>
+        <li><strong>什麼是「習慣法」？</strong>：指社會大眾長期習以為常、反覆實踐，且內心確信具有約束力的<strong>非成文規範（不成文法）</strong>。</li>
+        <li><strong>為什麼《刑法》禁止習慣法？</strong>：習慣法沒有經過立法院成文立法程序，內容與界限往往模糊不清，若允許檢察官或法官引用民間風俗習慣來將人民定罪或判刑，將嚴重危及人權與法安定性。</li>
+        <li><strong>課本與學習寶典經典實例</strong>：
+          <ul>
+            <li><strong>課本實例（p.78）</strong>：某人在雜貨店偷了一瓶飲料，當地有「偷竊者需請戲班連演 3 天、請全村看戲辦桌吃飯，並在開演前宣讀罪行」的習俗。即使全村居民都接受這種處罰習慣，<strong>法官仍應依《刑法》竊盜罪判刑，不得以當地習俗作為處罰依據</strong>。</li>
+            <li><strong>寶典實例（p.85）</strong>：某村有「敗壞風俗者應於市集下跪道歉與擺設宴席招待鄉里（洗門風）」之習慣，檢察官不得依此習俗起訴，法官亦不得依此判刑。</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 3: 內涵 (三) 禁止類推適用 & (四) 禁止溯及既往 ==================== -->
+  <section class="section-card" id="sec-3">
+    <div class="section-header">
+      <h2 class="section-title">參、罪刑法定主義之內涵（下）：(三) 禁止類推適用 ＆ (四) 禁止溯及既往</h2>
+      <div>
+        <span class="badge-board">板書來源：S__23756807_0.jpg</span>
+        <span class="badge-book">課本 p.77–78 / 寶典 p.85</span>
+      </div>
+    </div>
+
+    <!-- Teacher Chalkboard Replica: S__23756807_0.jpg -->
+    <div class="chalkboard">
+      <div class="chalkboard-header">
+        <span>👩‍🏫 老師黑板筆記原貌重現（S__23756807_0.jpg：(三) 禁止類推適用 ＆ (四) 禁止溯及既往雙時間軸）</span>
+        <span>檔案：_收件匣/S__23756807_0.jpg</span>
+      </div>
+
+      <!-- Left Panel: (三) 禁止類推適用 -->
+      <div style="background:rgba(255,255,255,0.06); padding:14px 18px; border-radius:8px; margin-bottom:16px; border-left:4px solid var(--chalk-pink);">
+        <p class="chalk-yellow" style="font-size:1.08rem; margin-bottom:6px;">(三) 禁止類推適用</p>
+        <p style="font-size:1.02rem;">
+          刑法未規定的事項，<span class="chalk-pink">不援引相似法條入罪</span>
+        </p>
+      </div>
+
+      <!-- Right Panel: (四) 禁止溯及既往 (Two Timelines) -->
+      <p class="chalk-yellow" style="font-size:1.08rem; margin-bottom:10px;">(四) 禁止溯及既往</p>
+
+      <!-- Timeline 1: 2002.12 - 2003.12 (從舊) -->
+      <div class="board-timeline">
+        <div style="font-size:0.85rem; color:rgba(255,255,255,0.75); margin-bottom:4px;">【板書時間軸 1｜原則：從舊原則（行為時法無明文不罰）】</div>
+        <div class="tl-row">
+          <div class="tl-node">
+            <div class="tl-date">2002.12</div>
+            <div class="tl-event">入侵電腦</div>
+          </div>
+          <div class="tl-node">
+            <div class="tl-date">2003.6</div>
+            <div class="tl-event">增訂<br>妨害電腦使用罪</div>
+          </div>
+          <div class="tl-node">
+            <div class="tl-date">2003.12</div>
+            <div class="tl-event">法院審理</div>
+          </div>
+          <div class="tl-result">
+            ➔ 從 舊
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline 2: 2020.4 - 2020.12 (例外適用新法：從輕) -->
+      <div class="board-timeline">
+        <div style="font-size:0.85rem; color:rgba(255,255,255,0.75); margin-bottom:4px;">【板書時間軸 2｜例外：從輕原則（新法有利於行為人時適用新法）】</div>
+        <div class="tl-row">
+          <div class="tl-node">
+            <div class="tl-date">2020.4</div>
+            <div class="tl-event">通 姦</div>
+          </div>
+          <div class="tl-node">
+            <div class="tl-date">2020.5</div>
+            <div class="tl-event">通姦除罪化</div>
+          </div>
+          <div class="tl-node">
+            <div class="tl-date">2020.12</div>
+            <div class="tl-event">法院審理</div>
+          </div>
+          <div class="tl-result">
+            ➔ 例外適用新法<br><span style="font-size:1.15rem;">從 輕</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">1. (三) 禁止類推適用原則</h3>
+    <div class="info-card warn" style="margin-bottom:16px;">
+      <h4>🚫 刑法未明文規定之事項，絕對禁止援引類似法條入人於罪</h4>
+      <ul>
+        <li><strong>什麼是「類推適用」？</strong>：指對於法律未明文規定之事項，比附援引其他具有「類似要件」的法律條文來加以適用。</li>
+        <li><strong>《刑法》為何禁止類推適用？</strong>：在罪刑法定原則下，只要<strong>不利於行為人</strong>（用來創設新罪名或加重刑罰），是<strong>絕對禁止類推適用</strong>的；否則等於允許法官在行為發生後，透過比附援引來處罰原先《刑法》不制裁的行為。</li>
+        <li><strong>課本與學習寶典兩大必考實例</strong>：
+          <ol>
+            <li><strong>騎車撞傷「狗」逃逸案（課本 p.77 圖 4-1-5）</strong>：小明騎機車闖紅燈撞傷小華的狗並逃離現場，小華能否告小明《刑法》第 185-4 條「發生交通事故<strong>致人死傷</strong>而逃逸罪（肇事逃逸罪）」？<br>
+              ➔ <strong>不可以！</strong>因為法條明文限定「致<strong>人</strong>死傷」，法官<strong>不得將「致狗（寵物）死傷」類推適用到「致人死傷」</strong>而判處肇事逃逸罪！</li>
+            <li><strong>印製玩具鈔票／冥紙紙錢案（學習寶典 p.107 第 3 題）</strong>：《刑法》偽造貨幣罪中的「貨幣」是指具公權力的政府所發行之貨幣；製作玩具鈔票或紙錢不能比附援引偽造貨幣罪處罰，此即<strong>禁止類推適用</strong>的展現。</li>
+          </ol>
+        </li>
+      </ul>
+    </div>
+
+    <h3 class="sub-title">2. (四) 禁止溯及既往原則 ＆「從舊從輕原則」（《刑法》第 2 條）</h3>
+    <div class="info-card ok">
+      <h4>⏳ 原則「從舊」（不溯及既往），例外「從輕」（新法有利於行為人）</h4>
+      <ul>
+        <li><strong>法源依據 —《刑法》第 2 條第 1 項</strong>：「行為後法律有變更者，適用<strong>行為時之法律（從舊原則）</strong>。但行為後之法律<strong>有利於行為人者，適用最有利於行為人之法律（從輕原則）</strong>。」合稱「<strong><span class="key-term">從舊從輕原則</span></strong>」。</li>
+        <li><strong>老師板書雙時間軸＋課本案例全解析</strong>：
+          <div class="table-wrap" style="margin-top:10px;">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width:18%;">適用原則</th>
+                  <th style="width:27%;">判斷標準（行為後修法方向）</th>
+                  <th style="width:55%;">板書時間軸 ＆ 課本／寶典經典實例</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>原則：<span class="key-term">從舊原則</span></strong><br>（禁止不利之溯及既往）</td>
+                  <td>行為時無罪 ➔ 修法<strong>入罪化</strong>；<br>或行為後修法<strong>加重刑罰</strong><br>（新法不利於行為人）</td>
+                  <td>
+                    • <strong>【老師板書時間軸 1】</strong>：<code>2002.12 入侵電腦</code> ➔ <code>2003.6 增訂妨害電腦使用罪</code> ➔ <code>2003.12 法院審理</code> ➔ <strong>依「從舊原則」不處罰（無罪）</strong>！<br>
+                    • <strong>【課本 p.78 圖 4-1-6】</strong>：<code>1995 年甲女對乙男強制性交</code>（舊法被害人僅限婦女）➔ <code>1999 年修法將男性納入被害人</code> ➔ <code>2000 年審理</code> ➔ <strong>依「從舊原則」，甲女不成立強制性交罪</strong>。<br>
+                    • <strong>【寶典 p.85】</strong>：<code>1999.4.2 甲酒駕被開單</code> ➔ <code>1999.4.21 刑法增訂不能安全駕駛罪</code> ➔ 甲僅依舊法受《道交條例》行政罰鍰，不負刑責。
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>例外：<span class="key-term">從輕原則</span></strong><br>（有利於行為人時溯及適用新法）</td>
+                  <td>行為時有罪 ➔ 修法或釋憲<strong>除罪化</strong>；<br>或行為後修法<strong>減輕刑罰</strong><br>（新法有利於行為人）</td>
+                  <td>
+                    • <strong>【老師板書時間軸 2】</strong>：<code>2020.4 通姦</code> ➔ <code>2020.5 通姦除罪化（釋字791）</code> ➔ <code>2020.12 法院審理</code> ➔ <strong>例外適用新法「從輕」（免刑／無罪）</strong>！（對應素養題本 p.43 第 4 題健身教練案）。<br>
+                    • <strong>【課本 p.78 圖 4-1-6】</strong>：<code>2010 年丙公司違反食安法（舊法處 5 年以下）</code> ➔ <code>2013 年修法改處 2 年以下</code> ➔ <code>2014 年法院審理</code> ➔ <strong>依「從輕原則」適用新法，處 2 年以下有期徒刑</strong>。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </li>
+        <li><strong>⚠️ 學習寶典重要限制（p.85）</strong>：「從舊從輕原則」僅適用於<strong>尚未判決確定（審理中）</strong>的案件；若案件已經法院最終判決確定，原則上不再重新審判變更刑度（惟若罪名經宣告違憲除罪化，尚未執行完畢之刑罰免予執行）。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 4: 跨法科比較 ==================== -->
+  <section class="section-card" id="sec-4">
+    <div class="section-header">
+      <h2 class="section-title">肆、大考高頻跨章節比較：《刑法》vs.《民法》vs.《行政法》</h2>
+      <div>
+        <span class="badge-book">學習寶典 p.85 重點比較</span>
+      </div>
+    </div>
+
+    <p style="margin-bottom:12px;">學測與段考極愛將《刑法》的「禁止類推適用、禁止習慣法」與《民法》、《行政法》混合命題，請務必熟記下表：</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:20%;">比較面向</th>
+            <th style="width:28%;">《刑法》（罪刑法定主義）</th>
+            <th style="width:28%;">《民法》（私法自治／解決私權糾紛）</th>
+            <th style="width:24%;">《行政法》（依法行政原則）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>成文法依據要求</strong></td>
+            <td>嚴格要求<strong>立法院制定之成文法律明文規定</strong>（罪刑法定原則）。</td>
+            <td>《民法》第 1 條：「民事，法律所未規定者，<strong>依習慣</strong>；無習慣者，<strong>依法理</strong>。」</td>
+            <td>限制人民自由權利之干預行政，須有<strong>法律依據或法律明確授權</strong>（法律保留原則）。</td>
+          </tr>
+          <tr>
+            <td><strong>能否適用「習慣法」？</strong></td>
+            <td>❌ <strong><span class="key-term">絕對禁止習慣法</span></strong>（不得依民間習俗洗門風、辦桌定罪判刑）。</td>
+            <td>⭕ <strong>可以適用習慣法！</strong>當民法無明文規定時，不背於公序良俗之「習慣」可作為補充法源。</td>
+            <td>干預人民權利須有成文法源依據，不得僅憑不成文民間習俗課予人民義務。</td>
+          </tr>
+          <tr>
+            <td><strong>能否「類推適用」？</strong></td>
+            <td>❌ <strong><span class="key-term">禁止類推適用</span></strong>（不利於行為人時絕對禁止，以免創設新罪名）。</td>
+            <td>⭕ <strong>可以類推適用！</strong>法官不得以「法無明文」拒絕審判民事糾紛，法律有漏洞時可類推適用類似法條。</td>
+            <td>課予人民負擔或處罰（行政罰法）亦採處罰法定主義，不得類推適用加重處罰。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 5: 課本同節延伸：犯罪成立三要件 ==================== -->
+  <section class="section-card" id="sec-5">
+    <div class="section-header">
+      <h2 class="section-title">伍、課本同節延伸（Ch4-1 後半）：五、犯罪成立三要件</h2>
+      <div>
+        <span class="badge-book">課本 p.79–81 / 寶典 p.86–88, 104–106</span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">🔍 如何判斷一個行為「是否成立犯罪」？（依序三階層檢驗，缺一不可！）</div>
+      <p>在確認《刑法》有明文規定（罪刑法定）且該行為屬於人類「<strong>受意思支配之行為</strong>」（⚠️ 注意：睡眠夢遊、無意識反射動作、受他人強暴推擠無法抗拒之動作，非刑法上之「行為」，直接不成罪！見寶典 p.104）後，法官必須<strong>由第 1 階至第 3 階依序檢視</strong>：<strong>① <span class="key-term">構成要件該當性</span> ➔ ② <span class="key-term">違法性</span> ➔ ③ <span class="key-term">有責性</span></strong>。</p>
+    </div>
+
+    <div class="grid-3">
+      <!-- 階層 1 -->
+      <div class="info-card">
+        <h4>步驟 1｜構成要件該當性</h4>
+        <p style="font-size:0.9rem; margin-bottom:8px;">行為必須<strong>同時符合</strong>刑法條文的「客觀」與「主觀」要件：</p>
+        <ul>
+          <li><strong>客觀構成要件</strong>：外在行為與結果符合法條描述（如：開槍射擊致人死亡）。</li>
+          <li><strong>主觀構成要件（犯意）</strong>：
+            <ul>
+              <li><strong><span class="key-term">故意</span>（原則）</strong>：刑法原則上只罰故意犯！含「直接故意」（明知並有意使其發生）與「間接故意／未必故意」（預見其發生而發生不違背本意，如從樓頂丟磚頭覺得砸中人也無所謂）。</li>
+              <li><strong><span class="key-term">過失</span>（例外）</strong>：應注意、能注意而未注意（或預見能發生卻確信不發生），<strong>僅在刑法條文有特別明文規定處罰過失犯時才處罰</strong>（如：過失致死罪、過失傷害罪；⚠️ 刑法<strong>沒有</strong>「過失毀損罪」或「過失竊盜罪」）。</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 階層 2 -->
+      <div class="info-card ok">
+        <h4>步驟 2｜違法性（有無阻卻違法）</h4>
+        <p style="font-size:0.9rem; margin-bottom:8px;">具備構成要件該當性後，原則上推定違法；但若具有以下<strong>四大「<span class="key-term">阻卻違法事由</span>」</strong>之一，則<strong>不具違法性（不成立犯罪）</strong>：</p>
+        <ol>
+          <li><strong><span class="key-term">依法令之行為</span></strong>：如法警依法執行死刑槍決、警察持合法搜索票破門搜索。（⚠️ 課本章首警察<strong>未經法律授權偷裝 GPS</strong>，不符合依法令之行為，仍具違法性！）</li>
+          <li><strong><span class="key-term">業務正當行為</span></strong>：如外科醫師為病患開刀割除盲腸、牙醫拔牙。</li>
+          <li><strong><span class="key-term">正當防衛</span></strong>：對「<strong>現在不法之侵害</strong>」，為防衛自己或他人權利而對<strong>加害人</strong>反擊（如壓制打傷闖空門的小偷）。</li>
+          <li><strong><span class="key-term">緊急避難</span></strong>：因避免自己或他人生命、身體、自由、財產之「<strong>緊急危難</strong>」，不得已侵害<strong>無辜第三人</strong>法益（如打破路邊他人車窗救出受困車內的嬰兒）。</li>
+        </ol>
+        <p style="font-size:0.86rem; color:var(--danger); margin-top:6px;">＊若「防衛過當」或「避難過當」（違反比例原則），仍具違法性而須受罰，但<strong>得減輕或免除其刑</strong>。</p>
+      </div>
+
+      <!-- 階層 3 -->
+      <div class="info-card amber">
+        <h4>步驟 3｜有責性（罪責／責任能力）</h4>
+        <p style="font-size:0.9rem; margin-bottom:8px;">行為人是否具備辨識是非善惡並為自己行為負責的「<strong><span class="key-term">責任能力</span></strong>」：</p>
+        <ul>
+          <li><strong>依「年齡」劃分（必背數字！）</strong>：
+            <ul>
+              <li><strong>未滿 14 歲</strong>：<span class="key-term">無責任能力</span> ➔ <strong>不罰</strong></li>
+              <li><strong>14 歲以上～未滿 18 歲</strong>：<span class="key-term">限制責任能力</span> ➔ <strong>得減輕其刑</strong></li>
+              <li><strong>18 歲以上～未滿 80 歲</strong>：<span class="key-term">完全責任能力</span> ➔ <strong>負完全刑責</strong></li>
+              <li><strong>滿 80 歲以上</strong>：<span class="key-term">限制責任能力</span> ➔ <strong>得減輕其刑</strong></li>
+            </ul>
+          </li>
+          <li><strong>依「精神狀態」劃分（刑法第 19 條）</strong>：
+            <ul>
+              <li>行為時因精障或心智缺陷「<strong>不能辨識</strong>」違法 ➔ 無責任能力（<strong>不罰</strong>）</li>
+              <li>辨識能力「<strong>顯著減低</strong>」 ➔ 限制責任能力（<strong>得減輕其刑</strong>）</li>
+              <li>⚠️ <strong>原因自由行為（第 19 條第 3 項）</strong>：若因<strong>故意或過失自行招致</strong>精神障礙（如<strong>自己喝酒喝到爛醉後酒駕或打人、故意吸毒</strong>），<strong>不得免除或減輕刑責</strong>（仍具完全責任能力）！</li>
+            </ul>
+          </li>
+          <li><strong>依「生理狀態」劃分</strong>：出生或自幼（7 歲前）失去聽力及語言能力之<strong>瘖啞人</strong> ➔ 限制責任能力（<strong>得減輕其刑</strong>）。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 6: 資料來源清單 ==================== -->
+  <section class="section-card" id="sec-sources">
+    <div class="section-header">
+      <h2 class="section-title">📂 本筆記資料來源清單（Sources）</h2>
+    </div>
+    <ul class="source-list">
+      <li>
+        <span class="src-badge src-primary">主來源｜老師板書</span>
+        <div>
+          <strong>_收件匣 / S__23756806_0.jpg</strong><br>
+          涵蓋：<code>4-2 罪刑法定主義</code> 之「一、意義（☆ 刑法最高原則；＃刑法第 1 條：行為之處罰，以行為時之法律有明文規定者為限；落實法律保留原則）」與「二、內涵：(一) 罪刑明確性（1. 定義：犯罪要件、2. 刑罰種類、3. 刑度範圍）；(二) 習慣法禁止（不以風俗習慣／不成文規定作為處罰依據）」。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-primary">主來源｜老師板書</span>
+        <div>
+          <strong>_收件匣 / S__23756807_0.jpg</strong><br>
+          涵蓋：<code>4-2 罪刑法定主義</code> 之「(三) 禁止類推適用（刑法未規定的事項，不援引相似法條入罪）」與「(四) 禁止溯及既往」雙時間軸對照（時間軸 1：<code>2002.12 入侵電腦 ➔ 2003.6 增訂妨害電腦使用罪 ➔ 2003.12 法院審理 ➔ 從舊</code>；時間軸 2：<code>2020.4 通姦 ➔ 2020.5 通姦除罪化 ➔ 2020.12 法院審理 ➔ 例外適用新法：從輕</code>）。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-secondary">輔助來源｜教科書</span>
+        <div>
+          <strong>90_原始資源與教材庫 / 教科書與講義 / 第二冊 / 課本 / 公民(2)課本_04_CH4.pdf</strong><br>
+          《普通型高級中等學校 公民與社會（2）保障人權》（113 學年度乙版）第 4 章第一節〈刑罰與刑法〉後半段（p.76–82）。包含罪刑明確性重傷罪案例（圖 4-1-4）、禁止類推適用撞狗逃逸案例（圖 4-1-5）、禁止溯及既往與從舊從輕案例（圖 4-1-6）、阻卻違法事由圖解（圖 4-1-7）、責任能力劃分圖（圖 4-1-8）及警察偷裝 GPS 犯罪成立三步驟檢核表（p.81）。
+        </div>
+      </li>
+      <li>
+        <span class="src-badge src-secondary">輔助來源｜講義題本</span>
+        <div>
+          <strong>90_原始資源與教材庫 / 教科書與講義 / 第二冊 / 學習寶典 / 05-113高中公民(2)乙版-學習寶典(學用)-CH4-1206.pdf</strong><br>
+          第 4 章第一節重點秘笈（罪刑法定原則、民法與刑法對習慣法及類推適用之比較表、犯罪成立三要件、直接故意／間接故意與無認識過失／有認識過失補充，p.84–88）及讀家新聞素養題組〈酒駕車禍還偽造簽名 駕駛稱吃安眠藥夢遊仍判刑〉与《刑法》第 19 條時事判讀（p.104–106）。
+        </div>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<script>
+function toggleQuizMode() {
+  const body = document.body;
+  const btn = document.getElementById('quizBtn');
+  body.classList.toggle('quiz-mode');
+  const isQuiz = body.classList.contains('quiz-mode');
+  if (isQuiz) {
+    btn.classList.add('active');
+    btn.textContent = '👁️ 結束自測（顯示全部答案）';
+    document.querySelectorAll('.key-term').forEach(el => el.classList.remove('revealed'));
+  } else {
+    btn.classList.remove('active');
+    btn.textContent = '🎯 開啟遮罩自測模式';
+  }
+}
+
+document.addEventListener('click', function(e) {
+  if (document.body.classList.contains('quiz-mode') && e.target.classList.contains('key-term')) {
+    e.target.classList.toggle('revealed');
+  }
+});
+</script>
+
+</body>
+</html>
