@@ -1,0 +1,351 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>83–115 學測詞彙題高頻單字刷題與檢索（出現 2 次以上）</title>
+<style>
+  :root{
+    --bg:#0f2027; --bg2:#203a43; --bg3:#2c5364;
+    --card:#ffffff; --ink:#1d2b36; --muted:#6b7d8a;
+    --brand:#1e6f9f; --brand-d:#155b84;
+    --ok:#2e9e5b; --ok-bg:#e7f7ed; --bad:#d34b4b; --bad-bg:#fbe9e9;
+    --line:#e2e8ee;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Microsoft JhengHei","Noto Sans TC","PingFang TC",sans-serif;
+    background:linear-gradient(160deg,var(--bg),var(--bg2),var(--bg3));
+    color:var(--ink); min-height:100vh; font-size:16px; line-height:1.6;
+    padding:env(safe-area-inset-top) 12px env(safe-area-inset-bottom);
+  }
+  .wrap{max-width:740px; margin:0 auto; padding:18px 0 90px;}
+  header{color:#fff; text-align:center; margin-bottom:14px;}
+  header h1{font-size:22px; margin:0 0 4px;}
+  header .sub{opacity:.85; font-size:13px;}
+  .panel{background:var(--card); border-radius:16px; padding:20px; box-shadow:0 8px 28px rgba(0,0,0,.25); margin-bottom:14px;}
+  .scope{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0;}
+  .chip{flex:1 1 calc(33.33% - 6px); min-width:140px; border:2px solid var(--line); border-radius:12px;
+    padding:12px 10px; text-align:center; cursor:pointer; user-select:none; transition:.15s; background:#fff;}
+  .chip .n{font-size:12px; color:var(--muted);}
+  .chip .t{font-weight:700; font-size:15px;}
+  .chip.on{border-color:var(--brand); background:#eaf4fb; color:var(--brand-d);}
+  .modes{display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;}
+  .modes .chip{flex:1; min-width:120px;}
+  label.h{font-size:13px; color:var(--muted); display:block; margin:14px 0 4px; font-weight:600;}
+  .btn-row{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;}
+  .btn{flex:1; min-width:170px; border:none; border-radius:14px; padding:14px;
+    font-size:16px; font-weight:700; cursor:pointer; transition:.15s; font-family:inherit; text-align:center;}
+  .btn-go{background:var(--brand); color:#fff;}
+  .btn-mock{background:#d97706; color:#fff;}
+  .btn-study{background:#0f766e; color:#fff;}
+  .btn-ghost{background:#eef3f7; color:var(--brand-d); margin-top:10px; width:100%;}
+  .qbar{display:flex; justify-content:space-between; align-items:center; color:#fff; font-size:13px; margin-bottom:8px;}
+  .prog{height:6px; background:rgba(255,255,255,.25); border-radius:99px; overflow:hidden; margin-bottom:14px;}
+  .prog>i{display:block; height:100%; background:#7fd1ff; width:0; transition:.3s;}
+  .tag{display:inline-block; font-size:12px; background:#eaf4fb; color:var(--brand-d);
+    padding:3px 10px; border-radius:99px; margin-bottom:10px; font-weight:700;}
+  .qtext{font-size:22px; font-weight:700; margin:0 0 6px;}
+  .qex{font-size:13px; color:#475569; background:#f8fafc; border-left:4px solid var(--brand); padding:7px 12px; border-radius:6px; margin-bottom:16px;}
+  .opt{display:flex; align-items:flex-start; gap:10px; border:2px solid var(--line);
+    border-radius:12px; padding:12px 14px; margin-bottom:10px; cursor:pointer; transition:.12s; background:#fff;}
+  .opt .k{font-weight:800; color:var(--brand); min-width:20px;}
+  .opt.sel{border-color:var(--brand); background:#eaf4fb;}
+  .opt.correct{border-color:var(--ok); background:var(--ok-bg);}
+  .opt.wrong{border-color:var(--bad); background:var(--bad-bg);}
+  .feedback{border-radius:12px; padding:13px 15px; margin-top:6px; font-size:15px; display:none;}
+  .feedback.show{display:block;}
+  .feedback.ok{background:var(--ok-bg); color:#1d6e3f;}
+  .feedback.bad{background:var(--bad-bg); color:#9e2f2f;}
+  .nav{position:fixed; left:0; right:0; bottom:0; background:rgba(15,32,39,.92);
+    backdrop-filter:blur(6px); padding:12px; padding-bottom:calc(12px + env(safe-area-inset-bottom));}
+  .nav .row{max-width:740px; margin:0 auto; display:flex; gap:10px;}
+  .nav button{flex:1; border:none; border-radius:12px; padding:13px; font-size:16px; font-weight:700; font-family:inherit; cursor:pointer;}
+  .nav .sec{background:#3a5a6b; color:#fff;}
+  .nav .pri{background:var(--brand); color:#fff;}
+  .nav button:disabled{opacity:.4;}
+  .score{text-align:center;}
+  .score .big{font-size:52px; font-weight:800; color:var(--brand);}
+  .review h3{font-size:16px; border-left:4px solid var(--brand); padding-left:8px;}
+  .ritem{border:1px solid var(--line); border-radius:10px; padding:12px; margin-bottom:10px; font-size:14px;}
+  .hide{display:none;}
+  .small{font-size:12px; color:var(--muted); text-align:center; margin-top:12px;}
+  table{width:100%; border-collapse:collapse; font-size:14px; margin-top:10px;}
+  th,td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top;}
+  th{background:#f1f5f9;}
+  .search{width:100%; padding:10px 12px; border:2px solid var(--line); border-radius:10px; font-size:15px; margin-bottom:10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>83–115 學測詞彙題高頻單字刷題與檢索</h1>
+    <div class="sub">Joe 英文補充（2026/11/14 更新版）｜收錄出現 2 次以上共 323 個核心高頻字</div>
+  </header>
+
+  <div id="home" class="panel">
+    <label class="h">選擇出題頻率範圍（可複選）</label>
+    <div class="scope" id="scope"></div>
+
+    <label class="h">作答模式</label>
+    <div class="modes">
+      <div class="chip on" data-mode="instant"><div class="t">練習模式</div><div class="n">作答後立刻看解析</div></div>
+      <div class="chip" data-mode="exam"><div class="t">測驗模式</div><div class="n">答完公布成績</div></div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-mock" id="start20">⚡ 隨機刷 20 題</button>
+      <button class="btn btn-go" id="startAll">📝 完整測驗所選範圍</button>
+      <button class="btn btn-study" id="showStudy">📖 高頻單字總表／遮罩記憶</button>
+    </div>
+    <button class="btn btn-ghost hide" id="wrongOnly">只練我的錯題（<span id="wrongCount">0</span>）</button>
+    <div class="small" id="homeNote"></div>
+  </div>
+
+  <div id="study" class="panel hide">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
+      <h3 style="margin:0;">📖 學測高頻單字總表（所選範圍）</h3>
+      <div>
+        <button onclick="toggleMask()" style="padding:7px 12px;border-radius:8px;border:1px solid var(--brand);background:#eaf4fb;color:var(--brand-d);font-weight:700;cursor:pointer;">👁️ 切換遮住中譯</button>
+        <button onclick="closeStudy()" style="padding:7px 12px;border-radius:8px;border:none;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;">返回測驗首頁</button>
+      </div>
+    </div>
+    <input type="text" id="searchBox" class="search" placeholder="搜尋單字、中譯、級數或學測年份..." oninput="renderStudyTable()">
+    <div style="overflow-x:auto;">
+      <table>
+        <thead><tr><th style="width:52px">次數</th><th style="width:130px">單字 / 級數</th><th>中文釋義（點擊單格可翻開）</th><th style="width:170px">學測出現年份-題號</th></tr></thead>
+        <tbody id="studyBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="quiz" class="hide">
+    <div class="qbar"><span id="qpos"></span><span id="qscope"></span></div>
+    <div class="prog"><i id="progbar"></i></div>
+    <div class="panel">
+      <span class="tag" id="qtag">單選題</span>
+      <div class="qtext" id="qtext"></div>
+      <div class="qex" id="qex"></div>
+      <div id="opts"></div>
+      <div class="feedback" id="fb"></div>
+    </div>
+  </div>
+
+  <div id="result" class="panel hide">
+    <div class="score">
+      <div class="lbl">本次得分</div>
+      <div class="big" id="rScore">100</div>
+      <div class="lbl">答對 <b id="rRight">0</b> ／ 共 <b id="rTotal">0</b> 題</div>
+    </div>
+    <button class="btn btn-mock" style="width:100%;margin-top:14px;" id="again20">⚡ 再隨機刷 20 題</button>
+    <button class="btn btn-go" style="width:100%;margin-top:10px;" id="again">重考相同題目</button>
+    <button class="btn btn-ghost" id="retryWrong">只重考本次錯題</button>
+    <button class="btn btn-ghost" id="backHome">回範圍選擇</button>
+    <div class="review" id="reviewBox"></div>
+  </div>
+</div>
+
+<div class="nav hide" id="nav">
+  <div class="row">
+    <button class="sec" onclick="backToHome()">回首頁</button>
+    <button class="sec" id="prev">上一題</button>
+    <button class="pri" id="next">送出答案</button>
+  </div>
+</div>
+
+<script>
+const RAW = [{"count":6,"grp":"f4","word":"transfer","level":"4","mean":"v. 轉移, 調職, 轉乘, 轉帳；n. [C/U] 轉移, 調動","years":"92-2-05；95-11；96-08；101-14；102-02；111-10"},{"count":5,"grp":"f4","word":"confirm","level":"3","mean":"vt. 確認, 證實, 批准","years":"93-01；94-02；96-15；107-14；113-08"},{"count":5,"grp":"f4","word":"narrowly","level":"2","mean":"adv. 勉強地, 險些, 狹隘地","years":"91-01；91-2-04；95-09；98-12；101-11"},{"count":4,"grp":"f4","word":"advise","level":"3","mean":"v. 勸告, 建議, 通知","years":"92-01；96-15；103-05；108-06"},{"count":4,"grp":"f4","word":"apparently","level":"4","mean":"adv. 顯然地, 看來似乎","years":"99-11；102-15；110-03；113-10"},{"count":4,"grp":"f4","word":"approach","level":"2","mean":"v. 接近, 逼近, 處理；n. [C] 方法, 接近","years":"85-05；88-03；99-10；113-09"},{"count":4,"grp":"f4","word":"considerably","level":"3","mean":"adv. 相當地, 大大地","years":"90-05；101-11；102-15；108-08"},{"count":4,"grp":"f4","word":"contest","level":"4","mean":"n. [C] 比賽, 競爭；vt. 爭奪, 質疑","years":"83-05；87-10；99-08；100-13"},{"count":4,"grp":"f4","word":"depart","level":"4","mean":"v. 離開, 出發, 背離, 偏離","years":"92-2-07；95-07；103-15；110-15"},{"count":4,"grp":"f4","word":"dismiss","level":"4","mean":"v. 解散, 解僱, 不予考慮","years":"83-03；88-03；102-13；103-01"},{"count":4,"grp":"f4","word":"display","level":"2","mean":"v. 展示, 陳列, 表現；n. [C/U] 展示, 陳列, [C] 顯示器","years":"84-12；90-10；100-08；103-07"},{"count":4,"grp":"f4","word":"flexible","level":"4","mean":"adj. 有彈性的, 靈活的, 易彎曲的","years":"98-06；103-06；104-01；105-11"},{"count":4,"grp":"f4","word":"hardly","level":"2","mean":"adv. 幾乎不, 幾乎沒有","years":"84-17；92-03；100-04；101-02"},{"count":4,"grp":"f4","word":"identity","level":"2","mean":"n. [C/U] 身分, 特性, 認同","years":"88-05；98-11；105-03；108-11"},{"count":4,"grp":"f4","word":"impress","level":"3","mean":"vt. 使印象深刻, 使欽佩, 印上","years":"84-15；103-05；104-11；107-10"},{"count":4,"grp":"f4","word":"intimate","level":"4","mean":"adj. 親密的, 私人的, 詳盡的；n. [C] 密友, 知己；vt. 暗示","years":"87-06；97-05；104-08；111-06"},{"count":4,"grp":"f4","word":"liberal","level":"2","mean":"adj. 開明的, 自由主義的, 大方的；n. [C] 自由主義者","years":"92-04；101-09；107-04；108-02"},{"count":4,"grp":"f4","word":"mission","level":"3","mean":"n. [C] 任務, 使命, 代表團","years":"98-07；99-10；108-11；109-09"},{"count":4,"grp":"f4","word":"objective","level":"4","mean":"adj. 客觀的；n. [C] 目標, 目的","years":"85-01；91-07；94-12；108-07"},{"count":4,"grp":"f4","word":"operation","level":"3","mean":"n. [C] 手術, [U] 運作, [C] 行動, 企業","years":"100-08；104-04；110-07；113-09"},{"count":4,"grp":"f4","word":"persuade","level":"3","mean":"v. 說服, 勸說","years":"92-2-03；94-11；95-04；97-14"},{"count":4,"grp":"f4","word":"persuasive","level":"4","mean":"adj. 有說服力的","years":"86-06；87-05；107-07；110-06"},{"count":4,"grp":"f4","word":"propose","level":"2","mean":"v. 提議, 打算, 求婚","years":"100-05；101-10；108-06；113-08"},{"count":4,"grp":"f4","word":"realistic","level":"4","mean":"adj. 務實的, 實際的, 逼真的","years":"97-11；99-09；105-08；113-06"},{"count":4,"grp":"f4","word":"relieve","level":"4","mean":"v. 減輕, 緩和, 解除, 接替","years":"99-02；103-12；107-10；109-04"},{"count":3,"grp":"f3","word":"access","level":"4","mean":"n. [U] 使用權, 進入, [C] 通道, 入口；v. 取得, 存取","years":"85-09；87-08；106-08"},{"count":3,"grp":"f3","word":"alert","level":"4","mean":"adj. 警覺的, 機靈的；n. [C] 警報, 警示；v. 警告, 提醒, 使察覺","years":"103-14；105-11；110-01"},{"count":3,"grp":"f3","word":"appeal","level":"3","mean":"n. [C] 呼籲, 上訴, [U] 吸引力；v. 呼籲, 吸引, 上訴, appeal to 吸引、使感興趣","years":"84-18；85-05；113-09"},{"count":3,"grp":"f3","word":"associate","level":"4","mean":"v. 聯想, 使有關聯, 交往；n. [C] 同事, 夥伴；adj. 副的","years":"105-07；108-03；110-14"},{"count":3,"grp":"f3","word":"balance","level":"2","mean":"n. [U] 平衡, [C] 餘額；v. 使平衡, 權衡","years":"103-11；106-13；109-01"},{"count":3,"grp":"f3","word":"cancel","level":"2","mean":"vt. 取消","years":"92-01；100-05；109-11"},{"count":3,"grp":"f3","word":"circulation","level":"4","mean":"n. [U] 循環, 流通, [C/U] 發行量","years":"96-05；103-14；113-04"},{"count":3,"grp":"f3","word":"clumsy","level":"4","mean":"adj. 笨手笨腳的, 笨拙的","years":"97-05；98-06；112-01"},{"count":3,"grp":"f3","word":"collapse","level":"4","mean":"v. 倒塌, 崩潰, 瓦解, 昏倒, 倒下, 摺疊, 收合；n. [C/U] 倒塌, 崩潰","years":"89-05；99-13；102-13"},{"count":3,"grp":"f3","word":"competitive","level":"4","mean":"adj. 競爭激烈的, 有競爭力的, 好勝的","years":"92-09；99-09；100-12"},{"count":3,"grp":"f3","word":"connection","level":"2","mean":"n. [C/U] 關聯, 連接, [pl.] 人脈, [C] 轉乘, 轉機","years":"86-05；87-03；92-2-10"},{"count":3,"grp":"f3","word":"contact","level":"2","mean":"n. [U] 聯繫, 接觸, [C] 人脈；vt. 聯繫","years":"83-05；100-13；108-14"},{"count":3,"grp":"f3","word":"content","level":"4","mean":"n. [C/U] 內容, 含量, [pl.] 目錄, table of contents 目錄、目次；adj. 滿足的；vt. 使滿足","years":"83-05；90-10；100-13"},{"count":3,"grp":"f3","word":"convey","level":"4","mean":"vt. 傳達, 表達, 運送","years":"104-12；105-04；108-03"},{"count":3,"grp":"f3","word":"courteous","level":"5","mean":"adj. 有禮貌的, 謙恭的","years":"89-01；92-2-02；103-13"},{"count":3,"grp":"f3","word":"credit","level":"3","mean":"n. [U] 信用, 讚揚, 功勞, [C] 學分, 片尾名單, 演職員表；vt. 歸功於, 相信","years":"107-10；113-07；114-09"},{"count":3,"grp":"f3","word":"declare","level":"4","mean":"v. 宣布, 宣稱, 申報","years":"89-05；104-02；108-05"},{"count":3,"grp":"f3","word":"deposit","level":"3","mean":"n. [C] 存款, 押金, 沉積物；v. 存放, 存入, 使沉積, 放置, 寄放","years":"98-08；102-03；107-09"},{"count":3,"grp":"f3","word":"deserve","level":"4","mean":"v. 值得, 應得","years":"83-03；88-08；95-07"},{"count":3,"grp":"f3","word":"distantly","level":"2","mean":"adv. 遠遠地, 冷淡地, 遠房地","years":"91-01；91-2-04；108-12"},{"count":3,"grp":"f3","word":"doubtful","level":"3","mean":"adj. 懷疑的, 不確定的, 令人懷疑的","years":"83-01；90-01；106-14"},{"count":3,"grp":"f3","word":"efficient","level":"3","mean":"adj. 有效率的, 能幹的, 節能的","years":"88-09；101-07；107-15"},{"count":3,"grp":"f3","word":"eliminate","level":"4","mean":"v. 消除, 刪除, 淘汰","years":"92-2-05；103-12；106-04"},{"count":3,"grp":"f3","word":"enclose","level":"4","mean":"v. 圍住, 隨附於信中","years":"102-03；106-11；112-09"},{"count":3,"grp":"f3","word":"energy","level":"2","mean":"n. [U] 精力, 能量, [C/U] 能源","years":"89-10；91-2-02；95-05"},{"count":3,"grp":"f3","word":"expand","level":"4","mean":"v. 擴張, 擴大, 膨脹, 詳述","years":"88-03；93-01；96-08"},{"count":3,"grp":"f3","word":"explore","level":"3","mean":"v. 探索, 探究, 探險","years":"92-2-07；101-03；104-14"},{"count":3,"grp":"f3","word":"expose","level":"4","mean":"v. 使暴露, 揭露, 使接觸","years":"95-01；109-07；112-07"},{"count":3,"grp":"f3","word":"expressive","level":"3","mean":"adj. 富表現力的, 能表達意思的","years":"86-06；104-03；108-07"},{"count":3,"grp":"f3","word":"extension","level":"5","mean":"n. [U] 擴大, [C] 延期, 分機, 擴建部分","years":"92-2-04；94-08；96-05"},{"count":3,"grp":"f3","word":"favorable","level":"4","mean":"adj. 有利的, 贊同的, 良好的","years":"92-09；95-02；110-13"},{"count":3,"grp":"f3","word":"foundation","level":"4","mean":"n. [C] 基礎, 地基, 基金會, [U] 粉底","years":"92-02；96-05；103-09"},{"count":3,"grp":"f3","word":"fragrance (第6級)","level":"6","mean":"n. [C/U] 香氣, 芳香, [C] 香水","years":"84-19；97-06；98-11"},{"count":3,"grp":"f3","word":"guarantee","level":"4","mean":"n. [C] 保證, 保證書, 擔保；vt. 保證, 擔保","years":"103-09；104-13；105-12"},{"count":3,"grp":"f3","word":"harsh","level":"4","mean":"adj. 嚴厲的, 嚴酷的, 刺耳的","years":"87-06；102-11；115-10"},{"count":3,"grp":"f3","word":"impression","level":"4","mean":"n. [C] 印象, 感想, 模仿","years":"92-02；94-08；95-12"},{"count":3,"grp":"f3","word":"incident","level":"4","mean":"n. [C] 事件, 事故, 衝突","years":"93-05；94-13；99-10"},{"count":3,"grp":"f3","word":"individually","level":"2","mean":"adv. 個別地, 各自地, 獨特地","years":"87-04；98-12；105-15"},{"count":3,"grp":"f3","word":"influence","level":"2","mean":"n. [C/U] 影響, [U] 勢力, [C] 有影響力的人；vt. 影響","years":"92-2-08；100-09；111-02"},{"count":3,"grp":"f3","word":"interpret","level":"4","mean":"vt. 詮釋, 解釋, 解讀；vi. 口譯","years":"90-09；101-14；108-03"},{"count":3,"grp":"f3","word":"interrupt","level":"3","mean":"v. 打斷, 打擾, 中斷","years":"92-2-05；93-07；98-08"},{"count":3,"grp":"f3","word":"limitation","level":"4","mean":"n. [U] 限制, [C] 限度, 侷限","years":"91-08；95-13；107-12"},{"count":3,"grp":"f3","word":"maintain","level":"2","mean":"vt. 維持, 保養, 堅稱, 扶養","years":"92-07；99-02；100-05"},{"count":3,"grp":"f3","word":"measure","level":"2","mean":"v. 測量, 衡量, 尺寸為；n. [C] 措施, 測量單位, 程度","years":"89-05；96-06；100-10"},{"count":3,"grp":"f3","word":"neglect","level":"4","mean":"v. 忽略, 疏忽；n. [U] 忽略, 疏忽","years":"96-03；104-02；105-13"},{"count":3,"grp":"f3","word":"negotiate","level":"4","mean":"v. 協商, 談判, 談妥, 越過","years":"90-09；96-07；104-14"},{"count":3,"grp":"f3","word":"notify","level":"5","mean":"vt. 通知, 告知","years":"87-02；91-09；91-2-10"},{"count":3,"grp":"f3","word":"observation","level":"4","mean":"n. [U] 觀察, 觀察力, [C] 觀察所得","years":"92-06；106-15；113-09"},{"count":3,"grp":"f3","word":"obviously","level":"2","mean":"adv. 顯然地, 明顯地","years":"85-08；96-10；100-01"},{"count":3,"grp":"f3","word":"occupy","level":"4","mean":"vt. 佔據, 佔領, 使忙碌, 居住, 擔任","years":"101-03；106-04；108-06"},{"count":3,"grp":"f3","word":"original","level":"3","mean":"adj. 原本的, 最初的, 獨創的；n. [C] 原作, 原件","years":"84-11；92-2-02；109-05"},{"count":3,"grp":"f3","word":"originally","level":"3","mean":"adv. 原本, 最初","years":"93-04；95-03；99-11"},{"count":3,"grp":"f3","word":"postpone","level":"3","mean":"v. 延期, 延後","years":"92-07；97-14；102-01"},{"count":3,"grp":"f3","word":"preserve","level":"4","mean":"v. 保存, 維護, 保護, 醃漬；n. [C] 保護區, 專屬領域","years":"98-09；99-05；106-11"},{"count":3,"grp":"f3","word":"previously","level":"3","mean":"adv. 先前, 以前","years":"85-08；86-03；91-06"},{"count":3,"grp":"f3","word":"primitive","level":"4","mean":"adj. 原始的, 早期的, 簡陋的","years":"103-13；104-01；105-14"},{"count":3,"grp":"f3","word":"privilege","level":"4","mean":"n. [C/U] 特權, 優惠, [C] 榮幸；v. 給予特權","years":"88-06；97-08；112-06"},{"count":3,"grp":"f3","word":"produce","level":"2","mean":"v. 生產, 製造, 產生, 出示, 製作；n. [U] 農產品","years":"94-04；103-04；114-02"},{"count":3,"grp":"f3","word":"relative","level":"1","mean":"n. [C] 親戚；adj. 相對的, 相關的","years":"83-10；99-12；104-01"},{"count":3,"grp":"f3","word":"relatively","level":"1","mean":"adv. 相對地, 比較地","years":"95-03；97-15；102-08"},{"count":3,"grp":"f3","word":"reluctant","level":"4","mean":"adj. 不情願的, 勉強的","years":"91-2-09；99-01；102-05"},{"count":3,"grp":"f3","word":"remove","level":"2","mean":"v. 移除, 除去, 脫掉, 免職, 消除","years":"91-03；91-2-05；96-12"},{"count":3,"grp":"f3","word":"replace","level":"3","mean":"v. 取代, 替換, 放回","years":"94-11；102-02；109-11"},{"count":3,"grp":"f3","word":"reserve","level":"3","mean":"v. 預訂, 保留, 儲備；n. [C] 儲備, 保護區, [U] 拘謹","years":"91-2-05；106-02；107-09"},{"count":3,"grp":"f3","word":"resign","level":"4","mean":"v. 辭職, 放棄, 聽任","years":"89-08；96-12；98-14"},{"count":3,"grp":"f3","word":"resist","level":"3","mean":"v. 抗拒, 抵抗, 忍住","years":"91-03；94-09；99-06"},{"count":3,"grp":"f3","word":"reward","level":"4","mean":"n. [C/U] 報酬, 獎賞, [C] 賞金；v. 獎賞, 酬謝","years":"92-2-04；104-02；106-11"},{"count":3,"grp":"f3","word":"roughly","level":"3","mean":"adv. 大約, 粗略地, 粗暴地","years":"89-04；96-14；112-10"},{"count":3,"grp":"f3","word":"routine","level":"3","mean":"n. [C/U] 例行公事, 慣例, [C] 一套表演動作；adj. 例行的, 日常的","years":"83-09；99-08；115-01"},{"count":3,"grp":"f3","word":"scarcely","level":"4","mean":"adv. 幾乎不, 勉強","years":"96-10；99-15；101-11"},{"count":3,"grp":"f3","word":"security","level":"3","mean":"n. [U] 安全, 保安, 保全措施","years":"92-2-04；94-15；105-06"},{"count":3,"grp":"f3","word":"sensitive","level":"2","mean":"adj. 敏感的, 體貼的, 靈敏的","years":"89-01；98-01；102-05"},{"count":3,"grp":"f3","word":"shortly","level":"3","mean":"adv. 不久, 簡短地","years":"92-03；102-08；103-10"},{"count":3,"grp":"f3","word":"solution","level":"2","mean":"n. [C] 解決方法, 解答, [C/U] 溶液","years":"99-04；100-09；102-04"},{"count":3,"grp":"f3","word":"steady","level":"3","mean":"adj. 穩定的, 平穩的, 持續的；v. 使穩定；adv. 穩定地；n. [C] 固定男女朋友","years":"85-10；91-2-07；105-11"},{"count":3,"grp":"f3","word":"stretch","level":"2","mean":"v. 伸展, 延伸, 拉長；n. [C] 一段時間, 一片, 伸展","years":"88-08；96-08；111-01"},{"count":3,"grp":"f3","word":"temporary","level":"3","mean":"adj. 暫時的, 臨時的","years":"92-04；97-10；99-01"},{"count":3,"grp":"f3","word":"thoroughly","level":"4","mean":"adv. 徹底地, 完全地","years":"83-06；97-15；110-03"},{"count":3,"grp":"f3","word":"undoubtedly","level":"5","mean":"adv. 無疑地","years":"92-2-06；99-15；112-10"},{"count":3,"grp":"f3","word":"universal","level":"4","mean":"adj. 普遍的, 全世界的, 通用的；n. [C] 普遍原則","years":"88-01；101-09；103-13"},{"count":3,"grp":"f3","word":"vacant","level":"3","mean":"adj. 空著的, 空缺的, 茫然的","years":"94-06；106-03；114-06"},{"count":3,"grp":"f3","word":"various","level":"3","mean":"adj. 各種的, 不同的","years":"90-07；91-2-07；99-07"},{"count":3,"grp":"f3","word":"wander","level":"3","mean":"v. 徘徊, 遊蕩, 走神；n. [C] 漫步, 閒逛","years":"85-02；103-01；115-06"},{"count":2,"grp":"f2","word":"absolute","level":"4","mean":"adj. 絕對的, 完全的, 專制的","years":"101-13；111-08"},{"count":2,"grp":"f2","word":"accurate","level":"3","mean":"adj. 準確的, 精確的","years":"93-08；99-03"},{"count":2,"grp":"f2","word":"acquire","level":"4","mean":"v. 獲得, 學會, 購得","years":"95-10；107-10"},{"count":2,"grp":"f2","word":"admit","level":"2","mean":"v. 承認, 准許進入, 接納","years":"90-03；95-04"},{"count":2,"grp":"f2","word":"adopt","level":"4","mean":"v. 採用, 收養, 正式通過","years":"88-04；97-03"},{"count":2,"grp":"f2","word":"amaze","level":"3","mean":"v. 使驚訝","years":"96-15；109-02"},{"count":2,"grp":"f2","word":"ambitious","level":"4","mean":"adj. 有雄心的, 有野心的, 艱鉅的","years":"86-04；95-06"},{"count":2,"grp":"f2","word":"angle","level":"2","mean":"n. [C] 角度, 角, 觀點","years":"98-13；107-12"},{"count":2,"grp":"f2","word":"anxious","level":"3","mean":"adj. 焦慮的, 渴望的","years":"95-06；98-10"},{"count":2,"grp":"f2","word":"appoint","level":"4","mean":"v. 任命, 指定","years":"106-04；108-05"},{"count":2,"grp":"f2","word":"arrest","level":"3","mean":"v. 逮捕, 阻止；n. [C/U] 逮捕","years":"94-10；97-01"},{"count":2,"grp":"f2","word":"artificial","level":"4","mean":"adj. 人工的, 虛假的","years":"87-05；93-08"},{"count":2,"grp":"f2","word":"ashamed","level":"4","mean":"adj. 感到羞愧的","years":"104-08；106-14"},{"count":2,"grp":"f2","word":"attach","level":"4","mean":"v. 附上, 貼上, 使依附, 賦予重要性","years":"85-05；93-01"},{"count":2,"grp":"f2","word":"automatically","level":"3","mean":"adv. 自動地, 不自覺地","years":"98-03；105-09"},{"count":2,"grp":"f2","word":"available","level":"2","mean":"adj. 可取得的, 可用的, 有空的","years":"94-07；111-07"},{"count":2,"grp":"f2","word":"bare","level":"3","mean":"adj. 赤裸的, 空無一物的, 僅有的；v. 露出","years":"103-02；112-04"},{"count":2,"grp":"f2","word":"barely","level":"3","mean":"adv. 幾乎沒有, 勉強, 僅僅","years":"106-06；109-13"},{"count":2,"grp":"f2","word":"benefit","level":"3","mean":"n. [C/U] 好處, 利益, [C] 福利, 義演, 慈善活動；v. 有益於, 受益","years":"92-01；108-14"},{"count":2,"grp":"f2","word":"broaden (第6級)","level":"6","mean":"v. 擴展, 拓寬, 變寬","years":"86-08；103-04"},{"count":2,"grp":"f2","word":"brutal","level":"4","mean":"adj. 殘忍的, 野蠻的, 嚴酷的","years":"98-06；115-10"},{"count":2,"grp":"f2","word":"casual","level":"3","mean":"adj. 隨便的, 非正式的, 偶然的, 臨時的, 非固定的, 不經意的, 隨口的","years":"87-06；114-06"},{"count":2,"grp":"f2","word":"cautious","level":"5","mean":"adj. 謹慎的, 小心的","years":"90-04；110-12"},{"count":2,"grp":"f2","word":"cease","level":"4","mean":"v. 停止, 終止；n. [U] 停止","years":"100-11；105-04"},{"count":2,"grp":"f2","word":"channel","level":"2","mean":"n. [C] 頻道, 管道, 海峽；vt. 引導, 輸送","years":"91-2-03；97-12"},{"count":2,"grp":"f2","word":"charm","level":"3","mean":"n. [C/U] 魅力, [C] 護身符；vt. 吸引, 迷住","years":"90-02；109-02"},{"count":2,"grp":"f2","word":"combination","level":"4","mean":"n. [C/U] 組合, 結合","years":"85-07；92-02"},{"count":2,"grp":"f2","word":"comment","level":"4","mean":"n. [C/U] 評論, 意見；vi. 評論","years":"102-04；107-13"},{"count":2,"grp":"f2","word":"commercial","level":"2","mean":"adj. 商業的, 商用的；n. [C] 廣告","years":"91-04；91-2-09"},{"count":2,"grp":"f2","word":"commit","level":"4","mean":"vt. 犯, 承諾, 致力於, 撥出資金；v. commit to 致力於、全心投入","years":"105-04；110-14"},{"count":2,"grp":"f2","word":"common","level":"1","mean":"adj. 常見的, 共同的, 普通的；n. [C] 公有地","years":"94-12；95-02"},{"count":2,"grp":"f2","word":"communication","level":"4","mean":"n. [U] 溝通, 通訊, 傳達","years":"85-07；94-14"},{"count":2,"grp":"f2","word":"complaint","level":"3","mean":"n. [C/U] 抱怨, [C] 投訴, 疾病","years":"84-14；98-07"},{"count":2,"grp":"f2","word":"compliment","level":"5","mean":"n. [C] 讚美, 恭維；vt. 讚美, 稱讚","years":"87-03；93-10"},{"count":2,"grp":"f2","word":"concentration","level":"4","mean":"n. [U] 專心, 集中, [C/U] 濃度","years":"85-04；89-07"},{"count":2,"grp":"f2","word":"concern","level":"2","mean":"n. [C/U] 擔心, 關心, [C] 關心的事；vt. 使擔心, 涉及, 關係到","years":"87-02；87-03"},{"count":2,"grp":"f2","word":"conclusion","level":"3","mean":"n. [C] 結論, 結尾, 締結, 簽訂","years":"101-01；109-01"},{"count":2,"grp":"f2","word":"connect","level":"3","mean":"v. 連接, 聯繫, 聯想, 產生共鳴, 心靈相通, 轉乘, 銜接","years":"84-18；103-04"},{"count":2,"grp":"f2","word":"consciously","level":"3","mean":"adv. 有意識地, 刻意地","years":"91-06；94-01"},{"count":2,"grp":"f2","word":"consequently","level":"4","mean":"adv. 因此, 所以","years":"93-04；113-10"},{"count":2,"grp":"f2","word":"considerate","level":"5","mean":"adj. 體貼的, 考慮周到的","years":"92-2-01；100-15"},{"count":2,"grp":"f2","word":"constantly","level":"3","mean":"adv. 不斷地, 經常地","years":"88-02；102-08"},{"count":2,"grp":"f2","word":"consumption","level":"5","mean":"n. [U] 消費, 消耗, 攝取","years":"89-03；115-05"},{"count":2,"grp":"f2","word":"contain","level":"2","mean":"vt. 包含, 容納, 抑制","years":"99-06；113-08"},{"count":2,"grp":"f2","word":"container","level":"4","mean":"n. [C] 容器, 貨櫃","years":"100-06；114-01"},{"count":2,"grp":"f2","word":"contrary","level":"4","mean":"adj. 相反的, 對立的；n. [U] 相反","years":"83-10；91-07"},{"count":2,"grp":"f2","word":"contribution","level":"4","mean":"n. [C/U] 貢獻, [C] 捐款, 投稿","years":"91-08；111-02"},{"count":2,"grp":"f2","word":"convenience","level":"4","mean":"n. [U] 方便, 便利, [C] 便利設施","years":"85-04；92-2-08"},{"count":2,"grp":"f2","word":"convince","level":"4","mean":"vt. 使相信, 說服","years":"96-15；107-03"},{"count":2,"grp":"f2","word":"decision","level":"2","mean":"n. [C] 決定, [U] 決斷力","years":"96-01；107-06"},{"count":2,"grp":"f2","word":"decrease","level":"3","mean":"v. 減少, 降低；n. [C/U] 減少","years":"100-11；109-04"},{"count":2,"grp":"f2","word":"defeat","level":"4","mean":"v. 擊敗, 戰勝, 使落空, 否決法案；n. [C/U] 失敗, 擊敗","years":"92-05；96-04"},{"count":2,"grp":"f2","word":"defensive","level":"4","mean":"adj. 防禦的, 防守的, 防衛心重的；n. [U] 守勢","years":"96-09；110-13"},{"count":2,"grp":"f2","word":"definite","level":"4","mean":"adj. 明確的, 肯定的","years":"103-06；107-04"},{"count":2,"grp":"f2","word":"delivery","level":"2","mean":"n. [C/U] 遞送, 投遞, [U] 分娩","years":"91-05；91-2-08"},{"count":2,"grp":"f2","word":"demonstrate","level":"4","mean":"v. 示範, 證明, 示威","years":"94-10；105-07"},{"count":2,"grp":"f2","word":"dense","level":"4","mean":"adj. 密集的, 濃厚的, 茂密的","years":"99-07；102-11"},{"count":2,"grp":"f2","word":"descriptive","level":"5","mean":"adj. 描述的, 描寫的","years":"87-05；109-10"},{"count":2,"grp":"f2","word":"design","level":"2","mean":"v. 設計, 構思；n. [C/U] 設計, [C] 圖案, [U] 意圖, 故意","years":"93-02；94-03"},{"count":2,"grp":"f2","word":"destroy","level":"3","mean":"v. 破壞, 毀壞, 消滅","years":"83-03；100-07"},{"count":2,"grp":"f2","word":"dignity","level":"4","mean":"n. [U] 尊嚴, 莊重","years":"88-05；88-06"},{"count":2,"grp":"f2","word":"diligent","level":"4","mean":"adj. 勤勉的, 用功的","years":"101-05；115-01"},{"count":2,"grp":"f2","word":"directly","level":"2","mean":"adv. 直接地, 立即, 坦率地","years":"100-04；101-02"},{"count":2,"grp":"f2","word":"directory","level":"5","mean":"n. [C] 名錄, 電話簿, 目錄","years":"91-05；91-2-08"},{"count":2,"grp":"f2","word":"discipline","level":"4","mean":"n. [U] 紀律, 自制力, [C] 學科；v. 懲戒, 訓練","years":"85-01；108-01"},{"count":2,"grp":"f2","word":"discourage","level":"4","mean":"v. 使氣餒, 勸阻, 阻止","years":"84-15；96-08"},{"count":2,"grp":"f2","word":"discovery","level":"2","mean":"n. [U] 發現, [C] 被發現的事物","years":"91-05；91-2-08"},{"count":2,"grp":"f2","word":"disguise","level":"4","mean":"v. 偽裝, 掩飾；n. [C/U] 偽裝, 喬裝","years":"94-03；106-13"},{"count":2,"grp":"f2","word":"distribute","level":"4","mean":"v. 分配, 分發, 散布, 經銷","years":"102-02；107-03"},{"count":2,"grp":"f2","word":"distribution","level":"4","mean":"n. [U] 分配, 分布, 銷售","years":"96-13；104-13"},{"count":2,"grp":"f2","word":"disturb","level":"4","mean":"v. 打擾, 擾亂, 使不安","years":"83-03；112-09"},{"count":2,"grp":"f2","word":"division","level":"2","mean":"n. [U] 劃分, 除法, [C] 部門","years":"96-06；100-10"},{"count":2,"grp":"f2","word":"dormitory (第6級)","level":"6","mean":"n. [C] 宿舍","years":"91-05；91-2-08"},{"count":2,"grp":"f2","word":"draft","level":"4","mean":"n. [C] 草稿, 草圖, 氣流；v. 起草, 徵召入伍","years":"106-02；114-05"},{"count":2,"grp":"f2","word":"durable","level":"4","mean":"adj. 耐用的, 持久的","years":"105-08；108-15"},{"count":2,"grp":"f2","word":"enormous","level":"4","mean":"adj. 巨大的, 極大的","years":"111-06；114-07"},{"count":2,"grp":"f2","word":"essential","level":"4","mean":"adj. 必要的, 本質的；n. [C] 必需品, 要素","years":"96-11；104-07"},{"count":2,"grp":"f2","word":"estimate","level":"4","mean":"v. 估計, 估價；n. [C] 估計, 估價單","years":"104-11；105-12"},{"count":2,"grp":"f2","word":"evident","level":"4","mean":"adj. 明顯的","years":"94-06；108-10"},{"count":2,"grp":"f2","word":"evidently","level":"4","mean":"adv. 明顯地, 顯然","years":"104-10；107-08"},{"count":2,"grp":"f2","word":"exception","level":"4","mean":"n. [C] 例外, [U] 異議","years":"100-10；107-12"},{"count":2,"grp":"f2","word":"explicit","level":"5","mean":"adj. 明確的, 清楚的, 露骨的","years":"89-06；98-10"},{"count":2,"grp":"f2","word":"facility","level":"4","mean":"n. [C] 設施, 設備, [C/U] 天賦","years":"105-06；108-01"},{"count":2,"grp":"f2","word":"favorably","level":"4","mean":"adv. 有利地, 贊同地, 良好地","years":"90-05；106-01"},{"count":2,"grp":"f2","word":"flash","level":"3","mean":"n. [C] 閃光, 一瞬間；v. 閃光, 閃現, 掠過, 炫耀","years":"107-11；113-02"},{"count":2,"grp":"f2","word":"flock","level":"3","mean":"n. [C] 鳥群, 羊群, 一群人, 會眾；vi. 聚集, 成群結隊","years":"102-09；111-05"},{"count":2,"grp":"f2","word":"formation","level":"4","mean":"n. [U] 形成, 構成, [C] 隊形, 地層","years":"96-13；102-07"},{"count":2,"grp":"f2","word":"fortune","level":"3","mean":"n. [C] 財富, [U] 運氣, 命運","years":"96-01；100-09"},{"count":2,"grp":"f2","word":"furiously","level":"4","mean":"adv. 憤怒地, 猛烈地, 狂暴地","years":"92-2-06；104-10"},{"count":2,"grp":"f2","word":"generosity","level":"4","mean":"n. [U] 慷慨, 大方, 寬宏大量","years":"105-06；112-05"},{"count":2,"grp":"f2","word":"glare","level":"5","mean":"vi. 怒視, 瞪視, 發強光；n. [C] 怒視, [U] 強光","years":"109-12；114-03"},{"count":2,"grp":"f2","word":"gradually","level":"2","mean":"adv. 逐漸地","years":"100-01；101-02"},{"count":2,"grp":"f2","word":"guide","level":"2","mean":"n. [C] 導遊, 嚮導, 指南；vt. 引導, 指導, 帶領","years":"99-14；106-07"},{"count":2,"grp":"f2","word":"harmony","level":"4","mean":"n. [U] 和諧, 融洽, [C/U] 和聲","years":"98-07；109-01"},{"count":2,"grp":"f2","word":"hesitate","level":"3","mean":"vi. 猶豫, 遲疑","years":"87-02；99-05"},{"count":2,"grp":"f2","word":"hesitation","level":"4","mean":"n. [C/U] 猶豫, 遲疑","years":"91-08；101-06"},{"count":2,"grp":"f2","word":"hollow","level":"3","mean":"adj. 中空的, 空洞的, 虛假的；n. [C] 坑洞, 窪地；v. 挖空","years":"107-04；112-04"},{"count":2,"grp":"f2","word":"inferior","level":"3","mean":"adj. 較差的, 次等的, 下級的；n. [C] 部屬, 下屬","years":"91-2-09；108-02"},{"count":2,"grp":"f2","word":"inform","level":"3","mean":"vt. 通知, 告知, 影響；vi. 告發, 告密","years":"94-11；109-02"},{"count":2,"grp":"f2","word":"initially","level":"4","mean":"adv. 起初, 最初","years":"102-15；115-04"},{"count":2,"grp":"f2","word":"insist","level":"2","mean":"v. 堅持, 堅決要求, 堅稱","years":"94-09；99-06"},{"count":2,"grp":"f2","word":"inspire","level":"4","mean":"vt. 激勵, 鼓舞, 給予靈感, 激起","years":"101-03；104-12"},{"count":2,"grp":"f2","word":"install","level":"4","mean":"vt. 安裝, 設置, 使就職","years":"106-11；109-07"},{"count":2,"grp":"f2","word":"instance","level":"2","mean":"n. [C] 例子, 實例, 情況","years":"84-12；97-06"},{"count":2,"grp":"f2","word":"instrument","level":"2","mean":"n. [C] 儀器, 樂器, 工具","years":"98-05；110-02"},{"count":2,"grp":"f2","word":"intensify","level":"5","mean":"v. 加強, 增強, 加劇","years":"91-2-10；105-12"},{"count":2,"grp":"f2","word":"intensity","level":"4","mean":"n. [U] 強烈, 強度, 激烈","years":"88-05；90-06"},{"count":2,"grp":"f2","word":"intensive","level":"4","mean":"adj. 密集的, 加強的, 集中的","years":"91-07；92-2-01"},{"count":2,"grp":"f2","word":"interact","level":"4","mean":"vi. 互動, 相互作用, 交流","years":"92-2-03；104-14"},{"count":2,"grp":"f2","word":"interaction","level":"4","mean":"n. [C/U] 互動, 相互作用, 交流","years":"93-06；110-07"},{"count":2,"grp":"f2","word":"intimately","level":"4","mean":"adv. 親密地, 密切地, 詳盡地","years":"85-06；92-08"},{"count":2,"grp":"f2","word":"invade","level":"4","mean":"vt. 侵略, 侵入, 侵犯","years":"97-03；100-07"},{"count":2,"grp":"f2","word":"involvement","level":"4","mean":"n. [U] 參與, 牽涉, 投入","years":"92-2-10；97-08"},{"count":2,"grp":"f2","word":"label","level":"3","mean":"n. [C] 標籤, 稱號, 唱片公司；vt. 貼標籤於, 把…稱為","years":"97-02；104-09"},{"count":2,"grp":"f2","word":"landmark","level":"4","mean":"n. [C] 地標, 里程碑","years":"93-05；108-04"},{"count":2,"grp":"f2","word":"locally","level":"2","mean":"adv. 在當地, 地方上","years":"91-01；91-2-04"},{"count":2,"grp":"f2","word":"loosely","level":"3","mean":"adv. 鬆散地, 寬鬆地, 不嚴謹地","years":"95-09；104-06"},{"count":2,"grp":"f2","word":"loosen","level":"4","mean":"v. 放鬆, 鬆開, 解開","years":"100-02；103-04"},{"count":2,"grp":"f2","word":"magnificent","level":"4","mean":"adj. 壯麗的, 宏偉的, 極好的","years":"96-11；109-15"},{"count":2,"grp":"f2","word":"manageable","level":"2","mean":"adj. 可管理的, 可應付的, 易處理的","years":"91-02；97-11"},{"count":2,"grp":"f2","word":"mature","level":"2","mean":"adj. 成熟的, 穩重的；v. 成熟, 長成","years":"101-05；107-01"},{"count":2,"grp":"f2","word":"maturity","level":"4","mean":"n. [U] 成熟, 穩重","years":"103-09；105-06"},{"count":2,"grp":"f2","word":"medal","level":"3","mean":"n. [C] 獎牌, 勳章","years":"104-09；106-12"},{"count":2,"grp":"f2","word":"merely","level":"4","mean":"adv. 僅僅, 只不過","years":"97-13；106-06"},{"count":2,"grp":"f2","word":"moderate","level":"4","mean":"adj. 適度的, 溫和的, 中等的；v. 緩和, 節制, 主持；n. [C] 溫和派人士","years":"99-01；111-08"},{"count":2,"grp":"f2","word":"modest","level":"4","mean":"adj. 謙虛的, 適度的, 樸素的","years":"100-12；102-05"},{"count":2,"grp":"f2","word":"monument","level":"4","mean":"n. [C] 紀念碑, 紀念建築, 遺跡","years":"103-14；109-06"},{"count":2,"grp":"f2","word":"mood","level":"2","mean":"n. [C] 心情, 情緒, 氣氛","years":"87-08；98-13"},{"count":2,"grp":"f2","word":"mostly","level":"3","mean":"adv. 大多, 主要地","years":"92-03；92-2-09"},{"count":2,"grp":"f2","word":"motivate","level":"4","mean":"vt. 激勵, 激發, 促使","years":"98-09；103-05"},{"count":2,"grp":"f2","word":"naturally","level":"2","mean":"adv. 自然地, 當然, 天生地","years":"94-05；110-10"},{"count":2,"grp":"f2","word":"nearly","level":"2","mean":"adv. 幾乎, 將近","years":"92-2-09；104-06"},{"count":2,"grp":"f2","word":"necessarily","level":"2","mean":"adv. 必然地, 一定","years":"86-03；98-03"},{"count":2,"grp":"f2","word":"numerous","level":"4","mean":"adj. 眾多的, 許多的","years":"103-06；105-08"},{"count":2,"grp":"f2","word":"obediently","level":"4","mean":"adv. 順從地, 服從地","years":"104-10；110-03"},{"count":2,"grp":"f2","word":"objection","level":"4","mean":"n. [C/U] 反對, 異議","years":"99-04；106-09"},{"count":2,"grp":"f2","word":"observe","level":"3","mean":"v. 觀察, 注意到, 遵守, 評論","years":"93-02；102-03"},{"count":2,"grp":"f2","word":"obtain","level":"4","mean":"vt. 獲得, 取得","years":"88-08；99-06"},{"count":2,"grp":"f2","word":"occupation","level":"4","mean":"n. [C] 職業, [U] 佔領, 佔用","years":"97-08；101-15"},{"count":2,"grp":"f2","word":"officially","level":"2","mean":"adv. 正式地, 官方地","years":"91-2-01；93-09"},{"count":2,"grp":"f2","word":"oppose","level":"4","mean":"vt. 反對, 對抗","years":"102-01；110-01"},{"count":2,"grp":"f2","word":"optimistic","level":"3","mean":"adj. 樂觀的","years":"95-06；101-07"},{"count":2,"grp":"f2","word":"outcome","level":"4","mean":"n. [C] 結果, 結局","years":"83-04；108-11"},{"count":2,"grp":"f2","word":"perform","level":"3","mean":"v. 表演, 執行, 表現","years":"97-14；108-05"},{"count":2,"grp":"f2","word":"polish","level":"4","mean":"v. 擦亮, 磨光, 潤飾；n. [C/U] 亮光劑, [U] 光澤","years":"99-02；111-10"},{"count":2,"grp":"f2","word":"portable","level":"4","mean":"adj. 可攜帶的, 手提的","years":"93-03；98-10"},{"count":2,"grp":"f2","word":"potential","level":"4","mean":"n. [U] 潛力, 可能性；adj. 潛在的, 可能的","years":"96-02；99-12"},{"count":2,"grp":"f2","word":"precious","level":"3","mean":"adj. 珍貴的, 寶貴的","years":"91-2-07；95-08"},{"count":2,"grp":"f2","word":"predict","level":"4","mean":"v. 預測, 預言","years":"103-07；108-03"},{"count":2,"grp":"f2","word":"privately","level":"2","mean":"adv. 私下地, 祕密地, 私人地","years":"91-01；91-2-04"},{"count":2,"grp":"f2","word":"process","level":"3","mean":"n. [C] 過程, 程序；v. 處理, 加工, 消化","years":"84-12；100-08"},{"count":2,"grp":"f2","word":"productive","level":"4","mean":"adj. 多產的, 有成效的, 生產的","years":"95-08；99-01"},{"count":2,"grp":"f2","word":"profitable","level":"4","mean":"adj. 有利潤的, 有益的","years":"95-08；96-11"},{"count":2,"grp":"f2","word":"promise","level":"2","mean":"v. 答應, 保證提供, 預示；n. [C] 承諾, [U] 前途","years":"88-07；113-08"},{"count":2,"grp":"f2","word":"promising","level":"4","mean":"adj. 有前途的, 有希望的","years":"100-15；111-08"},{"count":2,"grp":"f2","word":"promote","level":"3","mean":"v. 促進, 使升職, 促銷","years":"97-04；104-11"},{"count":2,"grp":"f2","word":"promotion","level":"4","mean":"n. [C/U] 升職, [U] 促進, [C/U] 促銷","years":"89-07；105-10"},{"count":2,"grp":"f2","word":"prompt","level":"4","mean":"adj. 迅速的, 即時的；v. 促使, 提示；n. [C] 提示","years":"102-06；109-12"},{"count":2,"grp":"f2","word":"properly","level":"2","mean":"adv. 適當地, 正確地, 正常地","years":"90-08；106-01"},{"count":2,"grp":"f2","word":"quote","level":"3","mean":"v. 引用, 引述, 報價；n. [C] 引文, 報價","years":"93-02；104-09"},{"count":2,"grp":"f2","word":"rebel","level":"4","mean":"n. [C] 叛亂者, 反抗者；v. 反抗, 造反","years":"97-07；102-13"},{"count":2,"grp":"f2","word":"recall","level":"4","mean":"v. 回想, 召回；n. [U] 記憶力, 回想, [C/U] 召回","years":"87-09；112-06"},{"count":2,"grp":"f2","word":"recently","level":"2","mean":"adv. 最近","years":"84-16；96-14"},{"count":2,"grp":"f2","word":"recite","level":"5","mean":"v. 背誦, 朗讀, 列舉","years":"101-12；109-07"},{"count":2,"grp":"f2","word":"recognize","level":"3","mean":"v. 認出, 承認, 認可, 表彰","years":"95-10；108-06"},{"count":2,"grp":"f2","word":"record","level":"2","mean":"n. [C] 紀錄, 唱片, 過往表現；v. 記錄, 錄音；adj. 創紀錄的","years":"100-05；105-01"},{"count":2,"grp":"f2","word":"recover","level":"2","mean":"v. 恢復, 康復, 找回","years":"97-04；107-05"},{"count":2,"grp":"f2","word":"regular","level":"2","mean":"adj. 規律的, 定期的, 一般的；n. [C] 常客","years":"93-08；98-04"},{"count":2,"grp":"f2","word":"reliable","level":"3","mean":"adj. 可靠的, 可信賴的","years":"98-06；107-15"},{"count":2,"grp":"f2","word":"relief","level":"3","mean":"n. [U] 寬慰, 減輕, 救濟","years":"88-07；101-06"},{"count":2,"grp":"f2","word":"remote","level":"3","mean":"adj. 偏遠的, 遙遠的, 微小的","years":"106-03；114-06"},{"count":2,"grp":"f2","word":"repair","level":"2","mean":"v. 修理, 修補, 補救；n. [C/U] 修理","years":"84-14；91-2-05"},{"count":2,"grp":"f2","word":"request","level":"3","mean":"n. [C] 請求, 要求；v. 請求, 要求","years":"92-2-03；96-01"},{"count":2,"grp":"f2","word":"resolve","level":"4","mean":"v. 解決, 決心, 決議；n. [U] 決心","years":"110-14；112-06"},{"count":2,"grp":"f2","word":"restrict","level":"3","mean":"v. 限制, 約束","years":"89-08；90-03"},{"count":2,"grp":"f2","word":"revise","level":"4","mean":"v. 修改, 修訂, 複習","years":"98-14；101-14"},{"count":2,"grp":"f2","word":"scatter","level":"3","mean":"v. 撒, 散布, 使分散；n. [C] 分散, 少量","years":"98-09；110-08"},{"count":2,"grp":"f2","word":"segment","level":"5","mean":"n. [C] 部分, 片段；v. 分割","years":"96-03；110-05"},{"count":2,"grp":"f2","word":"severe","level":"4","mean":"adj. 嚴重的, 嚴厲的, 惡劣的","years":"99-12；104-01"},{"count":2,"grp":"f2","word":"sincerely","level":"3","mean":"adv. 真誠地, 誠摯地","years":"95-03；96-10"},{"count":2,"grp":"f2","word":"singular","level":"4","mean":"adj. 單數的, 單一的, 非凡的；n. [C] 單數形","years":"102-06；110-13"},{"count":2,"grp":"f2","word":"slippery","level":"3","mean":"adj. 滑的, 狡猾的","years":"103-02；113-01"},{"count":2,"grp":"f2","word":"snap","level":"3","mean":"v. 折斷, 厲聲說, 拍照；n. [C] 斷裂聲, 快照；adj. 倉促的","years":"111-05；112-02"},{"count":2,"grp":"f2","word":"sociable (第6級)","level":"6","mean":"adj. 好交際的, 友善的","years":"97-10；108-07"},{"count":2,"grp":"f2","word":"squeeze","level":"3","mean":"v. 擠, 榨, 塞入；n. [C] 擠壓","years":"97-02；100-11"},{"count":2,"grp":"f2","word":"straight","level":"1","mean":"adj. 直的, 連續的, 坦率的；adv. 筆直地, 直接地；n. [C] 直道","years":"95-02；103-10"},{"count":2,"grp":"f2","word":"strengthen","level":"4","mean":"v. 加強, 增強","years":"84-18；93-01"},{"count":2,"grp":"f2","word":"strictly","level":"2","mean":"adv. 嚴格地, 完全地","years":"84-17；87-07"},{"count":2,"grp":"f2","word":"strike","level":"2","mean":"v. 打擊, 罷工, 使突然想到, 侵襲, 敲響；n. [C] 罷工, 攻擊","years":"83-07；111-09"},{"count":2,"grp":"f2","word":"struggle","level":"2","mean":"v. 奮鬥, 掙扎, 努力；n. [C] 奮鬥, 鬥爭","years":"87-10；115-09"},{"count":2,"grp":"f2","word":"substitute","level":"5","mean":"n. [C] 代替品, 代替者；v. 代替","years":"90-09；96-07"},{"count":2,"grp":"f2","word":"surprise","level":"1","mean":"n. [U] 驚訝, [C] 意外的事；v. 使驚訝","years":"83-07；101-01"},{"count":2,"grp":"f2","word":"switch","level":"2","mean":"v. 轉換, 交換；n. [C] 開關, 轉變","years":"87-09；99-02"},{"count":2,"grp":"f2","word":"take","level":"1","mean":"v. 拿, 帶去, 花費, 看待, 忍受, 服用","years":"83-07；113-05"},{"count":2,"grp":"f2","word":"target","level":"2","mean":"n. [C] 目標, 靶；v. 瞄準, 針對","years":"103-07；109-09"},{"count":2,"grp":"f2","word":"technical","level":"3","mean":"adj. 技術的, 專門的","years":"97-09；104-03"},{"count":2,"grp":"f2","word":"technique","level":"3","mean":"n. [C] 技巧, 方法, [U] 技術","years":"99-08；107-02"},{"count":2,"grp":"f2","word":"tendency","level":"4","mean":"n. [C] 趨勢, 傾向","years":"98-05；104-05"},{"count":2,"grp":"f2","word":"texture","level":"5","mean":"n. [C/U] 質地, 口感, 質感；v. 使有紋理","years":"90-10；98-07"},{"count":2,"grp":"f2","word":"tight","level":"3","mean":"adj. 緊的, 緊湊的, 嚴格的, 緊密的；adv. 緊緊地","years":"99-07；115-01"},{"count":2,"grp":"f2","word":"tolerable","level":"4","mean":"adj. 可忍受的, 尚可的","years":"102-05；107-07"},{"count":2,"grp":"f2","word":"tolerance","level":"4","mean":"n. [U] 容忍, 寬容, 耐受力","years":"92-2-10；104-13"},{"count":2,"grp":"f2","word":"tolerate","level":"4","mean":"v. 容忍, 忍受","years":"97-04；105-07"},{"count":2,"grp":"f2","word":"toss","level":"3","mean":"v. 拋, toss and turn 輾轉反側, 攪拌, 擲硬幣；n. [C] 拋擲","years":"98-02；112-02"},{"count":2,"grp":"f2","word":"trace","level":"3","mean":"v. 追溯, 追蹤, 描摹；n. [C] 蹤跡, 微量","years":"87-09；106-07"},{"count":2,"grp":"f2","word":"traffic","level":"1","mean":"n. [U] 交通, 交通量, 非法交易, 網路流量；v. 非法買賣","years":"95-11；105-01"},{"count":2,"grp":"f2","word":"trend","level":"3","mean":"n. [C] 趨勢, 潮流","years":"98-13；114-02"},{"count":2,"grp":"f2","word":"trial","level":"2","mean":"n. [C/U] 審判, 試驗, [C] 考驗","years":"110-09；111-09"},{"count":2,"grp":"f2","word":"tumble","level":"4","mean":"v. 跌倒, 摔下, 暴跌；n. [C] 跌倒","years":"110-08；115-09"},{"count":2,"grp":"f2","word":"typical","level":"2","mean":"adj. 典型的, 有代表性的","years":"94-06；97-09"},{"count":2,"grp":"f2","word":"variety","level":"3","mean":"n. [U] 多樣性, [C] 種類, 品種","years":"86-05；111-03"},{"count":2,"grp":"f2","word":"variously","level":"3","mean":"adv. 不同地, 各種地","years":"91-06；96-14"},{"count":2,"grp":"f2","word":"vigorous (第6級)","level":"6","mean":"adj. 精力充沛的, 強有力的, 激烈的","years":"109-14；110-12"},{"count":2,"grp":"f2","word":"violent","level":"3","mean":"adj. 暴力的, 猛烈的, 激烈的","years":"90-07；108-15"},{"count":2,"grp":"f2","word":"vivid","level":"3","mean":"adj. 生動的, 鮮明的, 鮮豔的","years":"90-07；98-01"}];
+
+const CH = [
+  { id:"f4", name:"🔥 超高頻（出現 4～6 次）" },
+  { id:"f3", name:"⭐ 高頻（出現 3 次）" },
+  { id:"f2", name:"📌 常考（出現 2 次）" }
+];
+
+const $ = s => document.querySelector(s);
+const LS_WRONG = "quiz_joe_gsat_freq_v1";
+let selChapters = new Set(["f4","f3"]);
+let mode = "instant";
+let quiz = [], idx = 0, answers = [], locked = [];
+let masked = false;
+
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+function buildQuestion(item){
+  const others = shuffle(RAW.filter(x=>x.word!==item.word && x.mean!==item.mean)).slice(0,3).map(x=>x.mean);
+  const opts = shuffle([item.mean, ...others]);
+  const ans = [opts.indexOf(item.mean)];
+  return {
+    word: item.word,
+    ch: item.grp,
+    topic: `學測出現 ${item.count} 次 ｜ Level ${item.level}`,
+    q: `${item.word}（Level ${item.level}）的中文字義為何？`,
+    ex: `歷屆出題紀錄：${item.years}`,
+    options: opts,
+    answer: ans,
+    exp: `${item.word}（第 ${item.level} 級，考過 ${item.count} 次）：${item.mean}`
+  };
+}
+
+function loadWrong(){ try{return JSON.parse(localStorage.getItem(LS_WRONG))||[]}catch(e){return[]} }
+function saveWrong(list){ localStorage.setItem(LS_WRONG, JSON.stringify(list)); }
+function addWrong(w){ let list=loadWrong(); if(!list.includes(w)){ list.push(w); saveWrong(list); } }
+function removeWrong(w){ saveWrong(loadWrong().filter(x=>x!==w)); }
+
+function renderHome(){
+  const box = $("#scope"); box.innerHTML="";
+  CH.forEach(c=>{
+    const n = RAW.filter(b=>b.grp===c.id).length;
+    const el = document.createElement("div");
+    el.className = "chip" + (selChapters.has(c.id)?" on":"");
+    el.innerHTML = `<div class="t">${c.name}</div><div class="n">共 ${n} 字</div>`;
+    el.onclick = ()=>{ selChapters.has(c.id)?selChapters.delete(c.id):selChapters.add(c.id);
+      if(selChapters.size===0) selChapters.add(c.id); renderHome(); };
+    box.appendChild(el);
+  });
+  const wc = loadWrong().length;
+  $("#wrongCount").textContent = wc;
+  $("#wrongOnly").classList.toggle("hide", wc===0);
+  const total = RAW.filter(b=>selChapters.has(b.grp)).length;
+  $("#homeNote").textContent = `目前已選取 ${total} 個高頻字`;
+}
+
+document.querySelectorAll(".modes .chip").forEach(c=>{
+  c.onclick = ()=>{ document.querySelectorAll(".modes .chip").forEach(x=>x.classList.remove("on"));
+    c.classList.add("on"); mode = c.dataset.mode; };
+});
+
+function startQuiz(rawPool, limit=0){
+  let list = shuffle(rawPool);
+  if(limit>0) list = list.slice(0, limit);
+  quiz = list.map(buildQuestion);
+  idx = 0; answers = quiz.map(()=>[]); locked = quiz.map(()=>false);
+  $("#home").classList.add("hide"); $("#study").classList.add("hide"); $("#result").classList.add("hide");
+  $("#quiz").classList.remove("hide"); $("#nav").classList.remove("hide");
+  renderQ();
+}
+
+$("#start20").onclick = ()=> startQuiz(RAW.filter(b=>selChapters.has(b.grp)), 20);
+$("#startAll").onclick = ()=> startQuiz(RAW.filter(b=>selChapters.has(b.grp)), 0);
+$("#wrongOnly").onclick = ()=>{
+  const w = loadWrong(); const pool = RAW.filter(b=>w.includes(b.word));
+  if(pool.length===0){ alert("目前沒有錯題！"); return; }
+  startQuiz(pool, 0);
+};
+
+$("#showStudy").onclick = ()=>{
+  $("#home").classList.add("hide"); $("#study").classList.remove("hide");
+  renderStudyTable();
+};
+function closeStudy(){ $("#study").classList.add("hide"); $("#home").classList.remove("hide"); }
+function toggleMask(){ masked = !masked; renderStudyTable(); }
+function renderStudyTable(){
+  const q = ($("#searchBox").value||"").trim().toLowerCase();
+  const rows = RAW.filter(b=>selChapters.has(b.grp) && (!q || b.word.toLowerCase().includes(q) || b.mean.includes(q) || b.years.toLowerCase().includes(q)));
+  const tb = $("#studyBody"); tb.innerHTML="";
+  rows.forEach(r=>{
+    const tr = document.createElement("tr");
+    const mStyle = masked ? "color:transparent;background:#e2e8f0;border-radius:4px;cursor:pointer;user-select:none;" : "";
+    tr.innerHTML = `<td style="text-align:center;font-weight:700;color:var(--brand)">${r.count}</td>
+      <td><b>${r.word}</b><br><span style="font-size:12px;color:#64748b">Level ${r.level}</span></td>
+      <td style="${mStyle}" onclick="this.style.color='inherit';this.style.background='transparent'">${r.mean}</td>
+      <td style="font-size:12px;color:#475569">${r.years}</td>`;
+    tb.appendChild(tr);
+  });
+}
+
+function backToHome(){
+  $("#quiz").classList.add("hide"); $("#nav").classList.add("hide"); $("#result").classList.add("hide");
+  $("#home").classList.remove("hide"); renderHome();
+}
+
+function renderQ(){
+  const item = quiz[idx];
+  $("#qpos").textContent = `第 ${idx+1} / ${quiz.length} 題`;
+  $("#qscope").textContent = item.topic||"";
+  $("#progbar").style.width = ((idx)/quiz.length*100)+"%";
+  $("#qtext").textContent = item.q;
+  $("#qex").textContent = item.ex;
+
+  const opts = $("#opts"); opts.innerHTML="";
+  const keys = ["A","B","C","D"];
+  item.options.forEach((o,i)=>{
+    const el = document.createElement("div");
+    el.className = "opt";
+    el.innerHTML = `<span class="k">${keys[i]}</span><span>${o}</span>`;
+    if(answers[idx].includes(i)) el.classList.add("sel");
+    if(locked[idx]){
+      if(item.answer.includes(i)) el.classList.add("correct");
+      else if(answers[idx].includes(i)) el.classList.add("wrong");
+    } else { el.onclick = ()=>{ answers[idx]=[i]; renderQ(); }; }
+    opts.appendChild(el);
+  });
+
+  const fb = $("#fb");
+  if(locked[idx]){
+    const correct = answers[idx][0] === item.answer[0];
+    fb.className = "feedback show " + (correct?"ok":"bad");
+    fb.innerHTML = `<b>${correct?"✅ 答對了":"❌ 答錯了"}</b>${item.exp}`;
+  } else { fb.className="feedback"; fb.innerHTML=""; }
+
+  $("#prev").disabled = idx===0;
+  const lastQ = idx===quiz.length-1;
+  $("#next").textContent = (mode==="instant" && !locked[idx]) ? "送出答案" : (lastQ ? "看成績" : "下一題");
+}
+
+$("#next").onclick = ()=>{
+  const item = quiz[idx];
+  if(mode==="instant" && !locked[idx]){
+    if(answers[idx].length===0){ alert("請先選擇一個選項"); return; }
+    locked[idx]=true;
+    if(answers[idx][0]===item.answer[0]) removeWrong(item.word); else addWrong(item.word);
+    renderQ(); return;
+  }
+  if(idx===quiz.length-1){ finish(); } else { idx++; renderQ(); }
+};
+$("#prev").onclick = ()=>{ if(idx>0){ idx--; renderQ(); } };
+
+function finish(){
+  let right=0;
+  quiz.forEach((item,i)=>{
+    const ok = answers[i][0]===item.answer[0];
+    if(ok){ right++; if(mode==="exam") removeWrong(item.word); }
+    else if(mode==="exam") addWrong(item.word);
+  });
+  const total = quiz.length;
+  $("#quiz").classList.add("hide"); $("#nav").classList.add("hide");
+  $("#result").classList.remove("hide");
+  $("#rScore").textContent = Math.round(right/total*100);
+  $("#rRight").textContent = right; $("#rTotal").textContent = total;
+
+  const box = $("#reviewBox");
+  const wrongItems = quiz.map((item,i)=>({item,i})).filter(x=>answers[x.i][0]!==x.item.answer[0]);
+  if(wrongItems.length===0){ box.innerHTML = "<h3>🎉 全部答對，太強了！</h3>"; }
+  else{
+    box.innerHTML = `<h3>錯題檢討（${wrongItems.length} 題）</h3>`;
+    wrongItems.forEach(({item,i})=>{
+      const yours = answers[i].length? item.options[answers[i][0]] : "未作答";
+      const el = document.createElement("div"); el.className="ritem";
+      el.innerHTML = `<div style="font-weight:700">${item.q}</div>
+        <div style="color:#d34b4b">你的答案：${yours}</div>
+        <div style="color:#2e9e5b">正解：${item.options[item.answer[0]]}</div>
+        <div style="color:#6b7d8a;margin-top:4px">${item.exp}</div>`;
+      box.appendChild(el);
+    });
+  }
+}
+
+$("#again20").onclick = ()=> startQuiz(RAW.filter(b=>selChapters.has(b.grp)), 20);
+$("#again").onclick = ()=> startQuiz(RAW.filter(b=>quiz.some(q=>q.word===b.word)), 0);
+$("#retryWrong").onclick = ()=>{
+  const wrongWords = quiz.filter((item,i)=>answers[i][0]!==item.answer[0]).map(x=>x.word);
+  if(wrongWords.length===0){ alert("這次沒有錯題！"); return; }
+  startQuiz(RAW.filter(b=>wrongWords.includes(b.word)), 0);
+};
+$("#backHome").onclick = backToHome;
+
+renderHome();
+</script>
+</body>
+</html>

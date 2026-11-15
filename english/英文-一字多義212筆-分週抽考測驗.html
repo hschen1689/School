@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>7000單「一字多義」分週背誦與抽考測驗（212筆）</title>
+<style>
+  :root{
+    --bg:#0f2027; --bg2:#203a43; --bg3:#2c5364;
+    --card:#ffffff; --ink:#1d2b36; --muted:#6b7d8a;
+    --brand:#1e6f9f; --brand-d:#155b84;
+    --ok:#2e9e5b; --ok-bg:#e7f7ed; --bad:#d34b4b; --bad-bg:#fbe9e9;
+    --line:#e2e8ee;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Microsoft JhengHei","Noto Sans TC","PingFang TC",sans-serif;
+    background:linear-gradient(160deg,var(--bg),var(--bg2),var(--bg3));
+    color:var(--ink); min-height:100vh; font-size:16px; line-height:1.6;
+    padding:env(safe-area-inset-top) 12px env(safe-area-inset-bottom);
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:18px 0 90px;}
+  header{color:#fff; text-align:center; margin-bottom:14px;}
+  header h1{font-size:22px; margin:0 0 4px;}
+  header .sub{opacity:.85; font-size:13px;}
+  .panel{background:var(--card); border-radius:16px; padding:20px; box-shadow:0 8px 28px rgba(0,0,0,.25); margin-bottom:14px;}
+  .scope{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0;}
+  .chip{flex:1 1 calc(33.33% - 6px); min-width:130px; border:2px solid var(--line); border-radius:12px;
+    padding:10px 8px; text-align:center; cursor:pointer; user-select:none; transition:.15s; background:#fff;}
+  .chip .n{font-size:12px; color:var(--muted);}
+  .chip .t{font-weight:700; font-size:15px;}
+  .chip.on{border-color:var(--brand); background:#eaf4fb; color:var(--brand-d);}
+  .chip.done{border-color:#86efac;}
+  .chip.curr{border-color:#f59e0b;}
+  .modes{display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;}
+  .modes .chip{flex:1; min-width:120px;}
+  label.h{font-size:13px; color:var(--muted); display:block; margin:14px 0 4px; font-weight:600;}
+  .btn-row{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap;}
+  .btn{flex:1; min-width:180px; border:none; border-radius:14px; padding:14px;
+    font-size:16px; font-weight:700; cursor:pointer; transition:.15s; font-family:inherit; text-align:center;}
+  .btn-go{background:var(--brand); color:#fff;}
+  .btn-mock{background:#d97706; color:#fff;}
+  .btn-study{background:#0f766e; color:#fff;}
+  .btn-ghost{background:#eef3f7; color:var(--brand-d); margin-top:10px; width:100%;}
+  .qbar{display:flex; justify-content:space-between; align-items:center; color:#fff; font-size:13px; margin-bottom:8px;}
+  .prog{height:6px; background:rgba(255,255,255,.25); border-radius:99px; overflow:hidden; margin-bottom:14px;}
+  .prog>i{display:block; height:100%; background:#7fd1ff; width:0; transition:.3s;}
+  .tag{display:inline-block; font-size:12px; background:#eaf4fb; color:var(--brand-d);
+    padding:3px 10px; border-radius:99px; margin-bottom:10px; font-weight:700;}
+  .qtext{font-size:20px; font-weight:700; margin:0 0 6px;}
+  .qex{font-size:15px; color:#334155; background:#f8fafc; border-left:4px solid var(--brand); padding:8px 12px; border-radius:6px; margin-bottom:16px;}
+  .opt{display:flex; align-items:flex-start; gap:10px; border:2px solid var(--line);
+    border-radius:12px; padding:12px 14px; margin-bottom:10px; cursor:pointer; transition:.12s; background:#fff;}
+  .opt .k{font-weight:800; color:var(--brand); min-width:20px;}
+  .opt.sel{border-color:var(--brand); background:#eaf4fb;}
+  .opt.correct{border-color:var(--ok); background:var(--ok-bg);}
+  .opt.wrong{border-color:var(--bad); background:var(--bad-bg);}
+  .feedback{border-radius:12px; padding:13px 15px; margin-top:6px; font-size:15px; display:none;}
+  .feedback.show{display:block;}
+  .feedback.ok{background:var(--ok-bg); color:#1d6e3f;}
+  .feedback.bad{background:var(--bad-bg); color:#9e2f2f;}
+  .nav{position:fixed; left:0; right:0; bottom:0; background:rgba(15,32,39,.92);
+    backdrop-filter:blur(6px); padding:12px; padding-bottom:calc(12px + env(safe-area-inset-bottom));}
+  .nav .row{max-width:720px; margin:0 auto; display:flex; gap:10px;}
+  .nav button{flex:1; border:none; border-radius:12px; padding:13px; font-size:16px; font-weight:700; font-family:inherit; cursor:pointer;}
+  .nav .sec{background:#3a5a6b; color:#fff;}
+  .nav .pri{background:var(--brand); color:#fff;}
+  .nav button:disabled{opacity:.4;}
+  .score{text-align:center;}
+  .score .big{font-size:52px; font-weight:800; color:var(--brand);}
+  .review h3{font-size:16px; border-left:4px solid var(--brand); padding-left:8px;}
+  .ritem{border:1px solid var(--line); border-radius:10px; padding:12px; margin-bottom:10px; font-size:14px;}
+  .hide{display:none;}
+  .small{font-size:12px; color:var(--muted); text-align:center; margin-top:12px;}
+  table{width:100%; border-collapse:collapse; font-size:14px; margin-top:10px;}
+  th,td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top;}
+  th{background:#f1f5f9;}
+  .search{width:100%; padding:10px 12px; border:2px solid var(--line); border-radius:10px; font-size:15px; margin-bottom:10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>7000單「一字多義」分週背誦與抽考測驗</h1>
+    <div class="sub">Joe 英文每週 30 字作業（共 212 筆）｜已考完 1–60・本週進度 61–90</div>
+  </header>
+
+  <div id="home" class="panel">
+    <label class="h">選擇週次範圍（可複選，點選切換）</label>
+    <div class="scope" id="scope"></div>
+
+    <label class="h">作答模式</label>
+    <div class="modes">
+      <div class="chip on" data-mode="instant"><div class="t">練習模式</div><div class="n">作答後立刻看解析</div></div>
+      <div class="chip" data-mode="exam"><div class="t">測驗模式</div><div class="n">答完公布成績</div></div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-mock" id="startMock">⚡ 模擬上課抽考（隨機 3 題）</button>
+      <button class="btn btn-go" id="startAll">📝 完整測驗所選範圍</button>
+      <button class="btn btn-study" id="showStudy">📖 背誦表／遮罩記憶</button>
+    </div>
+    <button class="btn btn-ghost hide" id="wrongOnly">只練我的錯題（<span id="wrongCount">0</span>）</button>
+    <div class="small" id="homeNote"></div>
+  </div>
+
+  <div id="study" class="panel hide">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
+      <h3 style="margin:0;">📖 一字多義背誦表（所選範圍）</h3>
+      <div>
+        <button onclick="toggleMask()" style="padding:7px 12px;border-radius:8px;border:1px solid var(--brand);background:#eaf4fb;color:var(--brand-d);font-weight:700;cursor:pointer;">👁️ 切換遮住中譯</button>
+        <button onclick="closeStudy()" style="padding:7px 12px;border-radius:8px;border:none;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;">返回測驗首頁</button>
+      </div>
+    </div>
+    <input type="text" id="searchBox" class="search" placeholder="搜尋英文單字、中文義項或搭配例..." oninput="renderStudyTable()">
+    <div style="overflow-x:auto;">
+      <table>
+        <thead><tr><th style="width:48px">#</th><th style="width:120px">單字 / 級數</th><th>非基本義（點擊單格可翻開）</th><th>搭配例與中譯</th></tr></thead>
+        <tbody id="studyBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="quiz" class="hide">
+    <div class="qbar"><span id="qpos"></span><span id="qscope"></span></div>
+    <div class="prog"><i id="progbar"></i></div>
+    <div class="panel">
+      <span class="tag" id="qtag">單選題</span>
+      <div class="qtext" id="qtext"></div>
+      <div class="qex" id="qex"></div>
+      <div id="opts"></div>
+      <div class="feedback" id="fb"></div>
+    </div>
+  </div>
+
+  <div id="result" class="panel hide">
+    <div class="score">
+      <div class="lbl">本次得分</div>
+      <div class="big" id="rScore">100</div>
+      <div class="lbl">答對 <b id="rRight">0</b> ／ 共 <b id="rTotal">0</b> 題</div>
+    </div>
+    <button class="btn btn-go" style="width:100%;margin-top:14px;" id="again">再考一次相同範圍</button>
+    <button class="btn btn-mock" style="width:100%;margin-top:10px;" id="againMock">⚡ 再隨機抽考 3 題</button>
+    <button class="btn btn-ghost" id="retryWrong">只重考本次錯題</button>
+    <button class="btn btn-ghost" id="backHome">回範圍選擇</button>
+    <div class="review" id="reviewBox"></div>
+  </div>
+</div>
+
+<div class="nav hide" id="nav">
+  <div class="row">
+    <button class="sec" id=" exitBtn" onclick="backToHome()">回首頁</button>
+    <button class="sec" id="prev">上一題</button>
+    <button class="pri" id="next">送出答案</button>
+  </div>
+</div>
+
+<script>
+const RAW = [{"id":1,"wk":"w1","word":"account","pos":"v. 第2級","mean":"account for 占（比例）、解釋","exEn":"account for half of the sales","exZh":"占銷售額的一半"},{"id":2,"wk":"w1","word":"address","pos":"v. 第2級","mean":"處理、應對（問題）","exEn":"address the problem","exZh":"處理這個問題"},{"id":3,"wk":"w1","word":"address","pos":"v. 第2級","mean":"向…演說、致詞","exEn":"address the crowd","exZh":"向群眾演說"},{"id":4,"wk":"w1","word":"air","pos":"v. 第1級","mean":"播出","exEn":"the show airs on Friday","exZh":"這個節目在週五播出"},{"id":5,"wk":"w1","word":"air","pos":"v. 第1級","mean":"使通風、晾","exEn":"air the room","exZh":"讓房間通風"},{"id":6,"wk":"w1","word":"alert","pos":"v. 第4級","mean":"使察覺、通知（112年學測考過）","exEn":"alert people to the danger","exZh":"提醒人們注意危險"},{"id":7,"wk":"w1","word":"arm","pos":"v. 第1級","mean":"武裝、配備","exEn":"be armed with","exZh":"配備有…"},{"id":8,"wk":"w1","word":"back","pos":"v. 第1級","mean":"支持","exEn":"back the plan","exZh":"支持這項計畫"},{"id":9,"wk":"w1","word":"bank","pos":"n. 第1級","mean":"河岸","exEn":"the river bank","exZh":"河岸"},{"id":10,"wk":"w1","word":"bare","pos":"adj. 第3級","mean":"空的、空無一物的（貨架等）（112年學測考過）","exEn":"bare shelves","exZh":"空蕩蕩的貨架"},{"id":11,"wk":"w1","word":"bark","pos":"n. 第2級","mean":"樹皮","exEn":"tree bark","exZh":"樹皮"},{"id":12,"wk":"w1","word":"bear","pos":"v. 第1級","mean":"帶有、冠有（名稱、記號）（114年學測考過）","exEn":"bear the family name","exZh":"冠上家族的姓氏"},{"id":13,"wk":"w1","word":"bear","pos":"v. 第1級","mean":"承擔、負擔","exEn":"bear the cost","exZh":"承擔費用"},{"id":14,"wk":"w1","word":"blow","pos":"n. 第1級","mean":"打擊、挫折","exEn":"a blow to the team","exZh":"對球隊的一大打擊"},{"id":15,"wk":"w1","word":"board","pos":"v. 第2級","mean":"登上（車、船、飛機）","exEn":"board the plane","exZh":"登機"},{"id":16,"wk":"w1","word":"board","pos":"n. 第2級","mean":"董事會、委員會","exEn":"the school board","exZh":"學校董事會"},{"id":17,"wk":"w1","word":"book","pos":"v. 第1級","mean":"預訂","exEn":"book a table","exZh":"預訂一桌（餐位）"},{"id":18,"wk":"w1","word":"break","pos":"n. 第1級","mean":"機會、好運","exEn":"a lucky break","exZh":"好運、幸運的機會"},{"id":19,"wk":"w1","word":"bridge","pos":"n. 第1級","mean":"（比喻）橋樑、連結（113年學測考過）","exEn":"a bridge between two cultures","exZh":"兩種文化之間的橋樑"},{"id":20,"wk":"w1","word":"bridge","pos":"v. 第1級","mean":"縮小（差距）","exEn":"bridge the gap","exZh":"縮小差距"},{"id":21,"wk":"w1","word":"buy","pos":"v. 第1級","mean":"相信、接受（說法）","exEn":"I don\u0027t buy that story","exZh":"我不相信那套說法"},{"id":22,"wk":"w1","word":"call","pos":"n. 第1級","mean":"決定、判斷","exEn":"it\u0027s your call","exZh":"由你決定"},{"id":23,"wk":"w1","word":"capital","pos":"n. 第2級","mean":"資本、資金","exEn":"raise capital","exZh":"募集資金"},{"id":24,"wk":"w1","word":"carry","pos":"v. 第1級","mean":"（商店）販售、有貨","exEn":"the store carries fresh fruit","exZh":"這家店有賣新鮮水果"},{"id":25,"wk":"w1","word":"cast","pos":"v. 第3級","mean":"投下（影子）、投（票）","exEn":"cast a shadow","exZh":"投下影子"},{"id":26,"wk":"w1","word":"cell","pos":"n. 第2級","mean":"細胞","exEn":"blood cells","exZh":"血球"},{"id":27,"wk":"w1","word":"chair","pos":"v. 第1級","mean":"主持（會議）","exEn":"chair the meeting","exZh":"主持會議"},{"id":28,"wk":"w1","word":"change","pos":"n. 第1級","mean":"零錢、找零","exEn":"keep the change","exZh":"不用找零了"},{"id":29,"wk":"w1","word":"character","pos":"n. 第2級","mean":"（文）字、字元","exEn":"Chinese characters","exZh":"中文字"},{"id":30,"wk":"w1","word":"charge","pos":"v. 第2級","mean":"收費","exEn":"charge a fee","exZh":"收取費用"},{"id":31,"wk":"w2","word":"charge","pos":"v. 第2級","mean":"充電","exEn":"charge the phone","exZh":"幫手機充電"},{"id":32,"wk":"w2","word":"charge","pos":"n. 第2級","mean":"負責、掌管","exEn":"in charge of","exZh":"負責、掌管…"},{"id":33,"wk":"w2","word":"check","pos":"n. 第1級","mean":"（餐廳的）帳單","exEn":"ask for the check","exZh":"請服務生結帳"},{"id":34,"wk":"w2","word":"choke","pos":"v. 第4級","mean":"堵塞（112年學測考過）","exEn":"be choked with traffic","exZh":"交通堵塞"},{"id":35,"wk":"w2","word":"close","pos":"adj. 第1級","mean":"仔細的","exEn":"take a close look","exZh":"仔細看一看"},{"id":36,"wk":"w2","word":"color","pos":"v. 第1級","mean":"影響（判斷、看法）","exEn":"color one\u0027s judgment","exZh":"影響某人的判斷"},{"id":37,"wk":"w2","word":"command","pos":"n. 第2級","mean":"（語言的）掌握、運用能力","exEn":"a good command of English","exZh":"精通英語"},{"id":38,"wk":"w2","word":"company","pos":"n. 第2級","mean":"陪伴、同伴","exEn":"enjoy her company","exZh":"喜歡有她作伴"},{"id":39,"wk":"w2","word":"content","pos":"adj. 第4級","mean":"滿足的","exEn":"be content with","exZh":"滿足於…"},{"id":40,"wk":"w2","word":"cool","pos":"adj. 第1級","mean":"冷靜的","exEn":"keep cool","exZh":"保持冷靜"},{"id":41,"wk":"w2","word":"counter","pos":"v. 第4級","mean":"反駁、反制（112年學測考過）","exEn":"counter an argument","exZh":"反駁某個論點"},{"id":42,"wk":"w2","word":"course","pos":"n. 第1級","mean":"（一餐中的）一道菜","exEn":"the main course","exZh":"主菜"},{"id":43,"wk":"w2","word":"cover","pos":"v. 第1級","mean":"支付、足夠支付（費用）","exEn":"cover the cost","exZh":"支付費用"},{"id":44,"wk":"w2","word":"cover","pos":"v. 第1級","mean":"報導","exEn":"cover the news","exZh":"報導新聞"},{"id":45,"wk":"w2","word":"cover","pos":"v. 第1級","mean":"涵蓋、包括","exEn":"cover many topics","exZh":"涵蓋許多主題"},{"id":46,"wk":"w2","word":"credit","pos":"n. 第3級","mean":"功勞、讚揚（113年學測考過）","exEn":"take the credit for","exZh":"因…而居功"},{"id":47,"wk":"w2","word":"date","pos":"v. 第1級","mean":"追溯（至）","exEn":"date back to","exZh":"追溯到…"},{"id":48,"wk":"w2","word":"deal","pos":"n. 第1級","mean":"交易、划算的買賣","exEn":"a good deal","exZh":"划算的交易"},{"id":49,"wk":"w2","word":"deliver","pos":"v. 第2級","mean":"發表（演說）","exEn":"deliver a speech","exZh":"發表演說"},{"id":50,"wk":"w2","word":"deliver","pos":"v. 第2級","mean":"履行、兌現（承諾）","exEn":"deliver on a promise","exZh":"兌現承諾"},{"id":51,"wk":"w2","word":"direct","pos":"v. 第2級","mean":"把…指向、導向","exEn":"direct attention to","exZh":"把注意力導向…"},{"id":52,"wk":"w2","word":"direct","pos":"v. 第2級","mean":"導演、指揮","exEn":"direct a film","exZh":"執導一部電影"},{"id":53,"wk":"w2","word":"draw","pos":"v. 第1級","mean":"吸引（人群、注意）","exEn":"draw a crowd","exZh":"吸引人群"},{"id":54,"wk":"w2","word":"draw","pos":"v. 第1級","mean":"得出（結論）","exEn":"draw a conclusion","exZh":"得出結論"},{"id":55,"wk":"w2","word":"drop","pos":"n. 第1級","mean":"下降、減少","exEn":"a drop in sales","exZh":"銷售額下降"},{"id":56,"wk":"w2","word":"due","pos":"adj. 第2級","mean":"預定到達的（113年學測考過）","exEn":"the next bus is due at noon","exZh":"下一班公車預定中午抵達"},{"id":57,"wk":"w2","word":"due","pos":"adj. 第2級","mean":"（款項、作業）到期應付、應交的","exEn":"the rent is due on Friday","exZh":"房租週五到期應繳"},{"id":58,"wk":"w2","word":"elbow","pos":"v. 第3級","mean":"用手肘推擠前進（115年學測考過）","exEn":"elbow one\u0027s way through the crowd","exZh":"用手肘推擠穿過人群"},{"id":59,"wk":"w2","word":"end","pos":"v. 第1級","mean":"（相似處等）到此為止（111年學測考過）","exEn":"that is where the similarities end","exZh":"這就是相似之處到此為止的地方"},{"id":60,"wk":"w2","word":"even","pos":"v. 第1級","mean":"使平衡、使均等（112年學測考過）","exEn":"even things out","exZh":"使情況扯平、使均衡"},{"id":61,"wk":"w3","word":"even","pos":"adj. 第1級","mean":"偶數的","exEn":"even numbers","exZh":"偶數"},{"id":62,"wk":"w3","word":"eye","pos":"v. 第1級","mean":"注視、盯著看","exEn":"eye the cake","exZh":"盯著蛋糕看"},{"id":63,"wk":"w3","word":"face","pos":"v. 第1級","mean":"面對、面臨","exEn":"face a challenge","exZh":"面臨挑戰"},{"id":64,"wk":"w3","word":"fair","pos":"n. 第2級","mean":"博覽會、市集","exEn":"a book fair","exZh":"書展"},{"id":65,"wk":"w3","word":"feature","pos":"v. 第2級","mean":"以…為特色、由…主演","exEn":"feature local artists","exZh":"以在地藝術家為特色"},{"id":66,"wk":"w3","word":"figure","pos":"n. 第2級","mean":"數字、數據","exEn":"sales figures","exZh":"銷售數據"},{"id":67,"wk":"w3","word":"figure","pos":"n. 第2級","mean":"人物","exEn":"a public figure","exZh":"公眾人物"},{"id":68,"wk":"w3","word":"figure","pos":"v. 第2級","mean":"認為、料想","exEn":"I figured it was late","exZh":"我料想時間已經晚了"},{"id":69,"wk":"w3","word":"fine","pos":"n. 第1級","mean":"罰款","exEn":"pay a fine","exZh":"繳罰款"},{"id":70,"wk":"w3","word":"fine","pos":"v. 第1級","mean":"處以罰款","exEn":"be fined for speeding","exZh":"因超速被罰款"},{"id":71,"wk":"w3","word":"fire","pos":"v. 第1級","mean":"解雇","exEn":"be fired from the job","exZh":"被解雇"},{"id":72,"wk":"w3","word":"firm","pos":"n. 第2級","mean":"公司、事務所","exEn":"a law firm","exZh":"律師事務所"},{"id":73,"wk":"w3","word":"fit","pos":"adj. 第2級","mean":"健康的、強健的","exEn":"keep fit","exZh":"保持健康"},{"id":74,"wk":"w3","word":"fit","pos":"v. 第2級","mean":"符合、與…相符","exEn":"fit the description","exZh":"符合描述"},{"id":75,"wk":"w3","word":"flat","pos":"adj. 第2級","mean":"（輪胎）沒氣的","exEn":"a flat tire","exZh":"爆胎、輪胎沒氣"},{"id":76,"wk":"w3","word":"flat","pos":"n. 第2級","mean":"公寓","exEn":"rent a flat","exZh":"租一間公寓"},{"id":77,"wk":"w3","word":"foot","pos":"v. 第1級","mean":"支付（帳單）","exEn":"foot the bill","exZh":"支付帳單"},{"id":78,"wk":"w3","word":"free","pos":"adj. 第1級","mean":"免除…的、無…的","exEn":"free of charge","exZh":"免費"},{"id":79,"wk":"w3","word":"gift","pos":"n. 第1級","mean":"天賦、才能","exEn":"a gift for music","exZh":"有音樂天分"},{"id":80,"wk":"w3","word":"go","pos":"v. 第1級","mean":"go off（鬧鐘）響起","exEn":"the alarm went off","exZh":"鬧鐘響了"},{"id":81,"wk":"w3","word":"grace","pos":"v. 第4級","mean":"使增光、為…增色（114年學測考過）","exEn":"grace the event with one\u0027s presence","exZh":"以某人的出席為活動增光"},{"id":82,"wk":"w3","word":"grave","pos":"adj. 第4級","mean":"嚴重的、嚴峻的（115年學測考過）","exEn":"grave concerns","exZh":"嚴重的憂慮"},{"id":83,"wk":"w3","word":"ground","pos":"n. 第1級","mean":"理由、根據（多用複數）","exEn":"on the grounds that","exZh":"基於…的理由"},{"id":84,"wk":"w3","word":"hand","pos":"v. 第1級","mean":"交給、遞","exEn":"hand in the report","exZh":"繳交報告"},{"id":85,"wk":"w3","word":"handle","pos":"v. 第2級","mean":"處理、應付","exEn":"handle the situation","exZh":"處理這個情況"},{"id":86,"wk":"w3","word":"hard","pos":"adj. 第1級","mean":"確鑿的、可靠的","exEn":"hard evidence","exZh":"確鑿的證據"},{"id":87,"wk":"w3","word":"head","pos":"v. 第1級","mean":"前往","exEn":"head for the station","exZh":"前往車站"},{"id":88,"wk":"w3","word":"heart","pos":"n. 第1級","mean":"中心、核心","exEn":"in the heart of the city","exZh":"在市中心"},{"id":89,"wk":"w3","word":"hold","pos":"v. 第1級","mean":"舉辦","exEn":"hold a meeting","exZh":"舉行會議"},{"id":90,"wk":"w3","word":"hold","pos":"v. 第1級","mean":"容納","exEn":"the hall holds five hundred people","exZh":"這個大廳可容納五百人"},{"id":91,"wk":"w4","word":"host","pos":"v. 第2級","mean":"主辦、主持","exEn":"host the games","exZh":"主辦運動會"},{"id":92,"wk":"w4","word":"house","pos":"v. 第1級","mean":"容納、收藏、裝設（113年學測考過）","exEn":"the museum houses old maps","exZh":"這間博物館收藏古地圖"},{"id":93,"wk":"w4","word":"interest","pos":"n. 第1級","mean":"利息","exEn":"pay interest","exZh":"支付利息"},{"id":94,"wk":"w4","word":"issue","pos":"n. 第4級","mean":"（期刊的）一期","exEn":"the latest issue of the magazine","exZh":"這本雜誌的最新一期"},{"id":95,"wk":"w4","word":"issue","pos":"v. 第4級","mean":"發布、發出","exEn":"issue a warning","exZh":"發布警告"},{"id":96,"wk":"w4","word":"key","pos":"adj. 第1級","mean":"關鍵的","exEn":"a key role","exZh":"關鍵的角色"},{"id":97,"wk":"w4","word":"kid","pos":"v. 第1級","mean":"開玩笑","exEn":"just kidding","exZh":"只是開玩笑而已"},{"id":98,"wk":"w4","word":"land","pos":"v. 第1級","mean":"獲得（工作等）","exEn":"land a job","exZh":"找到一份工作"},{"id":99,"wk":"w4","word":"last","pos":"v. 第1級","mean":"持續、維持","exEn":"the storm lasted three days","exZh":"暴風雨持續了三天"},{"id":100,"wk":"w4","word":"lead","pos":"n. 第1級","mean":"領先地位","exEn":"take the lead","exZh":"取得領先"},{"id":101,"wk":"w4","word":"lead","pos":"n. 第1級","mean":"線索","exEn":"follow a lead","exZh":"追查線索"},{"id":102,"wk":"w4","word":"leave","pos":"n. 第1級","mean":"休假、假期","exEn":"on sick leave","exZh":"請病假中"},{"id":103,"wk":"w4","word":"lie","pos":"v. 第1級","mean":"位於、處於","exEn":"the town lies to the north","exZh":"這座城鎮位於北方"},{"id":104,"wk":"w4","word":"lift","pos":"n. 第2級","mean":"搭便車","exEn":"give someone a lift","exZh":"讓某人搭便車"},{"id":105,"wk":"w4","word":"light","pos":"adj. 第1級","mean":"輕的、輕便的","exEn":"light luggage","exZh":"輕便的行李"},{"id":106,"wk":"w4","word":"line","pos":"n. 第1級","mean":"行業、職業","exEn":"a line of work","exZh":"一種行業"},{"id":107,"wk":"w4","word":"line","pos":"n. 第1級","mean":"（演員的）台詞","exEn":"forget one\u0027s lines","exZh":"忘記台詞"},{"id":108,"wk":"w4","word":"long","pos":"v. 第1級","mean":"渴望","exEn":"long for home","exZh":"渴望回家"},{"id":109,"wk":"w4","word":"lot","pos":"n. 第1級","mean":"（一塊）空地、場地","exEn":"a parking lot","exZh":"停車場"},{"id":110,"wk":"w4","word":"major","pos":"v. 第2級","mean":"主修","exEn":"major in","exZh":"主修…"},{"id":111,"wk":"w4","word":"mark","pos":"v. 第1級","mean":"標誌著、是…的開端","exEn":"mark the beginning of","exZh":"標誌著…的開端"},{"id":112,"wk":"w4","word":"master","pos":"v. 第2級","mean":"精通、掌握","exEn":"master a skill","exZh":"精通一項技能"},{"id":113,"wk":"w4","word":"matter","pos":"v. 第1級","mean":"要緊、有關係","exEn":"it does not matter","exZh":"沒關係"},{"id":114,"wk":"w4","word":"mean","pos":"adj. 第1級","mean":"刻薄的、小氣的","exEn":"be mean to others","exZh":"對別人刻薄"},{"id":115,"wk":"w4","word":"means","pos":"n. 第2級","mean":"方法、手段","exEn":"a means of transport","exZh":"一種交通工具"},{"id":116,"wk":"w4","word":"meet","pos":"v. 第1級","mean":"滿足（需求）、達到（標準）","exEn":"meet the needs","exZh":"滿足需求"},{"id":117,"wk":"w4","word":"mind","pos":"v. 第1級","mean":"介意","exEn":"do you mind waiting","exZh":"你介意等一下嗎"},{"id":118,"wk":"w4","word":"mine","pos":"n. 第1級","mean":"礦、礦坑","exEn":"a coal mine","exZh":"煤礦"},{"id":119,"wk":"w4","word":"miss","pos":"v. 第1級","mean":"未達到、錯過（目標）","exEn":"miss the target","exZh":"沒射中目標"},{"id":120,"wk":"w4","word":"model","pos":"v. 第2級","mean":"仿效、以…為模型","exEn":"be modeled on","exZh":"以…為模型、仿效…"},{"id":121,"wk":"w5","word":"mouth","pos":"v. 第1級","mean":"不出聲地說、用嘴型說","exEn":"mouth the words","exZh":"用嘴型說出那些話"},{"id":122,"wk":"w5","word":"nature","pos":"n. 第1級","mean":"本質、天性","exEn":"human nature","exZh":"人性"},{"id":123,"wk":"w5","word":"note","pos":"v. 第1級","mean":"注意到、指出","exEn":"note that the price has changed","exZh":"請注意價格已經變動"},{"id":124,"wk":"w5","word":"noted","pos":"adj. 第1級","mean":"著名的（114年學測考過）","exEn":"a noted writer","exZh":"知名作家"},{"id":125,"wk":"w5","word":"novel","pos":"adj. 第2級","mean":"新奇的、新穎的","exEn":"a novel idea","exZh":"新穎的點子"},{"id":126,"wk":"w5","word":"object","pos":"v. 第2級","mean":"反對","exEn":"object to the plan","exZh":"反對這項計畫"},{"id":127,"wk":"w5","word":"odd","pos":"adj. 第3級","mean":"奇數的","exEn":"odd numbers","exZh":"奇數"},{"id":128,"wk":"w5","word":"order","pos":"n. 第1級","mean":"秩序、順序","exEn":"keep order","exZh":"維持秩序"},{"id":129,"wk":"w5","word":"party","pos":"n. 第1級","mean":"（協議、爭端的）一方","exEn":"both parties agreed","exZh":"雙方都同意了"},{"id":130,"wk":"w5","word":"pass","pos":"v. 第1級","mean":"pass on 傳達、轉告（113年學測考過）","exEn":"pass on the message","exZh":"傳達訊息"},{"id":131,"wk":"w5","word":"pay","pos":"v. 第1級","mean":"pay off 帶來回報、成功","exEn":"hard work pays off","exZh":"努力會有回報"},{"id":132,"wk":"w5","word":"pick","pos":"v. 第1級","mean":"pick up 學會、無意間學到","exEn":"pick up a language","exZh":"學會一種語言"},{"id":133,"wk":"w5","word":"picture","pos":"v. 第1級","mean":"想像","exEn":"picture yourself on a beach","exZh":"想像你自己在海灘上"},{"id":134,"wk":"w5","word":"plant","pos":"n. 第1級","mean":"工廠、發電廠","exEn":"a power plant","exZh":"發電廠"},{"id":135,"wk":"w5","word":"play","pos":"n. 第1級","mean":"戲劇、劇本","exEn":"put on a play","exZh":"上演一齣戲"},{"id":136,"wk":"w5","word":"point","pos":"n. 第1級","mean":"要點、重點","exEn":"get to the point","exZh":"直接說重點"},{"id":137,"wk":"w5","word":"pool","pos":"v. 第1級","mean":"集中（資源、資金）","exEn":"pool their money","exZh":"把他們的錢集中起來"},{"id":138,"wk":"w5","word":"pound","pos":"v. 第2級","mean":"（心臟）狂跳、猛擊","exEn":"her heart was pounding","exZh":"她的心臟怦怦狂跳"},{"id":139,"wk":"w5","word":"power","pos":"v. 第1級","mean":"為…提供動力","exEn":"be powered by the sun","exZh":"以太陽能為動力"},{"id":140,"wk":"w5","word":"present","pos":"adj. 第1級","mean":"出席的、在場的","exEn":"be present at the meeting","exZh":"出席會議"},{"id":141,"wk":"w5","word":"present","pos":"v. 第1級","mean":"提出、造成（問題）","exEn":"present a problem","exZh":"造成問題"},{"id":142,"wk":"w5","word":"press","pos":"n. 第2級","mean":"新聞界、媒體","exEn":"the press","exZh":"新聞界、媒體"},{"id":143,"wk":"w5","word":"produce","pos":"n. 第2級","mean":"農產品（114年學測考過）","exEn":"fresh produce","exZh":"新鮮農產品"},{"id":144,"wk":"w5","word":"promise","pos":"v. 第2級","mean":"可望帶來、預示（113年學測考過）","exEn":"the plan promises good results","exZh":"這項計畫可望帶來好結果"},{"id":145,"wk":"w5","word":"pupil","pos":"n. 第2級","mean":"瞳孔","exEn":"the pupil of the eye","exZh":"眼睛的瞳孔"},{"id":146,"wk":"w5","word":"quarter","pos":"n. 第1級","mean":"十五分鐘","exEn":"a quarter to six","exZh":"差十五分六點（五點四十五分）"},{"id":147,"wk":"w5","word":"rate","pos":"v. 第3級","mean":"評價、評分","exEn":"rate the movie","exZh":"為這部電影評分"},{"id":148,"wk":"w5","word":"record","pos":"adj. 第2級","mean":"創紀錄的","exEn":"a record high","exZh":"創新高"},{"id":149,"wk":"w5","word":"rest","pos":"n. 第1級","mean":"其餘、剩下的部分","exEn":"the rest of the day","exZh":"這天剩下的時間"},{"id":150,"wk":"w5","word":"room","pos":"n. 第1級","mean":"空間、餘地","exEn":"room for improvement","exZh":"有改進的空間"},{"id":151,"wk":"w6","word":"root","pos":"v. 第1級","mean":"root for 為…加油","exEn":"root for the team","exZh":"為這支隊伍加油"},{"id":152,"wk":"w6","word":"run","pos":"v. 第1級","mean":"經營、管理","exEn":"run a small shop","exZh":"經營一家小店"},{"id":153,"wk":"w6","word":"run","pos":"v. 第1級","mean":"（演出等）連續上演、持續","exEn":"the show ran for two years","exZh":"這齣表演連續上演了兩年"},{"id":154,"wk":"w6","word":"scale","pos":"n. 第3級","mean":"規模","exEn":"on a large scale","exZh":"大規模地"},{"id":155,"wk":"w6","word":"season","pos":"v. 第1級","mean":"（給食物）調味","exEn":"season the soup","exZh":"為湯調味"},{"id":156,"wk":"w6","word":"season","pos":"v. 第1級","mean":"使有經驗（seasoned 經驗豐富的）","exEn":"a seasoned traveler","exZh":"經驗豐富的旅人"},{"id":157,"wk":"w6","word":"seat","pos":"v. 第1級","mean":"可容納…座位","exEn":"the theater seats three hundred","exZh":"這間劇院可容納三百個座位"},{"id":158,"wk":"w6","word":"sense","pos":"n. 第2級","mean":"意義、道理","exEn":"make sense","exZh":"有道理"},{"id":159,"wk":"w6","word":"sentence","pos":"v. 第1級","mean":"判刑","exEn":"be sentenced to prison","exZh":"被判入獄"},{"id":160,"wk":"w6","word":"sharp","pos":"adv. 第1級","mean":"（時間）準時、整","exEn":"at three o\u0027clock sharp","exZh":"三點整"},{"id":161,"wk":"w6","word":"ship","pos":"v. 第1級","mean":"運送、寄送","exEn":"ship the goods","exZh":"運送貨物"},{"id":162,"wk":"w6","word":"short","pos":"adj. 第1級","mean":"缺乏的、不足的","exEn":"be short of money","exZh":"缺錢"},{"id":163,"wk":"w6","word":"shoulder","pos":"v. 第1級","mean":"承擔（責任）","exEn":"shoulder the responsibility","exZh":"承擔責任"},{"id":164,"wk":"w6","word":"shower","pos":"n. 第1級","mean":"陣雨","exEn":"scattered showers","exZh":"零星陣雨"},{"id":165,"wk":"w6","word":"sign","pos":"n. 第1級","mean":"跡象、徵兆","exEn":"a sign of rain","exZh":"要下雨的跡象"},{"id":166,"wk":"w6","word":"skip","pos":"v. 第3級","mean":"略過、不參加","exEn":"skip breakfast","exZh":"不吃早餐"},{"id":167,"wk":"w6","word":"sound","pos":"adj. 第1級","mean":"健全的、合理可靠的","exEn":"sound advice","exZh":"合理可靠的建議"},{"id":168,"wk":"w6","word":"spare","pos":"adj. 第4級","mean":"多餘的、備用的、空閒的","exEn":"spare time","exZh":"空閒時間"},{"id":169,"wk":"w6","word":"spare","pos":"v. 第4級","mean":"抽出（時間）、匀出","exEn":"spare a few minutes","exZh":"抽出幾分鐘"},{"id":170,"wk":"w6","word":"spell","pos":"v. 第1級","mean":"招致、意味著（壞結果）（111年學測考過）","exEn":"spell disaster","exZh":"招致災難"},{"id":171,"wk":"w6","word":"spot","pos":"v. 第2級","mean":"發現、認出","exEn":"spot a mistake","exZh":"發現錯誤"},{"id":172,"wk":"w6","word":"spot","pos":"n. 第2級","mean":"地點、場所","exEn":"a tourist spot","exZh":"觀光景點"},{"id":173,"wk":"w6","word":"spring","pos":"n. 第1級","mean":"泉水","exEn":"hot springs","exZh":"溫泉"},{"id":174,"wk":"w6","word":"stage","pos":"n. 第2級","mean":"階段、時期","exEn":"at an early stage","exZh":"在早期階段"},{"id":175,"wk":"w6","word":"stand","pos":"v. 第1級","mean":"經得起、承受（113年學測考過）","exEn":"stand the test of time","exZh":"經得起時間的考驗"},{"id":176,"wk":"w6","word":"stand","pos":"v. 第1級","mean":"忍受（多用否定）","exEn":"can\u0027t stand the noise","exZh":"受不了噪音"},{"id":177,"wk":"w6","word":"star","pos":"v. 第1級","mean":"主演","exEn":"star in a movie","exZh":"主演一部電影"},{"id":178,"wk":"w6","word":"state","pos":"v. 第2級","mean":"陳述、說明","exEn":"state the reason","exZh":"說明理由"},{"id":179,"wk":"w6","word":"step","pos":"n. 第2級","mean":"措施、步驟","exEn":"take steps to","exZh":"採取措施去…"},{"id":180,"wk":"w6","word":"stick","pos":"v. 第2級","mean":"堅持、遵守","exEn":"stick to the plan","exZh":"堅守計畫"},{"id":181,"wk":"w7","word":"still","pos":"adj. 第1級","mean":"靜止的、不動的","exEn":"stand still","exZh":"站著不動"},{"id":182,"wk":"w7","word":"store","pos":"v. 第1級","mean":"儲存","exEn":"store data","exZh":"儲存資料"},{"id":183,"wk":"w7","word":"strike","pos":"v. 第2級","mean":"（疾病、災害）侵襲（114年學測考過）","exEn":"the disease strikes","exZh":"這種疾病來襲"},{"id":184,"wk":"w7","word":"strike","pos":"v. 第2級","mean":"使突然想到、給…印象","exEn":"it struck me that","exZh":"我突然想到…"},{"id":185,"wk":"w7","word":"stuff","pos":"v. 第3級","mean":"塞滿、填塞","exEn":"stuff the bag with clothes","exZh":"把袋子塞滿衣服"},{"id":186,"wk":"w7","word":"suit","pos":"v. 第2級","mean":"適合","exEn":"suit your needs","exZh":"符合你的需求"},{"id":187,"wk":"w7","word":"taste","pos":"n. 第1級","mean":"品味、鑑賞力","exEn":"have good taste in music","exZh":"對音樂很有品味"},{"id":188,"wk":"w7","word":"term","pos":"n. 第2級","mean":"學期","exEn":"the fall term","exZh":"秋季學期"},{"id":189,"wk":"w7","word":"term","pos":"n. 第2級","mean":"（人際）關係","exEn":"be on good terms with","exZh":"與…關係良好"},{"id":190,"wk":"w7","word":"term","pos":"n. 第2級","mean":"條件、條款","exEn":"the terms of the deal","exZh":"這筆交易的條件"},{"id":191,"wk":"w7","word":"tie","pos":"n. 第1級","mean":"平手","exEn":"end in a tie","exZh":"以平手收場"},{"id":192,"wk":"w7","word":"tight","pos":"adj. 第3級","mean":"（時間、預算）緊湊的、吃緊的（115年學測考過）","exEn":"a tight schedule","exZh":"緊湊的行程"},{"id":193,"wk":"w7","word":"tip","pos":"n. 第1級","mean":"小費","exEn":"leave a tip","exZh":"留小費"},{"id":194,"wk":"w7","word":"tip","pos":"n. 第1級","mean":"訣竅、建議","exEn":"useful tips","exZh":"實用的訣竅"},{"id":195,"wk":"w7","word":"tip","pos":"n. 第1級","mean":"尖端","exEn":"the tip of the finger","exZh":"指尖"},{"id":196,"wk":"w7","word":"top","pos":"v. 第1級","mean":"位居…之首、超過","exEn":"top the list","exZh":"名列榜首"},{"id":197,"wk":"w7","word":"train","pos":"n. 第1級","mean":"（一連串的）思路","exEn":"lose one\u0027s train of thought","exZh":"思路中斷、忘了想說什麼"},{"id":198,"wk":"w7","word":"treat","pos":"n. 第1級","mean":"款待、請客","exEn":"it is my treat","exZh":"這次我請客"},{"id":199,"wk":"w7","word":"trip","pos":"v. 第1級","mean":"絆倒","exEn":"trip over a stone","exZh":"被石頭絆倒"},{"id":200,"wk":"w7","word":"trunk","pos":"n. 第3級","mean":"（汽車）後車廂","exEn":"the trunk of the car","exZh":"汽車的後車廂"},{"id":201,"wk":"w7","word":"turn","pos":"n. 第1級","mean":"輪流、輪到","exEn":"take turns","exZh":"輪流"},{"id":202,"wk":"w7","word":"view","pos":"v. 第2級","mean":"看待、視為","exEn":"view it as a chance","exZh":"把它看作一個機會"},{"id":203,"wk":"w7","word":"volume","pos":"n. 第3級","mean":"音量","exEn":"turn down the volume","exZh":"把音量調低"},{"id":204,"wk":"w7","word":"volume","pos":"n. 第3級","mean":"（書的）冊、卷","exEn":"the second volume","exZh":"第二冊"},{"id":205,"wk":"w7","word":"watch","pos":"v. 第1級","mean":"注意、留意","exEn":"watch your step","exZh":"小心腳步"},{"id":206,"wk":"w7","word":"wave","pos":"n. 第1級","mean":"（一股）浪潮、風潮","exEn":"a wave of new ideas","exZh":"一波新思潮"},{"id":207,"wk":"w7","word":"weather","pos":"v. 第1級","mean":"平安度過、經受住","exEn":"weather the storm","exZh":"平安度過暴風雨"},{"id":208,"wk":"w7","word":"weigh","pos":"v. 第2級","mean":"權衡、斟酌","exEn":"weigh the options","exZh":"權衡各個選項"},{"id":209,"wk":"w7","word":"well","pos":"n. 第1級","mean":"井","exEn":"dig a well","exZh":"挖一口井"},{"id":210,"wk":"w7","word":"witness","pos":"v. 第4級","mean":"見證（時代、變化）","exEn":"the city has witnessed great change","exZh":"這座城市見證了巨大的變化"},{"id":211,"wk":"w8","word":"work","pos":"n. 第1級","mean":"作品","exEn":"works of art","exZh":"藝術作品"},{"id":212,"wk":"w8","word":"yield","pos":"v. 第5級","mean":"生產、產出（作物、結果）","exEn":"yield good results","exZh":"產生好結果"}];
+
+const CH = [
+  { id:"w1", name:"第 1 週 (1–30)", status:"✅ 1031全對" },
+  { id:"w2", name:"第 2 週 (31–60)", status:"✅ 1108全對" },
+  { id:"w3", name:"第 3 週 (61–90)", status:"🔥 本週作業" },
+  { id:"w4", name:"第 4 週 (91–120)", status:"待背" },
+  { id:"w5", name:"第 5 週 (121–150)", status:"待背" },
+  { id:"w6", name:"第 6 週 (151–180)", status:"待背" },
+  { id:"w7", name:"第 7 週 (181–212)", status:"待背" }
+];
+
+const $ = s => document.querySelector(s);
+const LS_WRONG = "quiz_joe_poly212_v1";
+let selChapters = new Set(["w3"]);
+let mode = "instant";
+let quiz = [], idx = 0, answers = [], locked = [];
+let masked = false;
+
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+function buildQuestion(item){
+  const others = shuffle(RAW.filter(x=>x.id!==item.id && x.mean!==item.mean)).slice(0,3).map(x=>x.mean);
+  const opts = shuffle([item.mean, ...others]);
+  const ans = [opts.indexOf(item.mean)];
+  return {
+    id: item.id,
+    ch: item.wk,
+    topic: `編號 #${item.id} ｜ ${item.word} (${item.pos})`,
+    q: `#${item.id}　${item.word}（${item.pos}）的非基本義為何？`,
+    ex: `搭配例：${item.exEn}`,
+    options: opts,
+    answer: ans,
+    exp: `${item.word}（${item.pos}）：「${item.mean}」｜例：${item.exEn}（${item.exZh}）`
+  };
+}
+
+function loadWrong(){ try{return JSON.parse(localStorage.getItem(LS_WRONG))||[]}catch(e){return[]} }
+function saveWrong(list){ localStorage.setItem(LS_WRONG, JSON.stringify(list)); }
+function addWrong(id){ let w=loadWrong(); if(!w.includes(id)){ w.push(id); saveWrong(w); } }
+function removeWrong(id){ saveWrong(loadWrong().filter(x=>x!==id)); }
+
+function renderHome(){
+  const box = $("#scope"); box.innerHTML="";
+  CH.forEach(c=>{
+    const n = RAW.filter(b=>b.wk===c.id).length;
+    const el = document.createElement("div");
+    el.className = "chip" + (selChapters.has(c.id)?" on":"");
+    el.innerHTML = `<div class="t">${c.name}</div><div class="n">${c.status}・${n} 筆</div>`;
+    el.onclick = ()=>{ selChapters.has(c.id)?selChapters.delete(c.id):selChapters.add(c.id);
+      if(selChapters.size===0) selChapters.add(c.id); renderHome(); };
+    box.appendChild(el);
+  });
+  const wc = loadWrong().length;
+  $("#wrongCount").textContent = wc;
+  $("#wrongOnly").classList.toggle("hide", wc===0);
+  const total = RAW.filter(b=>selChapters.has(b.wk)).length;
+  $("#homeNote").textContent = `目前已勾選 ${total} 筆單字（可點選上方週次自由組合）`;
+}
+
+document.querySelectorAll(".modes .chip").forEach(c=>{
+  c.onclick = ()=>{ document.querySelectorAll(".modes .chip").forEach(x=>x.classList.remove("on"));
+    c.classList.add("on"); mode = c.dataset.mode; };
+});
+
+function startQuiz(rawPool, limit=0){
+  let list = shuffle(rawPool);
+  if(limit>0) list = list.slice(0, limit);
+  quiz = list.map(buildQuestion);
+  idx = 0; answers = quiz.map(()=>[]); locked = quiz.map(()=>false);
+  $("#home").classList.add("hide"); $("#study").classList.add("hide"); $("#result").classList.add("hide");
+  $("#quiz").classList.remove("hide"); $("#nav").classList.remove("hide");
+  renderQ();
+}
+
+$("#startMock").onclick = ()=> startQuiz(RAW.filter(b=>selChapters.has(b.wk)), 3);
+$("#startAll").onclick = ()=> startQuiz(RAW.filter(b=>selChapters.has(b.wk)), 0);
+$("#wrongOnly").onclick = ()=>{
+  const w = loadWrong(); const pool = RAW.filter(b=>w.includes(b.id));
+  if(pool.length===0){ alert("目前沒有錯題！"); return; }
+  startQuiz(pool, 0);
+};
+
+$("#showStudy").onclick = ()=>{
+  $("#home").classList.add("hide"); $("#study").classList.remove("hide");
+  renderStudyTable();
+};
+function closeStudy(){ $("#study").classList.add("hide"); $("#home").classList.remove("hide"); }
+function toggleMask(){ masked = !masked; renderStudyTable(); }
+function renderStudyTable(){
+  const q = ($("#searchBox").value||"").trim().toLowerCase();
+  const rows = RAW.filter(b=>selChapters.has(b.wk) && (!q || b.word.toLowerCase().includes(q) || b.mean.includes(q) || b.exEn.toLowerCase().includes(q) || b.exZh.includes(q)));
+  const tb = $("#studyBody"); tb.innerHTML="";
+  rows.forEach(r=>{
+    const tr = document.createElement("tr");
+    const mStyle = masked ? "color:transparent;background:#e2e8f0;border-radius:4px;cursor:pointer;user-select:none;" : "";
+    tr.innerHTML = `<td>${r.id}</td>
+      <td><b>${r.word}</b><br><span style="font-size:12px;color:#64748b">${r.pos}</span></td>
+      <td style="${mStyle}" onclick="this.style.color='inherit';this.style.background='transparent'">${r.mean}</td>
+      <td><div><b>${r.exEn}</b></div><div style="${mStyle};font-size:13px;color:${masked?'transparent':'#475569'}" onclick="this.style.color='#475569';this.style.background='transparent'">${r.exZh}</div></td>`;
+    tb.appendChild(tr);
+  });
+}
+
+function backToHome(){
+  $("#quiz").classList.add("hide"); $("#nav").classList.add("hide"); $("#result").classList.add("hide");
+  $("#home").classList.remove("hide"); renderHome();
+}
+
+function renderQ(){
+  const item = quiz[idx];
+  $("#qpos").textContent = `第 ${idx+1} / ${quiz.length} 題`;
+  $("#qscope").textContent = item.topic||"";
+  $("#progbar").style.width = ((idx)/quiz.length*100)+"%";
+  $("#qtext").textContent = item.q;
+  $("#qex").textContent = item.ex;
+
+  const opts = $("#opts"); opts.innerHTML="";
+  const keys = ["A","B","C","D"];
+  item.options.forEach((o,i)=>{
+    const el = document.createElement("div");
+    el.className = "opt";
+    el.innerHTML = `<span class="k">${keys[i]}</span><span>${o}</span>`;
+    if(answers[idx].includes(i)) el.classList.add("sel");
+    if(locked[idx]){
+      if(item.answer.includes(i)) el.classList.add("correct");
+      else if(answers[idx].includes(i)) el.classList.add("wrong");
+    } else { el.onclick = ()=>{ answers[idx]=[i]; renderQ(); }; }
+    opts.appendChild(el);
+  });
+
+  const fb = $("#fb");
+  if(locked[idx]){
+    const correct = answers[idx][0] === item.answer[0];
+    fb.className = "feedback show " + (correct?"ok":"bad");
+    fb.innerHTML = `<b>${correct?"✅ 答對了":"❌ 答錯了"}</b>${item.exp}`;
+  } else { fb.className="feedback"; fb.innerHTML=""; }
+
+  $("#prev").disabled = idx===0;
+  const lastQ = idx===quiz.length-1;
+  $("#next").textContent = (mode==="instant" && !locked[idx]) ? "送出答案" : (lastQ ? "看成績" : "下一題");
+}
+
+$("#next").onclick = ()=>{
+  const item = quiz[idx];
+  if(mode==="instant" && !locked[idx]){
+    if(answers[idx].length===0){ alert("請先選擇一個選項"); return; }
+    locked[idx]=true;
+    if(answers[idx][0]===item.answer[0]) removeWrong(item.id); else addWrong(item.id);
+    renderQ(); return;
+  }
+  if(idx===quiz.length-1){ finish(); } else { idx++; renderQ(); }
+};
+$("#prev").onclick = ()=>{ if(idx>0){ idx--; renderQ(); } };
+
+function finish(){
+  let right=0;
+  quiz.forEach((item,i)=>{
+    const ok = answers[i][0]===item.answer[0];
+    if(ok){ right++; if(mode==="exam") removeWrong(item.id); }
+    else if(mode==="exam") addWrong(item.id);
+  });
+  const total = quiz.length;
+  $("#quiz").classList.add("hide"); $("#nav").classList.add("hide");
+  $("#result").classList.remove("hide");
+  $("#rScore").textContent = Math.round(right/total*100);
+  $("#rRight").textContent = right; $("#rTotal").textContent = total;
+
+  const box = $("#reviewBox"); const keys=["A","B","C","D"];
+  const wrongItems = quiz.map((item,i)=>({item,i})).filter(x=>answers[x.i][0]!==x.item.answer[0]);
+  if(wrongItems.length===0){ box.innerHTML = "<h3>🎉 全部答對，太強了！</h3>"; }
+  else{
+    box.innerHTML = `<h3>錯題檢討（${wrongItems.length} 題）</h3>`;
+    wrongItems.forEach(({item,i})=>{
+      const yours = answers[i].length? item.options[answers[i][0]] : "未作答";
+      const el = document.createElement("div"); el.className="ritem";
+      el.innerHTML = `<div style="font-weight:700">${item.q}</div>
+        <div style="color:#d34b4b">你的答案：${yours}</div>
+        <div style="color:#2e9e5b">正解：${item.options[item.answer[0]]}</div>
+        <div style="color:#6b7d8a;margin-top:4px">${item.exp}</div>`;
+      box.appendChild(el);
+    });
+  }
+}
+
+$("#again").onclick = ()=> startQuiz(RAW.filter(b=>quiz.some(q=>q.id===b.id)), 0);
+$("#againMock").onclick = ()=> startQuiz(RAW.filter(b=>selChapters.has(b.wk)), 3);
+$("#retryWrong").onclick = ()=>{
+  const wrongIds = quiz.filter((item,i)=>answers[i][0]!==item.answer[0]).map(x=>x.id);
+  if(wrongIds.length===0){ alert("這次沒有錯題！"); return; }
+  startQuiz(RAW.filter(b=>wrongIds.includes(b.id)), 0);
+};
+$("#backHome").onclick = backToHome;
+
+renderHome();
+</script>
+</body>
+</html>
