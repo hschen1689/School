@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2 CH3｜3-1、3-2 & 3-3 條列式考前背誦筆記</title>
+<style>
+  :root {
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --primary: #1a3d6e;
+    --accent: #2563eb;
+    --teal: #0f766e;
+    --amber: #b45309;
+    --danger: #b91c1c;
+    --ink: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.75;
+    font-size: 15.5px;
+    padding-bottom: 48px;
+  }
+  .toolbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--primary); color: #fff;
+    padding: 10px 20px; display: flex; flex-wrap: wrap;
+    justify-content: space-between; align-items: center; gap: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .toolbar-left { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+  .badge-top {
+    background: #ffe066; color: #1e293b; font-size: 0.78rem;
+    padding: 2px 8px; border-radius: 999px; font-weight: 900;
+  }
+  .toolbar-btns { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .btn {
+    border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.12);
+    color: #fff; padding: 5px 12px; border-radius: 7px; font-size: 0.86rem;
+    font-weight: 700; cursor: pointer; text-decoration: none;
+  }
+  .btn:hover { background: rgba(255,255,255,0.24); }
+  .btn-mask { background: #eab308; color: #1e293b; border-color: #eab308; }
+  .btn-mask.active { background: #ef4444; color: #fff; border-color: #ef4444; }
+
+  .container { max-width: 920px; margin: 24px auto; padding: 0 16px; }
+
+  .toc {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 12px 16px; margin-bottom: 20px;
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  }
+  .toc strong { color: var(--primary); font-size: 0.9rem; margin-right: 4px; }
+  .toc a {
+    text-decoration: none; color: var(--ink); background: #f1f5f9;
+    padding: 4px 12px; border-radius: 999px; font-size: 0.86rem; font-weight: 600;
+  }
+  .toc a:hover { background: var(--primary); color: #fff; }
+
+  .part {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 24px 28px; margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(15,23,42,0.05);
+  }
+  .part-title {
+    font-size: 1.3rem; font-weight: 900; color: var(--primary);
+    border-bottom: 3px solid var(--primary); padding-bottom: 8px; margin-bottom: 16px;
+    display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;
+  }
+  .part-title small { font-size: 0.82rem; color: var(--muted); font-weight: 600; }
+
+  h3 {
+    font-size: 1.08rem; font-weight: 800; color: #0f172a;
+    background: #f1f5f9; border-left: 5px solid var(--primary);
+    padding: 6px 12px; border-radius: 0 6px 6px 0;
+    margin: 18px 0 10px;
+  }
+  h3:first-of-type { margin-top: 6px; }
+
+  ol.lv1, ul.lv1 { padding-left: 22px; margin-bottom: 8px; }
+  ol.lv1 > li, ul.lv1 > li { margin-bottom: 8px; }
+  ul.lv2, ol.lv2 { padding-left: 22px; margin-top: 4px; }
+  ul.lv2 > li, ol.lv2 > li { margin-bottom: 4px; }
+
+  /* Key term for recitation */
+  .k {
+    background: #fef08a; color: #713f12;
+    padding: 1px 6px; border-radius: 4px;
+    font-weight: 800; border-bottom: 2px solid #eab308;
+    transition: all 0.15s;
+  }
+  body.mask .k {
+    background: #334155; color: transparent;
+    border-bottom: 2px dashed #64748b;
+    cursor: pointer; user-select: none;
+  }
+  body.mask .k.show {
+    background: #dcfce7; color: #166534;
+    border-bottom: 2px solid #22c55e;
+  }
+  /* Print-blank mode: empty underline for handwritten practice */
+  body.blank-print .k {
+    background: transparent !important;
+    color: transparent !important;
+    border-bottom: 1.5px solid #1e293b !important;
+    border-radius: 0;
+    padding: 0 8px;
+  }
+
+  .tag-pill {
+    display: inline-block; font-size: 0.78rem; font-weight: 800;
+    padding: 1px 8px; border-radius: 4px; margin-right: 4px;
+    vertical-align: 1px;
+  }
+  .t-blue { background: #dbeafe; color: #1e40af; }
+  .t-green { background: #ccfbf1; color: #115e59; }
+  .t-amber { background: #fef3c7; color: #92400e; }
+  .t-red { background: #fee2e2; color: #991b1b; }
+
+  .tip {
+    background: #fffbeb; border: 1px solid #fde68a; border-left: 5px solid var(--amber);
+    padding: 10px 14px; border-radius: 8px; margin-top: 10px; font-size: 0.93rem;
+  }
+  .trap {
+    background: #fef2f2; border: 1px solid #fecaca; border-left: 5px solid var(--danger);
+    padding: 10px 14px; border-radius: 8px; margin-top: 10px; font-size: 0.93rem;
+  }
+  .formula {
+    background: #eff6ff; border: 1px solid #bfdbfe; border-left: 5px solid var(--accent);
+    padding: 10px 14px; border-radius: 8px; margin: 8px 0; font-weight: 700;
+  }
+
+  @media print {
+    @page { size: A4 portrait; margin: 12mm 14mm; }
+    body { background: #fff; font-size: 10.5pt; line-height: 1.55; padding: 0; }
+    .toolbar, .toc { display: none !important; }
+    .container { max-width: 100%; margin: 0; padding: 0; }
+    .part { box-shadow: none; border: 1px solid #bbb; padding: 14px 18px; margin-bottom: 14px; break-inside: avoid; }
+    h3 { background: #eee; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .k { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<header class="toolbar">
+  <div class="toolbar-left">
+    <span class="badge-top">條列背誦版</span>
+    <span>B2 CH3｜3-1 行政法原則、3-2 行政程序 ＆ 3-3 行政救濟</span>
+  </div>
+  <div class="toolbar-btns">
+    <button class="btn btn-mask" id="maskBtn" onclick="toggleMask()">🎯 開啟遮罩背誦（點擊單字看答案）</button>
+    <button class="btn" onclick="printBlank()">🖨 列印手寫填空卷</button>
+    <button class="btn" onclick="window.print()">🖨 列印完整背誦版</button>
+    <a class="btn" href="L2_3_3(流程圖填空講義).html">📐 3-3 流程圖講義</a>
+    <a class="btn" href="L2_3_1(簡要版).html">📘 3.1 簡要</a>
+    <a class="btn" href="L2_3_2(簡要版).html">📗 3.2 簡要</a>
+    <a class="btn" href="L2_3_3(簡要版).html">📙 3.3 簡要</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <nav class="toc">
+    <strong>⚡ 快速跳轉：</strong>
+    <a href="#p1">壹、3-1 行政法意義、類型與依法行政</a>
+    <a href="#p2">貳、3-1 行政裁量與六大一般原理原則</a>
+    <a href="#p3">參、3-2 正當行政程序（公正／公開／民主）</a>
+    <a href="#p4">肆、3-3 行政救濟（訴願前置／三級二審）</a>
+    <a href="#p5">伍、3-3 兩大特別救濟（學生爭訟／交通裁決）</a>
+    <a href="#p6">陸、考前 10 句秒殺口訣</a>
+  </nav>
+
+  <!-- ==================== 壹、3-1 行政法意義、類型與依法行政 ==================== -->
+  <section class="part" id="p1">
+    <div class="part-title">
+      <span>壹、3-1 行政法的意義、類型 ＆ 依法行政原則</span>
+      <small>對應板書：S__23142403_0｜課本 p.45–48｜學習寶典 p.54–57</small>
+    </div>
+
+    <h3>一、行政法的意義與三大特性</h3>
+    <ol class="lv1">
+      <li><strong>板書定義</strong>：規範<span class="k">行政主體</span>（國家、地方自治團體等行政機關）和<span class="k">人民</span>之間權利義務關係的公法規範。</li>
+      <li><strong>三大特性</strong>：
+        <ul class="lv2">
+          <li>① <strong>無單一獨立法典</strong>：不同於《民法》、《刑法》，行政法是規範行政權組織、作用、程序及救濟的<strong>眾多法規集合概念</strong>。</li>
+          <li>② <strong>具體化的憲法</strong>：依據《憲法》第 23 條衡平個人權利與公共利益，將憲法保障人權精神落實於食衣住行日常。</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3>二、國家介入人民生活的兩大類型（干預行政 vs. 給付行政）</h3>
+    <ul class="lv1">
+      <li><span class="tag-pill t-red">干預行政</span><strong>（干涉行政）</strong>：
+        <ul class="lv2">
+          <li>板書定義：行政機關<span class="k">禁止或限制人民</span>自由與財產、課予人民<span class="k">義務或負擔</span>。</li>
+          <li>必考實例：每年 5 月開徵<span class="k">個人綜合所得稅</span>、交通違規開罰單與道安講習、食安大腸桿菌超標開罰、疫情期間強制確診者<span class="k">居家隔離／集中檢疫</span>。</li>
+        </ul>
+      </li>
+      <li><span class="tag-pill t-green">給付行政</span>：
+        <ul class="lv2">
+          <li>板書定義：行政機關<span class="k">照顧人民</span>，提供<span class="k">服務、補貼、福利</span>（或提供誘因引導人民配合政策目標）。</li>
+          <li>必考實例：發放<span class="k">育嬰津貼</span>、租金補助、振興五倍券、提供<span class="k">公費疫苗施打</span>、提供<span class="k">汽機車舊換新補助</span>。</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>三、☆ 依法行政原則（目的：<span class="k">防止濫權</span>）＆ 行政處分定義</h3>
+    <div class="formula">
+      🏛 法規範位階金字塔（由上而下）：<span class="k">憲法</span> ➔ <span class="k">法律</span> ➔ <span class="k">命令</span> ➔ <span class="k">行政行為</span>（含行政處分、行政契約、事實行為）
+    </div>
+    <ol class="lv1">
+      <li><strong>(一) <span class="k">法律優位原則</span></strong>（課本稱：法律優越原則｜別稱：<span class="k">消極的依法行政</span>）：
+        <ul class="lv2">
+          <li>板書定義：行政行為<span class="k">不得牴觸法律或上位法</span>（對應金字塔左側向上箭頭打 ✕）。</li>
+          <li>考題關鍵字：校規處罰學生在體育課勞動服務，<strong>牴觸</strong>上位階《教育基本法》第 8 條。</li>
+        </ul>
+      </li>
+      <li><strong>(二) <span class="k">法律保留原則</span></strong>（別稱：<span class="k">積極的依法行政</span>）：
+        <ul class="lv2">
+          <li>板書定義：行政行為要有<span class="k">法律依據或明確授權</span>（強調「<span class="k">有法律才有限制</span>」，對應金字塔右側向下授權箭頭）。</li>
+          <li>考題關鍵字：市政府<strong>未經法律授權</strong>即切斷社宅自來水迫遷（112 分科）；疫情期間立法院通過《紓困特別條例》<strong>授權</strong>指揮官實施限制措施（113 學測）。</li>
+        </ul>
+      </li>
+      <li><strong>＊<span class="k">行政處分</span>之三大要素</strong>（《行政程序法》第 92 條，<strong>3.3 提起訴願與撤銷訴訟之前提</strong>）：
+        <ul class="lv2">
+          <li>板書定義：行政機關行使<span class="k">公權力</span>、就具體事件所為之<span class="k">單方</span>決定、對外直接產生<span class="k">法律效果</span>（如：罰單、退學、命拆違建、核定都更計畫）。</li>
+          <li>區分非行政處分：<strong>行政契約</strong>（雙方合意，如健保特約）、<strong>事實行為</strong>（不生法律效果，如掃街、巡邏、政令宣導）。</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ==================== 貳、3-1 行政裁量與六大一般原理原則 ==================== -->
+  <section class="part" id="p2">
+    <div class="part-title">
+      <span>貳、3-1 行政裁量：裁量權限 ＆ 裁量適當（六大原則）</span>
+      <small>對應板書：S__23142403_0 右下、S__23142404_0、S__23142405_0 左中｜課本 p.49–54</small>
+    </div>
+
+    <h3>一、裁量權限：<span class="k">不得逾越</span></h3>
+    <ul class="lv1">
+      <li><strong>意義</strong>：法律賦予行政機關在法定範圍內（如罰鍰 <strong>1,200 元～6,000 元</strong>），依個案具體情節自由判斷的空間。</li>
+      <li><strong>界限</strong>：只能在法定上下限內決定，若超出法定範圍（如罰 10,000 元）即構成「<span class="k">裁量逾越</span>」而違法。</li>
+    </ul>
+
+    <h3>二、裁量適當（☆ 目的：<span class="k">防止濫權</span>）— 六大行政法一般原理原則</h3>
+    <ol class="lv1">
+      <li><strong>(一) <span class="k">平等原則</span></strong>：禁止<span class="k">不合理的差別待遇</span>（「等者等之，不等者不等之」）：
+        <ul class="lv2">
+          <li><strong>1. <span class="k">行政自我拘束</span></strong>：對相同或同類案件應<span class="k">依慣例</span>（依循過去合法之行政先例）處理。</li>
+          <li><strong>2. <span class="k">禁止恣意</span></strong>：若做不同處置（差別待遇），需有<span class="k">適當且充分理由</span>（例：學測依《特殊教育法》延長身障生考試時間 ✔；《釋字第 666 號》宣告性交易「罰娼不罰嫖」違憲 ✗）。</li>
+          <li>⚠️ <strong>重要界限</strong>：人民<strong>不得主張「<span class="k">違法之平等</span>（不法之平等）」</strong>（不得因他人違規未被抓而拒絕受罰）。</li>
+        </ul>
+      </li>
+      <li><strong>(二) <span class="k">比例原則</span></strong>：板書口訣「<span class="k">禁過當</span>」（不可用大砲打小鳥，三階段須<strong>依序檢核</strong>）：
+        <ul class="lv2">
+          <li><strong>1. <span class="k">適當性</span></strong>：手段有助於<span class="k">目的之達成</span>（例：違停擋路卻「將輪胎上鎖」，無法排解塞車 ➔ 違反適當性）。</li>
+          <li><strong>2. <span class="k">必要性</span></strong>：多種可達成目的之手段（Ⓐ、Ⓑ）中，選擇對人民<span class="k">侵害最小</span>之手段（例：違停「拖吊＋吊扣駕照」vs.「拖吊＋罰鍰」，吊扣駕照侵害過大 ➔ 違反必要性；嫌犯已壓制仍持警棍重擊腿部、公務員下班休假全面禁酒，皆違反必要性）。</li>
+          <li><strong>3. <span class="k">衡量性</span></strong>（狹義比例原則）：欲達成之公共<span class="k">利益 ＞ 損害</span>（伴隨之個人損害不得與公益顯失均衡）。</li>
+        </ul>
+      </li>
+      <li><strong>(三) <span class="k">信賴保護原則</span></strong>：板書口訣「<span class="k">禁任意變更、人民既得利益保護</span>」：
+        <ul class="lv2">
+          <li><strong>必背三大積極要件</strong>：
+            <br>① <strong><span class="k">信賴基礎</span></strong>：(公) 信任、(行) 已對外作成具效力之國家行為（法規或授益行政處分）。
+            <br>② <strong><span class="k">信賴表現</span></strong>：(人) 基於信賴已有實際行動（展開具體投資、規畫或處置）。
+            <br>③ <strong><span class="k">信賴值得保護</span></strong>：(人) <span class="k">未用非法手段</span>取得利益（無詐欺、脅迫、賄賂或提供不實資料）。
+          </li>
+          <li><strong>正反案例</strong>：合法獲准蓋加油站動工後遭撤照 ➔ 違反信賴保護；<strong>偽造資料申請低收入戶</strong>領津貼被撤銷 ➔ 不得主張信賴保護；<strong>軍公教年金改革（釋字 781～783 號）</strong>為維持基金存續之重大公益且設過渡期 ➔ 合憲。</li>
+        </ul>
+      </li>
+      <li><strong>補 1｜<span class="k">禁止不當聯結原則</span></strong>：行政<strong>手段</strong>與<strong>目的</strong>間須有<span class="k">合理關聯</span>，不得附加與目的無關的條件（例：市長要求建商捐款給地方回饋基金才核發建築使用執照 ✗）。</li>
+      <li><strong>補 2｜<span class="k">誠實信用原則</span></strong>：板書口訣「<span class="k">禁任意變更、欺騙、隱瞞</span>」，政府要信守諾言（例：使用未經度量衡檢定合格之區間測速器開罰 ✗；明知車主酒醉仍引導其移車再抓酒駕設局陷害 ✗）。</li>
+      <li><strong>補 3｜<span class="k">明確性原則</span></strong>：行政行為內容<span class="k">清楚明白且可能</span>，使人民可預見（例：罰單載明違規事實、法源與救濟 ✔；校規「素行不良記大過」模糊不清 ✗）。</li>
+    </ol>
+  </section>
+
+  <!-- ==================== 參、3-2 正當行政程序 ==================== -->
+  <section class="part" id="p3">
+    <div class="part-title">
+      <span>參、3-2 行政程序（正當行政程序的精神）</span>
+      <small>對應板書：S__23142405_0 右板、S__23142406_0｜課本 p.55–62｜圖解法律 p.24–27</small>
+    </div>
+
+    <h3>一、行政程序的目的：實踐<span class="k">程序正義</span></h3>
+    <ul class="lv1">
+      <li><strong>核心精神</strong>：透過《<span class="k">行政程序法</span>》遵循「<strong>公正、公開、民主</strong>」之程序，建構程序正義，進而實現<strong>實質正義</strong>（例：警察酒測未全程錄影、未告知程序，違反程序正義，罰單遭法院撤銷）。</li>
+    </ul>
+
+    <h3>二、行政程序三大基本原則（板書架構必背）</h3>
+    <ol class="lv1">
+      <li><strong>(一) <span class="k">公正原則</span> ➔ 板書口訣：<span class="k">No 偏頗</span></strong>：
+        <ul class="lv2">
+          <li><strong>1. <span class="k">有利、不利併予注意</span></strong>：調查事實與證據時，對當事人有利及不利情形應一律注意。</li>
+          <li><strong>2. <span class="k">利益迴避</span></strong>：公務員遇自身利益或一定親屬關係事件應迴避（三種啟動方式：① 公務員<span class="k">主動（自行）迴避</span>、② 上級長官<span class="k">命令迴避</span>、③ 當事人<span class="k">申請迴避</span>）。</li>
+          <li><strong>3. <span class="k">禁止程序外接觸</span></strong>：除職務必要外，不得私下與當事人飲宴接觸；若有接觸應將所有往來以<span class="k">書面方式公開</span>。</li>
+          <li><strong>➕ 課本補充：<span class="k">組織合法性要求</span></strong>（法定組成比例：學校性平會女性委員 <strong>≥ <span class="k">1/2</span></strong>；採購評選委員會專家學者 <strong>≥ <span class="k">1/3</span></strong>；土地徵收審議小組專家及民團 <strong>≥ <span class="k">1/2</span></strong>）。</li>
+        </ul>
+      </li>
+      <li><strong>(二) <span class="k">公開原則</span> ➔ 板書口訣：<span class="k">No 資訊不對稱</span></strong>：
+        <ul class="lv2">
+          <li><strong>1. <span class="k">公告周知</span></strong>：政府資訊以<strong>公開為原則、限制為例外</strong>（《政府資訊公開法》第 18 條 5 大例外：國家機密、司法公平、個人隱私／營業祕密、妨害監督取締、影響考試檢定公平）。</li>
+          <li><strong>2. <span class="k">個別通知</span></strong>（受告知權）：包含事先告知、決定告知、救濟途徑教示。</li>
+          <li><strong>3. <span class="k">文書送達</span></strong>：書面行政處分須經<span class="k">合法送達</span>後，才<strong>正式對外發生效力</strong>！</li>
+          <li><strong>4. <span class="k">閱覽卷宗權</span></strong>：當事人或利害關係人得申請閱覽、抄寫、複印或攝影相關卷宗（如危樓屋主申請看結構鑑定報告、民眾上網查違規照片）。</li>
+        </ul>
+      </li>
+      <li><strong>(三) <span class="k">民主原則</span> ➔ 板書口訣：人民<span class="k">表達、參與</span></strong>：
+        <ul class="lv2">
+          <li><strong>1. <span class="k">陳述意見</span></strong>：作成限制或剝奪權利之處分前，給予單向表達機會（最基本的<span class="k">消極參與</span>，機關不受拘束）。</li>
+          <li><strong>2. <span class="k">聽證</span></strong>：公開舉行聽證會進行雙向提問辯駁（更強的<span class="k">積極參與</span>），板書星號重點：「<strong>☆ <span class="k">結果納入決策</span></strong>」（主管機關須說明採納與否之理由，對機關<strong>具拘束力</strong>！）。</li>
+          <li>⚠️ <strong>區分「公聽會」vs.「聽證會」</strong>：<span class="k">公聽會</span>僅廣泛蒐集意見供參考，<strong>無拘束力</strong>，機關亦無答辯說明義務！</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3>三、圖解法律專題：校園性平事件處理流程關鍵數字</h3>
+    <ul class="lv1">
+      <li>教職員獲知疑似性侵害／性騷擾／性霸凌事件，須於 <span class="k">24 小時內</span>通報學校及縣市主管機關 ➔ 性平會（女性委員 ≥ <span class="k">1/2</span>）於 <span class="k">20 日內</span>書面通知是否受理 ➔ 組成 <span class="k">3 或 5 人</span>調查小組於 <span class="k">2 個月內</span>完成調查 ➔ 當事人不服處理結果，得於 <span class="k">20 日內</span>向學校提出「<span class="k">申復</span>」（以 1 次為限）。</li>
+    </ul>
+  </section>
+
+  <!-- ==================== 肆、3-3 行政救濟（訴願前置／三級二審） ==================== -->
+  <section class="part" id="p4">
+    <div class="part-title">
+      <span>肆、3-3 行政救濟：訴願先行、訴願前置 ＆ 行政訴訟三級二審</span>
+      <small>對應講義：S__23805961 上半部｜課本 p.63–67｜學習寶典 p.64–67</small>
+    </div>
+
+    <h3>一、行政機關內部的救濟（法院外救濟：講義編號 1～4）</h3>
+    <ol class="lv1">
+      <li><strong>編號 1｜救濟起點：<span class="k">行政處分</span></strong>（因處分<span class="k">違法或不當</span>，導致人民權利或法律上利益受損）。</li>
+      <li><strong>編號 2｜<span class="k">訴願先行程序</span></strong>（提訴願前的「<strong>原處分機關</strong>」自我檢查環節，僅特定案件適用）：
+        <ul class="lv2">
+          <li>① 《稅捐稽徵法》：申請「<span class="k">復查</span>」</li>
+          <li>② 《全民健康保險法》：申請「<span class="k">審議</span>」</li>
+          <li>③ 《專利法》：申請「<span class="k">再審查</span>」</li>
+          <li>④ 高中以下學生權益爭訟：向校內申請「<span class="k">申訴</span>」</li>
+        </ul>
+      </li>
+      <li><strong>編號 3 & 4｜<span class="k">訴願</span>（採「<span class="k">訴願前置主義</span>」：先訴願，再訴訟）</strong>：
+        <ul class="lv2">
+          <li><strong>管轄機關</strong>：經由原處分機關向訴願管轄機關（通常為其<span class="k">上級機關</span>）提起（如不服衛福部處分 ➔ 向<strong>行政院</strong>提訴願）。</li>
+          <li><strong>制度目的</strong>：進行<span class="k">行政自我審查</span>（給予行政機關自行撤銷或變更原處分的機會），以<span class="k">減少不必要之訟源</span>。</li>
+          <li><strong>客觀性保障</strong>：《訴願法》第 52 條規定，訴願審議委員會應有 <strong><span class="k">1/2 以上</span></strong>席次由社會公正人士、學者、專家等機關外人員組成。</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3>二、法院內救濟：行政訴訟（<span class="k">三級二審</span> ＋ 2023 <span class="k">堅實第一審</span>新制）</h3>
+    <div class="formula">
+      🏛 三級法院組織：高等行政法院「<span class="k">地方行政訴訟庭</span>」＆「<span class="k">高等行政訴訟庭</span>」（位於臺北、臺中、高雄）＋「<span class="k">最高行政法院</span>」（位於臺北）
+    </div>
+    <ol class="lv1">
+      <li><strong>路徑 ❶（講義編號 5）：訴訟標的金額「<span class="k">超過 150 萬元</span>」或重大非財產事件（如退學）</strong>：
+        <ul class="lv2">
+          <li>適用程序：<span class="k">通常訴訟程序</span></li>
+          <li>審級流程：第一審「高等行政法院 <span class="k">高等行政訴訟庭</span>」 ➔ 第二審（終審）「<span class="k">最高行政法院</span>」。</li>
+        </ul>
+      </li>
+      <li><strong>路徑 ❷（講義編號 6）：訴訟標的金額「<span class="k">超過 50 萬元、150 萬元以下</span>」</strong>：
+        <ul class="lv2">
+          <li>適用程序：<span class="k">通常訴訟程序</span></li>
+          <li>審級流程：第一審「高等行政法院 <span class="k">地方行政訴訟庭</span>」 ➔ 第二審（終審）「高等行政法院 <span class="k">高等行政訴訟庭</span>」。</li>
+        </ul>
+      </li>
+      <li><strong>路徑 ❸（講義編號 7）：訴訟標的金額「<span class="k">50 萬元以下</span>」或輕微處分（告誡、警告、記點）</strong>：
+        <ul class="lv2">
+          <li>適用程序：<span class="k">簡易訴訟程序</span></li>
+          <li>審級流程：第一審「高等行政法院 <span class="k">地方行政訴訟庭</span>」 ➔ 第二審（終審）「高等行政法院 <span class="k">高等行政訴訟庭</span>」。</li>
+        </ul>
+      </li>
+      <li><strong>＊統一法律見解機制</strong>：高等行政訴訟庭審理路徑 ❷、❸ 二審案件時，若認為有<span class="k">確保統一法律見解</span>之必要，應裁定移送<span class="k">最高行政法院</span>裁判。</li>
+    </ol>
+  </section>
+
+  <!-- ==================== 伍、3-3 兩大特別救濟 ==================== -->
+  <section class="part" id="p5">
+    <div class="part-title">
+      <span>伍、3-3 兩大必考特別救濟流程：學生權益爭訟 ＆ 交通違規事件</span>
+      <small>對應講義：S__23805961 下半部｜課本 p.64, 68｜學習寶典 p.64, 73</small>
+    </div>
+
+    <h3>一、全國高中以下學校學生 — 學生權益爭訟事件</h3>
+    <ol class="lv1">
+      <li><strong>釋憲依據</strong>：2019 年《<span class="k">釋字第 784 號</span>》解釋，全面開放各級學校學生對學校教育或管理公權力措施（含記過、警告、退學等）提起行政爭訟之權利。</li>
+      <li><strong>高中以下學生救濟三步驟（《高級中等教育法》）</strong>：
+        <ul class="lv2">
+          <li><strong>Step 1｜校內「<span class="k">申訴</span>」</strong>（性質＝訴願先行程序）：向校內「<span class="k">學生申訴評議委員會</span>」提出。</li>
+          <li><strong>Step 2｜校外「<span class="k">再申訴</span>」</strong>（性質＝<strong><span class="k">視同訴願</span></strong>！不再另外提訴願）：向學校上級主管機關提出（國立高中 ➔ <span class="k">教育部</span>；市立高中 ➔ <span class="k">縣市政府教育局</span>）。</li>
+          <li><strong>Step 3｜<span class="k">行政訴訟</span></strong>：不服再申訴決定，向高等行政法院起訴（依案件輕重適用通常或簡易訴訟程序）。</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3>二、交通違規事件救濟流程（以汽車超速為例）</h3>
+    <ol class="lv1">
+      <li><strong>機關區分</strong>：<strong>舉發機關</strong>＝<span class="k">警察機關</span>（開立之「舉發通知單／紅單」<strong>不是裁決書</strong>，直接繳納罰鍰即結案）；<strong>處罰機關</strong>＝<span class="k">交通事件裁決處／所</span>。</li>
+      <li><strong>不服紅單之救濟步驟</strong>：
+        <ul class="lv2">
+          <li><strong>Step 1｜陳述意見（申訴）</strong>：收到紅單後若不服舉發事實，應於 <span class="k">30 日內</span>向處罰機關（<strong>交通事件裁決處／所</strong>）陳述意見，由其發函原舉發警察單位查證。</li>
+          <li><strong>Step 2｜作成裁決</strong>：若查證舉發有誤則不予處罰；若認定違規成立，處罰機關依法作成「<span class="k">交通裁決書</span>」（正式行政處分）。</li>
+          <li><strong>Step 3｜直接提行政訴訟（★ <span class="k">免經訴願</span>！）</strong>：不服交通裁決書結果，<strong>不須經過訴願程序</strong>，直接向高等行政法院「<span class="k">地方行政訴訟庭</span>」提起第一審行政訴訟（準用<span class="k">簡易訴訟程序</span>，第二審為高等行政訴訟庭）。</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ==================== 陸、考前 10 句秒殺口訣 ==================== -->
+  <section class="part" id="p6">
+    <div class="part-title">
+      <span>陸、Ch3 考前 10 句秒殺判斷口訣</span>
+      <small>段考與學測選擇題最後衝刺</small>
+    </div>
+    <ol class="lv1">
+      <li>「<strong>給錢給服務給誘因</strong>」是<span class="k">給付行政</span>（含舊換新補助）；「<strong>開單課稅隔離限制</strong>」是<span class="k">干預行政</span>。</li>
+      <li>「<strong>牴觸上位法規</strong>」選<span class="k">法律優位原則</span>；「<strong>沒有法律授權就限制人民</strong>」選<span class="k">法律保留原則</span>。</li>
+      <li>「<strong>別人違規沒被抓我也不要罰</strong>」是人民不得主張的<span class="k">違法之平等</span>；「<strong>罰娼不罰嫖（釋字 666）</strong>」違反<span class="k">平等原則</span>。</li>
+      <li>「<strong>手段根本沒用（違停鎖輪胎）</strong>」違反<span class="k">適當性</span>；「<strong>殺雞用牛刀（下班禁酒／壓制後棍擊）</strong>」違反<span class="k">必要性</span>。</li>
+      <li>「<strong>政府先核准人民已投資卻突然撤銷</strong>」違反<span class="k">信賴保護原則</span>；但「<strong>偽造資料騙補助</strong>」欠缺<span class="k">信賴值得保護</span>要件。</li>
+      <li>「<strong>發建照強迫捐地方回饋金</strong>」違反<span class="k">禁止不當聯結原則</span>；「<strong>測速器未檢定／設局抓酒駕</strong>」違反<span class="k">誠實信用原則</span>。</li>
+      <li>「<strong>承辦人是廠商親戚</strong>」要<span class="k">利益迴避</span>；「<strong>承辦人私下跟廠商吃飯</strong>」違反<span class="k">禁止程序外接觸</span>（皆屬公正原則）。</li>
+      <li>書面行政處分須經「<span class="k">文書送達</span>」才正式生效；申請看危樓鑑定報告、查違規照片是行使「<span class="k">閱覽卷宗權</span>」（公開原則）。</li>
+      <li>「<span class="k">公聽會</span>」意見僅供參考無拘束力；「<span class="k">聽證會</span>」雙向辯駁且<strong>☆結果納入決策（具拘束力）</strong>（民主原則）。</li>
+      <li>高中生救濟走「<strong>申訴 ➔ <span class="k">再申訴（視同訴願）</span> ➔ 行政訴訟</strong>」；交通裁決不服「<strong><span class="k">免經訴願</span> ➔ 直奔地方行政訴訟庭</strong>」！</li>
+    </ol>
+  </section>
+
+</main>
+
+<script>
+function toggleMask() {
+  const b = document.body;
+  const btn = document.getElementById('maskBtn');
+  b.classList.remove('blank-print');
+  b.classList.toggle('mask');
+  const on = b.classList.contains('mask');
+  btn.classList.toggle('active', on);
+  btn.textContent = on ? '👁 顯示全部答案' : '🎯 開啟遮罩背誦（點擊單字看答案）';
+  document.querySelectorAll('.k').forEach(el => el.classList.remove('show'));
+}
+
+document.addEventListener('click', function(e) {
+  if (document.body.classList.contains('mask') && e.target.classList.contains('k')) {
+    e.target.classList.toggle('show');
+  }
+});
+
+function printBlank() {
+  document.body.classList.remove('mask');
+  document.body.classList.add('blank-print');
+  window.print();
+  setTimeout(() => document.body.classList.remove('blank-print'), 500);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>考前衝刺｜3.3 行政救濟（SVG流程圖簡要版）</title>
+<style>
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --pri: #1a3d6e;
+  --board: #1b362e;
+  --board-frame: #8c6239;
+  --chalk: #ffe066;
+  --pink: #ff99ac;
+  --green: #8ce99a;
+  --red: #b91c1c;
+  --redbg: #fef2f2;
+  --ok: #0f766e;
+  --okbg: #f0fdfa;
+  --bd: #e2e8f0;
+  --ink: #1e293b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.7;
+  padding-bottom: 50px;
+}
+nav {
+  background: var(--pri);
+  color: #fff;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+nav a, nav button {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.12);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+nav a:hover { background: rgba(255,255,255,0.25); }
+nav a.on { background: #fff; color: var(--pri); font-weight: 800; }
+nav button { background: #eab308; color: #1e293b; border: none; font-weight: 800; }
+nav button.on { background: #ef4444; color: #fff; }
+
+.wrap { max-width: 980px; margin: 22px auto; padding: 0 16px; }
+
+.hero {
+  background: linear-gradient(135deg, #1a3d6e 0%, #312e81 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 20px 26px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 14px rgba(15,23,42,0.1);
+}
+.hero h1 { font-size: 1.48rem; font-weight: 900; margin-bottom: 6px; }
+.hero p { font-size: 0.9rem; opacity: 0.92; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 14px rgba(15,23,42,0.05);
+}
+h2 {
+  font-size: 1.16rem;
+  color: var(--pri);
+  border-bottom: 2px solid var(--bd);
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+h2 small {
+  font-size: 0.74rem;
+  background: var(--board);
+  color: var(--chalk);
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+h3 {
+  font-size: 1.02rem;
+  color: var(--pri);
+  margin: 14px 0 8px;
+  padding-left: 10px;
+  border-left: 4px solid var(--pri);
+}
+
+.svg-board-wrap {
+  margin: 10px 0 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.14);
+  border: 6px solid var(--board-frame);
+  background: var(--board);
+}
+.svg-board-wrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 0.91rem; margin: 8px 0; }
+th, td { border: 1px solid var(--bd); padding: 8px 11px; text-align: left; vertical-align: top; }
+th { background: #f1f5f9; color: var(--pri); font-weight: 800; }
+tr:nth-child(even) td { background: #fafcff; }
+
+ul, ol { padding-left: 20px; font-size: 0.92rem; }
+li { margin: 4px 0; }
+
+.k {
+  background: #fef08a;
+  color: #854d0e;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 800;
+  transition: all 0.15s;
+}
+body.quiz .k {
+  background: #334155;
+  color: transparent;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 2px dashed #94a3b8;
+}
+body.quiz .k.show { background: #dcfce7; color: #166534; }
+
+.explain-box {
+  background: #f8fafc;
+  border: 1px solid var(--bd);
+  border-left: 5px solid var(--pri);
+  border-radius: 10px;
+  padding: 11px 15px;
+  margin: 8px 0;
+  font-size: 0.92rem;
+}
+.trap {
+  background: var(--redbg);
+  border-left: 5px solid var(--red);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+.trap b { color: var(--red); }
+.tip {
+  background: var(--okbg);
+  border-left: 5px solid var(--ok);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+.tip b { color: var(--ok); }
+
+.qa details {
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  padding: 8px 13px;
+  margin: 6px 0;
+  font-size: 0.91rem;
+  background: #fafcff;
+}
+.qa summary { cursor: pointer; font-weight: 700; }
+.qa details p { margin-top: 6px; color: var(--ok); font-weight: 700; }
+
+.src { font-size: 0.83rem; color: #64748b; }
+.src li { margin: 3px 0; }
+
+@media print {
+  nav { display: none; }
+  .card { box-shadow: none; page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <strong>⚡ 考前衝刺（SVG板書＋速讀）｜Ch3 生活中的行政法</strong>
+  <div style="display:flex;gap:6px;flex-wrap:wrap">
+    <a href="L2_3_1(簡要版).html">📘 3.1 簡要版</a>
+    <a href="L2_3_2(簡要版).html">📗 3.2 簡要版</a>
+    <a href="L2_3_3(簡要版).html" class="on">📙 3.3 簡要版</a>
+    <a href="L2_3_1-3_3(條列背誦版).html">📋 全章條列背誦版</a>
+    <a href="L2_3_3.html">📄 3.3 完整版</a>
+    <button id="qb" onclick="tq()">🎯 遮罩自測</button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>3.3 行政救濟（行政救濟的管道與方式｜SVG板書衝刺版）</h1>
+    <p>以黑板風格 SVG 完整重現老師《B2 CH3 行政救濟》講義（S__23805961.jpg）之三大區塊：一般行政救濟與三級二審分流、全國高中以下學生爭訟（釋字 784 號）、交通違規裁決救濟！</p>
+  </div>
+
+  <!-- ==================== 壹、主流程：訴願先行 ➔ 訴願 ➔ 行政訴訟三級二審 ==================== -->
+  <div class="card">
+    <h2>壹、行政救濟主流程：法院外救濟 ➔ 法院內救濟（三級二審） <small>對應講義：S__23805961.jpg 上半部</small></h2>
+
+    <!-- SVG 1: 主流程黑板圖 -->
+    <div class="svg-board-wrap">
+      <svg viewBox="0 0 1060 405" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif">
+        <defs>
+          <marker id="arr-y" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#ffe066"/>
+          </marker>
+          <marker id="arr-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#8ce99a"/>
+          </marker>
+        </defs>
+        <rect width="1060" height="405" fill="#1b362e"/>
+
+        <!-- Top Category Labels -->
+        <text x="330" y="32" fill="#ffe066" font-size="16" font-weight="900" text-anchor="middle">【行政機關內部的救濟／法院外救濟】</text>
+        <text x="585" y="32" fill="#8ce99a" font-size="16" font-weight="900" text-anchor="middle">【法院內救濟（三級二審）】</text>
+
+        <!-- 3 Court Columns Header -->
+        <text x="765" y="22" fill="#f5f7f0" font-size="12" font-weight="700" text-anchor="middle">┌─── 台北、台中、高雄 ───┐</text>
+        <rect x="675" y="30" width="112" height="44" rx="6" fill="rgba(255,224,102,0.14)" stroke="#ffe066" stroke-width="1.5"/>
+        <text x="731" y="49" fill="#ffffff" font-size="12" font-weight="800" text-anchor="middle">高等行政法院</text>
+        <text x="731" y="67" fill="#ffe066" font-size="12.5" font-weight="900" text-anchor="middle">地方行政訴訟庭</text>
+
+        <rect x="795" y="30" width="112" height="44" rx="6" fill="rgba(140,233,154,0.14)" stroke="#8ce99a" stroke-width="1.5"/>
+        <text x="851" y="49" fill="#ffffff" font-size="12" font-weight="800" text-anchor="middle">高等行政法院</text>
+        <text x="851" y="67" fill="#8ce99a" font-size="12.5" font-weight="900" text-anchor="middle">高等行政訴訟庭</text>
+
+        <text x="975" y="22" fill="#f5f7f0" font-size="12" font-weight="700" text-anchor="middle">台北</text>
+        <rect x="915" y="30" width="122" height="44" rx="6" fill="rgba(255,153,172,0.16)" stroke="#ff99ac" stroke-width="1.5"/>
+        <text x="976" y="57" fill="#ff99ac" font-size="14" font-weight="900" text-anchor="middle">最高行政法院</text>
+
+        <!-- Box 1: 行政處分 -->
+        <rect x="20" y="115" width="120" height="60" rx="6" fill="rgba(255,255,255,0.07)" stroke="#ffe066" stroke-width="2"/>
+        <text x="28" y="133" fill="#ffe066" font-size="12" font-weight="800">1</text>
+        <text x="80" y="153" fill="#ffe066" font-size="18" font-weight="900" text-anchor="middle">行政處分</text>
+        <text x="22" y="198" fill="#ff99ac" font-size="13" font-weight="800">違法、不當</text>
+        <text x="22" y="216" fill="#ff99ac" font-size="13" font-weight="800">➔ 權利受損</text>
+
+        <line x1="140" y1="145" x2="170" y2="145" stroke="#ffe066" stroke-width="2.2" marker-end="url(#arr-y)"/>
+
+        <!-- Box 2: 訴願先行程序 -->
+        <rect x="175" y="115" width="132" height="60" rx="6" fill="rgba(255,255,255,0.07)" stroke="#ffe066" stroke-width="2"/>
+        <text x="183" y="133" fill="#ffe066" font-size="12" font-weight="800">2</text>
+        <text x="241" y="153" fill="#8ce99a" font-size="16" font-weight="900" text-anchor="middle">訴願先行程序</text>
+        <text x="175" y="198" fill="#ffffff" font-size="12" font-weight="700">＊特定案件向「原機關」提：</text>
+        <text x="175" y="218" fill="#ffe066" font-size="12.5" font-weight="800">• 稅捐稽徵法：復查</text>
+        <text x="175" y="236" fill="#ffe066" font-size="12.5" font-weight="800">• 全民健保法：審議</text>
+        <text x="175" y="254" fill="#ffe066" font-size="12.5" font-weight="800">• 專利法：再審查</text>
+
+        <line x1="307" y1="145" x2="337" y2="145" stroke="#ffe066" stroke-width="2.2" marker-end="url(#arr-y)"/>
+
+        <!-- Box 3: 訴願 & 4: 訴願前置主義 -->
+        <rect x="342" y="115" width="132" height="60" rx="6" fill="rgba(255,255,255,0.07)" stroke="#ffe066" stroke-width="2"/>
+        <text x="350" y="133" fill="#ffe066" font-size="12" font-weight="800">3</text>
+        <text x="408" y="153" fill="#ffe066" font-size="18" font-weight="900" text-anchor="middle">訴 願</text>
+        <text x="342" y="198" fill="#ff99ac" font-size="13.5" font-weight="900">4「訴願前置主義」</text>
+        <text x="352" y="216" fill="#ffffff" font-size="12" font-weight="700">（先訴願，再訴訟）</text>
+        <text x="342" y="236" fill="#f5f7f0" font-size="11.5">經原機關向「上級機關」提</text>
+        <text x="342" y="254" fill="#8ce99a" font-size="11.5" font-weight="800">★ 行政自我審查，減少訟源</text>
+
+        <!-- Branch 1: Box 5 (>150萬 通常) -->
+        <line x1="474" y1="130" x2="510" y2="115" stroke="#ffe066" stroke-width="2" marker-end="url(#arr-y)"/>
+        <rect x="515" y="90" width="142" height="50" rx="6" fill="rgba(255,255,255,0.07)" stroke="#8ce99a" stroke-width="2"/>
+        <text x="523" y="106" fill="#ffe066" font-size="11" font-weight="800">5</text>
+        <text x="586" y="122" fill="#8ce99a" font-size="15.5" font-weight="900" text-anchor="middle">通常訴訟程序</text>
+        <text x="515" y="156" fill="#ff99ac" font-size="12" font-weight="800">標的金額：超過 150 萬</text>
+
+        <rect x="811" y="96" width="80" height="36" rx="5" fill="rgba(140,233,154,0.22)" stroke="#8ce99a" stroke-width="2"/>
+        <text x="851" y="119" fill="#8ce99a" font-size="14" font-weight="900" text-anchor="middle">第一審</text>
+        <line x1="891" y1="114" x2="930" y2="114" stroke="#ffe066" stroke-width="2" marker-end="url(#arr-y)"/>
+        <rect x="936" y="96" width="80" height="36" rx="5" fill="rgba(255,153,172,0.22)" stroke="#ff99ac" stroke-width="2"/>
+        <text x="976" y="119" fill="#ff99ac" font-size="14" font-weight="900" text-anchor="middle">第二審</text>
+
+        <!-- Branch 2: Box 6 (50~150萬 通常) -->
+        <line x1="474" y1="145" x2="510" y2="205" stroke="#ffe066" stroke-width="2" marker-end="url(#arr-y)"/>
+        <rect x="515" y="180" width="142" height="50" rx="6" fill="rgba(255,255,255,0.07)" stroke="#8ce99a" stroke-width="2"/>
+        <text x="523" y="196" fill="#ffe066" font-size="11" font-weight="800">6</text>
+        <text x="586" y="212" fill="#8ce99a" font-size="15.5" font-weight="900" text-anchor="middle">通常訴訟程序</text>
+        <text x="515" y="246" fill="#ffe066" font-size="12" font-weight="800">超過 50 萬～150 萬以下</text>
+
+        <rect x="691" y="186" width="80" height="36" rx="5" fill="rgba(255,224,102,0.2)" stroke="#ffe066" stroke-width="2"/>
+        <text x="731" y="209" fill="#ffe066" font-size="14" font-weight="900" text-anchor="middle">第一審</text>
+        <line x1="771" y1="204" x2="806" y2="204" stroke="#ffe066" stroke-width="2" marker-end="url(#arr-y)"/>
+        <rect x="811" y="186" width="80" height="36" rx="5" fill="rgba(140,233,154,0.22)" stroke="#8ce99a" stroke-width="2"/>
+        <text x="851" y="209" fill="#8ce99a" font-size="14" font-weight="900" text-anchor="middle">第二審</text>
+
+        <!-- Branch 3: Box 7 (50萬以下 簡易) -->
+        <line x1="474" y1="160" x2="510" y2="300" stroke="#ffe066" stroke-width="2" marker-end="url(#arr-y)"/>
+        <rect x="515" y="275" width="142" height="50" rx="6" fill="rgba(255,255,255,0.07)" stroke="#ffe066" stroke-width="2"/>
+        <text x="523" y="291" fill="#ffe066" font-size="11" font-weight="800">7</text>
+        <text x="586" y="307" fill="#ffe066" font-size="15.5" font-weight="900" text-anchor="middle">簡易訴訟程序</text>
+        <text x="515" y="343" fill="#ffe066" font-size="12" font-weight="800">標的金額：50 萬以下</text>
+        <text x="515" y="361" fill="#f5f7f0" font-size="11">或輕微處分（告誡/警告/記點）</text>
+
+        <rect x="691" y="281" width="80" height="36" rx="5" fill="rgba(255,224,102,0.2)" stroke="#ffe066" stroke-width="2"/>
+        <text x="731" y="304" fill="#ffe066" font-size="14" font-weight="900" text-anchor="middle">第一審</text>
+        <line x1="771" y1="299" x2="806" y2="299" stroke="#ffe066" stroke-width="2" marker-end="url(#arr-y)"/>
+        <rect x="811" y="281" width="80" height="36" rx="5" fill="rgba(140,233,154,0.22)" stroke="#8ce99a" stroke-width="2"/>
+        <text x="851" y="304" fill="#8ce99a" font-size="14" font-weight="900" text-anchor="middle">第二審</text>
+
+        <!-- Right Box: 移送最高行政法院統一法律見解 -->
+        <rect x="915" y="180" width="124" height="150" rx="6" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+        <text x="977" y="205" fill="#8ce99a" font-size="11.5" font-weight="800" text-anchor="middle">高等行政訴訟庭</text>
+        <text x="977" y="224" fill="#f5f7f0" font-size="11" text-anchor="middle">審理二審案件時，</text>
+        <text x="977" y="244" fill="#ffe066" font-size="11.5" font-weight="800" text-anchor="middle">若認有統一法律</text>
+        <text x="977" y="262" fill="#ffe066" font-size="11.5" font-weight="800" text-anchor="middle">見解的必要，</text>
+        <text x="977" y="282" fill="#ff99ac" font-size="11.5" font-weight="800" text-anchor="middle">裁定移送最高</text>
+        <text x="977" y="300" fill="#ff99ac" font-size="11.5" font-weight="800" text-anchor="middle">行政法院裁判</text>
+      </svg>
+    </div>
+
+    <h3>🔍 板書／講義重點速讀</h3>
+    <div class="explain-box">
+      <ul>
+        <li><strong>1. 救濟起點＝<span class="k">行政處分</span></strong>：機關就具體事件單方作成、對外發生法律效果（因<strong>違法或不當</strong>致權利受損）。</li>
+        <li><strong>2. <span class="k">訴願先行程序</span></strong>：提訴願前向「<strong>原處分機關</strong>」申請自我檢查（僅特定案件適用：稅捐➔<span class="k">復查</span>、健保➔<span class="k">審議</span>、專利➔<span class="k">再審查</span>、學生➔校內<span class="k">申訴</span>）。</li>
+        <li><strong>3 & 4. <span class="k">訴願</span>（<span class="k">訴願前置主義</span>）</strong>：先訴願、再訴訟！經由原機關向「<strong>上級機關</strong>」提起（目的：<strong>行政自我審查，減少訟源</strong>；訴願審議委員會<strong>機關外公正人士、學者專家 ≥ <span class="k">1/2</span></strong>）。</li>
+        <li><strong>5～7. 行政訴訟（<span class="k">三級二審</span>＋2023 堅實第一審新制）</strong>：
+          <ul>
+            <li><strong>超過 150 萬（或重大非財產處分，如退學）</strong> ➔ <span class="k">通常訴訟程序</span>：一審「<strong>高等行政訴訟庭</strong>」➔ 二審「<strong>最高行政法院</strong>」。</li>
+            <li><strong>超過 50 萬～150 萬以下</strong> ➔ <span class="k">通常訴訟程序</span>：一審「<strong>地方行政訴訟庭</strong>」➔ 二審「<strong>高等行政訴訟庭</strong>」。</li>
+            <li><strong>50 萬以下（或警告／記點等輕微處分、交通裁決）</strong> ➔ <span class="k">簡易訴訟程序</span>：一審「<strong>地方行政訴訟庭</strong>」➔ 二審「<strong>高等行政訴訟庭</strong>」。</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="trap"><b>⚠️ 秒殺陷阱：</b>2023 年 8 月新制已廢除「地方法院行政訴訟庭」！現在所有地方行政訴訟庭都設在<b>臺北、臺中、高雄「高等行政法院」裡面</b>（稱為高等行政法院<b>地方行政訴訟庭</b>）。</div>
+  </div>
+
+  <!-- ==================== 貳、學生權益爭訟 ＆ 交通違規裁決 ==================== -->
+  <div class="card">
+    <h2>貳、兩大特別救濟流程：學生權益爭訟 ＆ 交通違規事件 <small>對應講義：S__23805961.jpg 下半部</small></h2>
+
+    <!-- SVG 2: 學生爭訟 & 交通違規 -->
+    <div class="svg-board-wrap">
+      <svg viewBox="0 0 1060 330" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif">
+        <rect width="1060" height="330" fill="#1b362e"/>
+        <line x1="20" y1="158" x2="1040" y2="158" stroke="rgba(255,255,255,0.22)" stroke-width="2" stroke-dasharray="6,6"/>
+
+        <!-- Top Half: 全國高中以下學校學生 -->
+        <text x="24" y="34" fill="#ffe066" font-size="17" font-weight="900">🎓 全國高中以下學校學生 — 學生權益爭訟事件（＊釋字第 784 號解釋：全面開放學生爭訟權）</text>
+
+        <rect x="24" y="52" width="150" height="54" rx="6" fill="rgba(255,255,255,0.07)" stroke="#ffe066" stroke-width="2"/>
+        <text x="99" y="76" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">學生權益受侵害</text>
+        <text x="99" y="96" fill="#8ce99a" font-size="12" font-weight="700" text-anchor="middle">（教育或管理措施）</text>
+
+        <line x1="174" y1="79" x2="215" y2="79" stroke="#ffe066" stroke-width="2.2" marker-end="url(#arr-y)"/>
+
+        <rect x="220" y="52" width="140" height="54" rx="6" fill="rgba(255,255,255,0.07)" stroke="#8ce99a" stroke-width="2"/>
+        <text x="290" y="78" fill="#8ce99a" font-size="17" font-weight="900" text-anchor="middle">申 訴</text>
+        <text x="290" y="97" fill="#f5f7f0" font-size="11.5" text-anchor="middle">（訴願先行程序）</text>
+        <text x="220" y="128" fill="#ffe066" font-size="12" font-weight="800">＊校內：學生申訴評議委員會</text>
+
+        <line x1="360" y1="79" x2="405" y2="79" stroke="#ffe066" stroke-width="2.2" marker-end="url(#arr-y)"/>
+
+        <rect x="410" y="52" width="150" height="54" rx="6" fill="rgba(255,255,255,0.07)" stroke="#ff99ac" stroke-width="2"/>
+        <text x="485" y="78" fill="#ff99ac" font-size="17" font-weight="900" text-anchor="middle">再 申 訴</text>
+        <text x="485" y="97" fill="#ffe066" font-size="12" font-weight="800" text-anchor="middle">（★ 視同訴願！）</text>
+        <text x="410" y="128" fill="#f5f7f0" font-size="12" font-weight="700">＊校外主管機關：國立➔教育部｜市立➔教育局</text>
+
+        <line x1="560" y1="79" x2="605" y2="79" stroke="#ffe066" stroke-width="2.2" marker-end="url(#arr-y)"/>
+
+        <rect x="610" y="52" width="420" height="54" rx="6" fill="rgba(255,224,102,0.12)" stroke="#ffe066" stroke-width="2"/>
+        <text x="820" y="76" fill="#ffe066" font-size="16" font-weight="900" text-anchor="middle">行政訴訟（依案件性質適用通常 or 簡易程序）</text>
+        <text x="820" y="96" fill="#f5f7f0" font-size="12.5" text-anchor="middle">例：退學／不發畢業證書 ➔ 通常程序｜警告／記點 ➔ 簡易程序</text>
+
+        <!-- Bottom Half: 交通違規事件 -->
+        <text x="24" y="190" fill="#ffe066" font-size="17" font-weight="900">🚗 交通違規事件（以汽車超速為例 — ★ 不服裁決書「免經訴願」直接提行政訴訟！）</text>
+
+        <rect x="24" y="208" width="185" height="62" rx="6" fill="rgba(255,255,255,0.07)" stroke="#ffe066" stroke-width="2"/>
+        <text x="116" y="232" fill="#ffe066" font-size="14" font-weight="900" text-anchor="middle">① 舉發機關：警察機關</text>
+        <text x="116" y="254" fill="#f5f7f0" font-size="12" text-anchor="middle">開立「舉發通知單(紅單)」</text>
+        <text x="24" y="292" fill="#ff99ac" font-size="11.5" font-weight="700">＊紅單不是裁決書！直接繳錢即結案</text>
+
+        <line x1="209" y1="239" x2="244" y2="239" stroke="#ffe066" stroke-width="2.2" marker-end="url(#arr-y)"/>
+
+        <rect x="250" y="208" width="225" height="62" rx="6" fill="rgba(255,255,255,0.07)" stroke="#8ce99a" stroke-width="2"/>
+        <text x="362" y="232" fill="#8ce99a" font-size="14" font-weight="900" text-anchor="middle">② 處罰機關：交通事件裁決處/所</text>
+        <text x="362" y="254" fill="#f5f7f0" font-size="12" text-anchor="middle">不服於 30 日內陳述意見（申訴）</text>
+        <text x="250" y="292" fill="#f5f7f0" font-size="11.5">➔ 發函原舉發單位查證（有誤則免罰）</text>
+
+        <line x1="475" y1="239" x2="510" y2="239" stroke="#ffe066" stroke-width="2.2" marker-end="url(#arr-y)"/>
+
+        <rect x="515" y="208" width="175" height="62" rx="6" fill="rgba(255,255,255,0.07)" stroke="#ff99ac" stroke-width="2"/>
+        <text x="602" y="232" fill="#ff99ac" font-size="14" font-weight="900" text-anchor="middle">③ 作成「交通裁決書」</text>
+        <text x="602" y="254" fill="#ffe066" font-size="12" font-weight="800" text-anchor="middle">（認定違規成立之行政處分）</text>
+
+        <line x1="690" y1="239" x2="725" y2="239" stroke="#ffe066" stroke-width="2.2" marker-end="url(#arr-y)"/>
+
+        <rect x="730" y="204" width="302" height="72" rx="6" fill="rgba(255,153,172,0.16)" stroke="#ff99ac" stroke-width="2"/>
+        <text x="881" y="228" fill="#ff99ac" font-size="14.5" font-weight="900" text-anchor="middle">④ 免經訴願！直接提行政訴訟</text>
+        <text x="881" y="249" fill="#ffe066" font-size="13" font-weight="900" text-anchor="middle">準用「簡易訴訟程序」</text>
+        <text x="881" y="267" fill="#8ce99a" font-size="12" font-weight="800" text-anchor="middle">一審：地方行政訴訟庭 ➔ 二審：高等行政訴訟庭</text>
+      </svg>
+    </div>
+
+    <h3>🔍 板書／講義重點速讀</h3>
+    <div class="explain-box">
+      <ul>
+        <li><strong>高中以下學生爭訟（<span class="k">釋字第 784 號</span>）</strong>：校內「<span class="k">申訴</span>」（學生申訴評議委員會）➔ 主管機關「<span class="k">再申訴</span>」（<strong>視同訴願</strong>，不再提訴願！）➔ <span class="k">行政訴訟</span>。</li>
+        <li><strong>交通違規救濟</strong>：① 警察開<strong>紅單（舉發通知單）</strong> ➔ ② 30 日內向<strong><span class="k">交通事件裁決處／所</span></strong>陳述意見（申訴） ➔ ③ 查證後作成「<strong><span class="k">交通裁決書</span></strong>」 ➔ ④ 不服裁決書者，<strong><span class="k">免經訴願</span></strong>，直接向高等行政法院「<span class="k">地方行政訴訟庭</span>」提行政訴訟（準用簡易程序）。</li>
+      </ul>
+    </div>
+    <div class="tip">
+      <b>💡 三大必考比較：</b><br>
+      • <b>高中生退學</b>：申訴 ➔ <b>再申訴（視同訴願）</b> ➔ 行政訴訟（學習寶典 p.73 第 11 題）<br>
+      • <b>大學生退學</b>：申訴（訴願先行） ➔ <b>訴願（教育部）</b> ➔ 行政訴訟<br>
+      • <b>交通違規罰單</b>：向裁決所申訴取得「裁決書」 ➔ <b>免經訴願</b> ➔ 直接向高等行政法院「地方行政訴訟庭」起訴
+    </div>
+  </div>
+
+  <!-- ==================== 參、30秒自我檢測 ==================== -->
+  <div class="card qa">
+    <h2>✅ 考前 30 秒自我檢測（點擊展開答案）</h2>
+    <details><summary>1. 廠商遭「衛生福利部」依《管制藥品管理條例》裁罰 200 萬元，應向哪一個機關提起訴願？若訴願被駁回，第一審應向哪一個法院起訴？</summary><p>向衛福部的上級機關「行政院」提起訴願；因金額超過 150 萬元，第一審應向「高等行政法院（高等行政訴訟庭）」提起通常訴訟（113 分科第 6 題）。</p></details>
+    <details><summary>2. 高中生遭學校依校規處以退學處分，其行政救濟的正確順序為何？</summary><p>校內「申訴」 ➔ 主管機關「再申訴（視同訴願）」 ➔ 行政訴訟（寶典 p.73 第 11 題）。</p></details>
+    <details><summary>3. 民眾收到超速違規紅單不服，向交通事件裁決所申訴後仍收到「交通裁決書」，下一步該如何救濟？</summary><p>免經訴願程序！直接向高等行政法院「地方行政訴訟庭」提起行政訴訟（準用簡易訴訟程序）。</p></details>
+    <details><summary>4. 稅額或罰鍰「70 萬元」的行政爭訟，適用哪一種訴訟程序？第一審與第二審分別由哪個法庭審理？</summary><p>超過 50 萬、150 萬元以下，適用「通常訴訟程序」；第一審為高等行政法院「地方行政訴訟庭」，第二審為高等行政法院「高等行政訴訟庭」。</p></details>
+    <details><summary>5. 為確保訴願決定客觀公正，《訴願法》規定「訴願審議委員會」中機關外社會公正人士、學者專家應占多少比例？</summary><p>二分之一（1/2）以上。</p></details>
+    <details><summary>6. 哪些案件屬於「訴願先行程序」？（舉出老師講義上的 3 個例子）</summary><p>①《稅捐稽徵法》：復查；②《全民健康保險法》：審議；③《專利法》：再審查（另高中以下學生校內「申訴」亦屬之）。</p></details>
+  </div>
+
+  <!-- ==================== 肆、資料來源 ==================== -->
+  <div class="card">
+    <h2>📂 資料來源清單</h2>
+    <ul class="src">
+      <li><b>主來源（老師講義照片，位於 <code>_收件匣/</code>）</b>：<code>S__23805961.jpg</code>（B2 CH3 行政救濟流程講義）。</li>
+      <li><b>輔助來源（課本與講義）</b>：《普通型高級中等學校 公民與社會（2）保障人權》（113 乙版）第 3 章第三節〈行政救濟的管道與方式〉（p.63–68）；《學習寶典》第 3 章（p.53, 55, 64–67, 73–75）。</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+function tq(){
+  const b = document.body, q = document.getElementById('qb');
+  b.classList.toggle('quiz');
+  const on = b.classList.contains('quiz');
+  q.classList.toggle('on', on);
+  q.textContent = on ? '👁️ 顯示答案' : '🎯 遮罩自測';
+  document.querySelectorAll('.k').forEach(e => e.classList.remove('show'));
+}
+document.addEventListener('click', e => {
+  if (document.body.classList.contains('quiz') && e.target.classList.contains('k')) {
+    e.target.classList.toggle('show');
+  }
+});
+</script>
+</body>
+</html>
